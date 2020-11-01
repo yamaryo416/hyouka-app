@@ -1,12 +1,12 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :timeoutable,
-         :authentication_keys => [:user_id]
+         :recoverable, :rememberable, :validatable, :timeoutable
   validates :user_id, presence: true, length: {is: 8}, uniqueness: true
   validates :name, presence: true
-  
+
   def will_save_change_to_email?
     false
   end
@@ -18,6 +18,4 @@ class User < ApplicationRecord
   def email_changed?
     false
   end
-
-
 end
