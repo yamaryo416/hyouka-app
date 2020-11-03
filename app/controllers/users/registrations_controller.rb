@@ -71,9 +71,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     def creatable?
-      raise CanCan::AccessDenied unless user_signed_in?
       if !current_user_is_admin?
-        raise CanCan::AccessDenied
+        redirect_to root_path
       end
     end
 end
