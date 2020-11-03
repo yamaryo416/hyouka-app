@@ -39,12 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
   protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-    def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id, :name])
-    end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id, :name])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -60,19 +60,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-    def current_user_is_admin?
-      user_signed_in? && current_user.has_role?(:admin)
-    end
+  def current_user_is_admin?
+    user_signed_in? && current_user.has_role?(:admin)
+  end
 
-    def sign_up(resource_name, resource)
-      if !current_user_is_admin?
-        sign_in(resource_name, resource)
-      end
+  def sign_up(resource_name, resource)
+    if !current_user_is_admin?
+      sign_in(resource_name, resource)
     end
+  end
 
-    def creatable?
-      if !current_user_is_admin?
-        redirect_to root_path
-      end
+  def creatable?
+    if !current_user_is_admin?
+      redirect_to root_path
     end
+  end
 end

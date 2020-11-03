@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
-  validates :user_id, presence: true, length: {is: 8}, uniqueness: true
+  validates :user_id, presence: true, length: { is: 8 }, uniqueness: true
   validates :name, presence: true
 
   def will_save_change_to_email?

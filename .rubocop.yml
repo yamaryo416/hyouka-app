@@ -1,0 +1,15 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+  Exclude:
+    - "bin/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - 'vendor/**/*'
+    - 'spec/spec_helper.rb'
+    - 'node_modules/**/*'

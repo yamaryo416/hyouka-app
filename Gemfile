@@ -28,8 +28,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
-gem "devise-i18n"
-gem "devise-i18n-views"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem 'bootstrap-sass'
 gem 'cancancan'
 gem 'rolify'
@@ -40,8 +40,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rubocop', require: false
-  gem "rubocop-airbnb"
-  gem "rails-controller-testing"
+  gem 'rubocop-airbnb'
+  gem 'rails-controller-testing'
 end
 
 group :development do

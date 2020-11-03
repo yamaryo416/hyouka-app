@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
   let!(:admin) { create(:user, :admin) }
+
   scenario "admin creates a new user" do
     visit login_path
     expect(page).to have_current_path login_path

@@ -35,6 +35,7 @@ RSpec.describe "UsersRegistrations", type: :request do
       let!(:admin) { create(:user, :admin) }
       let!(:user_params) { attributes_for(:user) }
       let!(:invalid_user_params) { attributes_for(:user, user_id: "") }
+
       before do
         sign_in admin
       end
@@ -55,7 +56,7 @@ RSpec.describe "UsersRegistrations", type: :request do
         it "is false to create user" do
           expect do
             post user_registration_path, params: { user: invalid_user_params }
-          end.to_not change(User, :count)
+          end.not_to change(User, :count)
         end
         it "render signup page" do
           post user_registration_path, params: { user: invalid_user_params }
@@ -67,20 +68,22 @@ RSpec.describe "UsersRegistrations", type: :request do
     context "login as user" do
       let!(:user) { create(:user) }
       let!(:user_params) { attributes_for(:user) }
+
       it "is false to create user" do
         sign_in user
         expect do
           post user_registration_path, params: { user: user_params }
-        end.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
     end
 
     context "not login" do
       let!(:user_params) { attributes_for(:user) }
+
       it "is false to create user" do
         expect do
           post user_registration_path, params: { user: user_params }
-        end.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
     end
   end
