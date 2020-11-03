@@ -13,8 +13,13 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
-      <%= current_user.id %>
+      <% if current_user.has_role?(:admin) %>
+        <%= link_to "ユーザー作成", signup_path %>
+      <% end %>
+      <h1><%= current_user.name %></h1>
       <%= link_to "ログアウト", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "ログイン", login_path %>
     <% end %>
     <%= yield %>
   </body>
