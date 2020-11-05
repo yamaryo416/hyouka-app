@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Therapist, type: :model do
-  it "is valid with userid, name, and password" do
+  it "is valid with uniqueid, name, and password" do
     therapist = build(:therapist)
     expect(therapist).to be_valid
   end
 
-  context "userid is invalid" do
+  context "invalid when uniqueid" do
     it "is nil" do
       therapist = build(:therapist, unique_id: nil)
       therapist.valid?
@@ -30,7 +30,7 @@ RSpec.describe Therapist, type: :model do
     end
   end
 
-  context "password is invalid" do
+  context "invalid when password" do
     it "is nil" do
       therapist = build(:therapist, password: nil)
       therapist.valid?
@@ -53,9 +53,11 @@ RSpec.describe Therapist, type: :model do
     end
   end
 
-  it "is invalid without name" do
-    therapist = build(:therapist, name: nil)
-    therapist.valid?
-    expect(therapist.errors[:name]).to include("を入力してください")
+  context "invalid when name" do
+    it "is nil" do
+      therapist = build(:therapist, name: nil)
+      therapist.valid?
+      expect(therapist.errors[:name]).to include("を入力してください")
+    end
   end
 end

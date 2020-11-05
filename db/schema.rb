@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_115211) do
+ActiveRecord::Schema.define(version: 2020_11_05_103218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "patients", force: :cascade do |t|
+    t.string "unique_id", default: "", null: false
+    t.integer "age", default: 0
+    t.integer "sex"
+    t.float "weight"
+    t.float "height"
+    t.bigint "therapist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["therapist_id", "created_at"], name: "index_patients_on_therapist_id_and_created_at"
+    t.index ["therapist_id"], name: "index_patients_on_therapist_id"
+    t.index ["unique_id"], name: "index_patients_on_unique_id", unique: true
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -46,4 +60,5 @@ ActiveRecord::Schema.define(version: 2020_11_04_115211) do
     t.index ["therapist_id"], name: "index_therapists_roles_on_therapist_id"
   end
 
+  add_foreign_key "patients", "therapists"
 end

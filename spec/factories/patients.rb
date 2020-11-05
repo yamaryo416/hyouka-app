@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :patient do
-    unique_id { "MyString" }
-    age { 1 }
-    sex { 1 }
-    weight { 1.5 }
-    height { 1.5 }
-    therapist { nil }
+    sequence(:unique_id) { [*"0".."9"].sample(8).join }
+    age { nil }
+    sex { nil }
+    weight { nil }
+    height { nil }
+    association :therapist
   end
 end
