@@ -1,10 +1,10 @@
-class User < ApplicationRecord
+class Therapist < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :timeoutable
-  validates :user_id, presence: true, length: { is: 8 }, uniqueness: true
+  validates :unique_id, presence: true, length: { is: 8 }, uniqueness: true
   validates :name, presence: true
 
   def will_save_change_to_email?

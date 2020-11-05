@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_044031) do
+ActiveRecord::Schema.define(version: 2020_11_04_115211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_11_01_044031) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "user_id", default: "", null: false
+  create_table "therapists", force: :cascade do |t|
+    t.string "unique_id", default: "", null: false
     t.string "name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -34,16 +34,16 @@ ActiveRecord::Schema.define(version: 2020_11_01_044031) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true
+    t.index ["reset_password_token"], name: "index_therapists_on_reset_password_token", unique: true
+    t.index ["unique_id"], name: "index_therapists_on_unique_id", unique: true
   end
 
-  create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "therapists_roles", id: false, force: :cascade do |t|
+    t.bigint "therapist_id"
     t.bigint "role_id"
-    t.index ["role_id"], name: "index_users_roles_on_role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_roles_on_user_id"
+    t.index ["role_id"], name: "index_therapists_roles_on_role_id"
+    t.index ["therapist_id", "role_id"], name: "index_therapists_roles_on_therapist_id_and_role_id"
+    t.index ["therapist_id"], name: "index_therapists_roles_on_therapist_id"
   end
 
 end

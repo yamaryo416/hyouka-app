@@ -1,16 +1,16 @@
 ja:
   activerecord:
     attributes:
-      user:
+      therapist:
         name: 名前
-        user_id: ユーザーID
+        unique_id: ユーザーID
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
     models:
-      user: "ユーザ"
+      therapist: "ユーザー"
   devise:
     confirmations:
       new:

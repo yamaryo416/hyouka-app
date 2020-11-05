@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: "users/registrations"
+  devise_for :therapists, controllers: {
+    sessions: "therapists/sessions",
+    registrations: "therapists/registrations"
   }
 
-  devise_scope :user do
-    get "/signup", to: "users/registrations#new"
-    get "/login", to: "users/sessions#new"
-    post "/login", to: "users/sessions#create"
-    delete "/logout", to: "users/sessions#destroy"
+  devise_scope :therapist do
+    get "/signup", to: "therapists/registrations#new"
+    get "/login", to: "therapists/sessions#new"
+    post "/login", to: "therapists/sessions#create"
+    delete "/logout", to: "therapists/sessions#destroy"
   end
 
   root to: "static_pages#home"

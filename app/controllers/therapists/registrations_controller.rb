@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::RegistrationsController < Devise::RegistrationsController
+class Therapists::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:cancel]
   before_action :creatable?, only: [:new, :create]
   before_action :configure_sign_up_params, only: [:create]
@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id, :name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:unique_id, :name])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -60,18 +60,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def current_user_is_admin?
-    user_signed_in? && current_user.has_role?(:admin)
+  def current_therapist_is_admin?
+    therapist_signed_in? && current_therapist.has_role?(:admin)
   end
 
   def sign_up(resource_name, resource)
-    if !current_user_is_admin?
+    if !current_therapist_is_admin?
       sign_in(resource_name, resource)
     end
   end
 
   def creatable?
-    if !current_user_is_admin?
+    if !current_therapist_is_admin?
       redirect_to root_path
     end
   end
