@@ -1,0 +1,7 @@
+<%= @patient.unique_id %>
+<%= @patient.sex %>
+<%= @patient.age %>
+<%= @patient.weight %>
+<%= @patient.height %>
+<%= link_to "編集する", edit_patient_path %>
+<%= link_to "削除する", @patient, method: :delete, data: { confirm: "患者データを削除します。よろしいですか?" } %>

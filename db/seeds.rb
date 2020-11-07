@@ -10,3 +10,23 @@ Therapist.create!(unique_id: "10101010",
              password: "password",
              password_confirmation: "password"
 )
+admin = Therapist.first
+admin.add_role :admin
+
+5.times do |n|
+  unique_id = "#{n}" * 8
+  name = Faker::Name.name
+  password = "password"
+  Therapist.create!(unique_id: unique_id,
+                    name: name,
+                    password: password,
+                    password_confirmation: password)
+end
+
+therapists = Therapist.order(:created_at).take(3)
+5.times do
+  therapists.each do |therapist|
+    unique_id = [*"0".."9"].sample(8).join
+    therapist.patients.create!(unique_id: unique_id) 
+  end
+end

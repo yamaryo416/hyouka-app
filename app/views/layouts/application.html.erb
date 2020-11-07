@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+      <%= message %>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if therapist_signed_in? %>

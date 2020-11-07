@@ -1,0 +1,20 @@
+<h1>患者編集</h1>
+<%= @patient.unique_id %>
+<%= form_with(model: @patient, local: true) do |f| %>
+  <%= f.label :sex %><br />
+  <%= f.label :man %>
+  <%= f.radio_button :sex, :man %>
+  <%= f.label :woman %>
+  <%= f.radio_button :sex, :woman %>
+
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+
+  <%= f.label :weight %>
+  <%= f.number_field :weight, step: '0.1' %>
+
+  <%= f.label :height %>
+  <%= f.number_field :height, step: '0.1' %>
+
+  <%= f.submit "患者登録" %>
+<% end %>

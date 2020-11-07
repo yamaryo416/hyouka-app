@@ -46,9 +46,10 @@ RSpec.describe "TherapistsRegistrations", type: :request do
             post therapist_registration_path, params: { therapist: therapist_params }
           end.to change(Therapist, :count).by 1
         end
-        it "redirect to root_path" do
+        it "redirect to root url" do
           post therapist_registration_path, params: { therapist: therapist_params }
           expect(response).to redirect_to root_path
+          expect(flash[:notice]).to eq "アカウント登録を受け付けました。確認のメールをお送りします。"
         end
       end
 
