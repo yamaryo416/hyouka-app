@@ -2,10 +2,7 @@
 <%= @patient.unique_id %>
 <%= form_with(model: @patient, local: true) do |f| %>
   <%= f.label :sex %><br />
-  <%= f.label :man %>
-  <%= f.radio_button :sex, :man %>
-  <%= f.label :woman %>
-  <%= f.radio_button :sex, :woman %>
+  <%= f.select :sex, Patient.sexes.keys.map {|k| [I18n.t("enums.patient.sex.#{k}"), k]} %>
 
   <%= f.label :age %>
   <%= f.number_field :age %>
@@ -16,5 +13,5 @@
   <%= f.label :height %>
   <%= f.number_field :height, step: '0.1' %>
 
-  <%= f.submit "患者登録" %>
+  <%= f.submit "編集する" %>
 <% end %>

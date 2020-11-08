@@ -4,13 +4,12 @@ ja:
       therapist:
         name: 名前
         unique_id: ユーザーID
-        current_password: "現在のパスワード"
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "確認用パスワード"
-        remember_me: "ログインを記憶"
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
     models:
-      therapist: "ユーザー"
+      therapist: ユーザー
   devise:
     confirmations:
       new:

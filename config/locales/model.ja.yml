@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      patient: 患者
+    attributes:
+      patient:
+        unique_id: 患者ID
+        sex: 性別
+        age: 年齢
+        weight: 体重
+        height: 身長
+        man: 男性
+        woman: 女性
+  enums:
+    patient:
+      sex:
+        undefined: 未選択
+        man: 男性
+        woman: 女性

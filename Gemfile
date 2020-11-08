@@ -35,6 +35,8 @@ gem 'cancancan'
 gem 'rolify'
 gem 'kaminari'
 gem 'faker'
+gem 'rails-i18n'
+gem 'enum_help'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

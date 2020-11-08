@@ -12,10 +12,7 @@
   <%= f.text_field :unique_id %>
 
   <%= f.label :sex %><br />
-  <%= f.label :man %>
-  <%= f.radio_button :sex, :man %>
-  <%= f.label :woman %>
-  <%= f.radio_button :sex, :woman %>
+  <%= f.select :sex, Patient.sexes.keys.map {|k| [I18n.t("enums.patient.sex.#{k}"), k]} %>
 
   <%= f.label :age %>
   <%= f.number_field :age %>
@@ -28,3 +25,5 @@
 
   <%= f.submit "患者登録" %>
 <% end %>
+
+<%= Patient.human_attribute_name :unique_id %>
