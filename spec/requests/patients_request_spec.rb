@@ -2,9 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "Patients", type: :request do
   let!(:admin) { create(:therapist, :admin) }
-  let!(:admin_patient) { create(:patient, sex: :man, age: 20, weight: 60.0, height: 170.0, therapist: admin) }
+  let!(:admin_patient) do
+    create(:patient, sex: :man,
+                     age: 20,
+                     weight: 60.0,
+                     height: 170.0,
+                     therapist: admin)
+  end
   let!(:therapist) { create(:therapist) }
-  let!(:therapist_patient)  { create(:patient, sex: :woman, age: 30, weight: 55.0, height: 160.0, therapist: therapist) }
+  let!(:therapist_patient) do
+    create(:patient, sex: :woman,
+                     age: 30,
+                     weight: 55.0,
+                     height: 160.0,
+                     therapist: therapist)
+  end
 
   describe "#index" do
     context "login as admin" do
@@ -230,12 +242,14 @@ RSpec.describe "Patients", type: :request do
       before do
         sign_in admin
       end
+
       it "is success to update own patient" do
-        patch patient_path(admin_patient), params: { patient: { sex: :woman,
-                                                                age: 50,
-                                                                weight: 55.5,
-                                                                height: 175.5
-                                                                } }
+        patch patient_path(admin_patient), params: { patient: {
+          sex: :woman,
+          age: 50,
+          weight: 55.5,
+          height: 175.5,
+        } }
         admin_patient.reload
         expect(admin_patient.sex).to eq "woman"
         expect(admin_patient.age).to eq 50
@@ -249,11 +263,12 @@ RSpec.describe "Patients", type: :request do
       end
 
       it "is success to update other patient page" do
-        patch patient_path(therapist_patient), params: { patient: { sex: :man,
-                                                                age: 40,
-                                                                weight: 70.0,
-                                                                height: 165.5
-                                                                } }
+        patch patient_path(therapist_patient), params: { patient: {
+          sex: :man,
+          age: 40,
+          weight: 70.0,
+          height: 165.5,
+        } }
         therapist_patient.reload
         expect(therapist_patient.sex).to eq "man"
         expect(therapist_patient.age).to eq 40
@@ -272,12 +287,14 @@ RSpec.describe "Patients", type: :request do
       before do
         sign_in therapist
       end
+
       it "is success to update own patient" do
-        patch patient_path(therapist_patient), params: { patient: { sex: :man,
-                                                                age: 45,
-                                                                weight: 45.5,
-                                                                height: 180.5
-                                                                } }
+        patch patient_path(therapist_patient), params: { patient: {
+          sex: :man,
+          age: 45,
+          weight: 45.5,
+          height: 180.5,
+        } }
         therapist_patient.reload
         expect(therapist_patient.sex).to eq "man"
         expect(therapist_patient.age).to eq 45
@@ -296,6 +313,7 @@ RSpec.describe "Patients", type: :request do
         expect(response).to redirect_to root_url
       end
     end
+
     context "not login" do
       it "redirect root url when when not own patient page get" do
         patch patient_path(admin_patient), params: { patient: { sex: :woman } }
@@ -313,7 +331,7 @@ RSpec.describe "Patients", type: :request do
       it "is success to destroy own patient" do
         expect do
           delete patient_path admin_patient
-        end.to change(Patient, :count).by -1
+        end.to change(Patient, :count).by(-1)
       end
 
       it "redirect patients path when destroy own patient" do
@@ -324,7 +342,7 @@ RSpec.describe "Patients", type: :request do
       it "is success to destroy other patient" do
         expect do
           delete patient_path therapist_patient
-        end.to change(Patient, :count).by -1
+        end.to change(Patient, :count).by(-1)
       end
 
       it "redirect patients path when destroy other patient" do
@@ -341,7 +359,7 @@ RSpec.describe "Patients", type: :request do
       it "is success to destroy own patient" do
         expect do
           delete patient_path therapist_patient
-        end.to change(Patient, :count).by -1
+        end.to change(Patient, :count).by(-1)
       end
 
       it "redirect patients path when destroy own patient" do

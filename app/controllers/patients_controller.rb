@@ -47,20 +47,23 @@ class PatientsController < ApplicationController
   end
 
   private
-    def create_patient_params
-      params.require(:patient).permit(:unique_id, :sex, :age, :weight, :height)
-    end
 
-    def edit_patient_params
-      params.require(:patient).permit(:sex, :age, :weight, :height)
-    end
+  def create_patient_params
+    params.require(:patient).permit(:unique_id, :sex, :age, :weight, :height)
+  end
 
-    def correct_therapist?
-      redirect_to root_path unless current_therapist
-      .patients.include?(Patient.find(params[:id])) || current_therapist.has_role?(:admin)
-    end
+  def edit_patient_params
+    params.require(:patient).permit(:sex, :age, :weight, :height)
+  end
 
-    def set_patient
-      @patient = Patient.find(params[:id])
+  def correct_therapist?
+    if !(current_therapist.patients.include?(Patient.find(params[:id])) ||
+      current_therapist.has_role?(:admin))
+      redirect_to root_path
     end
+  end
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
 end

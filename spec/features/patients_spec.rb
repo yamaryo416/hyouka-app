@@ -3,8 +3,20 @@ require 'rails_helper'
 RSpec.feature "Patients", type: :feature do
   let!(:admin) { create(:therapist, :admin) }
   let!(:therapist) { create(:therapist) }
-  let!(:admin_patient) { create(:patient, sex: :man, age: 20, weight: 60.0, height: 170.0, therapist: admin) }
-  let!(:therapist_patient) { create(:patient, sex: :woman, age: 30, weight: 70.0, height: 180.0, therapist: therapist) }
+  let!(:admin_patient) do
+    create(:patient, sex: :man,
+                     age: 20,
+                     weight: 60.0,
+                     height: 170.0,
+                     therapist: admin)
+  end
+  let!(:therapist_patient) do
+    create(:patient, sex: :woman,
+                     age: 30,
+                     weight: 70.0,
+                     height: 180.0,
+                     therapist: therapist)
+  end
   let!(:admin_patients) { create_list(:patient, 5, therapist: admin) }
   let!(:therapist_patients) { create_list(:patient, 5, therapist: therapist) }
 
@@ -78,6 +90,7 @@ RSpec.feature "Patients", type: :feature do
       sign_in therapist
       visit patients_path
     end
+
     scenario "show index page" do
       expect(page).to have_current_path patients_path
       expect(page).to have_link "患者登録"
