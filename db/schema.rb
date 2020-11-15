@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_103218) do
+ActiveRecord::Schema.define(version: 2020_11_14_114448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,35 @@ ActiveRecord::Schema.define(version: 2020_11_05_103218) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "sias_scales", force: :cascade do |t|
+    t.integer "shoulder_motor_function"
+    t.float "finger_motor_function"
+    t.integer "hip_motor_function"
+    t.integer "knee_motor_function"
+    t.integer "foot_motor_function"
+    t.float "upper_limb_muscle_tone"
+    t.float "lower_limb_muscle_tone"
+    t.float "upper_limb_tendon_reflex"
+    t.float "lower_limb_tendon_reflex"
+    t.integer "upper_limb_tactile"
+    t.integer "lower_limb_tactile"
+    t.integer "upper_limb_sense_of_position"
+    t.integer "lower_limb_sense_of_position"
+    t.integer "shoulder_joint_rom"
+    t.integer "knee_joint_rom"
+    t.integer "pain"
+    t.integer "trunk_verticality"
+    t.integer "abdominal_mmt"
+    t.integer "visuospatial_cognition"
+    t.float "speech"
+    t.integer "gripstrength"
+    t.integer "quadriceps_mmt"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_sias_scales_on_patient_id"
+  end
+
   create_table "therapists", force: :cascade do |t|
     t.string "unique_id", default: "", null: false
     t.string "name", default: "", null: false
@@ -61,4 +90,5 @@ ActiveRecord::Schema.define(version: 2020_11_05_103218) do
   end
 
   add_foreign_key "patients", "therapists"
+  add_foreign_key "sias_scales", "patients"
 end
