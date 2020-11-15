@@ -1,4 +1,33 @@
 <%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true) do |f| %>
+  <h3>運動機能</h3>
   <%= f.select :shoulder_motor_function, SiasScale.shoulder_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.shoulder_motor_function.#{k}"), k]} %>
+  <%= f.select :finger_motor_function, SiasScale.finger_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.finger_motor_function.#{k}"), k]} %>
+  <%= f.select :hip_motor_function, SiasScale.hip_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.hip_motor_function.#{k}"), k]} %>
+  <%= f.select :knee_motor_function, SiasScale.knee_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.knee_motor_function.#{k}"), k]} %>
+  <%= f.select :foot_motor_function, SiasScale.foot_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.foot_motor_function.#{k}"), k]} %>
+  <h3>筋緊張・腱反射</h3>
+  <%= f.select :upper_limb_muscle_tone, SiasScale.upper_limb_muscle_tones.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_muscle_tone.#{k}"), k]} %>
+  <%= f.select :lower_limb_muscle_tone, SiasScale.lower_limb_muscle_tones.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_muscle_tone.#{k}"), k]} %>
+  <%= f.select :upper_limb_tendon_reflex, SiasScale.upper_limb_tendon_reflexes.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_tendon_reflex.#{k}"), k]} %>
+  <%= f.select :lower_limb_tendon_reflex, SiasScale.lower_limb_tendon_reflexes.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_tendon_reflex.#{k}"), k]} %>
+  <h3>感覚</h3>
+  <%= f.select :upper_limb_tactile, SiasScale.upper_limb_tactiles.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_tactile.#{k}"), k]} %>
+  <%= f.select :lower_limb_tactile, SiasScale.lower_limb_tactiles.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_tactile.#{k}"), k]} %>
+  <%= f.select :upper_limb_sense_of_position, SiasScale.upper_limb_sense_of_positions.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_sense_of_position.#{k}"), k]} %>
+  <%= f.select :lower_limb_sense_of_position, SiasScale.lower_limb_sense_of_positions.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_sense_of_position.#{k}"), k]} %>
+  <h3>関節可動域、疼痛</h3>
+  <%= f.select :shoulder_joint_rom, SiasScale.shoulder_joint_roms.keys.map {|k| [I18n.t("enums.sias_scale.shoulder_joint_rom.#{k}"), k]} %>
+  <%= f.select :knee_joint_rom, SiasScale.knee_joint_roms.keys.map {|k| [I18n.t("enums.sias_scale.knee_joint_rom.#{k}"), k]} %>
+  <%= f.select :pain, SiasScale.pains.keys.map {|k| [I18n.t("enums.sias_scale.pain.#{k}"), k]} %>
+  <h3>垂直性</h3>
+  <%= f.select :trunk_verticality, SiasScale.trunk_verticalities.keys.map {|k| [I18n.t("enums.sias_scale.trunk_verticality.#{k}"), k]} %>
+  <%= f.select :abdominal_mmt, SiasScale.abdominal_mmts.keys.map {|k| [I18n.t("enums.sias_scale.abdominal_mmt.#{k}"), k]} %>
+  <h3>高次脳機能</h3>
+  <%= f.select :visuospatial_cognition, SiasScale.visuospatial_cognitions.keys.map {|k| [I18n.t("enums.sias_scale.visuospatial_cognition.#{k}"), k]} %>
+  <%= f.select :speech, SiasScale.speeches.keys.map {|k| [I18n.t("enums.sias_scale.speech.#{k}"), k]} %>
+  <h3>健側機能</h3>
+  <%= f.select :gripstrength, SiasScale.gripstrengths.keys.map {|k| [I18n.t("enums.sias_scale.gripstrength.#{k}"), k]} %>
+  <%= f.select :quadriceps_mmt, SiasScale.quadriceps_mmts.keys.map {|k| [I18n.t("enums.sias_scale.quadriceps_mmt.#{k}"), k]} %>
+
   <%= f.submit "登録する" %>
 <% end %>
