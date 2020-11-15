@@ -132,7 +132,7 @@ class SiasScale < ApplicationRecord
   }, _prefix: true
   enum speech: {
     all_aphasia: 0,
-    severe_expressive_aphasia: 1.3,
+    severe_expressive_aphasia: 1.0,
     severe_sensory_aphasia: 1.4,
     mild_aphasia: 2.0,
     normal: 3.0,

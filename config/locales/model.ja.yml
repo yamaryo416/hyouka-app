@@ -34,7 +34,6 @@ ja:
         speech: 言語
         gripstrength: 握力
         quadriceps_mmt: 健側大腿四頭筋力
-
   enums:
     patient:
       sex:
