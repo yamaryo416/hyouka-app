@@ -1,0 +1,2 @@
+class SiasScalesController < ApplicationController
+end
