@@ -11,10 +11,161 @@ ja:
         height: 身長
         man: 男性
         woman: 女性
+      sias_scale:
+        shoulder_motor_function: 上肢近位
+        finger_motor_function: 上肢遠位
+        hip_motor_function: 下肢近位(股)
+        knee_motor_function: 下肢近位(膝)
+        foot_motor_function: 下肢遠位
+        upper_limb_muscle_tone: 上肢筋緊張
+        lower_limb_muscle_tone: 下肢筋緊張
+        upper_limb_tendon_reflex: 上肢腱反射
+        lower_limb_tendon_reflex: 下肢腱反射
+        upper_limb_tactile: 上肢触覚(手掌)
+        lower_limb_tactile: 下肢触覚(足底)
+        upper_limb_sense_of_position: 上肢位置覚(母指or示指)
+        lower_limb_sense_of_position: 下肢位置覚(母趾)
+        shoulder_joint_rom: 上肢関節可動域
+        knee_joint_rom: 下肢関節可動域
+        pain: 疼痛
+        trunk_verticality: 垂直性
+        abdominal_mmt: 腹筋
+        visuospatial_cognition: 視空間認知
+        speech: 言語
+        gripstrength: 握力
+        quadriceps_mmt: 健側大腿四頭筋力
+
   enums:
     patient:
       sex:
         undefined: 未選択
         man: 男性
         woman: 女性
-  
+    sias_scale:
+      shoulder_motor_function:
+        no_function: 0:全く動かない
+        move_slightly: 1:わずかな動きがあるが手部が乳頭に届かない
+        move_a_little: 2:肩肘の共同運動があるが手部が口に届かない
+        awkward: 3:課題可能。中等度のあるいは著明なぎこちなさあり
+        a_little_awkward: 4:課題可能。軽度のぎこちなさあり
+        normal: 5:健側と変わらず、正常
+      finger_motor_function:
+        no_function: 0:全く動かない
+        move_slightly: 1A:わずかな動きがある。または集団屈曲可能
+        group_extension_possible: 1B:集団伸展が可能
+        partial_separation_possible: 1C:分離運動が一部可能
+        move_a_little: 2.全指の分離運動可能なるも屈曲伸展が不十分
+        awkward: 3.課題可能。全指の分離運動が十分な屈曲伸展を伴って可能
+        a_little_awkward: 4.課題可能。軽度のぎこちなさあり
+        normal: 5.健側と変わらず、正常
+      hip_motor_function:
+        no_function: 0:全く動かない
+        move_slightly: 1:大腿にわずかな動きがあるが足部は床から離れない
+        move_a_little: 2:股関節の屈曲運動あり、足部は床より離れるが十分ではない
+        awkward: 3:課題可能。中等度のあるいは著明なぎこちなさあり
+        a_little_awkward: 4:課題可能。軽度のぎこちなさあり
+        normal: 5:健側と変わらず、正常
+      knee_motor_function:
+        no_function: 0:全く動かない
+        move_slightly: 1:下腿にわずかな動きがあるが足部は床から離れない
+        move_a_little: 2:膝関節の伸展運動あり、足部は床より離れるが十分ではない
+        awkward: 3:課題可能。中等度のあるいは著明なぎこちなさあり
+        a_little_awkward: 4:課題可能。軽度のぎこちなさあり
+        normal: 5:健側と変わらず、正常
+      foot_motor_function:
+        no_function: 0:全く動かない
+        move_slightly: 1:わずかな背屈運動あるが前足部は床から離れない
+        move_a_little: 2:背屈運動あり、足部は床より離れるが十分ではない
+        awkward: 3:課題可能。中等度のあるいは著明なぎこちなさあり
+        a_little_awkward: 4:課題可能。軽度のぎこちなさあり
+        normal: 5:健側と変わらず、正常
+      upper_limb_muscle_tone:
+        hypertonia: 0:上肢の筋緊張が著明に亢進している
+        moderate_hypertonia: 1A:上肢の筋緊張が中等度(はっきりと)亢進している
+        hypotonia: 1B:他動的筋緊張の低下
+        a_little_hypertonia: 2:上肢の筋緊張が軽度(わずかに)亢進している
+        normal: 3:正常、健側と対照的
+      lower_limb_muscle_tone:
+        hypertonia: 0:下肢の筋緊張が著明に亢進している
+        moderate_hypertonia: 1A:下肢の筋緊張が中等度(はっきりと)亢進している
+        hypotonia: 1B:他動的筋緊張の低下
+        a_little_hypertonia: 2:下肢の筋緊張が軽度(わずかに)亢進している
+        normal: 3:正常、健側と対照的
+      upper_limb_tendon_reflex:
+        hypertonia: 0:上腕二頭筋or上腕三頭筋が著明に亢進、もしくはクローヌス(肘、手関節)が誘発される
+        moderate_hypertonia: 1A:上腕二頭筋or上腕三頭筋が中等度亢進
+        hypotonia: 1B:上腕二頭筋or上腕三頭筋がほぼ消失
+        a_little_hypertonia: 2:上腕二頭筋or上腕三頭筋が軽度亢進
+        normal: 3:上腕二頭筋or上腕三頭筋とも正常。健側と対照的
+      lower_limb_tendon_reflex:
+        hypertonia: 0:膝蓋腱反射orアキレス腱反射が著明に亢進、もしくはクローヌス(足関節)が誘発される
+        moderate_hypertonia: 1A:膝蓋腱反射orアキレス腱反射が中等度亢進
+        hypotonia: 1B:膝蓋腱反射orアキレス腱反射がほぼ消失
+        a_little_hypertonia: 2:膝蓋腱反射orアキレス腱反射が軽度亢進
+        normal: 3:膝蓋腱反射orアキレス腱反射とも正常。健側と対照的
+      upper_limb_tactile:
+        loss_of_sensation: 0:強い皮膚刺激も分からない
+        moderate_decline: 1:重度あるいは中等度低下
+        milde_decline: 2:軽度低下、あるいは主観的低下、または異常感覚あり
+        normal: 正常
+      lower_limb_tactile:
+        loss_of_sensation: 0:強い皮膚刺激も分からない
+        moderate_decline: 1:重度あるいは中等度低下
+        milde_decline: 2:軽度低下、あるいは主観的低下、または異常感覚あり
+        normal: 正常
+      upper_limb_sense_of_position:
+        loss_of_sensation: 0:全可動域の動きも分からない
+        moderate_decline: 1:全可動域の運動なら方向が分かる
+        milde_decline: 2:ROMの1割以上の動きなら方向が分かる
+        normal: 3:ROMの1割未満の動きでも方向が分かる
+      lower_limb_sense_of_position:
+        loss_of_sensation: 0:全可動域の動きも分からない
+        moderate_decline: 1:全可動域の運動なら方向が分かる
+        milde_decline: 2:ROMの5割以上の動きなら方向が分かる
+        normal: 3:ROMの5割未満の動きでも方向が分かる
+      shoulder_joint_rom:
+        significant_limit: 0:60°以下
+        moderate_limit: 1:90°以下
+        milde_limit: 2:150°以下
+        normal: 3:150°以上
+      knee_joint_rom:
+        significant_limit: 0:-10°以下
+        moderate_limit: 1:0°以下
+        milde_limit: 2:10°以下
+        normal: 3:10°以上
+      pain:
+        significant: 0:睡眠を妨げるほどの著しい疼痛
+        moderate: 1:中等度の疼痛
+        milde: 2:加療を要しない程度の軽度の疼痛
+        normal: 3:疼痛の問題がない
+      trunk_verticality:
+        impossible: 0:座位がとれない
+        need_assistance: 1:静的座位にて側方性の姿勢異常があり、指摘・指示にても修正されず、介助を要する
+        almost_possible: 2:静的座位にて側方性の姿勢異常(傾きで15°以上)があるが、指示にてほぼ垂直位にて修正・維持可能
+        normal: 3:静的座位は正常
+      abdominal_mmt:
+        impossible: 0:垂直位まで起き上がれない
+        slightly_possible: 1:抵抗を加えなければ起き上がれる
+        almost_possible: 2:軽度の抵抗に抗して起き上がれる
+        normal: 3:強い抵抗に抗して起き上がれる
+      visuospatial_cognition:
+        large_error: 0:15cm以上
+        moderate_error: 1:5cm以上
+        a_little_error: 2:3cm以上
+        very_slight_error: 3:3cm未満
+      speech:
+        all_aphasia: 0:全失語症。全くコミュニケーションがとれない
+        severe_expressive_aphasia: 1A:重度感覚性失語症(重度混合性失語症も含む)
+        severe_sensory_aphasia: 1B:重度運動性失語症
+        mild_aphasia: 2:軽度失語症
+        normal: 3:失語症なし
+      gripstrength:
+        zero: 0:0kg
+        poor: 1:10kg以下
+        fair: 2:10〜20kg
+        normal: 3:25kg以上
+      quadriceps_mmt:
+        zero: 0:重力に抗しない
+        poor: 1:中等度に筋力低下
+        fair: 2:わずかな筋力低下
+        normal: 3:正常
