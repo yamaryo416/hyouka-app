@@ -1,0 +1,4 @@
+<%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true) do |f| %>
+  <%= f.select :shoulder_motor_function, SiasScale.shoulder_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.shoulder_motor_function.#{k}"), k]} %>
+  <%= f.submit "登録する" %>
+<% end %>
