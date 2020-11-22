@@ -21,27 +21,27 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).to have_current_path new_patient_sias_scales_path(first_patient)
     expect(page).to have_content first_patient.unique_id
     select "2:肩肘の共同運動があるが手部が口に届かない",
-      from: "sias_scale[shoulder_motor_function]"
+           from: "sias_scale[shoulder_motor_function]"
     select "1C:分離運動が一部可能",
-      from: "sias_scale[finger_motor_function]"
+           from: "sias_scale[finger_motor_function]"
     select "4:課題可能。軽度のぎこちなさあり",
-      from: "sias_scale[hip_motor_function]"
+           from: "sias_scale[hip_motor_function]"
     click_on "保存する"
     expect(page).to have_current_path patient_path(first_patient)
     expect(page).to have_selector ".sias-total-score", text: "7"
     expect(page).to have_selector ".undefined-columns-count",
-      text: "19項目が未入力です。"
+                                  text: "19項目が未入力です。"
     click_on "SIAS"
     expect(page).to have_current_path patient_sias_scales_path(first_patient)
     expect(page).to have_selector ".shoulder_motor_function", text: "上肢近位"
     expect(page).to have_selector ".shoulder_motor_function_score",
-      text: "2:肩肘の共同運動があるが手部が口に届かない"
+                                  text: "2:肩肘の共同運動があるが手部が口に届かない"
     expect(page).to have_selector ".finger_motor_function", text: "上肢遠位"
     expect(page).to have_selector ".finger_motor_function_score",
-      text: "1C:分離運動が一部可能"
+                                  text: "1C:分離運動が一部可能"
     expect(page).to have_selector ".hip_motor_function", text: "下肢近位(股)"
     expect(page).to have_selector ".hip_motor_function_score",
-      text: "4:課題可能。軽度のぎこちなさあり"
+                                  text: "4:課題可能。軽度のぎこちなさあり"
     expect(page).to have_link "患者ページに戻る"
     expect(page).to have_link "SIASを編集する"
     expect(page).to have_link "SIASを削除する"
@@ -52,22 +52,22 @@ RSpec.feature "SiasScales", type: :feature do
     click_on "SIASを編集する"
     expect(page).to have_current_path edit_patient_sias_scales_path second_patient
     select "5:健側と変わらず、正常",
-      from: "sias_scale[shoulder_motor_function]"
+           from: "sias_scale[shoulder_motor_function]"
     select "3.課題可能。全指の分離運動が十分な屈曲伸展を伴って可能",
-      from: "sias_scale[finger_motor_function]"
+           from: "sias_scale[finger_motor_function]"
     select "4:課題可能。軽度のぎこちなさあり",
-      from: "sias_scale[hip_motor_function]"
+           from: "sias_scale[hip_motor_function]"
     click_on "保存する"
     expect(page).to have_current_path patient_sias_scales_path second_patient
     expect(page).to have_selector ".shoulder_motor_function", text: "上肢近位"
     expect(page).to have_selector ".shoulder_motor_function_score",
-      text: "5:健側と変わらず、正常"
+                                  text: "5:健側と変わらず、正常"
     expect(page).to have_selector ".finger_motor_function", text: "上肢遠位"
     expect(page).to have_selector ".finger_motor_function_score",
-      text: "3.課題可能。全指の分離運動が十分な屈曲伸展を伴って可能"
+                                  text: "3.課題可能。全指の分離運動が十分な屈曲伸展を伴って可能"
     expect(page).to have_selector ".hip_motor_function", text: "下肢近位(股)"
     expect(page).to have_selector ".hip_motor_function_score",
-      text: "4:課題可能。軽度のぎこちなさあり"
+                                  text: "4:課題可能。軽度のぎこちなさあり"
     expect(page).to have_selector ".sias-total-score", text: "12"
   end
 
