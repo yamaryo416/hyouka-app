@@ -2,23 +2,42 @@ class SiasScalesController < ApplicationController
   before_action :authenticate_therapist!
   before_action :correct_therapist?
   before_action :set_patient
-  before_action :already_exist?
+  before_action :set_sias_scale, only: [:show, :edit, :update, :destroy]
+  before_action :already_exist?, only: [:new, :create]
+
+  def show
+  end
 
   def new
     @sias_scale = SiasScale.new
   end
 
   def create
-    @sias_scale = @patient.build_sias_scale(create_sias_scale_params)
+    @sias_scale = @patient.build_sias_scale(sias_scale_params)
     @sias_scale.patient_id = params[:patient_id]
     @sias_scale.save
-    flash[:success] = "患者番号:#{@patient.unique_id}のSIASを登録しました。"
-    redirect_to patients_path
+    flash[:success] = "SIASを登録しました。"
+    redirect_to patient_path(@patient)
+  end
+
+  def edit
+  end
+
+  def update
+    @sias_scale.update(sias_scale_params)
+    flash[:success] = "SIASを編集しました。"
+    redirect_to patient_sias_scales_path(@patient)
+  end
+
+  def destroy
+    @sias_scale.destroy
+    flash[:success] = "SIASを削除しました。"
+    redirect_to patient_path(@patient)
   end
 
   private
 
-  def create_sias_scale_params
+  def sias_scale_params
     params.require(:sias_scale).permit(:shoulder_motor_function,
                                        :finger_motor_function,
                                        :hip_motor_function,
@@ -56,6 +75,10 @@ class SiasScalesController < ApplicationController
     else
       @patient = current_therapist.patients.find(params[:patient_id])
     end
+  end
+
+  def set_sias_scale
+    @sias_scale = @patient.sias_scale
   end
 
   def already_exist?

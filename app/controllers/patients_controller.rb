@@ -33,7 +33,7 @@ class PatientsController < ApplicationController
 
   def update
     if @patient.update(edit_patient_params)
-      flash[:success] = "患者の基本情報の編集に成功しました。"
+      flash[:success] = "患者の基本情報を編集しました。"
       redirect_to @patient
     else
       render edit

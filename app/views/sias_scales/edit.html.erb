@@ -1,7 +1,7 @@
 <h1>SIAS</h1>
 <%= @patient.unique_id %>
-<%= link_to "患者ページに戻る", patient_path(params[:patient_id]) %>
-<%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true) do |f| %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true, method: :patch) do |f| %>
   <h3>運動機能</h3>
   <%= render "motor_function_form", f: f %>
   <h3>筋緊張・腱反射</h3>

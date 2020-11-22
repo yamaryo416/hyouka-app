@@ -1,0 +1,64 @@
+<%= link_to "10)上肢触覚(手掌)", "#", data: {toggle: "modal", target: "#scale10" } %>
+<div class="modal fade" id="scale10" tabindex="-1" role="dialog" aria-labelledby="scale10Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        手掌の触覚
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :upper_limb_tactile, SiasScale.upper_limb_tactiles.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_tactile.#{k}"), k]} %>
+<%= link_to "11)下肢触覚(足底)", "#", data: {toggle: "modal", target: "#scale11" } %>
+<div class="modal fade" id="scale11" tabindex="-1" role="dialog" aria-labelledby="scale11Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        足底の触覚
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :lower_limb_tactile, SiasScale.lower_limb_tactiles.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_tactile.#{k}"), k]} %>
+<%= link_to "12)上肢位置覚(母指or小指)", "#", data: {toggle: "modal", target: "#scale12" } %>
+<div class="modal fade" id="scale12" tabindex="-1" role="dialog" aria-labelledby="scale12Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        指を他動的に運動させる
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :upper_limb_sense_of_position, SiasScale.upper_limb_sense_of_positions.keys.map {|k| [I18n.t("enums.sias_scale.upper_limb_sense_of_position.#{k}"), k]} %>
+<%= link_to "13)下肢位置覚(母趾)", "#", data: {toggle: "modal", target: "#scale13" } %>
+<div class="modal fade" id="scale13" tabindex="-1" role="dialog" aria-labelledby="scale13Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        母趾を他動的に運動させる
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :lower_limb_sense_of_position, SiasScale.lower_limb_sense_of_positions.keys.map {|k| [I18n.t("enums.sias_scale.lower_limb_sense_of_position.#{k}"), k]} %>

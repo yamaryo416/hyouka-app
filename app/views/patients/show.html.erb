@@ -4,6 +4,18 @@
 <%= @patient.age %>
 <%= @patient.weight %>
 <%= @patient.height %>
-<%= link_to "編集する", edit_patient_path %>
-<%= link_to "削除する", @patient, method: :delete, data: { confirm: "患者データを削除します。よろしいですか?" } %>
-<%= link_to "SIASを作成する", new_patient_sias_scales_path(@patient) %>
+<%= link_to "基本情報を編集する", edit_patient_path %>
+<%= link_to "患者情報を削除する", @patient, method: :delete, data: { confirm: "患者情報を削除します。よろしいですか?" } %>
+<h3>評価初見</h3>
+<h3>実施した評価</h3>
+<% if @patient.sias_scale.present? %>
+  <%= link_to "SIAS", patient_sias_scales_path(@patient), class: "defined-scale", local: true %>
+  <p class="sias-total-score"><%= @patient.sias_scale.total_score %>点</p>
+  <% if @patient.sias_scale.undefined_count > 0 %>
+    <p class="undefined-columns-count">*<%= @patient.sias_scale.undefined_count %>項目が未入力です。</p>
+  <% end %>
+<% end %>
+<h3>未実施の評価</h3>
+<% if @patient.sias_scale.nil? %>
+  <%= link_to "SIAS", new_patient_sias_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
