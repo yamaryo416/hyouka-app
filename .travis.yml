@@ -7,6 +7,7 @@ before_install:
   - docker login -u "$HEROKU_USERNAME" -p "$HEROKU_API_KEY" registry.heroku.com
 
 script:
+  - docker-compose exec --env 'RAILS_ENV=test' web yarn add bootstrap@4.3.1 jquery popper.js
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:create
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
   - docker-compose exec --env 'RAILS_ENV=test' web rspec
