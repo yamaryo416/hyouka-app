@@ -147,7 +147,7 @@ RSpec.describe "Patients", type: :request do
           end.to change(Patient, :count).by 1
         end
 
-        it "is correct message" do
+        it "is correct message when create patient" do
           post patients_path, params: { patient: patient_params }
           expect(flash[:success]).to eq "患者情報を登録しました。"
         end
@@ -257,11 +257,6 @@ RSpec.describe "Patients", type: :request do
         expect(admin_patient.height).to eq 175.5
       end
 
-      it "is redirect to own patient page" do
-        patch patient_path(admin_patient), params: { patient: { sex: :woman } }
-        expect(response).to redirect_to patient_path admin_patient
-      end
-
       it "is success to update other patient page" do
         patch patient_path(therapist_patient), params: { patient: {
           sex: :man,
@@ -276,10 +271,14 @@ RSpec.describe "Patients", type: :request do
         expect(therapist_patient.height).to eq 165.5
       end
 
-      it "is redirect to other patient page" do
-        patch patient_path(therapist_patient), params: { patient: { sex: :woman } }
-        therapist_patient.reload
-        expect(response).to redirect_to patient_path therapist_patient
+      it "is redirect to own patient page" do
+        patch patient_path(admin_patient), params: { patient: { sex: :woman } }
+        expect(response).to redirect_to patient_path admin_patient
+      end
+
+      it "is correct message when update own patient" do
+        patch patient_path(admin_patient), params: { patient: { sex: :woman } }
+        expect(flash[:success]).to eq "患者の基本情報を編集しました。"
       end
     end
 
@@ -308,6 +307,14 @@ RSpec.describe "Patients", type: :request do
         expect(response).to redirect_to patient_path therapist_patient
       end
 
+      it "is false to update other patient" do
+        patch patient_path(admin_patient), params: { patient: {
+          sex: :man,
+        } }
+        therapist_patient.reload
+        expect(therapist_patient.sex).not_to eq "man"
+      end
+
       it "redirect root url when when not own patient page get" do
         patch patient_path(admin_patient), params: { patient: { sex: :woman } }
         expect(response).to redirect_to root_url
@@ -334,20 +341,20 @@ RSpec.describe "Patients", type: :request do
         end.to change(Patient, :count).by(-1)
       end
 
-      it "redirect patients path when destroy own patient" do
-        delete patient_path admin_patient
-        expect(response).to redirect_to patients_path
-      end
-
       it "is success to destroy other patient" do
         expect do
           delete patient_path therapist_patient
         end.to change(Patient, :count).by(-1)
       end
 
-      it "redirect patients path when destroy other patient" do
-        delete patient_path therapist_patient
+      it "redirect patients path when destroy own patient" do
+        delete patient_path admin_patient
         expect(response).to redirect_to patients_path
+      end
+
+      it "is correct message when destroy patient" do
+        delete patient_path admin_patient
+        expect(flash[:success]).to eq "患者情報を削除しました。"
       end
     end
 

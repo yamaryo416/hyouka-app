@@ -1,0 +1,32 @@
+<%= link_to "19)視空間認知", "#", data: {toggle: "modal", target: "#scale19" } %>
+<div class="modal fade" id="scale19" tabindex="-1" role="dialog" aria-labelledby="scale19Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        50cmのテープを眼前約50cmに提示し、中央を健側指で示させる。2回行い、ずれの大きい値を採用。
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :visuospatial_cognition, SiasScale.visuospatial_cognitions.keys.map {|k| [I18n.t("enums.sias_scale.visuospatial_cognition.#{k}"), k]} %>
+<%= link_to "20)言語", "#", data: {toggle: "modal", target: "#scale20" } %>
+<div class="modal fade" id="scale20" tabindex="-1" role="dialog" aria-labelledby="scale20Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        失語症に関して評価する。構音障害はこの項目には含めない。
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.select :speech, SiasScale.speeches.keys.map {|k| [I18n.t("enums.sias_scale.speech.#{k}"), k]} %>

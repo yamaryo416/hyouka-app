@@ -1,0 +1,20 @@
+<h1>SIAS</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true, method: :patch) do |f| %>
+  <h3>運動機能</h3>
+  <%= render "motor_function_form", f: f %>
+  <h3>筋緊張・腱反射</h3>
+  <%= render "tone_reflex_form", f: f %>
+  <h3>感覚</h3>
+  <%= render "sensation_form", f: f %>
+  <h3>関節可動域、疼痛</h3>
+  <%= render "rom_pain_form", f: f %>
+  <h3>垂直性</h3>
+  <%= render "trunk_function_form", f: f %>
+  <h3>高次脳機能</h3>
+  <%= render "higher_brain_function_form", f: f %>
+  <h3>健側機能</h3>
+  <%= render "healthy_side_function_form", f: f %>
+  <%= f.submit %>
+<% end %>
