@@ -34,6 +34,73 @@ ja:
         speech: 言語
         gripstrength: 握力
         quadriceps_mmt: 健側大腿四頭筋力
+      rom_scale:
+        right_shoulder_flexion: 右肩関節屈曲
+        left_shoulder_flexion: 左肩関節屈曲
+        right_shoulder_extension: 右肩関節伸展
+        left_shoulder_extension: 左肩関節伸展
+        right_shoulder_adduction: 右肩関節内転
+        left_shoulder_adduction: 左肩関節内転
+        right_shoulder_abduction: 右肩関節外転
+        left_shoulder_abduction: 左肩関節外転
+        right_first_shoulder_internal_rotation: 右肩関節内旋(1st)
+        left_first_shoulder_internal_rotation: 左肩関節内旋(1st)
+        right_first_shoulder_external_rotation: 右肩関節外旋(1st)
+        left_first_shoulder_external_rotation: 左肩関節外旋(1st)
+        right_second_shoulder_internal_rotation: 右肩関節内旋(2st)
+        left_second_shoulder_internal_rotation: 左肩関節内旋(2st)
+        right_second_shoulder_external_rotation: 右肩関節外旋(2st)
+        left_second_shoulder_external_rotation: 左肩関節外旋(2st)
+        right_third_shoulder_internal_rotation: 右肩関節内旋(3st)
+        left_third_shoulder_internal_rotation: 左肩関節内旋(3st)
+        right_third_shoulder_external_rotation: 右肩関節外旋(3st)
+        left_third_shoulder_external_rotation: 右肩関節外旋(3st)
+        right_elbow_flexion: 右肘関節屈曲
+        left_elbow_flexion: 左肘関節屈曲
+        right_elbow_extension: 右肘関節伸展
+        left_elbow_extension: 左肘関節伸展
+        right_forearm_pronation: 右前腕回内
+        left_forearm_pronation: 左前腕回内
+        right_forearm_supination: 右前腕回外
+        left_forearm_supination: 左前腕回外
+        right_wrist_flexion: 右手関節掌屈
+        left_wrist_flexion: 左手関節掌屈
+        right_wrist_extension: 右手関節背屈
+        left_wrist_extension: 左手関節背屈
+        right_wrist_adduction: 右手関節橈屈
+        left_wrist_adduction: 左手関節橈屈
+        right_wrist_abduction: 右手関節尺屈
+        left_wrist_abduction: 左手関節尺屈
+        right_hip_flexion: 右股関節屈曲
+        left_hip_flexion: 左股関節屈曲
+        right_hip_extension: 右股関節伸展
+        left_hip_extension: 左股関節伸展
+        right_hip_adduction: 右股関節内転
+        left_hip_adduction: 左股関節内転
+        right_hip_abduction: 右股関節外転
+        left_hip_abduction: 左股関節外転
+        right_hip_internal_rotation: 右股関節内旋
+        left_hip_internal_rotation: 左股関節内旋
+        right_hip_external_rotation: 右股関節外旋
+        left_hip_external_rotation: 左股関節外旋
+        right_knee_flexion: 右膝関節屈曲
+        left_knee_flexion: 左膝関節屈曲
+        right_knee_extension: 右膝関節伸展
+        left_knee_extension: 左膝関節伸展
+        right_first_ankle_flexion: 右足関節背屈(膝屈曲位)
+        left_first_ankle_flexion: 左足関節背屈(膝屈曲位)
+        right_second_ankle_flexion: 右足関節背屈(膝伸展位)
+        left_second_ankle_flexion: 左足関節背屈(膝伸展位)
+        right_ankle_extension: 右足関節底屈
+        left_ankle_extension: 左足関節底屈
+        right_ankle_adduction: 右足関節内転
+        left_ankle_adduction: 左足関節内転
+        right_ankle_abduction: 右足関節外転
+        left_ankle_abduction: 左足関節外転
+        right_ankle_pronation: 右足関節回内
+        left_ankle_pronation: 左足関節回内
+        right_ankle_supination: 右足関節回外
+        left_ankle_supination: 左足関節回外
   enums:
     patient:
       sex:

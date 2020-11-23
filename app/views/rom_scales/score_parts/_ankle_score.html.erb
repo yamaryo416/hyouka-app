@@ -1,0 +1,29 @@
+<div class="collapse" id="ankle_rom_score">
+  <div class="card card-body">
+    <h3>足関節</h3>
+    <div class="d-flex justify-content-center">
+      <div class="ankle_rom_head">
+        <dd style="height:24px;"></dd>
+        <dd>背屈(膝屈曲位)</dd>
+        <dd>背屈(膝伸展位)</dd>
+        <dd>底屈</dd>
+        <dd>内転</dd>
+        <dd>外転</dd>
+        <dd>回内</dd>
+        <dd>回外</dd>
+      </div>
+      <div class="right_ankle_rom_score" style="width:80px;border:1px solid black;text_align:center">
+        <dd>右</dd>
+        <% rom_scale.right_ankle_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+      </div>
+      <div class="left_ankle_rom_score">
+        <dd>左</dd>
+        <% rom_scale.left_ankle_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

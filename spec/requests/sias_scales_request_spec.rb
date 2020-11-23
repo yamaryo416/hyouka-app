@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "SiasScales", type: :request do
   let!(:admin) { create(:therapist, :admin) }
   let!(:admin_patient) { create(:patient, therapist: admin) }
-  let!(:sias_scale) { create(:sias_scale) }
   let!(:therapist) { create(:therapist) }
   let!(:therapist_patient) { create(:patient, therapist: therapist) }
 
@@ -171,6 +170,11 @@ RSpec.describe "SiasScales", type: :request do
   end
 
   describe "#edit" do
+    let!(:admin_patient_sias) { create(:sias_scale, patient: admin_patient) }
+    let!(:therapist_patient_sias) do
+      create(:sias_scale, patient: therapist_patient)
+    end
+
     context "login as admin" do
       before do
         sign_in admin

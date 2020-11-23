@@ -1,0 +1,13 @@
+<h1>ROM</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_rom_scales_path, scope: :rom_scale, local: true) do |f| %>
+  <%= render "rom_scales/form_parts/collaps_btns", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/shoulder_form", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/elbow_forearm_form", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/wrist_form", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/hip_form", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/knee_form", { f: f, rom_scale: @rom_scale } %>
+  <%= render "rom_scales/form_parts/ankle_form", { f: f, rom_scale: @rom_scale } %>
+  <%= f.submit %>
+<% end %>

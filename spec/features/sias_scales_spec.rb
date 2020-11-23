@@ -17,6 +17,8 @@ RSpec.feature "SiasScales", type: :feature do
 
   scenario "create patient sias" do
     visit patient_path first_patient
+    expect(page).to have_selector ".undefined-scale", text: "SIAS"
+    expect(page).not_to have_selector ".defined-scale", text: "SIAS"
     click_on "SIAS"
     expect(page).to have_current_path new_patient_sias_scales_path(first_patient)
     expect(page).to have_content first_patient.unique_id
@@ -31,6 +33,8 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).to have_selector ".sias-total-score", text: "7"
     expect(page).to have_selector ".undefined-columns-count",
                                   text: "19項目が未入力です。"
+    expect(page).to have_selector ".defined-scale", text: "SIAS"
+    expect(page).not_to have_selector ".undefined-scale", text: "SIAS"
     click_on "SIAS"
     expect(page).to have_current_path patient_sias_scales_path(first_patient)
     expect(page).to have_selector ".shoulder_motor_function", text: "上肢近位"

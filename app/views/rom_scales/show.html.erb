@@ -1,0 +1,12 @@
+<h1>ROM</h1>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= @patient.unique_id %>
+<%= render "rom_scales/score_parts/collaps_btns", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/shoulder_score", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/elbow_forearm_score", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/wrist_score", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/hip_score", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/knee_score", rom_scale: @rom_scale %>
+<%= render "rom_scales/score_parts/ankle_score", rom_scale: @rom_scale %>
+<%= link_to "ROMを編集する", edit_patient_rom_scales_path(@patient) %>
+<%= link_to "ROMを削除する", patient_rom_scales_path(@patient), method: :delete, data: { confirm: "ROMを削除します。よろしいですか?" } %>

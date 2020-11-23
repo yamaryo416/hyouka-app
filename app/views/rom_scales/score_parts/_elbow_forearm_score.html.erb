@@ -1,0 +1,32 @@
+<div class="collapse" id="elbow_forearm_rom_score">
+  <div class="card card-body">
+    <h3>肘関節・前腕</h3>
+    <div class="d-flex justify-content-center">
+      <div class="elbow_forearm_rom_head">
+        <dd style="height:24px;"></dd>
+        <dd>屈曲</dd>
+        <dd>伸展</dd>
+        <dd>回内</dd>
+        <dd>回外</dd>
+      </div>
+      <div class="right_elbow_forearm_rom_score" style="width:80px;border:1px solid black;text_align:center">
+        <dd>右</dd>
+        <% rom_scale.right_elbow_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+        <% rom_scale.right_forearm_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+      </div>
+      <div class="left_elbow_forearm_rom_score">
+        <dd>左</dd>
+        <% rom_scale.left_elbow_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+        <% rom_scale.left_forearm_each_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %></dd>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

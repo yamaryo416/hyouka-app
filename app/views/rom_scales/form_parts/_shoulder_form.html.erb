@@ -1,0 +1,32 @@
+<div class="collapse shoulder_rom_form" id="shoulder_rom_form">
+  <div class="card card-body">
+    <h3>肩関節</h3>
+    <div class="d-flex justify-content-center">
+      <div class="shoulder_rom_head">
+        <dd style="height:24px;"></dd>
+        <dd>屈曲</dd>
+        <dd>伸展</dd>
+        <dd>内転</dd>
+        <dd>外転</dd>
+        <dd>内旋(1st)</dd>
+        <dd>外旋(1st)</dd>
+        <dd>内旋(2st)</dd>
+        <dd>外旋(2st)</dd>
+        <dd>内旋(3st)</dd>
+        <dd>外旋(3st)</dd>
+      </div>
+      <div class="right_shoulder_rom_form" style="width:80px;">
+        <dd>右</dd>
+        <% rom_scale.right_shoulder_each_score.each  do |attr_name, value| %>
+          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% end %>
+      </div>
+      <div class="left_shoulder_rom_form" style="width:80px;">
+        <dd>左</dd>
+        <% rom_scale.left_shoulder_each_score.each  do |attr_name, value| %>
+          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

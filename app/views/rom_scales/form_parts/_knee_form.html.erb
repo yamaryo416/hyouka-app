@@ -1,0 +1,24 @@
+<div class="collapse" id="knee_rom_form">
+  <div class="card card-body">
+    <h3>膝関節</h3>
+    <div class="d-flex justify-content-center">
+      <div class="knee_rom_head">
+        <dd style="height:24px;"></dd>
+        <dd>屈曲</dd>
+        <dd>伸展</dd>
+      </div>
+      <div class="right_knee_rom_form" style="width:80px;">
+        <dd>右</dd>
+        <% rom_scale.right_knee_each_score.each  do |attr_name, value| %>
+          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% end %>
+      </div>
+      <div class="left_knee_rom_form" style="width:80px;">
+        <dd>左</dd>
+        <% rom_scale.left_knee_each_score.each  do |attr_name, value| %>
+          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

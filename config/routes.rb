@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   resources :patients do
     resource :sias_scales
+    resource :rom_scales
   end
 end
