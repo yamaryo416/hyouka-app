@@ -1,4 +1,6 @@
 class RomScale < ApplicationRecord
+  include ScaleModule
+
   belongs_to :patient
   with_options inclusion: -180..180, allow_nil: true do
     validates :right_shoulder_flexion
@@ -67,84 +69,5 @@ class RomScale < ApplicationRecord
     validates :left_ankle_pronation
     validates :right_ankle_supination
     validates :left_ankle_supination
-  end
-
-  def each_score
-    each_score = {}
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name)
-        next
-      else
-        each_score.store(attr_name, value)
-      end
-    end
-    each_score
-  end
-
-  def direction_part_each_score(direction, part)
-    direction_part_each_score = {}
-    each_score.each do |attr_name, value|
-      if attr_name.include?(direction) && attr_name.include?(part)
-        value = "未入力" if value.nil?
-        direction_part_each_score.store(attr_name, value)
-      end
-    end
-    direction_part_each_score
-  end
-
-  def right_shoulder_each_score
-    direction_part_each_score("right", "shoulder")
-  end
-
-  def left_shoulder_each_score
-    direction_part_each_score("left", "shoulder")
-  end
-
-  def right_elbow_each_score
-    direction_part_each_score("right", "elbow")
-  end
-
-  def left_elbow_each_score
-    direction_part_each_score("left", "elbow")
-  end
-
-  def right_forearm_each_score
-    direction_part_each_score("right", "forearm")
-  end
-
-  def left_forearm_each_score
-    direction_part_each_score("left", "forearm")
-  end
-
-  def right_wrist_each_score
-    direction_part_each_score("right", "wrist")
-  end
-
-  def left_wrist_each_score
-    direction_part_each_score("left", "wrist")
-  end
-
-  def right_hip_each_score
-    direction_part_each_score("right", "hip")
-  end
-
-  def left_hip_each_score
-    direction_part_each_score("left", "hip")
-  end
-
-  def right_knee_each_score
-    direction_part_each_score("right", "knee")
-  end
-
-  def left_knee_each_score
-    direction_part_each_score("left", "knee")
-  end
-
-  def right_ankle_each_score
-    direction_part_each_score("right", "ankle")
-  end
-
-  def left_ankle_each_score
-    direction_part_each_score("left", "ankle")
   end
 end

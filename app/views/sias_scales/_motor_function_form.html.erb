@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<%= f.select :shoulder_motor_function, SiasScale.shoulder_motor_functions.keys.map {|k| [I18n.t("enums.sias_scale.shoulder_motor_function.#{k}"), k]} %>
+<%= f.select :shoulder_motor_function, SiasScale.human_select_options("shoulder_motor_function") %>
 <%= link_to "2)上肢遠位", "#", data: {toggle: "modal", target: "#scale2" } %>
 <div class="modal fade" id="scale2" tabindex="-1" role="dialog" aria-labelledby="scale2Label" aria-hidden="true">
   <div class="modal-dialog" role="document">

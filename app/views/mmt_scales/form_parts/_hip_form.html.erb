@@ -1,0 +1,31 @@
+<div class="collapse" id="hip_mmt_form">
+  <div class="card card-body">
+    <h3>股関節</h3>
+    <div class="d-flex justify-content-center">
+      <div class="hip_mmt_head">
+        <dd style="height:24px;"></dd>
+        <dd>屈曲(腸腰筋)</dd>
+        <dd>屈曲(縫工筋)</dd>
+        <dd>伸展(大臀筋、ハム)</dd>
+        <dd>伸展(大殿筋)</dd>
+        <dd>内転</dd>
+        <dd>外転(中殿筋、小殿筋)</dd>
+        <dd>外転(大腿筋膜張筋)</dd>
+        <dd>内旋</dd>
+        <dd>外旋</dd>
+      </div>
+      <div class="right_hip_mmt_form" style="width:80px;">
+        <dd>右</dd>
+        <% mmt_scale.right_hip_each_score.each  do |attr_name, value| %>
+          <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+        <% end %>
+      </div>
+      <div class="left_hip_mmt_form" style="width:80px;">
+        <dd>左</dd>
+        <% mmt_scale.left_hip_each_score.each  do |attr_name, value| %>
+          <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

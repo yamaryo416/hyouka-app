@@ -101,6 +101,67 @@ ja:
         left_ankle_pronation: 左足関節回内
         right_ankle_supination: 右足関節回外
         left_ankle_supination: 左足関節回外
+      mmt_scale:
+        neck_flexion: 頸部屈曲
+        neck_extension: 頸部伸展
+        trunk_flexion: 体幹屈曲
+        trunk_extension: 体幹伸展
+        right_shoulder_flexion: 右肩関節屈曲
+        left_shoulder_flexion: 左肩関節屈曲
+        right_shoulder_extension: 右肩関節伸展
+        left_shoulder_extension: 左肩関節伸展
+        right_shoulder_abduction: 右肩関節外転
+        left_shoulder_abduction: 左肩関節外転
+        right_shoulder_horizontal_adduction: 右肩関節水平内転
+        left_shoulder_horizontal_adduction: 左肩関節水平内転
+        right_shoulder_horizontal_abduction: 右肩関節水平外転
+        left_shoulder_horizontal_abduction: 左肩関節水平外転
+        right_shoulder_internal_rotation: 右肩関節内旋
+        left_shoulder_internal_rotation: 左肩関節内旋
+        right_shoulder_external_rotation: 右肩関節外旋
+        left_shoulder_external_rotation: 左肩関節外旋
+        right_elbow_flexion: 右肘関節屈曲
+        left_elbow_flexion: 左肘関節屈曲
+        right_elbow_extension: 右肘関節伸展
+        left_elbow_extension: 左肘関節伸展
+        right_forearm_pronation: 右前腕回内
+        left_forearm_pronation: 左前腕回内
+        right_forearm_supination: 右前腕回外
+        left_forearm_supination: 左前腕回外
+        right_wrist_flexion: 右手関節掌屈
+        left_wrist_flexion: 左手関節掌屈
+        right_wrist_extension: 右手関節背屈
+        left_wrist_extension: 左手関節背屈
+        right_first_hip_flexion: 右股関節屈曲(腸腰筋)
+        left_first_hip_flexion: 左股関節屈曲(腸腰筋)
+        right_second_hip_flexion: 右股関節屈曲(縫工筋)
+        left_second_hip_flexion: 左股関節屈曲(縫工筋)
+        right_first_hip_extension: 右股関節伸展(大臀筋、ハム)
+        left_first_hip_extension: 左股関節伸展(大臀筋、ハム)
+        right_second_hip_extension: 右股関節伸展(大殿筋)
+        left_second_hip_extension: 左股関節伸展(大殿筋)
+        right_hip_adduction: 右股関節内転
+        left_hip_adduction: 左股関節内転
+        right_first_hip_abduction: 右股関節外転(中殿筋、小殿筋)
+        left_first_hip_abduction: 左股関節外転(中殿筋、小殿筋)
+        right_second_hip_abduction: 右股関節外転(大腿筋膜張筋)
+        left_second_hip_abduction: 左股関節外転(大腿筋膜張筋)
+        right_hip_internal_rotation: 右股関節内旋
+        left_hip_internal_rotation: 左股関節内旋
+        right_hip_external_rotation: 右股関節外旋
+        left_hip_external_rotation: 左股関節外旋
+        right_knee_flexion: 右膝関節屈曲
+        left_knee_flexion: 左膝関節屈曲
+        right_knee_extension: 右膝関節伸展
+        left_knee_extension: 左膝関節伸展
+        right_ankle_flexion: 右足関節背屈
+        left_ankle_flexion: 左足関節背屈
+        right_ankle_extension: 右足関節底屈
+        left_ankle_extension: 右足関節底屈
+        right_ankle_pronation: 右内返し
+        left_ankle_pronation: 左内返し
+        right_ankle_supination: 右外返し
+        left_ankle_supination: 左外返し
   enums:
     patient:
       sex:
@@ -257,3 +318,494 @@ ja:
         poor: 1:中等度に筋力低下
         fair: 2:わずかな筋力低下
         normal: 3:正常
+    mmt_scale:
+      neck_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      neck_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      trunk_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      trunk_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_horizontal_adduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_horizontal_adduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_horizontal_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_horizontal_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_internal_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_internal_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_shoulder_external_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_shoulder_external_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_elbow_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_elbow_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_elbow_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_elbow_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_forearm_pronation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_forearm_pronation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_forearm_supination:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_forearm_supination:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_wrist_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_wrist_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_wrist_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_wrist_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_first_hip_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_first_hip_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_second_hip_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_second_hip_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_first_hip_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_first_hip_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_second_hip_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_second_hip_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_hip_adduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_hip_adduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_first_hip_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_first_hip_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_second_hip_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_second_hip_abduction:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_hip_internal_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_hip_internal_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_hip_external_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_hip_external_rotation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_knee_flexion:
+        undefined: 未選択
+        zero: 0,
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_knee_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_knee_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_knee_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_ankle_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_ankle_flexion:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_ankle_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        trace_poor: 2-
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_ankle_extension:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        trace_poor: 2-
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_ankle_pronation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_ankle_pronation:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      right_ankle_supination:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      left_ankle_supination:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5
+      template:
+        undefined: 未選択
+        zero: 0
+        trace: 1
+        poor: 2
+        fair: 3
+        good: 4
+        normal: 5

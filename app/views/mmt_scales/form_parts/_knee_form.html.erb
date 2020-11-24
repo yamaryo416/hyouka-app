@@ -1,0 +1,24 @@
+<div class="collapse" id="knee_mmt_form">
+  <div class="card card-body">
+    <h3>膝関節</h3>
+    <div class="d-flex justify-content-center">
+      <div class="knee_mmt_head">
+        <dd style="height:24px;"></dd>
+        <dd>屈曲</dd>
+        <dd>伸展</dd>
+      </div>
+      <div class="right_knee_mmt_form" style="width:80px;">
+        <dd>右</dd>
+        <% mmt_scale.right_knee_each_score.each  do |attr_name, value| %>
+          <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+        <% end %>
+      </div>
+      <div class="left_knee_mmt_form" style="width:80px;">
+        <dd>左</dd>
+        <% mmt_scale.left_knee_each_score.each  do |attr_name, value| %>
+          <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

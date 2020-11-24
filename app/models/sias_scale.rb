@@ -1,4 +1,6 @@
 class SiasScale < ApplicationRecord
+  include ScaleModule
+
   belongs_to :patient
   enum shoulder_motor_function: {
     undefined: nil,
@@ -208,5 +210,9 @@ class SiasScale < ApplicationRecord
       undefined_count += 1 if value.nil?
     end
     undefined_count
+  end
+
+  def self.human_select_options(attr_name)
+    send(attr_name.pluralize).keys.map { |k| [I18n.t("enums.sias_scale.#{attr_name}.#{k}"), k] }
   end
 end

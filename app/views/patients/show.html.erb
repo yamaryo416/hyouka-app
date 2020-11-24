@@ -18,10 +18,17 @@
 <% if @patient.rom_scale.present? %>
   <%= link_to "ROM", patient_rom_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.mmt_scale.present? %>
+  <%= link_to "MMT", patient_mmt_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
+
 <h3>未実施の評価</h3>
 <% if @patient.sias_scale.nil? %>
   <%= link_to "SIAS", new_patient_sias_scales_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.rom_scale.nil? %>
   <%= link_to "ROM", new_patient_rom_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.mmt_scale.nil? %>
+  <%= link_to "MMT", new_patient_mmt_scales_path(@patient), class: "undefined-scale", local: true %>
 <% end %>

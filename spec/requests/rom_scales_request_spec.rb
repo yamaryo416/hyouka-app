@@ -45,7 +45,7 @@ RSpec.describe "RomScales", type: :request do
     end
 
     context "not login" do
-      it "redirect to login path when get other patient rom page" do
+      it "redirect to login path when get patient rom page" do
         get patient_rom_scales_path admin_patient
         expect(response).to redirect_to new_therapist_session_path
       end
@@ -79,7 +79,7 @@ RSpec.describe "RomScales", type: :request do
         expect(response).to render_template :new
       end
 
-      it "redirect to root url when show other patient new rom scale page" do
+      it "redirect to root url when get other patient new rom scale page" do
         get new_patient_rom_scales_path admin_patient
         expect(response).to redirect_to root_url
       end
