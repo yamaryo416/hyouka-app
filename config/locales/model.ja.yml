@@ -177,6 +177,10 @@ ja:
         stepup_and_down: 段差昇降
         tandem_standing: タンデム立位
         standing_with_one_leg: 片脚立位保持
+      brs_scale:
+        upper_limbs: 上肢
+        finger: 手指
+        lower_limbs: 下肢
   enums:
     patient:
       sex:
@@ -923,3 +927,28 @@ ja:
         poor: 2:自分で片脚をあげ、3秒以上の保持が可能である
         fair: 3:自分で片脚をあげ、5~10秒間の保持が可能である
         good: 4:自分で片脚をあげ、10秒以上の保持が可能である
+    brs_scale:
+      upper_limbs:
+        undefined: 未選択
+        stage_one: ステージI:弛緩性麻痺
+        stage_two: ステージⅡ:痙性発現期
+        stage_three: ステージⅢ:痙性期
+        stage_four: ステージⅣ:痙性減弱期
+        stage_five: ステージⅤ:痙性減少期
+        stage_six: ステージⅥ:痙性最小期
+      finger:
+        undefined: 未選択
+        stage_one: ステージI:弛緩性麻痺
+        stage_two: ステージⅡ:随意性の出現
+        stage_three: ステージⅢ:屈曲傾向の発現
+        stage_four: ステージⅣ:伸展運動の発現
+        stage_five: ステージⅤ:巧緻性の出現
+        stage_six: ステージⅥ:巧緻性の向上
+      lower_limbs:
+        undefined: 未選択
+        stage_one: ステージI:弛緩性麻痺
+        stage_two: ステージⅡ:痙性発現期
+        stage_three: ステージⅢ:痙性期
+        stage_four: ステージⅣ:痙性減弱期
+        stage_five: ステージⅤ:痙性減少期
+        stage_six: ステージⅥ:痙性最小期

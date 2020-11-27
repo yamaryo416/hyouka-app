@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_123811) do
+ActiveRecord::Schema.define(version: 2020_11_27_070551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brs_scales", force: :cascade do |t|
+    t.integer "upper_limbs"
+    t.integer "finger"
+    t.integer "lower_limbs"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_brs_scales_on_patient_id"
+  end
 
   create_table "fbs_scales", force: :cascade do |t|
     t.integer "stand_up"
@@ -250,6 +260,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_123811) do
     t.index ["therapist_id"], name: "index_therapists_roles_on_therapist_id"
   end
 
+  add_foreign_key "brs_scales", "patients"
   add_foreign_key "fbs_scales", "patients"
   add_foreign_key "mmt_scales", "patients"
   add_foreign_key "patients", "therapists"

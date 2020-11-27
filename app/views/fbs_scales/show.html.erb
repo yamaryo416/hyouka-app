@@ -6,4 +6,4 @@
 <% end %>
 <p class="fbs-total-score"><%= @fbs_scale.total_score %>点</p>
 <%= link_to "FBSを編集する", edit_patient_fbs_scales_path(@patient) %>
-<%= link_to "FBSを削除する", patient_fbs_scales_path(@patient), method: :delete, data: { confirm: "SIASを削除します。よろしいですか?" } %>
+<%= link_to "FBSを削除する", patient_fbs_scales_path(@patient), method: :delete, data: { confirm: "FBSを削除します。よろしいですか?" } %>

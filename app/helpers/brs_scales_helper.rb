@@ -1,0 +1,2 @@
+module BrsScalesHelper
+end

@@ -1,0 +1,8 @@
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= @patient.unique_id %>
+<% @brs_scale.each_score.each do |attr_name, score| %>
+  <dt class="<%= attr_name %>"><%= BrsScale.human_attribute_name(attr_name) %></dt>
+  <dd class="<%= attr_name %>_score"><%= @brs_scale.send("#{attr_name}_i18n") %></dd>
+<% end %>
+<%= link_to "BRSを編集する", edit_patient_brs_scales_path(@patient) %>
+<%= link_to "BRSを削除する", patient_brs_scales_path(@patient), method: :delete, data: { confirm: "BRSを削除します。よろしいですか?" } %>

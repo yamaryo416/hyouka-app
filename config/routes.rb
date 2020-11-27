@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     resource :rom_scales
     resource :mmt_scales
     resource :fbs_scales
+    resource :brs_scales
   end
 end
