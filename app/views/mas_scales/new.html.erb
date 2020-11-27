@@ -1,0 +1,10 @@
+<h1>MAS</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_mas_scales_path, scope: :mas_scale, local: true) do |f| %>
+  <% @mas_scale.each_score.each do |attr_name, score| %>
+    <%= f.label attr_name %>
+    <%= f.select attr_name, MasScale.human_select_options(attr_name) %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

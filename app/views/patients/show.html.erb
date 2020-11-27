@@ -24,6 +24,9 @@
 <% if @patient.brs_scale.present? %>
   <%= link_to "BRS", patient_brs_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.mas_scale.present? %>
+  <%= link_to "MAS", patient_mas_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 <% if @patient.fbs_scale.present? %>
   <%= link_to "FBS", patient_fbs_scales_path(@patient), class: "defined-scale", local: true %>
   <p class="fbs-total-score"><%= @patient.fbs_scale.total_score %>点</p>
@@ -41,6 +44,9 @@
 <% end %>
 <% if @patient.mmt_scale.nil? %>
   <%= link_to "MMT", new_patient_mmt_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.mas_scale.nil? %>
+  <%= link_to "MAS", new_patient_mas_scales_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.brs_scale.nil? %>
   <%= link_to "BRS", new_patient_brs_scales_path(@patient), class: "undefined-scale", local: true %>

@@ -286,9 +286,9 @@ RSpec.describe "SiasScales", type: :request do
           sias_scale: sias_scale_params,
         }
         admin_patient_sias.reload
-        expect(therapist_patient_sias.shoulder_motor_function).not_to eq "awkward"
-        expect(therapist_patient_sias.finger_motor_function).not_to eq "move_a_little"
-        expect(therapist_patient_sias.hip_motor_function).not_to eq "normal"
+        expect(admin_patient_sias.shoulder_motor_function).not_to eq "awkward"
+        expect(admin_patient_sias.finger_motor_function).not_to eq "move_a_little"
+        expect(admin_patient_sias.hip_motor_function).not_to eq "normal"
       end
 
       it "redirect to root url when update other patient sias" do

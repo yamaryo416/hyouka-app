@@ -181,6 +181,11 @@ ja:
         upper_limbs: 上肢
         finger: 手指
         lower_limbs: 下肢
+      mas_scale:
+        elbow_joint: 肘関節
+        wrist_joint: 手関節
+        knee_joint: 膝関節
+        ankle_joint: 足関節
   enums:
     patient:
       sex:
@@ -952,3 +957,36 @@ ja:
         stage_four: ステージⅣ:痙性減弱期
         stage_five: ステージⅤ:痙性減少期
         stage_six: ステージⅥ:痙性最小期
+    mas_scale:
+      elbow_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      wrist_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      knee_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      ankle_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
