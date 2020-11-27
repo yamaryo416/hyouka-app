@@ -22,7 +22,6 @@ FactoryBot.define do
     speech { nil }
     gripstrength { nil }
     quadriceps_mmt { nil }
-
     association :patient
   end
 end

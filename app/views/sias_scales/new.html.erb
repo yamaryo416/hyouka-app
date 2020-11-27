@@ -1,6 +1,6 @@
 <h1>SIAS</h1>
 <%= @patient.unique_id %>
-<%= link_to "患者ページに戻る", patient_path(params[:patient_id]) %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
 <%= form_with(url: patient_sias_scales_path, scope: :sias_scale, local: true) do |f| %>
   <h3>運動機能</h3>
   <%= render "motor_function_form", f: f %>

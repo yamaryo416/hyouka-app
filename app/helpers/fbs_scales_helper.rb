@@ -1,0 +1,2 @@
+module FbsScalesHelper
+end

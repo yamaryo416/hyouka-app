@@ -21,6 +21,13 @@
 <% if @patient.mmt_scale.present? %>
   <%= link_to "MMT", patient_mmt_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.fbs_scale.present? %>
+  <%= link_to "FBS", patient_fbs_scales_path(@patient), class: "defined-scale", local: true %>
+  <p class="fbs-total-score"><%= @patient.fbs_scale.total_score %>点</p>
+  <% if @patient.fbs_scale.undefined_count > 0 %>
+    <p class="undefined-columns-count">*<%= @patient.fbs_scale.undefined_count %>項目が未入力です。</p>
+  <% end %>
+<% end %>
 
 <h3>未実施の評価</h3>
 <% if @patient.sias_scale.nil? %>
@@ -31,4 +38,7 @@
 <% end %>
 <% if @patient.mmt_scale.nil? %>
   <%= link_to "MMT", new_patient_mmt_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.fbs_scale.nil? %>
+  <%= link_to "FBS", new_patient_fbs_scales_path(@patient), class: "undefined-scale", local: true %>
 <% end %>

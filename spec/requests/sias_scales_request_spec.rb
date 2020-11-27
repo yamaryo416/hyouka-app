@@ -45,7 +45,7 @@ RSpec.describe "SiasScales", type: :request do
     end
 
     context "not login" do
-      it "redirect to login path when get other patient sias page" do
+      it "redirect to login path when get patient sias page" do
         get patient_sias_scales_path admin_patient
         expect(response).to redirect_to new_therapist_session_path
       end
@@ -86,7 +86,7 @@ RSpec.describe "SiasScales", type: :request do
     end
 
     context "not login" do
-      it "redirect to login path" do
+      it "redirect to login path when get new sias scale page" do
         get new_patient_sias_scales_path admin_patient
         expect(response).to redirect_to new_therapist_session_path
       end

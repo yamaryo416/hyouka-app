@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_013957) do
+ActiveRecord::Schema.define(version: 2020_11_25_123811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fbs_scales", force: :cascade do |t|
+    t.integer "stand_up"
+    t.integer "standing"
+    t.integer "sitting"
+    t.integer "sit_down"
+    t.integer "transfer"
+    t.integer "standing_with_eyes_close"
+    t.integer "standing_with_leg_close"
+    t.integer "reach_forward"
+    t.integer "pickup_from_floor"
+    t.integer "turn_around"
+    t.integer "one_rotation"
+    t.integer "stepup_and_down"
+    t.integer "tandem_standing"
+    t.integer "standing_with_one_leg"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_fbs_scales_on_patient_id"
+  end
 
   create_table "mmt_scales", force: :cascade do |t|
     t.integer "neck_flexion"
@@ -229,6 +250,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_013957) do
     t.index ["therapist_id"], name: "index_therapists_roles_on_therapist_id"
   end
 
+  add_foreign_key "fbs_scales", "patients"
   add_foreign_key "mmt_scales", "patients"
   add_foreign_key "patients", "therapists"
   add_foreign_key "rom_scales", "patients"

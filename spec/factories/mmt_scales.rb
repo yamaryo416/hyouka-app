@@ -60,7 +60,6 @@ FactoryBot.define do
     left_ankle_pronation { nil }
     right_ankle_supination { nil }
     left_ankle_supination { nil }
-
     association :patient
   end
 end
