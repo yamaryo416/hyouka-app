@@ -8,6 +8,7 @@ class Patient < ApplicationRecord
   has_one :mas_scale, dependent: :destroy
   has_one :tendon_reflex_scale, dependent: :destroy
   has_one :tactile_scale, dependent: :destroy
+  has_one :bathyesthesia_scale, dependent: :destroy
   validates :unique_id, presence: true, length: { is: 8 }, uniqueness: true
   enum sex: { undefined: 0, man: 1, woman: 2 }
 end

@@ -1,0 +1,46 @@
+<h1>深部感覚検査 (位置覚、運動覚)</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_bathyesthesia_scales_path, scope: :bathyesthesia_scale, local: true) do |f| %>
+  <h3>位置覚</h3>
+  <div class="d-flex justify-content-center">
+    <div class="bathyesthesia_head">
+      <dd style="height:24px;"></dd>
+      <dd>上肢</dd>
+      <dd>下肢</dd>
+    </div>
+    <div class="right_bathyesthesia_form" style="width:80px;">
+      <dd>右</dd>
+      <% @bathyesthesia_scale.right_position_sense_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+    <div class="left_bathyesthesia_form" style="width:80px;">
+      <dd>左</dd>
+      <% @bathyesthesia_scale.left_position_sense_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+  </div>
+  <h3>運動覚</h3>
+  <div class="d-flex justify-content-center">
+    <div class="bathyesthesia_head">
+      <dd style="height:24px;"></dd>
+      <dd>手指</dd>
+      <dd>足趾</dd>
+    </div>
+    <div class="right_bathyesthesia_form" style="width:80px;">
+      <dd>右</dd>
+      <% @bathyesthesia_scale.right_motor_sense_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+    <div class="left_bathyesthesia_form" style="width:80px;">
+      <dd>左</dd>
+      <% @bathyesthesia_scale.left_motor_sense_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>

@@ -218,6 +218,15 @@ ja:
         left_rearfoot: 左後足部
         right_forefoot: 右前足部
         left_forefoot: 左前足部
+      bathyesthesia_scale:
+        right_upper_limb: 右上肢
+        left_upper_limb: 左上肢
+        right_lower_limb: 右下肢
+        left_lower_limb: 左下肢
+        right_finger: 右手指
+        left_finger: 左手指
+        right_toe: 右足趾
+        left_toe: 左足趾
   enums:
     patient:
       sex:
@@ -1222,3 +1231,68 @@ ja:
         absent: 脱失
         impaired: 鈍麻
         normal: 正常
+    bathyesthesia_scale:
+      right_upper_limb:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      left_upper_limb:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      right_lower_limb:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      left_lower_limb:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      right_finger:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      left_finger:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      right_toe:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
+      left_toe:
+        undefined: 未選択
+        zero: 0/5
+        one: 1/5
+        two: 2/5
+        three: 3/5
+        four: 4/5
+        five: 5/5
