@@ -186,6 +186,23 @@ ja:
         wrist_joint: 手関節
         knee_joint: 膝関節
         ankle_joint: 足関節
+      tendon_reflex_scale:
+        jaw: 下顎反射
+        abdominal: 腹筋反射
+        right_pectoral: 右胸筋反射
+        left_pectoral: 左胸筋反射
+        right_biceps: 右上腕二頭筋反射
+        left_biceps: 左上腕二頭筋反射
+        right_triceps: 右上腕三頭筋反射
+        left_triceps: 左上腕三頭筋反射
+        right_brachioradialis: 右腕橈骨筋反射
+        left_brachioradialis: 左腕橈骨筋反射
+        right_pronator: 右回内筋肉反射
+        left_pronator: 左回内筋肉反射
+        right_patellar_tendon: 右膝蓋腱反射
+        left_patellar_tendon: 左膝蓋腱反射
+        right_achilles_tendon: 右アキレス腱反射
+        left_achilles_tendon: 左アキレス腱反射
   enums:
     patient:
       sex:
@@ -990,3 +1007,132 @@ ja:
         increase: 2
         significant: 3
         rigidity: 4
+    tendon_reflex_scale:
+      jaw:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      abdominal:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_pectoral:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_pectoral:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_biceps:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_biceps:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_triceps:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_triceps:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_brachioradialis:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_brachioradialis:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_pronator:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_pronator:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_patellar_tendon:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_patellar_tendon:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      right_achilles_tendon:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)
+      left_achilles_tendon:
+        undefined: 未選択
+        absent: (-)
+        diminished: (±)
+        normal: (+)
+        slightly_exaggerated: (++)
+        moderately_exaggerated: (+++)
+        markedly_exaggerated: (++++)

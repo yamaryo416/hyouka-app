@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resource :fbs_scales
     resource :brs_scales
     resource :mas_scales
+    resource :tendon_reflex_scales
   end
 end

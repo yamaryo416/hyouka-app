@@ -28,4 +28,16 @@ module ScaleModule
       end
     end
   end
+
+  DIRECTION.each do |d|
+    define_method "#{d}_each_score" do
+      direction_each_score = {}
+      each_score.each do |attr_name, value|
+        if attr_name.include?(d)
+          direction_each_score.store(attr_name, value)
+        end
+      end
+      direction_each_score
+    end
+  end
 end

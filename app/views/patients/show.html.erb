@@ -27,6 +27,9 @@
 <% if @patient.mas_scale.present? %>
   <%= link_to "MAS", patient_mas_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.tendon_reflex_scale.present? %>
+  <%= link_to "深部腱反射", patient_tendon_reflex_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 <% if @patient.fbs_scale.present? %>
   <%= link_to "FBS", patient_fbs_scales_path(@patient), class: "defined-scale", local: true %>
   <p class="fbs-total-score"><%= @patient.fbs_scale.total_score %>点</p>
@@ -47,6 +50,9 @@
 <% end %>
 <% if @patient.mas_scale.nil? %>
   <%= link_to "MAS", new_patient_mas_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.tendon_reflex_scale.nil? %>
+  <%= link_to "深部腱反射", new_patient_tendon_reflex_scales_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.brs_scale.nil? %>
   <%= link_to "BRS", new_patient_brs_scales_path(@patient), class: "undefined-scale", local: true %>
