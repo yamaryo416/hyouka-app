@@ -7,7 +7,9 @@ RSpec.describe "TendonReflexScales", type: :request do
   let!(:therapist_patient) { create(:patient, therapist: therapist) }
 
   describe "#show" do
-    let!(:admin_patient_tendon_reflex) { create(:tendon_reflex_scale, patient: admin_patient) }
+    let!(:admin_patient_tendon_reflex) do
+      create(:tendon_reflex_scale, patient: admin_patient)
+    end
     let!(:therapist_patient_tendon_reflex) do
       create(:tendon_reflex_scale, patient: therapist_patient)
     end
@@ -94,7 +96,9 @@ RSpec.describe "TendonReflexScales", type: :request do
   end
 
   describe "#ceate" do
-    let!(:tendon_reflex_scale_params) { attributes_for(:tendon_reflex_scale) }
+    let!(:tendon_reflex_scale_params) do
+      attributes_for(:tendon_reflex_scale)
+    end
 
     context "login as admin" do
       before do
@@ -148,7 +152,9 @@ RSpec.describe "TendonReflexScales", type: :request do
       end
 
       it "redirect to root url when create other patient tendon reflex scale" do
-        post patient_tendon_reflex_scales_path(admin_patient), params: { tendon_reflex_scale: tendon_reflex_scale_params }
+        post patient_tendon_reflex_scales_path(admin_patient), params: {
+          tendon_reflex_scale: tendon_reflex_scale_params,
+        }
         expect(response).to redirect_to root_url
       end
     end
@@ -163,14 +169,18 @@ RSpec.describe "TendonReflexScales", type: :request do
       end
 
       it "redirect to login path" do
-        post patient_tendon_reflex_scales_path(admin_patient), params: { tendon_reflex_scale: tendon_reflex_scale_params }
+        post patient_tendon_reflex_scales_path(admin_patient), params: {
+          tendon_reflex_scale: tendon_reflex_scale_params,
+        }
         expect(response).to redirect_to new_therapist_session_path
       end
     end
   end
 
   describe "#edit" do
-    let!(:admin_patient_tendon_reflex) { create(:tendon_reflex_scale, patient: admin_patient) }
+    let!(:admin_patient_tendon_reflex) do
+      create(:tendon_reflex_scale, patient: admin_patient)
+    end
     let!(:therapist_patient_tendon_reflex) do
       create(:tendon_reflex_scale, patient: therapist_patient)
     end
@@ -216,7 +226,9 @@ RSpec.describe "TendonReflexScales", type: :request do
   end
 
   describe "#update" do
-    let!(:admin_patient_tendon_reflex) { create(:tendon_reflex_scale, patient: admin_patient) }
+    let!(:admin_patient_tendon_reflex) do
+      create(:tendon_reflex_scale, patient: admin_patient)
+    end
     let!(:therapist_patient_tendon_reflex) do
       create(:tendon_reflex_scale, patient: therapist_patient)
     end

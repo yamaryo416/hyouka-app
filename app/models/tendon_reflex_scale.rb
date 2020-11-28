@@ -147,6 +147,7 @@ class TendonReflexScale < ApplicationRecord
   }, _prefix: true
 
   def self.human_select_options(attr_name)
-    send(attr_name.pluralize).keys.map { |k| [I18n.t("enums.tendon_reflex_scale.#{attr_name}.#{k}"), k] }
+    send(attr_name.pluralize).keys.
+      map { |k| [I18n.t("enums.tendon_reflex_scale.#{attr_name}.#{k}"), k] }
   end
 end
