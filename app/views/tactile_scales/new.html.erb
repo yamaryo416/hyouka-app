@@ -1,0 +1,30 @@
+<h1>触覚検査</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= form_with(url: patient_tactile_scales_path, scope: :tactile_scale, local: true) do |f| %>
+  <div class="d-flex justify-content-center">
+    <div class="tactile_head">
+      <dd style="height:24px;"></dd>
+      <dd>上腕</dd>
+      <dd>前腕</dd>
+      <dd>手</dd>
+      <dd>大腿</dd>
+      <dd>下腿</dd>
+      <dd>後足部</dd>
+      <dd>前足部</dd>
+    </div>
+    <div class="right_tactile_form" style="width:80px;">
+      <dd>右</dd>
+      <% @tactile_scale.right_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+    <div class="left_tactile_form" style="width:80px;">
+      <dd>左</dd>
+      <% @tactile_scale.left_each_score.each  do |attr_name, value| %>
+        <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>

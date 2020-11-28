@@ -2,16 +2,16 @@
 <%= @patient.unique_id %>
 <%= link_to "患者ページに戻る", patient_path(@patient) %>
 <%= form_with(url: patient_tendon_reflex_scales_path, scope: :tendon_reflex_scale, local: true) do |f| %>
-<div class="d-flex justify-content-center">
-  <div class="tendon_reflex_head">
-    <dd>下顎</dd>
-    <dd>腹筋</dd>
+  <div class="d-flex justify-content-center">
+    <div class="tendon_reflex_head">
+      <dd>下顎</dd>
+      <dd>腹筋</dd>
+    </div>
+    <div class="tendon_reflex_form" style="width:80px;">
+      <%= f.select :jaw, TendonReflexScale.human_select_options("jaw") %>
+      <%= f.select :abdominal, TendonReflexScale.human_select_options("abdominal") %>
+    </div>
   </div>
-  <div class="tendon_reflex_form" style="width:80px;">
-    <%= f.select :jaw, TendonReflexScale.human_select_options("jaw") %>
-    <%= f.select :abdominal, TendonReflexScale.human_select_options("abdominal") %>
-  </div>
-</div>
   <div class="d-flex justify-content-center">
     <div class="tendon_reflex_head">
       <dd style="height:24px;"></dd>

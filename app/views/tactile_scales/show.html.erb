@@ -1,0 +1,29 @@
+<h1>触覚検査</h1>
+<%= @patient.unique_id %>
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<div class="d-flex justify-content-center">
+  <div class="tactile_head">
+    <dd style="height:24px;"></dd>
+    <dd>上腕</dd>
+    <dd>前腕</dd>
+    <dd>手</dd>
+    <dd>大腿</dd>
+    <dd>下腿</dd>
+    <dd>後足部</dd>
+    <dd>前足部</dd>
+  </div>
+  <div class="right_tactile_form" style="width:80px;">
+    <dd>右</dd>
+    <% @tactile_scale.right_each_score.each  do |attr_name, value| %>
+      <dd class="<%= attr_name %>_score"><%= @tactile_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+  <div class="left_tactile_form" style="width:80px;">
+    <dd>左</dd>
+    <% @tactile_scale.left_each_score.each  do |attr_name, value| %>
+      <dd class="<%= attr_name %>_score"><%= @tactile_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+</div>
+<%= link_to "触覚検査を編集する", edit_patient_tactile_scales_path(@patient) %>
+<%= link_to "触覚検査を削除する", patient_tactile_scales_path(@patient), method: :delete, data: { confirm: "触覚検査を削除します。よろしいですか?" } %>

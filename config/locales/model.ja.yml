@@ -203,6 +203,21 @@ ja:
         left_patellar_tendon: 左膝蓋腱反射
         right_achilles_tendon: 右アキレス腱反射
         left_achilles_tendon: 左アキレス腱反射
+      tactile_scale:
+        right_upper_arm: 右上腕
+        left_upper_arm: 左上腕
+        right_forearm: 右前腕
+        left_forearm: 左前腕
+        right_hand: 右手
+        left_hand: 左手
+        right_thigh: 右大腿
+        left_thigh: 左大腿
+        right_lower_leg: 右下腿
+        left_lower_leg: 左下腿
+        right_rearfoot: 右後足部
+        left_rearfoot: 左後足部
+        right_forefoot: 右前足部
+        left_forefoot: 左前足部
   enums:
     patient:
       sex:
@@ -1136,3 +1151,74 @@ ja:
         slightly_exaggerated: (++)
         moderately_exaggerated: (+++)
         markedly_exaggerated: (++++)
+    tactile_scale:
+      right_upper_arm:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_upper_arm:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_forearm:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_forearm:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_hand:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_hand:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_thigh:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_thigh:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_lower_leg:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_lower_leg:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_rearfoot:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_rearfoot:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      right_forefoot:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常
+      left_forefoot:
+        undefined: 未選択
+        absent: 脱失
+        impaired: 鈍麻
+        normal: 正常

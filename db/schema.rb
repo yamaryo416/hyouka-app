@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_135006) do
+ActiveRecord::Schema.define(version: 2020_11_28_015144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -250,6 +250,27 @@ ActiveRecord::Schema.define(version: 2020_11_27_135006) do
     t.index ["patient_id"], name: "index_sias_scales_on_patient_id"
   end
 
+  create_table "tactile_scales", force: :cascade do |t|
+    t.integer "right_upper_arm"
+    t.integer "left_upper_arm"
+    t.integer "right_forearm"
+    t.integer "left_forearm"
+    t.integer "right_hand"
+    t.integer "left_hand"
+    t.integer "right_thigh"
+    t.integer "left_thigh"
+    t.integer "right_lower_leg"
+    t.integer "left_lower_leg"
+    t.integer "right_rearfoot"
+    t.integer "left_rearfoot"
+    t.integer "right_forefoot"
+    t.integer "left_forefoot"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_tactile_scales_on_patient_id"
+  end
+
   create_table "tendon_reflex_scales", force: :cascade do |t|
     t.integer "jaw"
     t.integer "abdominal"
@@ -301,5 +322,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_135006) do
   add_foreign_key "patients", "therapists"
   add_foreign_key "rom_scales", "patients"
   add_foreign_key "sias_scales", "patients"
+  add_foreign_key "tactile_scales", "patients"
   add_foreign_key "tendon_reflex_scales", "patients"
 end
