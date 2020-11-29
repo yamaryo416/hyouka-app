@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     resource :tendon_reflex_scales
     resource :tactile_scales
     resource :bathyesthesia_scales
+    resources :nrs_scales
   end
 end

@@ -9,7 +9,7 @@ class CreateBathyesthesiaScales < ActiveRecord::Migration[6.0]
       t.integer :left_finger
       t.integer :right_toe
       t.integer :left_toe
-      t.references :patient, null:false, foreign_key: true
+      t.references :patient, null: false, foreign_key: true
       t.timestamps
     end
   end

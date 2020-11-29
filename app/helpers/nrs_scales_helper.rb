@@ -1,0 +1,2 @@
+module NrsScalesHelper
+end

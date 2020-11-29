@@ -21,6 +21,9 @@
 <% if @patient.mmt_scale.present? %>
   <%= link_to "MMT", patient_mmt_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.nrs_scales.present? %>
+  <%= link_to "NRS", patient_nrs_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 <% if @patient.brs_scale.present? %>
   <%= link_to "BRS", patient_brs_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
@@ -53,6 +56,9 @@
 <% end %>
 <% if @patient.mmt_scale.nil? %>
   <%= link_to "MMT", new_patient_mmt_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.nrs_scales.blank? %>
+  <%= link_to "NRS", new_patient_nrs_scale_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.mas_scale.nil? %>
   <%= link_to "MAS", new_patient_mas_scales_path(@patient), class: "undefined-scale", local: true %>

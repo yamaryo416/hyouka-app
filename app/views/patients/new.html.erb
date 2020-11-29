@@ -12,7 +12,7 @@
   <%= f.text_field :unique_id %>
 
   <%= f.label :sex %><br />
-  <%= f.select :sex, Patient.sexes.keys.map {|k| [I18n.t("enums.patient.sex.#{k}"), k]} %>
+  <%= f.select :sex, Patient.sexes.keys.map { |k| [I18n.t("enums.patient.sex.#{k}"), k] } %>
 
   <%= f.label :age %>
   <%= f.number_field :age %>

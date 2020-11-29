@@ -227,6 +227,10 @@ ja:
         left_finger: 左手指
         right_toe: 右足趾
         left_toe: 左足趾
+      nrs_scale:
+        rating: NRS
+        status: 状態
+        supplement: 補足
   enums:
     patient:
       sex:
@@ -1296,3 +1300,9 @@ ja:
         three: 3/5
         four: 4/5
         five: 5/5
+    nrs_scale:
+      status:
+        undefined: 未選択
+        resting: 安静時
+        moving: 体動時
+        loading: 荷重時
