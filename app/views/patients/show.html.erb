@@ -39,6 +39,9 @@
 <% if @patient.bathyesthesia_scale.present? %>
   <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.hdsr_scales.present? %>
+  <%= link_to "HDS-R", patient_hdsr_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 <% if @patient.fbs_scale.present? %>
   <%= link_to "FBS", patient_fbs_scales_path(@patient), class: "defined-scale", local: true %>
   <p class="fbs-total-score"><%= @patient.fbs_scale.total_score %>点</p>
@@ -71,6 +74,9 @@
 <% end %>
 <% if @patient.bathyesthesia_scale.nil? %>
   <%= link_to "深部感覚検査", new_patient_bathyesthesia_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.hdsr_scales.blank? %>
+  <%= link_to "HDS-R", new_patient_hdsr_scale_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.brs_scale.nil? %>
   <%= link_to "BRS", new_patient_brs_scales_path(@patient), class: "undefined-scale", local: true %>
