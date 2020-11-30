@@ -8,8 +8,11 @@
 <% end %>
 
 <%= form_with(model: @patient, local: true) do |f| %>
-  <%= f.label :unique_id %>
-  <%= f.text_field :unique_id %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
 
   <%= f.label :sex %><br />
   <%= f.select :sex, Patient.sexes.keys.map { |k| [I18n.t("enums.patient.sex.#{k}"), k] } %>
@@ -25,5 +28,3 @@
 
   <%= f.submit "患者登録" %>
 <% end %>
-
-<%= Patient.human_attribute_name :unique_id %>

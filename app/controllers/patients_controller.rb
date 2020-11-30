@@ -49,7 +49,12 @@ class PatientsController < ApplicationController
   private
 
   def create_patient_params
-    params.require(:patient).permit(:unique_id, :sex, :age, :weight, :height)
+    params.require(:patient).permit(:first_name,
+                                    :last_name,
+                                    :sex,
+                                    :age,
+                                    :weight,
+                                    :height)
   end
 
   def edit_patient_params

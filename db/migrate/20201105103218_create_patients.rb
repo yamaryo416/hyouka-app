@@ -1,7 +1,8 @@
 class CreatePatients < ActiveRecord::Migration[6.0]
   def change
     create_table :patients do |t|
-      t.string :unique_id, null: false, default: ""
+      t.string :first_name, null: false, default: ""
+      t.string :second_name, null: false, default: ""
       t.integer :age, default: 0
       t.integer :sex
       t.float :weight
@@ -10,7 +11,6 @@ class CreatePatients < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :patients, :unique_id, unique: true
     add_index :patients, [:therapist_id, :created_at]
   end
 end
