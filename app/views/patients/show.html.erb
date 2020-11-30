@@ -49,6 +49,9 @@
     <p class="undefined-columns-count">*<%= @patient.fbs_scale.undefined_count %>項目が未入力です。</p>
   <% end %>
 <% end %>
+<% if @patient.bestest_scales.present? %>
+  <%= link_to "Mini-BESTest", patient_bestest_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 
 <h3>未実施の評価</h3>
 <% if @patient.sias_scale.nil? %>
@@ -83,4 +86,7 @@
 <% end %>
 <% if @patient.fbs_scale.nil? %>
   <%= link_to "FBS", new_patient_fbs_scales_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.bestest_scales.blank? %>
+  <%= link_to "Mini-BESTest", new_patient_bestest_scale_path(@patient), class: "undefined-scale", local: true %>
 <% end %>

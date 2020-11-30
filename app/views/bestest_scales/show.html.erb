@@ -1,0 +1,9 @@
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= @patient.unique_id %>
+<% @bestest_scale.each_score.each do |attr_name, score| %>
+  <dt class="<%= attr_name %>"><%= BestestScale.human_attribute_name(attr_name) %></dt>
+  <dd class="<%= attr_name %>_score"><%= @bestest_scale.send("#{attr_name}_i18n") %></dd>
+<% end %>
+<p class="bestest-total-score"><%= @bestest_scale.total_score %>点</p>
+<%= link_to "Mini-BESTestを編集する", edit_patient_bestest_scale_path(@patient, @bestest_scale) %>
+<%= link_to "Mini-BESTesを削除する", patient_bestest_scales_path(@patient, @bestest_scale), method: :delete, data: { confirm: "bestestを削除します。よろしいですか?" } %>

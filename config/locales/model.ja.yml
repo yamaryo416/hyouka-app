@@ -231,6 +231,21 @@ ja:
         rating: NRS
         status: 状態
         supplement: 補足
+      bestest_scale:
+        from_sitting_to_standing: 座位から立位
+        standing_on_tiptoes: 爪先立ち
+        standing_on_one_leg: 片足立ち
+        forward_step: 修正ステップ-前方
+        back_step: 修正ステップ-後方
+        lateral_step: 修正ステップ-側方
+        standing: 静止立位(開眼)
+        standing_with_eyes_close: 静止立位(閉眼)
+        standing_on_the_slope: 斜面代(閉眼)
+        change_walking_speed: 歩行速度の変化
+        walking_with_rotating_the_head: 頭を水平回転させながらの歩行
+        pibot_turn: 歩行時ピポットターン
+        straddling_obstacles: 障害物跨ぎ
+        tug: TUG二重課題
   enums:
     patient:
       sex:
@@ -1306,3 +1321,74 @@ ja:
         resting: 安静時
         moving: 体動時
         loading: 荷重時
+    bestest_scale:
+      from_sitting_to_standing:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      standing_on_tiptoes:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      standing_on_one_leg:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      forward_step:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      back_step:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      lateral_step:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      standing:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      standing_with_eyes_close:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      standing_on_the_slope:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      change_walking_speed:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      walking_with_rotating_the_head:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      pibot_turn:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      straddling_obstacles:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
+      tug:
+        undefined: 未選択
+        zero: 0)重度
+        one: 1)中等度
+        two: 2)正常
