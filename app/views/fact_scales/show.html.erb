@@ -1,0 +1,9 @@
+<%= link_to "患者ページに戻る", patient_path(@patient) %>
+<%= @patient.unique_id %>
+<% @fact_scale.each_score.each do |attr_name, score| %>
+  <dt class="<%= attr_name %>"><%= FactScale.human_attribute_name(attr_name) %></dt>
+  <dd class="<%= attr_name %>_score"><%= @fact_scale.send("#{attr_name}_i18n") %></dd>
+<% end %>
+<p class="fact-total-score"><%= @fact_scale.total_score %>点</p>
+<%= link_to "FACTを編集する", edit_patient_fact_scale_path(@patient, @fact_scale) %>
+<%= link_to "FACTを削除する", patient_fact_scales_path(@patient, @fact_scale), method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>

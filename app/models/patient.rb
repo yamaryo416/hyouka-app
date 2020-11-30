@@ -12,6 +12,7 @@ class Patient < ApplicationRecord
   has_many :nrs_scales, dependent: :destroy
   has_many :hdsr_scales, dependent: :destroy
   has_many :bestest_scales, dependent: :destroy
+  has_many :fact_scales, dependent: :destroy
   validates :unique_id, presence: true, length: { is: 8 }, uniqueness: true
   enum sex: { undefined: 0, man: 1, woman: 2 }
 end

@@ -39,6 +39,9 @@
 <% if @patient.bathyesthesia_scale.present? %>
   <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
+<% if @patient.fact_scales.present? %>
+  <%= link_to "FACT", patient_fact_scales_path(@patient), class: "defined-scale", local: true %>
+<% end %>
 <% if @patient.hdsr_scales.present? %>
   <%= link_to "HDS-R", patient_hdsr_scales_path(@patient), class: "defined-scale", local: true %>
 <% end %>
@@ -80,6 +83,9 @@
 <% end %>
 <% if @patient.hdsr_scales.blank? %>
   <%= link_to "HDS-R", new_patient_hdsr_scale_path(@patient), class: "undefined-scale", local: true %>
+<% end %>
+<% if @patient.fact_scales.blank? %>
+  <%= link_to "FACT", new_patient_fact_scale_path(@patient), class: "undefined-scale", local: true %>
 <% end %>
 <% if @patient.brs_scale.nil? %>
   <%= link_to "BRS", new_patient_brs_scales_path(@patient), class: "undefined-scale", local: true %>

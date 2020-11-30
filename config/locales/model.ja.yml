@@ -246,6 +246,17 @@ ja:
         pibot_turn: 歩行時ピポットターン
         straddling_obstacles: 障害物跨ぎ
         tug: TUG二重課題
+      fact_scale:
+        sitting_with_upper_limb_support: 静的座位保持能力(上肢支持利用)
+        sitting_with_no_support: 静的座位保持能力(上肢支持不使用)
+        lower_lateral_dynamic_sitting: 下方へのリーチに伴う動的座位保持能力
+        forward_dynamic_sitting: 臀部移動に伴う動的座位保持能力
+        lateral_dynamic_sitting: 側方への重心移動に伴う動的座位保持能力
+        rear_lateral_dynamic_sitting: 下肢拳上時に伴う動的座位保持能力
+        rear_dynamic_sitting: 両下肢拳上に伴う動的座位保持能力
+        lateral_dynamic_sitting_with_trunk_rotation: 骨盤の前後移動に伴う動的座位保持能力
+        trunk_rotation: 体幹回旋に伴う動的座位保持能力
+        trunk_extenxion: 上肢拳上に伴う動的座位保持能力
   enums:
     patient:
       sex:
@@ -1392,3 +1403,46 @@ ja:
         zero: 0)重度
         one: 1)中等度
         two: 2)正常
+    fact_scale:
+      sitting_with_upper_limb_support:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:1点
+      sitting_with_no_support:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:1点
+      lower_lateral_dynamic_sitting:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:1点
+      forward_dynamic_sitting:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:1点
+      lateral_dynamic_sitting:
+        undefined: 未選択
+        impossible: 不能:0点
+        one_side: 片側:1点
+        both_sides: 両側:2点
+      rear_lateral_dynamic_sitting:
+        undefined: 未選択
+        impossible: 不能:0点
+        one_side: 片側:1点
+        both_sides: 両側:2点
+      rear_dynamic_sitting:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:2点
+      lateral_dynamic_sitting_with_trunk_rotation:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:3点
+      trunk_rotation:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:3点
+      trunk_extenxion:
+        undefined: 未選択
+        impossible: 不能:0点
+        possible: 可能:3点

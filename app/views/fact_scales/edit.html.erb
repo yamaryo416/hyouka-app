@@ -1,0 +1,24 @@
+<h1>FACT</h1>
+<%= @patient.unique_id %>
+<%= link_to "FACT一覧に戻る", patient_fact_scales_path(@patient) %>
+<%= form_with(url: patient_fact_scale_path(id: @fact_scale), scope: :fact_scale, local: true, method: :patch) do |f| %>
+  <div class="d-flex justify-content-center">
+    <h3>感覚機能</h3>
+    <div class="fact_head">
+      <dd style="height:24px;"></dd>
+      <dd>屈曲</dd>
+      <dd>伸展</dd>
+      <dd>外転</dd>
+      <dd>水平内転</dd>
+      <dd>水平外転</dd>
+      <dd>内旋</dd>
+      <dd>外旋</dd>
+    </div>
+    <div class="fact_form" style="width:80px;">
+      <% @fact_scale.each_score.each do |attr_name, value| %>
+        <%= f.select attr_name, FactScale.human_select_options(attr_name) %>
+      <% end %>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>
