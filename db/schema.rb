@@ -213,7 +213,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "unique_id", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.integer "age", default: 0
     t.integer "sex"
     t.float "weight"
@@ -223,7 +224,6 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["therapist_id", "created_at"], name: "index_patients_on_therapist_id_and_created_at"
     t.index ["therapist_id"], name: "index_patients_on_therapist_id"
-    t.index ["unique_id"], name: "index_patients_on_unique_id", unique: true
   end
 
   create_table "roles", force: :cascade do |t|

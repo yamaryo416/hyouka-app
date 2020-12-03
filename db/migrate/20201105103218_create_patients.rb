@@ -2,7 +2,7 @@ class CreatePatients < ActiveRecord::Migration[6.0]
   def change
     create_table :patients do |t|
       t.string :first_name, null: false, default: ""
-      t.string :second_name, null: false, default: ""
+      t.string :last_name, null: false, default: ""
       t.integer :age, default: 0
       t.integer :sex
       t.float :weight

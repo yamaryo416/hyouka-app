@@ -16,6 +16,9 @@
       <p class="<%= message_type %>"><%= message %></p>
       <%= message %>
     <% end %>
+    <% if @patient.present? %>
+      <%= @patient.full_name %>
+    <% end %>
     <% if therapist_signed_in? %>
       <% if current_therapist.has_role?(:admin) %>
         <%= link_to "ユーザー作成", signup_path %>

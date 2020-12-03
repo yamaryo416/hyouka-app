@@ -26,7 +26,9 @@ end
 therapists = Therapist.order(:created_at).take(3)
 5.times do
   therapists.each do |therapist|
-    unique_id = [*"0".."9"].sample(8).join
-    therapist.patients.create!(unique_id: unique_id) 
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    therapist.patients.create!(first_name: first_name,
+                               last_name: last_name)
   end
 end
