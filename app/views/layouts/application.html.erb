@@ -4,30 +4,42 @@
     <title>HyoukaApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <h1>hoge</h1>
-    <% flash.each do |message_type, message| %>
-      <p class="<%= message_type %>"><%= message %></p>
-      <%= message %>
-    <% end %>
-    <% if @patient.present? %>
-      <%= @patient.full_name %>
-    <% end %>
-    <% if therapist_signed_in? %>
-      <% if current_therapist.has_role?(:admin) %>
-        <%= link_to "ユーザー作成", signup_path %>
-      <% end %>
-      <h1><%= current_therapist.name %></h1>
-      <%= link_to "ログアウト", logout_path, method: :delete %>
-    <% else %>
-      <%= link_to "ログイン", login_path %>
-    <% end %>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+        <div class="container">
+          <h1 class="navbar-brand">評価APP</h1>
+          <h1 class="page-title"><%= yield(:title) %></h1>
+          <% if therapist_signed_in? %>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_therapist.name %>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><%= link_to "患者一覧", patients_path, class: "dropdown-item" %></li>
+                  <% if current_therapist.has_role?(:admin) %>
+                    <li><%= link_to "ユーザー作成", signup_path, class: "dropdown-item" %></li>
+                  <% end %>
+                  <li><%= link_to "ログアウト", logout_path, class: "dropdown-item", method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <%= flash_message(flash[:success], :success) if flash[:success] %>
+        <%= flash_message(flash[:alert], :danger) if flash[:alert] %>
+        <%= flash_message(flash[:notice], :success) if flash[:notice] %>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

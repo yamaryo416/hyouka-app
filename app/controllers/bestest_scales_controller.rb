@@ -1,5 +1,4 @@
 class BestestScalesController < ApplicationController
-  before_action :authenticate_therapist!
   before_action :correct_therapist?
   before_action :set_patient
   before_action :set_bestest_scale, only: [:show, :edit, :update, :destroy]

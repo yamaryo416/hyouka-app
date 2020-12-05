@@ -1,5 +1,4 @@
 class HdsrScalesController < ApplicationController
-  before_action :authenticate_therapist!
   before_action :correct_therapist?
   before_action :set_patient
   before_action :set_hdsr_scale, only: [:edit, :update, :destroy]

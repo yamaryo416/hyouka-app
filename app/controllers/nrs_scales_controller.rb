@@ -1,5 +1,4 @@
 class NrsScalesController < ApplicationController
-  before_action :authenticate_therapist!
   before_action :correct_therapist?
   before_action :set_patient
   before_action :set_nrs_scale, only: [:edit, :update, :destroy]

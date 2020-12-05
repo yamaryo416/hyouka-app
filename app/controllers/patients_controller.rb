@@ -1,13 +1,12 @@
 class PatientsController < ApplicationController
-  before_action :authenticate_therapist!
   before_action :correct_therapist?, only: [:show, :edit, :update, :destroy]
   before_action :set_patient, only: [:show, :edit, :update]
 
   def index
     if current_therapist.has_role? :admin
-      @patients = Patient.all
+      @patients = Patient.recent.page(params[:page]).per(10)
     else
-      @patients = current_therapist.patients.page(params[:page])
+      @patients = current_therapist.patients.recent.page(params[:page]).per(10)
     end
   end
 

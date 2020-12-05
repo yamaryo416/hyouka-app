@@ -1,1 +1,36 @@
 @import 'bootstrap/scss/bootstrap';
+
+
+// header
+header .container{
+  position: relative;
+}
+.page-title{
+  position:absolute;
+  width:100%;
+  text-align:center;
+  line-height:55px;
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+// main
+main{
+  margin-top: 72px;
+}
+.main-contents{
+  padding-top: 24px;
+}
+
+// therapist
+.new_therapist{
+  text-align: center;
+}
+
+//form
+.form_group + .form_group{
+  margin-top: 30px;
+}
+.form-action{
+  margin-top:10px;
+}

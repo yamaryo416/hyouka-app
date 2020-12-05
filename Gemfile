@@ -37,6 +37,7 @@ gem 'faker'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'active_decorator'
+gem "kaminari-bootstrap"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

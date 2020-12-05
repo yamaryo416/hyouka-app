@@ -24,7 +24,7 @@ admin.add_role :admin
 end
 
 therapists = Therapist.order(:created_at).take(3)
-5.times do
+20.times do
   therapists.each do |therapist|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name

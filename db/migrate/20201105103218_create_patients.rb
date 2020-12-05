@@ -11,6 +11,5 @@ class CreatePatients < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :patients, [:therapist_id, :created_at]
   end
 end

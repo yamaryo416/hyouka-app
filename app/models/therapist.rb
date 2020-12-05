@@ -2,9 +2,10 @@ class Therapist < ApplicationRecord
   rolify
   has_many :patients, dependent: :destroy
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :trackable and :omniauthable
+  # :confirmable, :lockable, :trackable, :rememberable 
+  # :recoverable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :timeoutable
+         :validatable, :timeoutable
   validates :unique_id, presence: true, length: { is: 8 }, uniqueness: true
   validates :name, presence: true
 

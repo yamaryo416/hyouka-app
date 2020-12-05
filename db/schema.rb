@@ -222,7 +222,6 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
     t.bigint "therapist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["therapist_id", "created_at"], name: "index_patients_on_therapist_id_and_created_at"
     t.index ["therapist_id"], name: "index_patients_on_therapist_id"
   end
 
@@ -386,12 +385,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
     t.string "unique_id", default: "", null: false
     t.string "name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["reset_password_token"], name: "index_therapists_on_reset_password_token", unique: true
     t.index ["unique_id"], name: "index_therapists_on_unique_id", unique: true
   end
 

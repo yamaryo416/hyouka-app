@@ -4,7 +4,8 @@ ja:
       patient: 患者
     attributes:
       patient:
-        unique_id: 患者ID
+        first_name: 性
+        last_name: 名
         sex: 性別
         age: 年齢
         weight: 体重

@@ -9,11 +9,11 @@ class DeviseCreateTherapists < ActiveRecord::Migration[6.0]
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      # t.string   :reset_password_token
+      # t.datetime :reset_password_sent_at
 
       ## Rememberable
-      t.datetime :remember_created_at
+      # t.datetime :remember_created_at
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
@@ -38,7 +38,7 @@ class DeviseCreateTherapists < ActiveRecord::Migration[6.0]
     end
 
     add_index :therapists, :unique_id,            unique: true
-    add_index :therapists, :reset_password_token, unique: true
+    # add_index :therapists, :reset_password_token, unique: true
     # add_index :therapists, :confirmation_token,   unique: true
     # add_index :therapists, :unlock_token,         unique: true
   end
