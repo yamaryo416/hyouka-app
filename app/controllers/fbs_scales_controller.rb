@@ -1,6 +1,4 @@
 class FbsScalesController < ApplicationController
-  before_action :correct_therapist?
-  before_action :set_patient
   before_action :set_fbs_scale, only: [:show, :edit, :update, :destroy]
   before_action :already_exist?, only: [:new, :create]
 
@@ -51,21 +49,6 @@ class FbsScalesController < ApplicationController
                                       :stepup_and_down,
                                       :tandem_standing,
                                       :standing_with_one_leg)
-  end
-
-  def correct_therapist?
-    if !(current_therapist.patients.include?(Patient.find(params[:patient_id])) ||
-      current_therapist.has_role?(:admin))
-      redirect_to root_url
-    end
-  end
-
-  def set_patient
-    if current_therapist.has_role?(:admin)
-      @patient = Patient.find(params[:patient_id])
-    else
-      @patient = current_therapist.patients.find(params[:patient_id])
-    end
   end
 
   def set_fbs_scale

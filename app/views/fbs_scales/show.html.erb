@@ -1,6 +1,5 @@
 <%= link_to "患者ページに戻る", patient_path(@patient) %>
-<%= @patient.full_name %>
-<% @fbs_scale.each_score.each do |attr_name, score| %>
+<% @fbs_scale.each_score.keys.each do |attr_name| %>
   <dt class="<%= attr_name %>"><%= FbsScale.human_attribute_name(attr_name) %></dt>
   <dd class="<%= attr_name %>_score"><%= @fbs_scale.send("#{attr_name}_i18n") %></dd>
 <% end %>

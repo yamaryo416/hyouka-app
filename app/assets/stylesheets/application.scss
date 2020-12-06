@@ -1,5 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
-
+@import 'reset';
 
 // header
 header .container{
@@ -27,10 +27,52 @@ main{
   text-align: center;
 }
 
+//patient
+.patient-details{
+  align-items: center;
+  padding: 20px 0 20px 20px;
+  margin-bottom: 20px;
+}
+.sex-and-age, .height-and-weight, .edit-and-delete-link{
+  padding-left: 60px;
+  p{
+    margin-bottom:5px;
+  }
+}
+.evaluation-finding-section{
+  padding:20px;
+  margin-top: 40px;
+}
+.defined-scale-section{
+  padding:20px;
+  margin-top: 40px;
+  .defined-scale-item{
+    margin-top: 20px;
+    align-items: flex-end;
+    border-bottom: 1px solid gray;
+    .defined-scale{
+      font-size: 20px;
+    }
+  }
+}
+.undefined-scale-section{
+  padding:20px;
+  margin-top: 40px;
+}
+.undefined-scale-item{
+  text-align: center;
+  margin-top: 15px;
+}
+
 //form
 .form_group + .form_group{
   margin-top: 30px;
 }
 .form-action{
   margin-top:10px;
+}
+
+//component
+.breadcrumb{
+  background-color: white;
 }

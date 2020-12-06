@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
   create_table "patients", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
-    t.integer "age", default: 0
+    t.integer "age"
     t.integer "sex"
     t.float "weight"
     t.float "height"

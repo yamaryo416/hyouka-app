@@ -1,6 +1,4 @@
 class RomScale < ApplicationRecord
-  include ScaleModule
-
   belongs_to :patient
   with_options inclusion: -180..180, allow_nil: true do
     validates :right_shoulder_flexion

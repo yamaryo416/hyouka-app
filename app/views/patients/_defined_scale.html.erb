@@ -1,0 +1,78 @@
+<div class="defined-scale-section border border-info">
+  <h3>実施した評価</h3>
+  <div class="defined-scale-items">
+    <% if patient.sias_scale.present? %>
+      <div class="defined-sias-scale defined-scale-item row col-sm-12">
+        <%= link_to "SIAS", patient_sias_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+        <p class="sias-total-score col-sm-4">合計　<%= patient.sias_scale.total_score %>点</p>
+        <% if patient.sias_scale.undefined_count > 0 %>
+          <p class="undefined-columns-count col-sm-4">*<%= patient.sias_scale.undefined_count %>項目が未入力です。</p>
+        <% end %>
+      </div>
+    <% end %>
+    <% if patient.rom_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.mmt_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "MMT", patient_mmt_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.nrs_scales.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "NRS", patient_nrs_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.brs_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "BRS", patient_brs_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.mas_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "MAS", patient_mas_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.tendon_reflex_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "深部腱反射", patient_tendon_reflex_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.tactile_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "触覚検査", patient_tactile_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.bathyesthesia_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.fact_scales.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "FACT", patient_fact_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.hdsr_scales.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "HDS-R", patient_hdsr_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+    <% if patient.fbs_scale.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "FBS", patient_fbs_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+        <p class="fbs-total-score col-sm-4">合計　<%= patient.fbs_scale.total_score %>点</p>
+        <% if patient.fbs_scale.undefined_count > 0 %>
+          <p class="undefined-columns-count col-sm-4">*<%= patient.fbs_scale.undefined_count %>項目が未入力です。</p>
+        <% end %>
+      </div>
+    <% end %>
+    <% if patient.bestest_scales.present? %>
+      <div class="defined-scale-item row col-sm-12">
+        <%= link_to "Mini-BESTest", patient_bestest_scales_path(patient), class: "defined-scale col-sm-4", local: true %>
+      </div>
+    <% end %>
+  </div>
+</div>

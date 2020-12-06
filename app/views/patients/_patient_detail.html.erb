@@ -1,0 +1,15 @@
+<div class="patient-details d-flex justify-content-start border border-info">
+  <h3>氏名:　<strong><%= @patient.full_name %></strong>　様</h3>
+  <div class="sex-and-age">
+    <p>性別:　<strong><%= @patient.sex_i18n %></strong></p>
+    <p>年齢:　<strong><%= @patient.age %></strong>　歳</p>
+  </div>
+  <div class="height-and-weight">
+    <p>伸長:　<strong><%= @patient.weight %></strong>　cm</p>
+    <p>体重:　<strong><%= @patient.height %></strong>　kg</p>
+  </div>
+  <div class="edit-and-delete-link">
+    <p><%= link_to "基本情報を編集する", edit_patient_path %></p>
+    <p><%= link_to "患者情報を削除する", @patient, method: :delete, data: { confirm: "患者情報を削除します。よろしいですか?" } %></p>
+  </div>
+</div>

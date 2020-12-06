@@ -11,19 +11,19 @@
       </div>
       <div class="right_elbow_forearm_mmt_form" style="width:80px;">
         <dd>右</dd>
-        <% mmt_scale.right_elbow_each_score.each  do |attr_name, value| %>
+        <% mmt_scale.right_elbow_each_score.keys.each  do |attr_name| %>
           <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
         <% end %>
-        <% mmt_scale.right_forearm_each_score.each  do |attr_name, value| %>
+        <% mmt_scale.right_forearm_each_score.keys.each  do |attr_name| %>
           <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
         <% end %>
       </div>
       <div class="left_elbow_forearm_mmt_form" style="width:80px;">
         <dd>左</dd>
-        <% mmt_scale.left_elbow_each_score.each  do |attr_name, value| %>
+        <% mmt_scale.left_elbow_each_score.keys.each  do |attr_name| %>
           <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
         <% end %>
-        <% mmt_scale.left_forearm_each_score.each  do |attr_name, value| %>
+        <% mmt_scale.left_forearm_each_score.keys.each  do |attr_name| %>
           <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
         <% end %>
       </div>

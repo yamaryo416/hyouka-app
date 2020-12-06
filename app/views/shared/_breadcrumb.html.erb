@@ -1,0 +1,9 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "患者一覧", patients_path %></li>
+    <li class="breadcrumb-item"><%= link_to patient.full_name, patient_path(patient) %></li>
+    <% if scale %>
+      <li class="breadcrumb-item active" aria-current="page"><%= scale %></li>
+    <% end %>
+  </ol>
+</nav>

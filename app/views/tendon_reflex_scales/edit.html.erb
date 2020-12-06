@@ -25,13 +25,13 @@
     </div>
     <div class="right_tendon_reflex_form" style="width:80px;">
       <dd>右</dd>
-      <% @tendon_reflex_scale.right_each_score.each  do |attr_name, value| %>
+      <% @tendon_reflex_scale.right_each_score.keys.each  do |attr_name| %>
         <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
       <% end %>
     </div>
     <div class="left_tendon_reflex_form" style="width:80px;">
       <dd>左</dd>
-      <% @tendon_reflex_scale.left_each_score.each  do |attr_name, value| %>
+      <% @tendon_reflex_scale.left_each_score.keys.each  do |attr_name| %>
         <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
       <% end %>
     </div>

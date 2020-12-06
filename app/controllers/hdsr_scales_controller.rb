@@ -1,6 +1,4 @@
 class HdsrScalesController < ApplicationController
-  before_action :correct_therapist?
-  before_action :set_patient
   before_action :set_hdsr_scale, only: [:edit, :update, :destroy]
 
   def index
@@ -60,21 +58,6 @@ class HdsrScalesController < ApplicationController
                                        :memory_third_word,
                                        :five_goods,
                                        :vegetables)
-  end
-
-  def correct_therapist?
-    if !(current_therapist.patients.include?(Patient.find(params[:patient_id])) ||
-      current_therapist.has_role?(:admin))
-      redirect_to root_url
-    end
-  end
-
-  def set_patient
-    if current_therapist.has_role?(:admin)
-      @patient = Patient.find(params[:patient_id])
-    else
-      @patient = current_therapist.patients.find(params[:patient_id])
-    end
   end
 
   def set_hdsr_scale

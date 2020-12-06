@@ -1,6 +1,4 @@
 class NrsScalesController < ApplicationController
-  before_action :correct_therapist?
-  before_action :set_patient
   before_action :set_nrs_scale, only: [:edit, :update, :destroy]
 
   def index
@@ -45,21 +43,6 @@ class NrsScalesController < ApplicationController
     params.require(:nrs_scale).permit(:rating,
                                       :status,
                                       :supplement)
-  end
-
-  def correct_therapist?
-    if !(current_therapist.patients.include?(Patient.find(params[:patient_id])) ||
-      current_therapist.has_role?(:admin))
-      redirect_to root_url
-    end
-  end
-
-  def set_patient
-    if current_therapist.has_role?(:admin)
-      @patient = Patient.find(params[:patient_id])
-    else
-      @patient = current_therapist.patients.find(params[:patient_id])
-    end
   end
 
   def set_nrs_scale

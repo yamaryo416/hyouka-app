@@ -1,6 +1,4 @@
 class FactScalesController < ApplicationController
-  before_action :correct_therapist?
-  before_action :set_patient
   before_action :set_fact_scale, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -55,21 +53,6 @@ class FactScalesController < ApplicationController
                                        :lateral_dynamic_sitting_with_trunk_rotation,
                                        :trunk_rotation,
                                        :trunk_extenxion)
-  end
-
-  def correct_therapist?
-    if !(current_therapist.patients.include?(Patient.find(params[:patient_id])) ||
-      current_therapist.has_role?(:admin))
-      redirect_to root_url
-    end
-  end
-
-  def set_patient
-    if current_therapist.has_role?(:admin)
-      @patient = Patient.find(params[:patient_id])
-    else
-      @patient = current_therapist.patients.find(params[:patient_id])
-    end
   end
 
   def set_fact_scale

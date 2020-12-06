@@ -1,5 +1,4 @@
 <h1>FACT</h1>
-<%= @patient.unique_id %>
 <%= link_to "FACT一覧に戻る", patient_fact_scales_path(@patient) %>
 <%= form_with(url: patient_fact_scale_path(id: @fact_scale), scope: :fact_scale, local: true, method: :patch) do |f| %>
   <div class="d-flex justify-content-center">
@@ -15,7 +14,7 @@
       <dd>外旋</dd>
     </div>
     <div class="fact_form" style="width:80px;">
-      <% @fact_scale.each_score.each do |attr_name, value| %>
+      <% @fact_scale.each_score.keys.each do |attr_name| %>
         <%= f.select attr_name, FactScale.human_select_options(attr_name) %>
       <% end %>
     </div>

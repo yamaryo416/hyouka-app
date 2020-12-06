@@ -15,13 +15,13 @@
     </div>
     <div class="right_tactile_form" style="width:80px;">
       <dd>右</dd>
-      <% @tactile_scale.right_each_score.each  do |attr_name, value| %>
+      <% @tactile_scale.right_each_score.keys.each  do |attr_name| %>
         <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
       <% end %>
     </div>
     <div class="left_tactile_form" style="width:80px;">
       <dd>左</dd>
-      <% @tactile_scale.left_each_score.each  do |attr_name, value| %>
+      <% @tactile_scale.left_each_score.keys.each  do |attr_name| %>
         <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
       <% end %>
     </div>

@@ -1,5 +1,4 @@
 class MmtScale < ApplicationRecord
-  include ScaleModule
   belongs_to :patient
 
   enum neck_flexion: {
@@ -547,15 +546,5 @@ class MmtScale < ApplicationRecord
 
   def self.human_select_options(attr_name)
     send(attr_name.pluralize).keys.map { |k| [I18n.t("enums.mmt_scale.#{attr_name}.#{k}"), k] }
-  end
-
-  def neck_trunk_each_score
-    neck_trunk_each_score = {}
-    each_score.each do |attr_name, value|
-      if attr_name.include?("neck") || attr_name.include?("trunk")
-        neck_trunk_each_score.store(attr_name, value)
-      end
-    end
-    neck_trunk_each_score
   end
 end

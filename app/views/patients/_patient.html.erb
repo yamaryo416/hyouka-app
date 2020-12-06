@@ -1,6 +1,11 @@
 <tr class="patient-box">
   <td><%= patient.id %></td>
   <td><%= link_to patient.full_name, patient %></td>
-  <td><%= patient.age %></td>
+  <td><%= patient.sex_i18n %></td>
+  <td>
+    <% if patient.age.present? %>
+      <%= patient.age %>歳
+    <% end %>
+  </td>
   <td><%= patient.created_at.strftime('%Y/%m/%d') %></td>
 </tr>

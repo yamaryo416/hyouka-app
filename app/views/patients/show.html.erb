@@ -1,98 +1,13 @@
-<%= @patient.full_name %>
-<%= link_to "患者一覧に戻る", patients_path %>
-<%= @patient.sex_i18n %>
-<%= @patient.age %>
-<%= @patient.weight %>
-<%= @patient.height %>
-<%= link_to "基本情報を編集する", edit_patient_path %>
-<%= link_to "患者情報を削除する", @patient, method: :delete, data: { confirm: "患者情報を削除します。よろしいですか?" } %>
-<h3>評価初見</h3>
-<h3>実施した評価</h3>
-<% if @patient.sias_scale.present? %>
-  <%= link_to "SIAS", patient_sias_scales_path(@patient), class: "defined-scale", local: true %>
-  <p class="sias-total-score"><%= @patient.sias_scale.total_score %>点</p>
-  <% if @patient.sias_scale.undefined_count > 0 %>
-    <p class="undefined-columns-count">*<%= @patient.sias_scale.undefined_count %>項目が未入力です。</p>
-  <% end %>
-<% end %>
-<% if @patient.rom_scale.present? %>
-  <%= link_to "ROM", patient_rom_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.mmt_scale.present? %>
-  <%= link_to "MMT", patient_mmt_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.nrs_scales.present? %>
-  <%= link_to "NRS", patient_nrs_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.brs_scale.present? %>
-  <%= link_to "BRS", patient_brs_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.mas_scale.present? %>
-  <%= link_to "MAS", patient_mas_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.tendon_reflex_scale.present? %>
-  <%= link_to "深部腱反射", patient_tendon_reflex_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.tactile_scale.present? %>
-  <%= link_to "触覚検査", patient_tactile_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.bathyesthesia_scale.present? %>
-  <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.fact_scales.present? %>
-  <%= link_to "FACT", patient_fact_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.hdsr_scales.present? %>
-  <%= link_to "HDS-R", patient_hdsr_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
-<% if @patient.fbs_scale.present? %>
-  <%= link_to "FBS", patient_fbs_scales_path(@patient), class: "defined-scale", local: true %>
-  <p class="fbs-total-score"><%= @patient.fbs_scale.total_score %>点</p>
-  <% if @patient.fbs_scale.undefined_count > 0 %>
-    <p class="undefined-columns-count">*<%= @patient.fbs_scale.undefined_count %>項目が未入力です。</p>
-  <% end %>
-<% end %>
-<% if @patient.bestest_scales.present? %>
-  <%= link_to "Mini-BESTest", patient_bestest_scales_path(@patient), class: "defined-scale", local: true %>
-<% end %>
+<% provide(:title, "患者ページ") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: false %>
+<div class="main-contents">
+  <%= render "patients/patient_detail", patient: @patient %>
+  <div class="evaluation-finding-section border border-info">
+      <h3>評価初見</h3>
+      <div class="evaluation-finding-items">
 
-<h3>未実施の評価</h3>
-<% if @patient.sias_scale.nil? %>
-  <%= link_to "SIAS", new_patient_sias_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.rom_scale.nil? %>
-  <%= link_to "ROM", new_patient_rom_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.mmt_scale.nil? %>
-  <%= link_to "MMT", new_patient_mmt_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.nrs_scales.blank? %>
-  <%= link_to "NRS", new_patient_nrs_scale_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.mas_scale.nil? %>
-  <%= link_to "MAS", new_patient_mas_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.tendon_reflex_scale.nil? %>
-  <%= link_to "深部腱反射", new_patient_tendon_reflex_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.tactile_scale.nil? %>
-  <%= link_to "触覚検査", new_patient_tactile_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.bathyesthesia_scale.nil? %>
-  <%= link_to "深部感覚検査", new_patient_bathyesthesia_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.hdsr_scales.blank? %>
-  <%= link_to "HDS-R", new_patient_hdsr_scale_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.fact_scales.blank? %>
-  <%= link_to "FACT", new_patient_fact_scale_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.brs_scale.nil? %>
-  <%= link_to "BRS", new_patient_brs_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.fbs_scale.nil? %>
-  <%= link_to "FBS", new_patient_fbs_scales_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
-<% if @patient.bestest_scales.blank? %>
-  <%= link_to "Mini-BESTest", new_patient_bestest_scale_path(@patient), class: "undefined-scale", local: true %>
-<% end %>
+      </div>
+  </div>
+  <%= render "patients/defined_scale", patient: @patient %>
+  <%= render "patients/undefined_scale", patient: @patient %>
+</div>

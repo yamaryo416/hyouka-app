@@ -63,7 +63,7 @@ class PatientsController < ApplicationController
   def correct_therapist?
     if !(current_therapist.patients.include?(Patient.find(params[:id])) ||
       current_therapist.has_role?(:admin))
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 

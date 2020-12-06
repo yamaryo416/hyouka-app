@@ -1,5 +1,4 @@
 class NrsScale < ApplicationRecord
-  include ScaleModule
   belongs_to :patient
   validates :rating, presence: true, inclusion: 0..10
   enum status: {

@@ -1,6 +1,4 @@
 class MasScale < ApplicationRecord
-  include ScaleModule
-
   belongs_to :patient
   enum elbow_joint: {
     undefined: nil,

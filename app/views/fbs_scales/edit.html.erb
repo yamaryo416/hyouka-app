@@ -1,8 +1,7 @@
 <h1>FBS</h1>
-<%= @patient.unique_id %>
 <%= link_to "患者ページに戻る", patient_path(params[:patient_id]) %>
 <%= form_with(url: patient_fbs_scales_path, scope: :fbs_scale, local: true, method: :patch) do |f| %>
-  <% @fbs_scale.each_score.each do |attr_name, score| %>
+  <% @fbs_scale.each_score.keys.each do |attr_name| %>
     <%= f.label attr_name %>
     <%= f.select attr_name, FbsScale.human_select_options(attr_name) %>
   <% end %>

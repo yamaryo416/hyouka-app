@@ -1,5 +1,4 @@
 class HdsrScale < ApplicationRecord
-  include ScaleModule
   belongs_to :patient
   with_options inclusion: 0..1, allow_nil: true do
     validates :age
@@ -24,17 +23,5 @@ class HdsrScale < ApplicationRecord
   with_options inclusion: 0..5, allow_nil: true do
     validates :five_goods
     validates :vegetables
-  end
-
-  def total_score
-    total_score = 0
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
-        next
-      else
-        total_score += value
-      end
-    end
-    total_score
   end
 end

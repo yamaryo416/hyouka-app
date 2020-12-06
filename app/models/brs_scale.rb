@@ -1,6 +1,4 @@
 class BrsScale < ApplicationRecord
-  include ScaleModule
-
   belongs_to :patient
   enum upper_limbs: {
     undefined: nil,

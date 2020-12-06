@@ -1,5 +1,4 @@
 <h1>NRS</h1>
-<%= @patient.unique_id %>
 <%= link_to "NRS一覧に戻る", patient_nrs_scales_path(@patient) %>
 <%= form_with(url: patient_nrs_scale_path(id: @nrs_scale), scope: :nrs_scale, local: true, method: :patch) do |f| %>
   <% if @nrs_scale.errors.any? %>

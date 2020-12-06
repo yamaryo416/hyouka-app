@@ -1,5 +1,4 @@
 class TactileScale < ApplicationRecord
-  include ScaleModule
   belongs_to :patient
   enum right_upper_arm: {
     undefined: nil,

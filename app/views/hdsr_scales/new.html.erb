@@ -1,5 +1,4 @@
 <h1>HDS-R</h1>
-<%= @patient.unique_id %>
 <%= link_to "HDS-R一覧に戻る", patient_hdsr_scales_path(@patient) %>
 <%= form_with(url: patient_hdsr_scales_path, scope: :hdsr_scale, local: true) do |f| %>
   <% if @hdsr_scale.errors.any? %>

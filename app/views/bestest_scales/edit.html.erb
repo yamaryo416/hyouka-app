@@ -1,5 +1,4 @@
 <h1>Mini-BESTest</h1>
-<%= @patient.unique_id %>
 <%= link_to "Mini-BESTest一覧に戻る", patient_bestest_scales_path(@patient) %>
 <%= form_with(url: patient_bestest_scale_path(id: @bestest_scale), scope: :bestest_scale, local: true, method: :patch) do |f| %>
   <div class="d-flex justify-content-center">

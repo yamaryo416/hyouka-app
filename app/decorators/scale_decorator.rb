@@ -1,4 +1,6 @@
-module ScaleModule
+# frozen_string_literal: true
+
+module ScaleDecorator
   def each_score
     each_score = {}
     attributes.each do |attr_name, value|
@@ -9,6 +11,27 @@ module ScaleModule
       end
     end
     each_score
+  end
+
+  def total_score
+    total_score = 0
+    attributes.each do |attr_name, value|
+      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
+        next
+      else
+        score = send("#{attr_name}_before_type_cast")
+        total_score += score
+      end
+    end
+    total_score
+  end
+
+  def undefined_count
+    undefined_count = 0
+    attributes.each do |attr_name, value|
+      undefined_count += 1 if value.nil?
+    end
+    undefined_count
   end
 
   def direction_part_each_score(direction, part)

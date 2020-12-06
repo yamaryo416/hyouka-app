@@ -1,6 +1,4 @@
 class SiasScale < ApplicationRecord
-  include ScaleModule
-
   belongs_to :patient
   enum shoulder_motor_function: {
     undefined: nil,
@@ -173,44 +171,6 @@ class SiasScale < ApplicationRecord
     fair: 2,
     normal: 3,
   }, _prefix: true
-
-  def each_score
-    each_score = {}
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
-        next
-      else
-        score = send("#{attr_name}_before_type_cast")
-        each_score.store(attr_name, score)
-      end
-    end
-    each_score
-  end
-
-  def total_score
-    total_score = 0
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
-        next
-      else
-        score = send("#{attr_name}_before_type_cast")
-        if !score.integer?
-          total_score += score.floor
-        else
-          total_score += score
-        end
-      end
-    end
-    total_score
-  end
-
-  def undefined_count
-    undefined_count = 0
-    attributes.each do |attr_name, value|
-      undefined_count += 1 if value.nil?
-    end
-    undefined_count
-  end
 
   def self.human_select_options(attr_name)
     send(attr_name.pluralize).keys.map { |k| [I18n.t("enums.sias_scale.#{attr_name}.#{k}"), k] }

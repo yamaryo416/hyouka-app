@@ -1,6 +1,5 @@
 <%= link_to "患者ページに戻る", patient_path(@patient) %>
-<%= @patient.unique_id %>
-<% @sias_scale.each_score.each do |attr_name, score| %>
+<% @sias_scale.each_score.each do |attr_name, value| %>
   <dt class="<%= attr_name %>"><%= SiasScale.human_attribute_name(attr_name) %></dt>
   <dd class="<%= attr_name %>_score"><%= @sias_scale.send("#{attr_name}_i18n") %></dd>
 <% end %>

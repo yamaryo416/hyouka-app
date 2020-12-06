@@ -1,5 +1,4 @@
 class FactScale < ApplicationRecord
-  include ScaleModule
   belongs_to :patient
   enum sitting_with_upper_limb_support: {
     undefined: nil,
@@ -53,19 +52,6 @@ class FactScale < ApplicationRecord
     impossible: 0,
     possible: 3,
   }, _prefix: true
-
-  def total_score
-    total_score = 0
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
-        next
-      else
-        score = send("#{attr_name}_before_type_cast")
-        total_score += score
-      end
-    end
-    total_score
-  end
 
   def self.human_select_options(attr_name)
     send(attr_name.pluralize).keys.map { |k| [I18n.t("enums.fact_scale.#{attr_name}.#{k}"), k] }

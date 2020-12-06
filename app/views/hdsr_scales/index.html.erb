@@ -1,23 +1,27 @@
 <h1>HDS-R</h1>
-<%= @patient.unique_id %>
 <%= link_to "患者ページに戻る", patient_path(@patient) %>
 <%= link_to "新規作成", new_patient_hdsr_scale_path(@patient) %>
-
-<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
-  <tr>
-    <th bgcolor="#EE0000"><font color="#FFFFFF">日付</font></th>
-    <th bgcolor="#EE0000" width="500"><font color="#FFFFFF">点数</font></th>
-  </tr>
-  <% @hdsr_scales.each_with_index do |hdsr_scale, i| %>
-    <tr class="hdsr_score">
-      <td class="hdsr<%= i %>_created_at" bgcolor="#99CC00" align="right" nowrap><%= hdsr_scale.created_at.strftime('%Y/%m/%d') %></td>
-      <td class="hdsr<%= i %>_total_score" bgcolor="#FFFFFF" valign="top" width="150"><%= hdsr_scale.total_score %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "編集する", edit_patient_hdsr_scale_path(@patient, hdsr_scale), class: "hdsr#{i}_edit_link edit_link" %>
-      </td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "削除する", patient_hdsr_scale_path(@patient, hdsr_scale),class: "hdsr#{i}_delete_link delete_link", method: :delete, data: { confirm: "hdsrを削除します。よろしいですか?" } %>
-      </td>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">作成日時</th>
+      <th scope="col">得点</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @hdsr_scales.each_with_index do |hdsr_scale, i| %>
+      <tr class="hdsr_score">
+        <td class="hdsr<%= i %>_created_at"><%= hdsr_scale.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="hdsr<%= i %>_total_score"><%= hdsr_scale.total_score %></td>
+        <td>
+          <%= link_to "編集する", edit_patient_hdsr_scale_path(@patient, hdsr_scale), class: "hdsr#{i}_edit_link edit_link" %>
+        </td>
+        <td>
+          <%= link_to "削除する", patient_hdsr_scale_path(@patient, hdsr_scale),class: "hdsr#{i}_delete_link delete_link", method: :delete, data: { confirm: "hdsrを削除します。よろしいですか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

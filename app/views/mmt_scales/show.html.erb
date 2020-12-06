@@ -1,6 +1,5 @@
 <h1>MMT</h1>
 <%= link_to "患者ページに戻る", patient_path(@patient) %>
-<%= @patient.unique_id %>
 <%= render "mmt_scales/score_parts/collaps_btns", mmt_scale: @mmt_scale %>
 <%= render "mmt_scales/score_parts/neck_trunk_score", mmt_scale: @mmt_scale %>
 <%= render "mmt_scales/score_parts/shoulder_score", mmt_scale: @mmt_scale %>
