@@ -1,0 +1,7 @@
+<% SiasScale::ROM_PAIN_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="sias_column row">
+    <span><%= i + 14 %>)</span>
+    <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 14}" } %>
+    <%= f.select attr_name, SiasScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>

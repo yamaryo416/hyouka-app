@@ -1,6 +1,9 @@
 class SiasScalesController < ApplicationController
   before_action :set_sias_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @sias_scales = @patient.sias_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class SiasScalesController < ApplicationController
   end
 
   def create
-    @sias_scale = @patient.build_sias_scale(sias_scale_params)
-    @sias_scale.patient_id = params[:patient_id]
+    @sias_scale = @patient.sias_scales.build(sias_scale_params)
     @sias_scale.save
     flash[:success] = "SIASを登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_sias_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class SiasScalesController < ApplicationController
   def destroy
     @sias_scale.destroy
     flash[:success] = "SIASを削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_sias_scales_path(@patient)
   end
 
   private
@@ -60,12 +62,6 @@ class SiasScalesController < ApplicationController
   end
 
   def set_sias_scale
-    @sias_scale = @patient.sias_scale
-  end
-
-  def already_exist?
-    if @patient.sias_scale
-      redirect_to @patient
-    end
+    @sias_scale = @patient.sias_scales.find(params[:id])
   end
 end

@@ -1,4 +1,74 @@
 class SiasScale < ApplicationRecord
+  include Scope
+
+  ATTRIBUTES = [
+    "shoulder_motor_function",
+    "finger_motor_function",
+    "hip_motor_function",
+    "knee_motor_function",
+    "foot_motor_function",
+    "upper_limb_muscle_tone",
+    "lower_limb_muscle_tone",
+    "upper_limb_tendon_reflex",
+    "lower_limb_tendon_reflex",
+    "upper_limb_tactile",
+    "lower_limb_tactile",
+    "upper_limb_sense_of_position",
+    "lower_limb_sense_of_position",
+    "shoulder_joint_rom",
+    "knee_joint_rom",
+    "pain",
+    "trunk_verticality",
+    "abdominal_mmt",
+    "visuospatial_cognition",
+    "speech",
+    "gripstrength",
+    "quadriceps_mmt",
+  ].map(&:freeze).freeze
+
+  MOTOR_FUNCTION_ATTRIBUTES = [
+    "shoulder_motor_function",
+    "finger_motor_function",
+    "hip_motor_function",
+    "knee_motor_function",
+    "foot_motor_function",
+  ].map(&:freeze).freeze
+
+  TONE_REFLEX_ATTRIBUTES = [
+    "upper_limb_muscle_tone",
+    "lower_limb_muscle_tone",
+    "upper_limb_tendon_reflex",
+    "lower_limb_tendon_reflex",
+  ].map(&:freeze).freeze
+
+  SENSATION_ATTRIBUTES = [
+    "upper_limb_tactile",
+    "lower_limb_tactile",
+    "upper_limb_sense_of_position",
+    "lower_limb_sense_of_position",
+  ].map(&:freeze).freeze
+
+  ROM_PAIN_ATTRIBUTES = [
+    "shoulder_joint_rom",
+    "knee_joint_rom",
+    "pain",
+  ].map(&:freeze).freeze
+
+  TRUNK_FUNCTION_ATTRIBUTES = [
+    "trunk_verticality",
+    "abdominal_mmt",
+  ].map(&:freeze).freeze
+
+  HIGHER_BRAIN_FUNCTION_ATTRIBUTES = [
+    "visuospatial_cognition",
+    "speech",
+  ].map(&:freeze).freeze
+
+  HEALTHY_SIDE_FUNCTION_ATTRIBUTES = [
+    "gripstrength",
+    "quadriceps_mmt",
+  ].map(&:freeze).freeze
+
   belongs_to :patient
   enum shoulder_motor_function: {
     undefined: nil,

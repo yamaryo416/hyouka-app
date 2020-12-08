@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :patient do
-    sequence(:unique_id) { [*"0".."9"].sample(8).join }
+    first_name { "example" }
+    last_name { "example" }
     age { nil }
     sex { nil }
     weight { nil }

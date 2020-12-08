@@ -1,37 +1,54 @@
 require 'rails_helper'
 
 RSpec.describe Patient, type: :model do
-  it "is valid with uniqueid and therapisid" do
+  it "is valid with firstname, lastname and therapisid" do
     patient = build(:patient)
     expect(patient).to be_valid
   end
 
   it "is valid with uniqueid, therapistid, age, sex, weight, height and therapistid" do
-    patient = build(:patient, age: 20, sex: 1, weight: 60.0, height: 170.0)
+    patient = build(:patient, first_name: "hoge",
+                              last_name: "hoge",
+                              age: 20,
+                              sex: 1,
+                              weight: 60.0,
+                              height: 170.0)
     expect(patient).to be_valid
   end
 
-  context "invalid when uniqueid" do
+  context "invalid when first_name" do
     it "is nil" do
-      patient = build(:patient, unique_id: nil)
+      patient = build(:patient, first_name: nil)
       patient.valid?
-      expect(patient.errors[:unique_id]).to include("を入力してください")
+      expect(patient.errors[:first_name]).to include("を入力してください")
     end
-    it "is too short" do
-      patient = build(:patient, unique_id: "1" * 7)
+    it "is blank" do
+      patient = build(:patient, first_name: "")
       patient.valid?
-      expect(patient.errors[:unique_id]).to include("は8文字で入力してください")
+      expect(patient.errors[:first_name]).to include("を入力してください")
     end
     it "is too long" do
-      patient = build(:patient, unique_id: "1" * 9)
+      patient = build(:patient, first_name: "a" * 11)
       patient.valid?
-      expect(patient.errors[:unique_id]).to include("は8文字で入力してください")
+      expect(patient.errors[:first_name]).to include("は10文字以内で入力してください")
     end
-    it "is duplicate" do
-      patient = create(:patient)
-      dup_patient = build(:patient, unique_id: patient.unique_id)
-      dup_patient.valid?
-      expect(dup_patient.errors[:unique_id]).to include("はすでに存在します")
+  end
+
+  context "invalid when last_name" do
+    it "is nil" do
+      patient = build(:patient, last_name: nil)
+      patient.valid?
+      expect(patient.errors[:last_name]).to include("を入力してください")
+    end
+    it "is blank" do
+      patient = build(:patient, last_name: "")
+      patient.valid?
+      expect(patient.errors[:last_name]).to include("を入力してください")
+    end
+    it "is too long" do
+      patient = build(:patient, last_name: "a" * 11)
+      patient.valid?
+      expect(patient.errors[:last_name]).to include("は10文字以内で入力してください")
     end
   end
 

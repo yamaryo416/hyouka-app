@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SiasScale, type: :model do
-  it "is valid with patientid" do
+  it "is valid with firstname lastname and patientid" do
     sias_scale = build(:sias_scale)
     expect(sias_scale).to be_valid
   end

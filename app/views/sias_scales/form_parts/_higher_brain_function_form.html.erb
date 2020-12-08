@@ -1,0 +1,7 @@
+<% SiasScale::HIGHER_BRAIN_FUNCTION_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="sias_column row">
+    <span><%= i + 19 %>)</span>
+    <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 19}" } %>
+    <%= f.select attr_name, SiasScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>

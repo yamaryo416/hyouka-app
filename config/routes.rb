@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     post "/login", to: "therapists/sessions#create"
     delete "/logout", to: "therapists/sessions#destroy"
   end
-  
+
   get 'static_pages/about'
   resources :patients do
-    resource :sias_scales
+    resources :sias_scales
     resource :rom_scales
     resource :mmt_scales
     resource :fbs_scales

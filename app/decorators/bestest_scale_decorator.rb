@@ -2,7 +2,7 @@
 
 module BestestScaleDecorator
   include ScaleDecorator
-  
+
   def apa_score
     apa_score = 0
     APA_ATTRIBUTES.each do |attr_name|
