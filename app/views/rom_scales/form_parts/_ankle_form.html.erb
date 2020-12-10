@@ -2,8 +2,8 @@
   <div class="card card-body">
     <h3>足関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="ankle_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="ankle_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>背屈(膝屈曲位)</dd>
         <dd>背屈(膝伸展位)</dd>
         <dd>底屈</dd>
@@ -12,16 +12,20 @@
         <dd>回内</dd>
         <dd>回外</dd>
       </div>
-      <div class="right_ankle_rom_form" style="width:80px;">
-        <dd>右</dd>
-        <% rom_scale.right_ankle_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="right_ankle_rom_form rom-form">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_ankle_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
-      <div class="left_ankle_rom_form" style="width:80px;">
-        <dd>左</dd>
-        <% rom_scale.left_ankle_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, step: "5", in: -180..180 %>
+      <div class="left_ankle_rom_form rom-form">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_ankle_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
     </div>

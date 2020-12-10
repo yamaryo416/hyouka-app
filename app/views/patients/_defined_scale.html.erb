@@ -12,11 +12,12 @@
         <% end %>
       </div>
     <% end %>
-    <% if patient.rom_scale.present? %>
+    <% if patient.rom_scales.present? %>
       <div class="defined-scale-item row col-sm-12">
         <div class="col-sm-4">
           <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
+        <%= render "modal/rom_limit_modal", patient: patient %>
       </div>
     <% end %>
     <% if patient.mmt_scale.present? %>

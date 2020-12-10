@@ -2,21 +2,21 @@
   <div class="card card-body">
     <h3>膝関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="knee_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="knee_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>屈曲</dd>
         <dd>伸展</dd>
       </div>
-      <div class="right_knee_rom_score" style="width:80px;border:1px solid black;text_align:center">
-        <dd>右</dd>
-        <% @rom_scale.right_knee_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="right_knee_rom_score rom-score">
+        <dd class="direction-head">右</dd>
+        <% @rom_scale.right_knee_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
       </div>
-      <div class="left_knee_rom_score">
-        <dd>左</dd>
-        <% @rom_scale.left_knee_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="left_knee_rom_score rom-score">
+        <dd class="direction-head">左</dd>
+        <% @rom_scale.left_knee_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
         </div>
     </div>

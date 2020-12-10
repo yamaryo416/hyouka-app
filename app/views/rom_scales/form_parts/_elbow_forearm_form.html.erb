@@ -1,30 +1,38 @@
-<div class="collapse" id="elbow_forearm_rom_form">
+<div class="collapse elbow_forearm_rom_form" id="elbow_forearm_rom_form">
   <div class="card card-body">
     <h3>肘関節・前腕</h3>
     <div class="d-flex justify-content-center">
-      <div class="elbow_forearm_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="elbow_forearm_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>屈曲</dd>
         <dd>伸展</dd>
         <dd>回内</dd>
         <dd>回外</dd>
       </div>
-      <div class="right_elbow_forearm_rom_form" style="width:80px;">
-        <dd>右</dd>
-        <% rom_scale.right_elbow_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="right_elbow_forearm_rom_form rom-form">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_elbow_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
-        <% rom_scale.right_forearm_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% rom_scale.right_forearm_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
-      <div class="left_elbow_forearm_rom_form" style="width:80px;">
-        <dd>左</dd>
-        <% rom_scale.left_elbow_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="left_elbow_forearm_rom_form rom-form">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_elbow_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
-        <% rom_scale.left_forearm_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+        <% rom_scale.left_forearm_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
     </div>

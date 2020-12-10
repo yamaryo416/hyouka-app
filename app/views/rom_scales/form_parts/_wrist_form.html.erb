@@ -2,23 +2,27 @@
   <div class="card card-body">
     <h3>手関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="wrist_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="wrist_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>掌屈</dd>
         <dd>背屈</dd>
         <dd>橈屈</dd>
         <dd>尺屈</dd>
       </div>
-      <div class="right_wrist_rom_form" style="width:80px;">
-        <dd>右</dd>
-        <% rom_scale.right_wrist_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="right_wrist_rom_form rom-form">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_wrist_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
-      <div class="left_wrist_rom_form" style="width:80px;">
-        <dd>左</dd>
-        <% rom_scale.left_wrist_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="left_wrist_rom_form rom-form">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_wrist_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
     </div>

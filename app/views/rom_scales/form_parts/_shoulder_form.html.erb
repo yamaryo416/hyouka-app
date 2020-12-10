@@ -2,8 +2,8 @@
   <div class="card card-body">
     <h3>肩関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="shoulder_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="shoulder-rom-head part-head">
+        <dd class="left-top"></dd>
         <dd>屈曲</dd>
         <dd>伸展</dd>
         <dd>内転</dd>
@@ -15,16 +15,20 @@
         <dd>内旋(3st)</dd>
         <dd>外旋(3st)</dd>
       </div>
-      <div class="right_shoulder_rom_form" style="width:80px;">
-        <dd>右</dd>
-        <% rom_scale.right_shoulder_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="right_shoulder_rom_form rom-form">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_shoulder_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
-      <div class="left_shoulder_rom_form" style="width:80px;">
-        <dd>左</dd>
-        <% rom_scale.left_shoulder_each_score.keys.each  do |attr_name| %>
-          <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+      <div class="left_shoulder_rom_form rom-form">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_shoulder_scale_score.keys.each  do |attr_name| %>
+          <div>
+            <%= f.number_field attr_name, id: "#{attr_name}_form", step: "5", in: -180..180 %>
+          </div>
         <% end %>
       </div>
     </div>

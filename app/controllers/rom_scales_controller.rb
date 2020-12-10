@@ -1,6 +1,9 @@
 class RomScalesController < ApplicationController
   before_action :set_rom_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @rom_scales = @patient.rom_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class RomScalesController < ApplicationController
   end
 
   def create
-    @rom_scale = @patient.build_rom_scale(rom_scale_params)
-    @rom_scale.patient_id = params[:patient_id]
+    @rom_scale = @patient.rom_scales.build(rom_scale_params)
     @rom_scale.save
     flash[:success] = "ROMを登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_rom_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class RomScalesController < ApplicationController
   def destroy
     @rom_scale.destroy
     flash[:success] = "ROMを削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_rom_scales_path(@patient)
   end
 
   private
@@ -104,12 +106,6 @@ class RomScalesController < ApplicationController
   end
 
   def set_rom_scale
-    @rom_scale = @patient.rom_scale
-  end
-
-  def already_exist?
-    if @patient.rom_scale
-      redirect_to @patient
-    end
+    @rom_scale = @patient.rom_scales.find(params[:id])
   end
 end

@@ -72,6 +72,7 @@ main{
   text-align: center;
   margin-top: 15px;
 }
+
 // sias
 .sias-section{
   .sias-total-score{
@@ -94,12 +95,60 @@ main{
   }
 }
 
+//rom
+.rom-overview{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  h3{
+    padding-bottom: 20px;
+  }
+}
+
 //form
 .form_group + .form_group{
   margin-top: 30px;
 }
 .form-action{
   margin-top:10px;
+}
+.part-head{
+  padding-right: 40px;
+  dd{
+    font-size: 20px;
+    font-weight: 500;
+    height: 31px;
+    margin-bottom: 20px;
+  }
+}
+
+.rom-form{
+  .direction-head{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    width: 80px;
+    height: 31px;
+    margin-bottom: 20px;
+  }
+  div{
+    text-align: center;
+  }
+  input{
+    margin-bottom: 20px;
+  }
+}
+
+.rom-score{
+  .direction-head{
+    font-size: 20px;
+    font-weight: 500;
+    width: 80px;
+    height: 31px;
+  }
+  dd{
+    height: 31px;
+    margin-bottom: 20px;
+  }
 }
 
 //component

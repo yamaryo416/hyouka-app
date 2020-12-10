@@ -6,9 +6,9 @@
         <%= link_to "SIAS", new_patient_sias_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.rom_scale.nil? %>
+    <% if patient.rom_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "ROM", new_patient_rom_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "ROM", new_patient_rom_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.mmt_scale.nil? %>

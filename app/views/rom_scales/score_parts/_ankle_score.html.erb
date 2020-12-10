@@ -2,8 +2,8 @@
   <div class="card card-body">
     <h3>足関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="ankle_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="ankle_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>背屈(膝屈曲位)</dd>
         <dd>背屈(膝伸展位)</dd>
         <dd>底屈</dd>
@@ -12,16 +12,16 @@
         <dd>回内</dd>
         <dd>回外</dd>
       </div>
-      <div class="right_ankle_rom_score" style="width:80px;border:1px solid black;text_align:center">
-        <dd>右</dd>
-        <% rom_scale.right_ankle_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="right_ankle_rom_score rom-score">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_ankle_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
       </div>
-      <div class="left_ankle_rom_score">
-        <dd>左</dd>
-        <% rom_scale.left_ankle_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="left_ankle_rom_score rom-score">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_ankle_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
       </div>
     </div>

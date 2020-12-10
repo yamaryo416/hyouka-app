@@ -1,5 +1,5 @@
 <% provide(:title, "SIAS") %>
-<%= render "shared/breadcrumb", patient: @patient, scale: "SIAS"  %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "SIAS" %>
 <div class="link_section d-flex justify-content-between">
   <div class="left_link">
     <%= link_to "SIAS一覧に戻る", patient_sias_scales_path(@patient), class: "btn btn-info" %>
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <% SiasScale::ATTRIBUTES.each_with_index do |attr_name, i| %>
+      <% @sias_scale.scale_attributes.each_with_index do |attr_name, i| %>
         <tr>
           <td class="<%= attr_name %>">
             <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>

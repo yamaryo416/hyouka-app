@@ -2,23 +2,23 @@
   <div class="card card-body">
     <h3>手関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="wrist_rom_head">
-        <dd style="height:24px;"></dd>
+      <div class="wrist_rom_head part-head">
+        <dd class="left-top"></dd>
         <dd>掌屈</dd>
         <dd>背屈</dd>
         <dd>橈屈</dd>
         <dd>尺屈</dd>
       </div>
-      <div class="right_wrist_rom_score" style="width:80px;border:1px solid black;text_align:center">
-        <dd>右</dd>
-        <% rom_scale.right_wrist_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="right_wrist_rom_score rom-score">
+        <dd class="direction-head">右</dd>
+        <% rom_scale.right_wrist_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
       </div>
-      <div class="left_wrist_rom_score">
-        <dd>左</dd>
-        <% rom_scale.left_wrist_each_score.each do |attr_name, score| %>
-          <dd class="<%= attr_name %>_score"><%= score %></dd>
+      <div class="left_wrist_rom_score rom-score">
+        <dd class="direction-head">左</dd>
+        <% rom_scale.left_wrist_scale_score.each do |attr_name, score| %>
+          <dd class="<%= attr_name %>_score"><%= score %>°</dd>
         <% end %>
       </div>
     </div>

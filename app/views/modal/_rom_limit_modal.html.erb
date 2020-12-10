@@ -1,0 +1,26 @@
+<div class="rom-limit-count">
+  <% if patient.rom_scales.first.limit_part.empty? %>
+    可動域制限はありません。
+  <% else %>
+    <%= link_to "#{patient.rom_scales.first.limit_part.size}箇所に可動域制限があります。", "#", class: "col-sm-3", data: {toggle: "modal", target: "#rom-limit-part" } %>
+    <div class="rom-limit-modal">
+      <div class="modal fade" id="rom-limit-part" tabindex="-1" role="dialog" aria-labelledby="romLimitPartLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">可動域制限</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <% patient.rom_scales.first.limit_part.each do |part| %>
+                <%= RomScale.human_attribute_name(part[0]) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

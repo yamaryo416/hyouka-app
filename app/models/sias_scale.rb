@@ -1,31 +1,6 @@
 class SiasScale < ApplicationRecord
   include Scope
 
-  ATTRIBUTES = [
-    "shoulder_motor_function",
-    "finger_motor_function",
-    "hip_motor_function",
-    "knee_motor_function",
-    "foot_motor_function",
-    "upper_limb_muscle_tone",
-    "lower_limb_muscle_tone",
-    "upper_limb_tendon_reflex",
-    "lower_limb_tendon_reflex",
-    "upper_limb_tactile",
-    "lower_limb_tactile",
-    "upper_limb_sense_of_position",
-    "lower_limb_sense_of_position",
-    "shoulder_joint_rom",
-    "knee_joint_rom",
-    "pain",
-    "trunk_verticality",
-    "abdominal_mmt",
-    "visuospatial_cognition",
-    "speech",
-    "gripstrength",
-    "quadriceps_mmt",
-  ].map(&:freeze).freeze
-
   MOTOR_FUNCTION_ATTRIBUTES = [
     "shoulder_motor_function",
     "finger_motor_function",
