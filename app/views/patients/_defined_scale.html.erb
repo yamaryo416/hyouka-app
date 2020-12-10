@@ -17,7 +17,14 @@
         <div class="col-sm-4">
           <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <%= render "modal/rom_limit_modal", patient: patient %>
+        <div class="rom-limit-count">
+          <% if patient.rom_scales.first.limit_part.empty? %>
+            可動域制限はありません。
+          <% else %>
+            <%= link_to "#{patient.rom_scales.first.limit_part.size}箇所に可動域制限があります。", "#", class: "col-sm-3", data: {toggle: "modal", target: "#rom-limit-part" } %>
+            <%= render "modal/rom_limit_modal", patient: patient %>
+          <% end %>
+        </div>
       </div>
     <% end %>
     <% if patient.mmt_scale.present? %>
