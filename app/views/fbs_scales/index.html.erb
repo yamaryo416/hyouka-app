@@ -1,0 +1,46 @@
+<%= provide(:title, "FBS一覧") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "FBS"  %>
+<div class="link_section d-flex justify-content-between">
+  <div class="left_link">
+    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+  </div>
+  <div class="right_link">
+    <%= link_to "新規作成", new_patient_fbs_scale_path(@patient), class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="main-contents">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">作成日時</th>
+        <th scope="col">得点</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @fbs_scales.each_with_index do |fbs_scale, i| %>
+        <tr class="fbs_score">
+          <td class="fbs<%= i %>-created-at"><%= fbs_scale.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="fbs<%= i %>-total-score"><%= fbs_scale.total_score %>点</td>
+          <td class="fbs<%= i %>-undefined-count">
+            <% if fbs_scale.undefined_count > 0 %>
+              <p class="undefined-columns-count">*<%= fbs_scale.undefined_count %>項目が未入力です。</p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細", patient_fbs_scale_path(@patient, fbs_scale), class: "fbs#{i}_show_link show_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_patient_fbs_scale_path(@patient, fbs_scale), class: "fbs#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "削除", patient_fbs_scale_path(@patient, fbs_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "FBSを削除します。よろしいですか?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

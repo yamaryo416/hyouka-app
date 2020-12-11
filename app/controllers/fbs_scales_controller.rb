@@ -1,6 +1,9 @@
 class FbsScalesController < ApplicationController
   before_action :set_fbs_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @fbs_scales = @patient.fbs_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class FbsScalesController < ApplicationController
   end
 
   def create
-    @fbs_scale = @patient.build_fbs_scale(fbs_scale_params)
-    @fbs_scale.patient_id = params[:patient_id]
+    @fbs_scale = @patient.fbs_scales.build(fbs_scale_params)
     @fbs_scale.save
     flash[:success] = "FBSを登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_fbs_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class FbsScalesController < ApplicationController
   def destroy
     @fbs_scale.destroy
     flash[:success] = "FBSを削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_fbs_scales_path(@patient)
   end
 
   private
@@ -52,12 +54,6 @@ class FbsScalesController < ApplicationController
   end
 
   def set_fbs_scale
-    @fbs_scale = @patient.fbs_scale
-  end
-
-  def already_exist?
-    if @patient.fbs_scale
-      redirect_to @patient
-    end
+    @fbs_scale = @patient.fbs_scales.find(params[:id])
   end
 end

@@ -1,5 +1,5 @@
 <% SiasScale::SENSATION_ATTRIBUTES.each_with_index do |attr_name, i| %>
-  <div class="sias_column row">
+  <div class="scale_column row">
     <span><%= i + 10 %>)</span>
     <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 10}" } %>
     <%= f.select attr_name, SiasScale.human_select_options(attr_name), class: "col-sm-2" %>

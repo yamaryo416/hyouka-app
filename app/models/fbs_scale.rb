@@ -1,4 +1,5 @@
 class FbsScale < ApplicationRecord
+  include Scope
   belongs_to :patient
 
   enum stand_up: {

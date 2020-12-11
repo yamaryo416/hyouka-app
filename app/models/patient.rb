@@ -4,7 +4,7 @@ class Patient < ApplicationRecord
   has_many :sias_scales, dependent: :destroy
   has_many :rom_scales, dependent: :destroy
   has_many :mmt_scales, dependent: :destroy
-  has_one :fbs_scale, dependent: :destroy
+  has_many :fbs_scales, dependent: :destroy
   has_one :brs_scale, dependent: :destroy
   has_one :mas_scale, dependent: :destroy
   has_one :tendon_reflex_scale, dependent: :destroy

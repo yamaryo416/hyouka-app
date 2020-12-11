@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="main-contents sias-section">
-  <p class="sias-total-score">得点　<%= @sias_scale.total_score %>点</p>
+  <p class="sias-total-score show-total-score">得点　<%= @sias_scale.total_score %>点</p>
   <table class="table">
     <thead>
       <tr>
@@ -22,6 +22,7 @@
       <% @sias_scale.scale_attributes.each_with_index do |attr_name, i| %>
         <tr>
           <td class="<%= attr_name %>">
+            <span><%= i +1 %>)</span>
             <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
           </td>
           <td class="<%= attr_name %>_score"><%= @sias_scale.send("#{attr_name}_i18n") %></td>

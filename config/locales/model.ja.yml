@@ -166,7 +166,7 @@ ja:
       fbs_scale:
         stand_up: 椅子からの立ち上がり
         standing: 立位保持
-        sitting: 座位保持(両足を床につけ、背もたれに寄りかからずに座る)
+        sitting: 座位保持(寄りかからずに座る)
         sit_down: 着座
         transfer: 移乗
         standing_with_eyes_close: 閉眼立位保持

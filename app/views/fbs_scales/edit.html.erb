@@ -1,9 +1,15 @@
-<h1>FBS</h1>
-<%= link_to "患者ページに戻る", patient_path(params[:patient_id]) %>
-<%= form_with(url: patient_fbs_scales_path, scope: :fbs_scale, local: true, method: :patch) do |f| %>
-  <% @fbs_scale.each_score.keys.each do |attr_name| %>
-    <%= f.label attr_name %>
-    <%= f.select attr_name, FbsScale.human_select_options(attr_name) %>
+<% provide(:title, "FBS作成") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "FBS" %>
+<%= link_to "FBS一覧に戻る", patient_fbs_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents new-fbs">
+  <%= form_with(url: patient_fbs_scale_path(id: @fbs_scale), scope: :fbs_scale, local: true, method: :patch) do |f| %>
+    <% @fbs_scale.scale_attributes.each_with_index do |attr_name, i| %>
+      <div class="scale_column fbs_column row">
+        <span><%= i + 1 %>)</span>
+        <%= f.label attr_name, class: "col-sm-3" %>
+        <%= f.select attr_name, FbsScale.human_select_options(attr_name), class: "col-sm-8" %>
+      </div>
+    <% end %>
+    <%= f.submit %>
   <% end %>
-  <%= f.submit %>
-<% end %>
+</div>

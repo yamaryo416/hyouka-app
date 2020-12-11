@@ -74,18 +74,6 @@ main{
 }
 
 // sias
-.sias-section{
-  .sias-total-score{
-    font-size: 30px;
-    padding-bottom: 10px;
-  }
-}
-.sias_column{
-  padding-bottom: 20px;
-  select{
-    margin-left: 20px;
-  }
-}
 .new-sias{
   h3{
     font-weight: bold;
@@ -150,6 +138,12 @@ main{
     margin-bottom: 20px;
   }
 }
+.scale_column{
+  padding-bottom: 20px;
+  select{
+    margin-left: 20px;
+  }
+}
 
 //component
 .breadcrumb{
@@ -198,4 +192,8 @@ th{
   h3{
     padding-bottom: 20px;
   }
+}
+.show-total-score{
+  font-size: 30px;
+  padding-bottom: 10px;
 }
