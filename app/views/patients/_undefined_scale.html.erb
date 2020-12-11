@@ -11,9 +11,9 @@
         <%= link_to "ROM", new_patient_rom_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.mmt_scale.nil? %>
+    <% if patient.mmt_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "MMT", new_patient_mmt_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "MMT", new_patient_mmt_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.nrs_scales.blank? %>

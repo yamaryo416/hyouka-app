@@ -1,6 +1,9 @@
 class MmtScalesController < ApplicationController
   before_action :set_mmt_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @mmt_scales = @patient.mmt_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class MmtScalesController < ApplicationController
   end
 
   def create
-    @mmt_scale = @patient.build_mmt_scale(mmt_scale_params)
-    @mmt_scale.patient_id = params[:patient_id]
+    @mmt_scale = @patient.mmt_scales.build(mmt_scale_params)
     @mmt_scale.save
     flash[:success] = "MMTを登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_mmt_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class MmtScalesController < ApplicationController
   def destroy
     @mmt_scale.destroy
     flash[:success] = "MMTを削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_mmt_scales_path(@patient)
   end
 
   private
@@ -98,12 +100,6 @@ class MmtScalesController < ApplicationController
   end
 
   def set_mmt_scale
-    @mmt_scale = @patient.mmt_scale
-  end
-
-  def already_exist?
-    if @patient.mmt_scale
-      redirect_to @patient
-    end
+    @mmt_scale = @patient.mmt_scales.find(params[:id])
   end
 end

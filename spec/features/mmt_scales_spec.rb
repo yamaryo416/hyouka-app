@@ -4,11 +4,32 @@ RSpec.feature "MmtScales", type: :feature do
   let!(:therapist) { create(:therapist) }
   let!(:first_patient) { create(:patient, therapist: therapist) }
   let!(:second_patient) { create(:patient, therapist: therapist) }
+  let!(:third_patient) { create(:patient, therapist: therapist) }
   let!(:second_patient_mmt) do
-    create(:mmt_scale, right_shoulder_flexion: "normal",
+    create(:mmt_scale, right_shoulder_flexion: "zero",
                        right_hip_adduction: "trace",
                        left_ankle_extension: "trace_poor",
                        patient: second_patient)
+  end
+  let!(:oldest_third_patient_mmt) do
+    create(:mmt_scale, neck_flexion: "zero",
+                       neck_extension: "poor",
+                       left_wrist_flexion: "trace",
+                       right_wrist_extension: "poor",
+                       right_shoulder_horizontal_adduction: "trace",
+                       left_shoulder_horizontal_adduction: "fair",
+                       patient: third_patient)
+  end
+  let!(:third_patient_mmts) do
+    create_list(:mmt_scale, 5, left_first_hip_extension: "zero", patient: third_patient)
+  end
+  let!(:latest_third_patient_mmt) do
+    create(:mmt_scale, left_shoulder_external_rotation: "trace",
+                       right_elbow_flexion: "zero",
+                       left_forearm_pronation: "poor",
+                       right_forearm_supination: "fair",
+                       left_forearm_supination: "zero",
+                       patient: third_patient)
   end
 
   before do
@@ -20,54 +41,83 @@ RSpec.feature "MmtScales", type: :feature do
     expect(page).to have_selector ".undefined-scale", text: "MMT"
     expect(page).not_to have_selector ".defined-scale", text: "MMT"
     click_on "MMT"
-    expect(page).to have_current_path new_patient_mmt_scales_path(first_patient)
-    expect(page).to have_content first_patient.unique_id
+    expect(page).to have_current_path new_patient_mmt_scale_path(first_patient)
     click_button "肩関節"
     select "0", from: "mmt_scale[neck_flexion]"
-    select "4", from: "mmt_scale[left_shoulder_external_rotation]"
+    select "3", from: "mmt_scale[left_shoulder_external_rotation]"
     select "2-", from: "mmt_scale[right_ankle_extension]"
     click_on "保存する"
-    expect(page).to have_current_path patient_path(first_patient)
+    expect(page).to have_current_path patient_mmt_scales_path(first_patient)
+    expect(page).to have_selector ".mmt0-weak-part-count",
+                                  text: "3箇所に筋力低下があります。"
+    expect(page).to have_link "患者ページに戻る"
+    expect(page).to have_link "新規作成"
+    expect(page).to have_link "詳細"
+    expect(page).to have_link "編集"
+    expect(page).to have_link "削除"
+  end
+
+  scenario "show patient mmt" do
+    visit patient_path second_patient
     expect(page).to have_selector ".defined-scale", text: "MMT"
     expect(page).not_to have_selector ".undefined-scale", text: "MMT"
     click_on "MMT"
-    expect(page).to have_current_path patient_mmt_scales_path(first_patient)
-    click_button "肩関節"
-    expect(page).to have_selector ".neck_flexion_score", text: "0"
-    expect(page).to have_selector ".left_shoulder_external_rotation_score", text: "4"
-    expect(page).to have_selector ".right_ankle_extension_score", text: "2-"
-    expect(page).to have_link "患者ページに戻る"
+    expect(page).to have_current_path patient_mmt_scales_path second_patient
+    click_on "詳細"
+    expect(page).to have_current_path patient_mmt_scale_path(
+      second_patient, second_patient_mmt
+    )
+    expect(page).to have_selector ".weak-part-detail",
+                                  text: "右肩関節屈曲 右股関節内転 右足関節底屈"
+    expect(page).to have_selector ".right_shoulder_flexion_score", text: "0"
+    expect(page).to have_selector ".right_hip_adduction_score", text: "1"
+    expect(page).to have_selector ".left_ankle_extension_score", text: "2-"
+    expect(page).to have_link "MMT一覧に戻る"
     expect(page).to have_link "MMTを編集する"
     expect(page).to have_link "MMTを削除する"
   end
 
+  scenario "index patient mmt" do
+    visit patient_mmt_scales_path third_patient
+    expect(page).to have_selector ".mmt0-weak-part-count",
+                                  text: "5箇所に筋力低下があります。"
+    expect(page).to have_selector ".mmt6-weak-part-count",
+                                  text: "6箇所に筋力低下があります。"
+  end
+
   scenario "edit patient mmt" do
     visit patient_mmt_scales_path second_patient
-    click_on "MMTを編集する"
-    expect(page).to have_current_path edit_patient_mmt_scales_path second_patient
+    click_on "編集"
+    expect(page).to have_current_path edit_patient_mmt_scale_path(
+      second_patient, second_patient_mmt
+    )
     click_button "肘関節・前腕"
     click_button "手関節"
     click_button "股関節"
-    select "0", from: "mmt_scale[right_shoulder_flexion]"
-    select "1", from: "mmt_scale[right_hip_adduction]"
-    select "5", from: "mmt_scale[left_ankle_extension]"
+    select "5", from: "mmt_scale[right_shoulder_flexion]"
+    select "4", from: "mmt_scale[right_hip_adduction]"
+    select "2", from: "mmt_scale[left_ankle_extension]"
     click_on "保存する"
     expect(page).to have_current_path patient_mmt_scales_path second_patient
+    expect(page).to have_selector ".mmt0-weak-part-count",
+                                  text: "1箇所に筋力低下があります。"
+    click_on "詳細"
     click_button "肘関節・前腕"
     click_button "手関節"
     click_button "股関節"
-    expect(page).to have_selector ".right_shoulder_flexion_score", text: "0"
-    expect(page).to have_selector ".right_hip_adduction_score", text: "1"
-    expect(page).to have_selector ".left_ankle_extension_score", text: "5"
+    expect(page).to have_selector ".right_shoulder_flexion_score", text: "5"
+    expect(page).to have_selector ".right_hip_adduction_score", text: "4"
+    expect(page).to have_selector ".left_ankle_extension_score", text: "2"
   end
 
   scenario "destory patient mmt", js: true do
     visit patient_mmt_scales_path second_patient
+    expect(page).to have_selector ".mmt0-weak-part-count",
+                                  text: "3箇所に筋力低下があります。"
     page.accept_confirm do
-      click_on "MMTを削除する"
+      click_on "削除"
     end
-    expect(page).to have_current_path patient_path second_patient
-    expect(page).to have_selector ".undefined-scale", text: "MMT"
-    expect(page).not_to have_selector ".defined-scale", text: "MMT"
+    expect(page).not_to have_selector ".rom0-limit-part-count",
+                                      text: "3箇所に筋力低下があります。"
   end
 end

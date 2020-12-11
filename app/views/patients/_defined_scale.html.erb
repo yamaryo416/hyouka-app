@@ -6,9 +6,9 @@
         <div class="col-sm-4">
           <%= link_to "SIAS", patient_sias_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="sias-total-score total-score col-sm-4">合計　<%= patient.sias_scales.first.total_score %>点</p>
-        <% if patient.sias_scales.first.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-4">*<%= patient.sias_scales.first.undefined_count %>項目が未入力です。</p>
+        <p class="sias-total-score total-score col-sm-4">合計　<%= patient.sias_scales.last.total_score %>点</p>
+        <% if patient.sias_scales.last.undefined_count > 0 %>
+          <p class="undefined-columns-count col-sm-4">*<%= patient.sias_scales.last.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>
@@ -17,21 +17,29 @@
         <div class="col-sm-4">
           <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <div class="rom-limit-count">
-          <% if patient.rom_scales.first.limit_part.empty? %>
+        <p class="rom-limit-count col-sm-4">
+          <% if patient.rom_scales.last.limit_part.empty? %>
             可動域制限はありません。
           <% else %>
-            <%= link_to "#{patient.rom_scales.first.limit_part.size}箇所に可動域制限があります。", "#", class: "col-sm-3", data: {toggle: "modal", target: "#rom-limit-part" } %>
+            <%= link_to "#{patient.rom_scales.last.limit_part.size}箇所に可動域制限があります。", "#", data: {toggle: "modal", target: "#rom-limit-part" } %>
             <%= render "modal/rom_limit_modal", patient: patient %>
           <% end %>
-        </div>
+        </p>
       </div>
     <% end %>
-    <% if patient.mmt_scale.present? %>
+    <% if patient.mmt_scales.present? %>
       <div class="defined-scale-item row col-sm-12">
         <div class="col-sm-4">
           <%= link_to "MMT", patient_mmt_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
+        <p class="mmt-weak-count col-sm-4">
+          <% if patient.mmt_scales.last.weak_part.empty? %>
+            筋力低下はありません
+          <% else %>
+            <%= link_to "#{patient.mmt_scales.last.weak_part.size}箇所に筋力低下があります。", "#", data: {toggle: "modal", target: "#mmt-weak-part" } %>
+            <%= render "modal/mmt_weak_modal", patient: patient %>
+          <% end %>
+        </p>
       </div>
     <% end %>
     <% if patient.nrs_scales.present? %>

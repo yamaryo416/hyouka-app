@@ -6,7 +6,7 @@ RSpec.describe "MmtScales", type: :request do
   let!(:therapist) { create(:therapist) }
   let!(:therapist_patient) { create(:patient, therapist: therapist) }
 
-  describe "#show" do
+  describe "#index" do
     let!(:admin_patient_mmt) { create(:mmt_scale, patient: admin_patient) }
     let!(:therapist_patient_mmt) do
       create(:mmt_scale, patient: therapist_patient)
@@ -19,12 +19,12 @@ RSpec.describe "MmtScales", type: :request do
 
       it "show own patient mmt page" do
         get patient_mmt_scales_path admin_patient
-        expect(response).to render_template :show
+        expect(response).to render_template :index
       end
 
       it "show other patient mmt page" do
         get patient_mmt_scales_path therapist_patient
-        expect(response).to render_template :show
+        expect(response).to render_template :index
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe "MmtScales", type: :request do
 
       it "show own patient mmt page" do
         get patient_mmt_scales_path therapist_patient
-        expect(response).to render_template :show
+        expect(response).to render_template :index
       end
 
       it "redirect to root url when get other patient mmt page" do
@@ -52,6 +52,62 @@ RSpec.describe "MmtScales", type: :request do
     end
   end
 
+  describe "#show" do
+    let!(:admin_patient_mmt) { create(:mmt_scale, patient: admin_patient) }
+    let!(:therapist_patient_mmt) do
+      create(:mmt_scale, patient: therapist_patient)
+    end
+
+    context "login as admin" do
+      before do
+        sign_in admin
+      end
+
+      it "show own patient mmt page" do
+        get patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
+        expect(response).to render_template :show
+      end
+
+      it "show other patient mmt page" do
+        get patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        )
+        expect(response).to render_template :show
+      end
+    end
+
+    context "login as therapist" do
+      before do
+        sign_in therapist
+      end
+
+      it "show own patient mmt page" do
+        get patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        )
+        expect(response).to render_template :show
+      end
+
+      it "redirect to root url when get other patient mmt page" do
+        get patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
+        expect(response).to redirect_to root_url
+      end
+    end
+
+    context "not login" do
+      it "redirect to login path when get patient mmt page" do
+        get patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
+        expect(response).to redirect_to new_therapist_session_path
+      end
+    end
+  end
+
   describe "#new" do
     context "login as admin" do
       before do
@@ -59,12 +115,12 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "show own patient new mmt scale page" do
-        get new_patient_mmt_scales_path admin_patient
+        get new_patient_mmt_scale_path admin_patient
         expect(response).to render_template :new
       end
 
       it "show other patient new mmt scale page" do
-        get new_patient_mmt_scales_path therapist_patient
+        get new_patient_mmt_scale_path therapist_patient
         expect(response).to render_template :new
       end
     end
@@ -75,19 +131,19 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "show own patient new mmt scale page" do
-        get new_patient_mmt_scales_path therapist_patient
+        get new_patient_mmt_scale_path therapist_patient
         expect(response).to render_template :new
       end
 
       it "redirect to root url when get other patient new mmt scale page" do
-        get new_patient_mmt_scales_path admin_patient
+        get new_patient_mmt_scale_path admin_patient
         expect(response).to redirect_to root_url
       end
     end
 
     context "not login" do
       it "redirect to login path" do
-        get new_patient_mmt_scales_path admin_patient
+        get new_patient_mmt_scale_path admin_patient
         expect(response).to redirect_to new_therapist_session_path
       end
     end
@@ -121,7 +177,7 @@ RSpec.describe "MmtScales", type: :request do
         post patient_mmt_scales_path(admin_patient), params: {
           mmt_scale: mmt_scale_params,
         }
-        expect(response).to redirect_to patient_path(admin_patient)
+        expect(response).to redirect_to patient_mmt_scales_path(admin_patient)
         expect(flash[:success]).to eq "MMTを登録しました。"
       end
     end
@@ -181,12 +237,16 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "show edit page in own patient page" do
-        get edit_patient_mmt_scales_path admin_patient
+        get edit_patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
         expect(response).to render_template :edit
       end
 
       it "show edit page in other patient page" do
-        get edit_patient_mmt_scales_path therapist_patient
+        get edit_patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        )
         expect(response).to render_template :edit
       end
     end
@@ -197,19 +257,25 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "show edit page in own patient page" do
-        get edit_patient_mmt_scales_path therapist_patient
+        get edit_patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        )
         expect(response).to render_template :edit
       end
 
       it "redirect to root url when get edit other patient mmt page" do
-        get edit_patient_mmt_scales_path admin_patient
+        get edit_patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
         expect(response).to redirect_to root_url
       end
     end
 
     context "not login" do
       it "redirect to login path when get edit patient mmt page" do
-        get patient_mmt_scales_path admin_patient
+        get patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
         expect(response).to redirect_to new_therapist_session_path
       end
     end
@@ -232,7 +298,9 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "is success to update own patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         admin_patient_mmt.reload
@@ -242,21 +310,27 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "is redirect to own patient page" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         expect(response).to redirect_to patient_mmt_scales_path admin_patient
       end
 
       it "is correct message when success to update own patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         expect(flash[:success]).to eq "MMTを編集しました。"
       end
 
       it "is success to update other patient mmt" do
-        patch patient_mmt_scales_path(therapist_patient), params: {
+        patch patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         therapist_patient_mmt.reload
@@ -272,7 +346,9 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "is success to update own patient mmt" do
-        patch patient_mmt_scales_path(therapist_patient), params: {
+        patch patient_mmt_scale_path(
+          therapist_patient, therapist_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         therapist_patient_mmt.reload
@@ -282,7 +358,9 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "is false to update other patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         admin_patient_mmt.reload
@@ -292,7 +370,9 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "redirect to root url when update other patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         expect(response).to redirect_to root_url
@@ -301,7 +381,9 @@ RSpec.describe "MmtScales", type: :request do
 
     context "not login" do
       it "false to update patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         admin_patient_mmt.reload
@@ -311,7 +393,9 @@ RSpec.describe "MmtScales", type: :request do
       end
 
       it "redirect to login path when update other patient mmt" do
-        patch patient_mmt_scales_path(admin_patient), params: {
+        patch patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        ), params: {
           mmt_scale: mmt_scale_params,
         }
         expect(response).to redirect_to new_therapist_session_path
@@ -332,23 +416,31 @@ RSpec.describe "MmtScales", type: :request do
 
       it "is success to destor own patient mmt" do
         expect do
-          delete patient_mmt_scales_path admin_patient
+          delete patient_mmt_scale_path(
+            admin_patient, admin_patient_mmt
+          )
         end.to change(MmtScale, :count).by(-1)
       end
 
       it "is success to destor other patient mmt" do
         expect do
-          delete patient_mmt_scales_path therapist_patient
+          delete patient_mmt_scale_path(
+            therapist_patient, therapist_patient_mmt
+          )
         end.to change(MmtScale, :count).by(-1)
       end
 
       it "redirect patients path when destroy own patient mmt" do
-        delete patient_mmt_scales_path admin_patient
-        expect(response).to redirect_to patient_path(admin_patient)
+        delete patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
+        expect(response).to redirect_to patient_mmt_scales_path(admin_patient)
       end
 
       it "is correct message when destroy patient mmt" do
-        delete patient_mmt_scales_path admin_patient
+        delete patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
         expect(flash[:success]).to eq "MMTを削除しました。"
       end
     end
@@ -360,13 +452,17 @@ RSpec.describe "MmtScales", type: :request do
 
       it "is success to destor own patient mmt" do
         expect do
-          delete patient_mmt_scales_path therapist_patient
+          delete patient_mmt_scale_path(
+            therapist_patient, therapist_patient_mmt
+          )
         end.to change(MmtScale, :count).by(-1)
       end
 
       it "is false to destor other patient mmt" do
         expect do
-          delete patient_mmt_scales_path admin_patient
+          delete patient_mmt_scale_path(
+            admin_patient, admin_patient_mmt
+          )
         end.not_to change(MmtScale, :count)
       end
     end
@@ -374,12 +470,16 @@ RSpec.describe "MmtScales", type: :request do
     context "not login" do
       it "is false to destor patient mmt" do
         expect do
-          delete patient_mmt_scales_path admin_patient
+          delete patient_mmt_scale_path(
+            admin_patient, admin_patient_mmt
+          )
         end.not_to change(MmtScale, :count)
       end
 
       it "redirect to login path when get edit patient mmt page" do
-        delete patient_mmt_scales_path admin_patient
+        delete patient_mmt_scale_path(
+          admin_patient, admin_patient_mmt
+        )
         expect(response).to redirect_to new_therapist_session_path
       end
     end

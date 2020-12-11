@@ -96,13 +96,8 @@ main{
 }
 
 //rom
-.rom-overview{
-  margin-top: 40px;
-  margin-bottom: 40px;
-  h3{
-    padding-bottom: 20px;
-  }
-}
+
+//mmt
 
 //form
 .form_group + .form_group{
@@ -121,7 +116,7 @@ main{
   }
 }
 
-.rom-form{
+.rom-form, .mmt-form{
   .direction-head{
     font-size: 20px;
     font-weight: 500;
@@ -136,9 +131,13 @@ main{
   input{
     margin-bottom: 20px;
   }
+  select{
+    height: 31px;
+    margin-bottom: 20px;
+  }
 }
 
-.rom-score{
+.rom-score, .mmt-score{
   .direction-head{
     font-size: 20px;
     font-weight: 500;
@@ -147,6 +146,7 @@ main{
   }
   dd{
     height: 31px;
+    padding-top: 5px;
     margin-bottom: 20px;
   }
 }
@@ -191,4 +191,11 @@ a.btn-radius-solid:hover {
 }
 th{
   font-size: 20px;
+}
+.overview{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  h3{
+    padding-bottom: 20px;
+  }
 }

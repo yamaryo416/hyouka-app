@@ -1,16 +1,18 @@
-<div class="collapse" id="neck_trunk_mmt_form">
+<div class="collapse neck_trunk_mmt_form" id="neck_trunk_mmt_form">
   <div class="card card-body">
     <h3>頸部・体幹</h3>
     <div class="d-flex justify-content-center">
-      <div class="shoulder_mmt_head">
+      <div class="shoulder_mmt_head part-head">
         <dd>頸部屈曲</dd>
         <dd>頸部伸展</dd>
         <dd>体幹屈曲</dd>
         <dd>体幹伸展</dd>
       </div>
-      <div class="neck_trunk_mmt_form" style="width:80px;">
-        <% mmt_scale.neck_trunk_each_score.keys.each do |attr_name| %>
-          <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+      <div class="neck_trunk_mmt_form mmt-form">
+        <% mmt_scale.neck_trunk_scale_score.keys.each do |attr_name| %>
+          <div>
+            <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
+          </div>
         <% end %>
       </div>
     </div>

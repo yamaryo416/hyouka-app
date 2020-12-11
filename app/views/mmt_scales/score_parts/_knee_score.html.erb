@@ -2,20 +2,20 @@
   <div class="card card-body">
     <h3>膝関節</h3>
     <div class="d-flex justify-content-center">
-      <div class="knee_mmt_head">
-        <dd style="height:24px;"></dd>
+      <div class="knee_mmt_head part-head">
+        <dd class="left-top"></dd>
         <dd>屈曲</dd>
         <dd>伸展</dd>
       </div>
-      <div class="right_knee_mmt_score" style="width:80px;">
-        <dd>右</dd>
-        <% mmt_scale.right_knee_each_score.keys.each  do |attr_name| %>
+      <div class="right_knee_mmt_score mmt-score">
+        <dd class="direction-head">右</dd>
+        <% mmt_scale.right_knee_scale_score.keys.each  do |attr_name| %>
           <dd class="<%= attr_name %>_score"><%= mmt_scale.send("#{attr_name}_i18n") %></dd>
         <% end %>
       </div>
-      <div class="left_knee_mmt_score" style="width:80px;">
-        <dd>左</dd>
-        <% mmt_scale.left_knee_each_score.keys.each  do |attr_name| %>
+      <div class="left_knee_mmt_score mmt-score">
+        <dd class="direction-head">左</dd>
+        <% mmt_scale.left_knee_scale_score.keys.each  do |attr_name| %>
           <dd class="<%= attr_name %>_score"><%= mmt_scale.send("#{attr_name}_i18n") %></dd>
         <% end %>
       </div>
