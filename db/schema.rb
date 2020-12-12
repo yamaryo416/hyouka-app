@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
   end
 
   create_table "brs_scales", force: :cascade do |t|
-    t.integer "upper_limbs"
+    t.integer "upper_limb"
     t.integer "finger"
-    t.integer "lower_limbs"
+    t.integer "lower_limb"
     t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

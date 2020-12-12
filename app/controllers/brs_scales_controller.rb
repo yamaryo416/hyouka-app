@@ -1,6 +1,9 @@
 class BrsScalesController < ApplicationController
   before_action :set_brs_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @brs_scales = @patient.brs_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class BrsScalesController < ApplicationController
   end
 
   def create
-    @brs_scale = @patient.build_brs_scale(brs_scale_params)
-    @brs_scale.patient_id = params[:patient_id]
+    @brs_scale = @patient.brs_scales.build(brs_scale_params)
     @brs_scale.save
     flash[:success] = "BRSを登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_brs_scales_path(@patient)
   end
 
   def edit
@@ -29,24 +31,18 @@ class BrsScalesController < ApplicationController
   def destroy
     @brs_scale.destroy
     flash[:success] = "BRSを削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_brs_scales_path(@patient)
   end
 
   private
 
   def brs_scale_params
-    params.require(:brs_scale).permit(:upper_limbs,
+    params.require(:brs_scale).permit(:upper_limb,
                                       :finger,
-                                      :lower_limbs)
+                                      :lower_limb)
   end
 
   def set_brs_scale
-    @brs_scale = @patient.brs_scale
-  end
-
-  def already_exist?
-    if @patient.brs_scale
-      redirect_to @patient
-    end
+    @brs_scale = @patient.brs_scales.find(params[:id])
   end
 end

@@ -197,3 +197,16 @@ th{
   font-size: 30px;
   padding-bottom: 10px;
 }
+//modal
+.modal-body{
+  span{
+    display:inline-block;
+  }
+  .brs-modal-subtitle{
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .brs-modal-subcontent{
+    margin-left: 30px;
+  }
+}

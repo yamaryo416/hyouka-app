@@ -1,6 +1,7 @@
 class BrsScale < ApplicationRecord
+  include Scope
   belongs_to :patient
-  enum upper_limbs: {
+  enum upper_limb: {
     undefined: nil,
     stage_one: 1,
     stage_two: 2,
@@ -18,7 +19,7 @@ class BrsScale < ApplicationRecord
     stage_five: 5,
     stage_six: 6,
   }, _prefix: true
-  enum lower_limbs: {
+  enum lower_limb: {
     undefined: nil,
     stage_one: 1,
     stage_two: 2,

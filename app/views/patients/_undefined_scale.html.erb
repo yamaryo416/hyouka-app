@@ -51,9 +51,9 @@
         <%= link_to "FACT", new_patient_fact_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.brs_scale.nil? %>
+    <% if patient.brs_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "BRS", new_patient_brs_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "BRS", new_patient_brs_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.fbs_scales.blank? %>
