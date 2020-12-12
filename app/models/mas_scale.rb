@@ -1,6 +1,8 @@
 class MasScale < ApplicationRecord
+  include Scope
   belongs_to :patient
-  enum elbow_joint: {
+
+  enum right_elbow_joint: {
     undefined: nil,
     no_enhancement: 1,
     mild_enhancement: 2,
@@ -9,7 +11,7 @@ class MasScale < ApplicationRecord
     significant: 5,
     rigidity: 6,
   }, _prefix: true
-  enum wrist_joint: {
+  enum left_elbow_joint: {
     undefined: nil,
     no_enhancement: 1,
     mild_enhancement: 2,
@@ -18,7 +20,7 @@ class MasScale < ApplicationRecord
     significant: 5,
     rigidity: 6,
   }, _prefix: true
-  enum knee_joint: {
+  enum right_wrist_joint: {
     undefined: nil,
     no_enhancement: 1,
     mild_enhancement: 2,
@@ -27,7 +29,43 @@ class MasScale < ApplicationRecord
     significant: 5,
     rigidity: 6,
   }, _prefix: true
-  enum ankle_joint: {
+  enum left_wrist_joint: {
+    undefined: nil,
+    no_enhancement: 1,
+    mild_enhancement: 2,
+    mild_increase: 3,
+    increase: 4,
+    significant: 5,
+    rigidity: 6,
+  }, _prefix: true
+  enum right_knee_joint: {
+    undefined: nil,
+    no_enhancement: 1,
+    mild_enhancement: 2,
+    mild_increase: 3,
+    increase: 4,
+    significant: 5,
+    rigidity: 6,
+  }, _prefix: true
+  enum left_knee_joint: {
+    undefined: nil,
+    no_enhancement: 1,
+    mild_enhancement: 2,
+    mild_increase: 3,
+    increase: 4,
+    significant: 5,
+    rigidity: 6,
+  }, _prefix: true
+  enum right_ankle_joint: {
+    undefined: nil,
+    no_enhancement: 1,
+    mild_enhancement: 2,
+    mild_increase: 3,
+    increase: 4,
+    significant: 5,
+    rigidity: 6,
+  }, _prefix: true
+  enum left_ankle_joint: {
     undefined: nil,
     no_enhancement: 1,
     mild_enhancement: 2,

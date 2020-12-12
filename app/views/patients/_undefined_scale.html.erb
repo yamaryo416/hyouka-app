@@ -21,9 +21,9 @@
         <%= link_to "NRS", new_patient_nrs_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.mas_scale.nil? %>
+    <% if patient.mas_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "MAS", new_patient_mas_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "MAS", new_patient_mas_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.tendon_reflex_scale.nil? %>

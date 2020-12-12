@@ -125,10 +125,14 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
   end
 
   create_table "mas_scales", force: :cascade do |t|
-    t.integer "elbow_joint"
-    t.integer "wrist_joint"
-    t.integer "knee_joint"
-    t.integer "ankle_joint"
+    t.integer "right_elbow_joint"
+    t.integer "left_elbow_joint"
+    t.integer "right_wrist_joint"
+    t.integer "left_wrist_joint"
+    t.integer "right_knee_joint"
+    t.integer "left_knee_joint"
+    t.integer "right_ankle_joint"
+    t.integer "left_ankle_joint"
     t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

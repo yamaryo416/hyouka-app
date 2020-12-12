@@ -64,11 +64,19 @@
         </div>
       </div>
     <% end %>
-    <% if patient.mas_scale.present? %>
+    <% if patient.mas_scales.present? %>
       <div class="defined-scale-item row col-sm-12">
         <div class="col-sm-4">
           <%= link_to "MAS", patient_mas_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
+        <p class="mas-hypertonia-count col-sm-4">
+          <% if patient.mas_scales.last.hypertonia_part.empty? %>
+            筋緊張亢進はありません。
+          <% else %>
+            <%= link_to "#{patient.mas_scales.last.hypertonia_part.size}箇所が筋緊張亢進しています。", "#", data: {toggle: "modal", target: "#mas-hypertonia-part" } %>
+            <%= render "modal/mas_hypertonia_modal", patient: patient %>
+          <% end %>
+        </p>
       </div>
     <% end %>
     <% if patient.tendon_reflex_scale.present? %>

@@ -183,10 +183,14 @@ ja:
         finger: 手指
         lower_limb: 下肢
       mas_scale:
-        elbow_joint: 肘関節
-        wrist_joint: 手関節
-        knee_joint: 膝関節
-        ankle_joint: 足関節
+        right_elbow_joint: 右肘関節
+        left_elbow_joint: 左肘関節
+        right_wrist_joint: 右手関節
+        left_wrist_joint: 左手関節
+        right_knee_joint: 右膝関節
+        left_knee_joint: 左膝関節
+        right_ankle_joint: 右足関節
+        left_ankle_joint: 左足関節
       tendon_reflex_scale:
         jaw: 下顎反射
         abdominal: 腹筋反射
@@ -1030,7 +1034,7 @@ ja:
         stage_five: ステージⅤ
         stage_six: ステージⅥ
     mas_scale:
-      elbow_joint:
+      right_elbow_joint:
         undefined: 未選択
         no_enhancement: 0
         mild_enhancement: 1
@@ -1038,7 +1042,7 @@ ja:
         increase: 2
         significant: 3
         rigidity: 4
-      wrist_joint:
+      left_elbow_joint:
         undefined: 未選択
         no_enhancement: 0
         mild_enhancement: 1
@@ -1046,7 +1050,7 @@ ja:
         increase: 2
         significant: 3
         rigidity: 4
-      knee_joint:
+      right_wrist_joint:
         undefined: 未選択
         no_enhancement: 0
         mild_enhancement: 1
@@ -1054,7 +1058,39 @@ ja:
         increase: 2
         significant: 3
         rigidity: 4
-      ankle_joint:
+      left_wrist_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      right_knee_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      left_knee_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      right_ankle_joint:
+        undefined: 未選択
+        no_enhancement: 0
+        mild_enhancement: 1
+        mild_increase: 1+
+        increase: 2
+        significant: 3
+        rigidity: 4
+      left_ankle_joint:
         undefined: 未選択
         no_enhancement: 0
         mild_enhancement: 1
