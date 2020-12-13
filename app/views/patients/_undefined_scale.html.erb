@@ -31,9 +31,9 @@
         <%= link_to "腱反射", new_patient_tendon_reflex_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.tactile_scale.nil? %>
+    <% if patient.tactile_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "触覚検査", new_patient_tactile_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "触覚検査", new_patient_tactile_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.bathyesthesia_scale.nil? %>

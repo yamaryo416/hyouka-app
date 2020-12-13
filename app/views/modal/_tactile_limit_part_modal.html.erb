@@ -1,16 +1,16 @@
-<div class="rom-limit-modal">
-  <div class="modal fade" id="rom-limit-part" tabindex="-1" role="dialog" aria-labelledby="romLimitPartLabel" aria-hidden="true">
+<div class="tactile-limit-modal">
+  <div class="modal fade" id="tactile-limit-part" tabindex="-1" role="dialog" aria-labelledby="tactileLimitPartLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">可動域制限</h5>
+          <h5 class="modal-title">感覚機能低下</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <% patient.rom_scales.last.limit_part.each do |part| %>
-            <%= RomScale.human_attribute_name(part[0]) %>
+          <% patient.tactile_scales.last.limit_part.each do |part| %>
+            <%= TactileScale.human_attribute_name(part[0]) %>
           <% end %>
         </div>
       </div>

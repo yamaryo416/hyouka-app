@@ -1,6 +1,9 @@
 class TactileScalesController < ApplicationController
   before_action :set_tactile_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @tactile_scales = @patient.tactile_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class TactileScalesController < ApplicationController
   end
 
   def create
-    @tactile_scale = @patient.build_tactile_scale(tactile_scale_params)
-    @tactile_scale.patient_id = params[:patient_id]
+    @tactile_scale = @patient.tactile_scales.build(tactile_scale_params)
     @tactile_scale.save
     flash[:success] = "触覚検査を登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_tactile_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class TactileScalesController < ApplicationController
   def destroy
     @tactile_scale.destroy
     flash[:success] = "触覚検査を削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_tactile_scales_path(@patient)
   end
 
   private
@@ -52,12 +54,6 @@ class TactileScalesController < ApplicationController
   end
 
   def set_tactile_scale
-    @tactile_scale = @patient.tactile_scale
-  end
-
-  def already_exist?
-    if @patient.tactile_scale
-      redirect_to @patient
-    end
+    @tactile_scale = @patient.tactile_scales.find(params[:id])
   end
 end

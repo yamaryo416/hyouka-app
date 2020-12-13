@@ -85,7 +85,7 @@
         <div class="col-sm-4">
           <%= link_to "腱反射", patient_tendon_reflex_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="reflex_hyperreflexia-count col-sm-4">
+        <p class="tendon-reflex-hyperreflexia-count col-sm-4">
           <% if patient.tendon_reflex_scales.last.hyperreflexia_part.empty? %>
             腱反射亢進:なし
           <% else %>
@@ -94,7 +94,7 @@
             <%= render "modal/tendon_reflex_hyperreflexia_modal", patient: patient %>
           <% end %>
         </p>
-        <p class="hyporeflexia-count col-sm-4">
+        <p class="tendon-reflex-hyporeflexia-count col-sm-4">
           <% if patient.tendon_reflex_scales.last.hyporeflexia_part.empty? %>
             腱反射低下:なし
           <% else %>
@@ -105,11 +105,20 @@
         </p>
       </div>
     <% end %>
-    <% if patient.tactile_scale.present? %>
+    <% if patient.tactile_scales.present? %>
       <div class="defined-scale-item row col-sm-12">
         <div class="col-sm-4">
           <%= link_to "触覚検査", patient_tactile_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
+        <p class="tactile-limit-part-count col-sm-4">
+          感覚機能低下:
+          <% if patient.tactile_scales.last.limit_part.empty? %>
+            なし
+          <% else %>
+            <%= link_to "#{patient.tactile_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#tactile-limit-part" } %>
+            <%= render "modal/tactile_limit_part_modal", patient: patient %>
+          <% end %>
+        </p>
       </div>
     <% end %>
     <% if patient.bathyesthesia_scale.present? %>

@@ -8,7 +8,7 @@ class Patient < ApplicationRecord
   has_many :brs_scales, dependent: :destroy
   has_many :mas_scales, dependent: :destroy
   has_many :tendon_reflex_scales, dependent: :destroy
-  has_one :tactile_scale, dependent: :destroy
+  has_many :tactile_scales, dependent: :destroy
   has_one :bathyesthesia_scale, dependent: :destroy
   has_many :nrs_scales, dependent: :destroy
   has_many :hdsr_scales, dependent: :destroy
