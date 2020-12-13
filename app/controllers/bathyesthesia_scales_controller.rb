@@ -1,6 +1,9 @@
 class BathyesthesiaScalesController < ApplicationController
   before_action :set_bathyesthesia_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @bathyesthesia_scales = @patient.bathyesthesia_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class BathyesthesiaScalesController < ApplicationController
   end
 
   def create
-    @bathyesthesia_scale = @patient.build_bathyesthesia_scale(bathyesthesia_scale_params)
-    @bathyesthesia_scale.patient_id = params[:patient_id]
+    @bathyesthesia_scale = @patient.bathyesthesia_scales.build(bathyesthesia_scale_params)
     @bathyesthesia_scale.save
     flash[:success] = "深部感覚検査を登録しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_bathyesthesia_scales_path(@patient)
   end
 
   def edit
@@ -29,7 +31,7 @@ class BathyesthesiaScalesController < ApplicationController
   def destroy
     @bathyesthesia_scale.destroy
     flash[:success] = "深部感覚検査を削除しました。"
-    redirect_to patient_path(@patient)
+    redirect_to patient_bathyesthesia_scales_path(@patient)
   end
 
   private
@@ -46,12 +48,6 @@ class BathyesthesiaScalesController < ApplicationController
   end
 
   def set_bathyesthesia_scale
-    @bathyesthesia_scale = @patient.bathyesthesia_scale
-  end
-
-  def already_exist?
-    if @patient.bathyesthesia_scale
-      redirect_to @patient
-    end
+    @bathyesthesia_scale = @patient.bathyesthesia_scales.find(params[:id])
   end
 end

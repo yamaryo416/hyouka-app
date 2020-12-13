@@ -1,0 +1,46 @@
+<%= provide(:title, "深部感覚検査一覧") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "深部感覚検査"  %>
+<div class="link_section d-flex justify-content-between">
+  <div class="left_link">
+    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+  </div>
+  <div class="right_link">
+    <%= link_to "新規作成", new_patient_bathyesthesia_scale_path(@patient), class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="main-contents">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">作成日時</th>
+        <th scope="col">機能低下</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bathyesthesia_scales.each_with_index do |bathyesthesia_scale, i| %>
+        <tr class="bathyesthesia_score">
+          <td class="bathyesthesia<%= i %>-created-at"><%= bathyesthesia_scale.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="bathyesthesia<%= i %>-limit-part-count">
+            <% if bathyesthesia_scale.limit_part.empty? %>
+              なし
+            <% else %>
+              <%= bathyesthesia_scale.limit_part.size %>箇所
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細", patient_bathyesthesia_scale_path(@patient, bathyesthesia_scale), class: "bathyesthesia#{i}_show_link show_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_patient_bathyesthesia_scale_path(@patient, bathyesthesia_scale), class: "bathyesthesia#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "削除", patient_bathyesthesia_scale_path(@patient, bathyesthesia_scale),class: "bathyesthesia#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "深部感覚検査を削除します。よろしいですか?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

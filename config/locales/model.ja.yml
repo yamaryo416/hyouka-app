@@ -1301,68 +1301,36 @@ ja:
     bathyesthesia_scale:
       right_upper_limb:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       left_upper_limb:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       right_lower_limb:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       left_lower_limb:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       right_finger:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       left_finger:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       right_toe:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
       left_toe:
         undefined: 未選択
-        zero: 0/5
-        one: 1/5
-        two: 2/5
-        three: 3/5
-        four: 4/5
-        five: 5/5
+        impaired: 鈍麻
+        normal: 正常
     nrs_scale:
       status:
         undefined: 未選択
