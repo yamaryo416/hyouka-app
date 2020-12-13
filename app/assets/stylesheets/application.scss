@@ -2,6 +2,9 @@
 @import 'reset';
 
 // header
+.navbar{
+  background-color: lightsteelblue;
+}
 header .container{
   position: relative;
 }
@@ -104,7 +107,7 @@ main{
   }
 }
 
-.rom-form, .mmt-form, .mas-form{
+.rom-form, .mmt-form, .mas-form, .tendon-reflex-form{
   .direction-head{
     font-size: 20px;
     font-weight: 500;
@@ -125,7 +128,7 @@ main{
   }
 }
 
-.rom-score, .mmt-score, .mas-score{
+.rom-score, .mmt-score, .mas-score, .tendon-reflex-score{
   .direction-head{
     font-size: 20px;
     font-weight: 500;

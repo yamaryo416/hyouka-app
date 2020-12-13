@@ -1,0 +1,19 @@
+<div class="tendon-reflex-hyporeflexia-modal">
+  <div class="modal fade" id="tendon-reflex-hyporeflexia-part" tabindex="-1" role="dialog" aria-labelledby="tendonReflexHyporeflexiaPartLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">筋緊張低下</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% patient.tendon_reflex_scales.last.hyporeflexia_part.each do |part| %>
+            <%= TendonReflexScale.human_attribute_name(part[0]) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

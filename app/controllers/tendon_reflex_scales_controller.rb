@@ -1,6 +1,9 @@
 class TendonReflexScalesController < ApplicationController
   before_action :set_tendon_reflex_scale, only: [:show, :edit, :update, :destroy]
-  before_action :already_exist?, only: [:new, :create]
+
+  def index
+    @tendon_reflex_scales = @patient.tendon_reflex_scales.recent
+  end
 
   def show
   end
@@ -10,11 +13,10 @@ class TendonReflexScalesController < ApplicationController
   end
 
   def create
-    @tendon_reflex_scale = @patient.build_tendon_reflex_scale(tendon_reflex_scale_params)
-    @tendon_reflex_scale.patient_id = params[:patient_id]
+    @tendon_reflex_scale = @patient.tendon_reflex_scales.build(tendon_reflex_scale_params)
     @tendon_reflex_scale.save
-    flash[:success] = "深部腱反射を登録しました。"
-    redirect_to patient_path(@patient)
+    flash[:success] = "腱反射を登録しました。"
+    redirect_to patient_tendon_reflex_scales_path(@patient)
   end
 
   def edit
@@ -22,14 +24,14 @@ class TendonReflexScalesController < ApplicationController
 
   def update
     @tendon_reflex_scale.update(tendon_reflex_scale_params)
-    flash[:success] = "深部腱反射を編集しました。"
+    flash[:success] = "腱反射を編集しました。"
     redirect_to patient_tendon_reflex_scales_path(@patient)
   end
 
   def destroy
     @tendon_reflex_scale.destroy
-    flash[:success] = "深部腱反射を削除しました。"
-    redirect_to patient_path(@patient)
+    flash[:success] = "腱反射を削除しました。"
+    redirect_to patient_tendon_reflex_scales_path(@patient)
   end
 
   private
@@ -56,12 +58,6 @@ class TendonReflexScalesController < ApplicationController
   end
 
   def set_tendon_reflex_scale
-    @tendon_reflex_scale = @patient.tendon_reflex_scale
-  end
-
-  def already_exist?
-    if @patient.tendon_reflex_scale
-      redirect_to @patient
-    end
+    @tendon_reflex_scale = @patient.tendon_reflex_scales.find(params[:id])
   end
 end

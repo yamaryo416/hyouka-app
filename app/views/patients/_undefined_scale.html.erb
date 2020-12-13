@@ -1,5 +1,5 @@
 <div class="undefined-scale-section border border-info">
-  <h3>未実施の評価</h3>
+  <h3>評価項目</h3>
   <div class="undefined-scale-items row">
     <% if patient.sias_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
@@ -26,9 +26,9 @@
         <%= link_to "MAS", new_patient_mas_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
-    <% if patient.tendon_reflex_scale.nil? %>
+    <% if patient.tendon_reflex_scales.blank? %>
       <div class="undefined-scale-item col-sm-3">
-        <%= link_to "深部腱反射", new_patient_tendon_reflex_scales_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
+        <%= link_to "腱反射", new_patient_tendon_reflex_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.tactile_scale.nil? %>

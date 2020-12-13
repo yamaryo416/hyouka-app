@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :fbs_scales
     resources :brs_scales
     resources :mas_scales
-    resource :tendon_reflex_scales
+    resources :tendon_reflex_scales
     resource :tactile_scales
     resource :bathyesthesia_scales
     resources :nrs_scales
