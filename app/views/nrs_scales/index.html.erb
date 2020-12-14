@@ -1,26 +1,40 @@
-<h1>NRS</h1>
-<%= link_to "患者ページに戻る", patient_path(@patient) %>
-<%= link_to "新規作成", new_patient_nrs_scale_path(@patient) %>
-
-<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
-  <tr>
-    <th bgcolor="#EE0000"><font color="#FFFFFF">日付</font></th>
-    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">NRS</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">状態</font></th>
-    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">補足</font></th>
-  </tr>
-  <% @nrs_scales.each_with_index do |nrs_scale, i| %>
-    <tr class="nrs_score">
-      <td class="nrs<%= i %>_created_at" bgcolor="#99CC00" align="right" nowrap><%= nrs_scale.created_at.strftime('%Y/%m/%d') %></td>
-      <td class="nrs<%= i %>_rating" bgcolor="#FFFFFF" valign="top" width="150"><%= nrs_scale.rating %></td>
-      <td class="nrs<%= i %>_status" bgcolor="#FFFFFF" valign="top" width="200"><%= nrs_scale.status_i18n %></td>
-      <td class="nrs<%= i %>_supplement" bgcolor="#FFFFFF" valign="top" width="200"><%= nrs_scale.supplement %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "編集する", edit_patient_nrs_scale_path(@patient, nrs_scale), class: "nrs#{i}_edit_link edit_link" %>
-      </td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "削除する", patient_nrs_scale_path(@patient, nrs_scale),class: "nrs#{i}_delete_link delete_link", method: :delete, data: { confirm: "NRSを削除します。よろしいですか?" } %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= provide(:title, "NRS一覧") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "NRS"  %>
+<div class="link_section d-flex justify-content-between">
+  <div class="left_link">
+    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+  </div>
+  <div class="right_link">
+    <%= link_to "新規作成", new_patient_nrs_scale_path(@patient), class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="main-contents">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">作成日時</th>
+        <th scope="col">NRS</th>
+        <th scope="col">状態</th>
+        <th scope="col">補足</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @nrs_scales.each_with_index do |nrs_scale, i| %>
+        <tr class="nrs_score">
+          <td class="nrs<%= i %>-created-at"><%= nrs_scale.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="nrs<%= i %>-rating"><%= nrs_scale.rating %></td>
+          <td class="nrs<%= i %>-status"><%= nrs_scale.status_i18n %></td>
+          <td class="nrs<%= i %>-supplement"><%= nrs_scale.supplement %></td>
+          <td>
+            <%= link_to "編集", edit_patient_nrs_scale_path(@patient, nrs_scale), class: "nrs#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "削除", patient_nrs_scale_path(@patient, nrs_scale),class: "nrs#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "NRSを削除します。よろしいですか?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

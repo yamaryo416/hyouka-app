@@ -19,9 +19,9 @@
         </div>
         <p class="rom-limit-count col-sm-4">
           <% if patient.rom_scales.last.limit_part.empty? %>
-            可動域制限はありません。
+            可動域制限: なし
           <% else %>
-            <%= link_to "#{patient.rom_scales.last.limit_part.size}箇所に可動域制限があります。", "#", data: {toggle: "modal", target: "#rom-limit-part" } %>
+            <%= link_to "可動域制限: #{patient.rom_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#rom-limit-part" } %>
             <%= render "modal/rom_limit_modal", patient: patient %>
           <% end %>
         </p>
@@ -34,9 +34,9 @@
         </div>
         <p class="mmt-weak-count col-sm-4">
           <% if patient.mmt_scales.last.weak_part.empty? %>
-            筋力低下はありません
+            筋力低下: なし
           <% else %>
-            <%= link_to "#{patient.mmt_scales.last.weak_part.size}箇所に筋力低下があります。", "#", data: {toggle: "modal", target: "#mmt-weak-part" } %>
+            <%= link_to "筋力低下: #{patient.mmt_scales.last.weak_part.size}箇所", "#", data: {toggle: "modal", target: "#mmt-weak-part" } %>
             <%= render "modal/mmt_weak_modal", patient: patient %>
           <% end %>
         </p>
@@ -46,6 +46,17 @@
       <div class="defined-scale-item row col-sm-12">
         <div class="col-sm-4">
           <%= link_to "NRS", patient_nrs_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
+        </div>
+        <div class="col-sm-4">
+          <p>
+            <%= patient.nrs_scales.last.status_i18n %>
+            <%= patient.nrs_scales.last.rating %>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <p>
+            <%= patient.nrs_scales.last.supplement %>
+          </p>
         </div>
       </div>
     <% end %>
@@ -73,8 +84,7 @@
           <% if patient.mas_scales.last.hypertonia_part.empty? %>
             筋緊張亢進:なし
           <% else %>
-            筋緊張亢進:
-            <%= link_to "#{patient.mas_scales.last.hypertonia_part.size}箇所", "#", data: {toggle: "modal", target: "#mas-hypertonia-part" } %>
+            <%= link_to "筋緊張亢進: #{patient.mas_scales.last.hypertonia_part.size}箇所", "#", data: {toggle: "modal", target: "#mas-hypertonia-part" } %>
             <%= render "modal/mas_hypertonia_modal", patient: patient %>
           <% end %>
         </p>
@@ -89,8 +99,7 @@
           <% if patient.tendon_reflex_scales.last.hyperreflexia_part.empty? %>
             腱反射亢進:なし
           <% else %>
-            腱反射亢進:
-            <%= link_to "#{patient.tendon_reflex_scales.last.hyperreflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyperreflexia-part" } %>
+            <%= link_to "腱反射亢進: #{patient.tendon_reflex_scales.last.hyperreflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyperreflexia-part" } %>
             <%= render "modal/tendon_reflex_hyperreflexia_modal", patient: patient %>
           <% end %>
         </p>
@@ -98,8 +107,7 @@
           <% if patient.tendon_reflex_scales.last.hyporeflexia_part.empty? %>
             腱反射低下:なし
           <% else %>
-            腱反射低下:
-            <%= link_to "#{patient.tendon_reflex_scales.last.hyporeflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyporeflexia-part" } %>
+            <%= link_to "腱反射低下: #{patient.tendon_reflex_scales.last.hyporeflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyporeflexia-part" } %>
             <%= render "modal/tendon_reflex_hyporeflexia_modal", patient: patient %>
           <% end %>
         </p>
@@ -111,11 +119,10 @@
           <%= link_to "触覚検査", patient_tactile_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
         <p class="tactile-limit-part-count col-sm-4">
-          機能低下:
           <% if patient.tactile_scales.last.limit_part.empty? %>
-            なし
+            機能低下: なし
           <% else %>
-            <%= link_to "#{patient.tactile_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#tactile-limit-part" } %>
+            <%= link_to "機能低下: #{patient.tactile_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#tactile-limit-part" } %>
             <%= render "modal/tactile_limit_part_modal", patient: patient %>
           <% end %>
         </p>
@@ -127,11 +134,10 @@
           <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
         <p class="tactile-limit-part-count col-sm-4">
-          機能低下:
           <% if patient.bathyesthesia_scales.last.limit_part.empty? %>
-            なし
+            機能低下: なし
           <% else %>
-            <%= link_to "#{patient.bathyesthesia_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#bathyesthesia-limit-part" } %>
+            <%= link_to "機能低下: #{patient.bathyesthesia_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#bathyesthesia-limit-part" } %>
             <%= render "modal/bathyesthesia_limit_part_modal", patient: patient %>
           <% end %>
         </p>

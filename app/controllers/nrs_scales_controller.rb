@@ -2,7 +2,7 @@ class NrsScalesController < ApplicationController
   before_action :set_nrs_scale, only: [:edit, :update, :destroy]
 
   def index
-    @nrs_scales = @patient.nrs_scales.order(created_at: :desc)
+    @nrs_scales = @patient.nrs_scales.recent
   end
 
   def new
@@ -27,7 +27,7 @@ class NrsScalesController < ApplicationController
       flash[:success] = "NRSを編集しました。"
       redirect_to patient_nrs_scales_path(@patient)
     else
-      render :new
+      render :edit
     end
   end
 

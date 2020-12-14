@@ -127,6 +127,19 @@ main{
     margin-bottom: 20px;
   }
 }
+.nrs-form{
+  .nrs-column{
+    margin-bottom: 30px;
+    label{
+      font-size: 20px;
+      font-weight: 500;
+      margin-right: 20px;
+    }
+    select{
+      height: 30px;
+    }
+  }
+}
 
 .rom-score, .mmt-score, .mas-score, .tendon-reflex-score, .bathyesthesia-score{
   .direction-head{
@@ -212,4 +225,8 @@ th{
   .brs-modal-subcontent{
     margin-left: 30px;
   }
+}
+//error
+.error_explanation{
+  margin-bottom: 30px;
 }

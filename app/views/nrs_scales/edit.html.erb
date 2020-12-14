@@ -1,29 +1,34 @@
-<h1>NRS</h1>
-<%= link_to "NRS一覧に戻る", patient_nrs_scales_path(@patient) %>
-<%= form_with(url: patient_nrs_scale_path(id: @nrs_scale), scope: :nrs_scale, local: true, method: :patch) do |f| %>
+<% provide(:title, "NRS編集") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "NRS" %>
+<%= link_to "NRS一覧に戻る", patient_nrs_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents new-nrs">
   <% if @nrs_scale.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="error_explanation">
       <div class="alert alert-danger">
-        The form contains <%= pluralize(@nrs_scale.errors.count, "error") %>.
+        <%= @nrs_scale.errors.count %>個のエラーがあります。
       </div>
       <ul>
       <%@nrs_scale.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li>・<%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.label :rating %>
-    <%= f.number_field :rating, step: "1", in: 0..10 %>
-  </p>
-  <p>
-    <%= f.label :status %>
-    <%= f.select :status, NrsScale.statuses.keys.map { |k| [I18n.t("enums.nrs_scale.status.#{k}"), k] }%>
-  </p>
-  <p>
-    <%= f.label :supplement %>
-    <%= f.text_field :supplement %>
-  </p>
-  <%= f.submit %>
-<% end %>
+  <%= form_with(url: patient_nrs_scale_path(id: @nrs_scale), scope: :nrs_scale, local: true, method: :patch) do |f| %>
+    <div class="nrs-form">
+      <div class="nrs-column row">
+        <%= f.label :rating %>
+        <%= f.number_field :rating, step: "1", in: 0..10 %>
+      </div>
+      <div class="nrs-column row">
+        <%= f.label :status %>
+        <%= f.select :status, NrsScale.statuses.keys.map { |k| [I18n.t("enums.nrs_scale.status.#{k}"), k] }%>
+      </div>
+      <div class="nrs-column row">
+        <%= f.label :supplement %>
+        <%= f.text_field :supplement %>
+      </div>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>
