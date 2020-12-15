@@ -1,78 +1,9 @@
-<h1>HDS-R</h1>
-<%= link_to "HDS-R一覧に戻る", patient_hdsr_scales_path(@patient) %>
-<%= form_with(url: patient_hdsr_scales_path, scope: :hdsr_scale, local: true) do |f| %>
-  <% if @hdsr_scale.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger">
-        The form contains <%= pluralize(@hdsr_scale.errors.count, "error") %>.
-      </div>
-      <ul>
-      <%@hdsr_scale.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<% provide(:title, "HDS-R作成") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "HDS-R" %>
+<%= link_to "HDS-R一覧に戻る", patient_hdsr_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents new-hdsr">
+  <%= form_with(url: patient_hdsr_scales_path, scope: :hdsr_scale, local: true) do |f| %>
+    <%= render "form", f: f %>
+    <%= f.submit %>
   <% end %>
-  <div class="d-flex justify-content-center">
-    <div class="shoulder_rom_head">
-      <dd style="height:24px;"></dd>
-      <dd>屈曲</dd>
-      <dd>伸展</dd>
-      <dd>内転</dd>
-      <dd>外転</dd>
-      <dd>内旋(1st)</dd>
-      <dd>外旋(1st)</dd>
-      <dd>内旋(2st)</dd>
-      <dd>外旋(2st)</dd>
-      <dd>内旋(3st)</dd>
-      <dd>外旋(3st)</dd>
-    </div>
-    <div class="right_shoulder_rom_form" style="width:300px;">
-      <% AGE_AND_TODAY_ATTRIBUTES.each do |attr_name| %>
-        <div class="<%= attr_name %>_form">
-          <% 2.times do |i| %>
-           <%= f.radio_button attr_name, i %>
-          <% end %>
-        </div>
-      <% end %>
-      <div class="place_form">
-        <% 3.times do |i| %>
-         <%= f.radio_button :place, i %>
-        <% end %>
-      </div>
-      <% THREE_WORD_SUBTRACTION_ATTRIBUTES.each do |attr_name| %>
-        <div class="<%= attr_name %>_form">
-          <% 2.times do |i| %>
-           <%= f.radio_button attr_name, i %>
-          <% end %>
-        </div>
-      <% end %>
-      <div class="memory_first_word_form">
-        <% 3.times do |i| %>
-         <%= f.radio_button :memory_first_word, i %>
-        <% end %>
-      </div>
-      <div class="memory_second_word_form">
-        <% 3.times do |i| %>
-         <%= f.radio_button :memory_second_word, i %>
-        <% end %>
-      </div>
-      <div class="memory_third_word_form">
-        <% 3.times do |i| %>
-         <%= f.radio_button :memory_third_word, i %>
-        <% end %>
-      </div>
-      <div class="five_goods_form">
-        <% 6.times do |i| %>
-         <%= f.radio_button :five_goods, i %>
-        <% end %>
-      </div>
-      <div class="vegetables_form">
-        <% 6.times do |i| %>
-         <%= f.radio_button :vegetables, i %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <%= f.submit %>
-<% end %>
+</div>

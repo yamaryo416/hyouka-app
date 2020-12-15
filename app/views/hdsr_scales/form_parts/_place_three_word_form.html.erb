@@ -1,0 +1,44 @@
+<div class="place-column hdsr-column">
+  <div class="place-head hdsr-head">
+    <p>
+      3) 私たちが今いるところは、どこですか？<br/>
+      <span>(自発的にできれば2点、5秒おいて家ですか？</span><br/>
+      <span>病院ですか？施設ですか？</span><br/>
+      <span>の中から正しい選択をすれば1点)</span>
+    </p>
+  </div>
+  <div class="place-form hdsr-form">
+    <% 3.times do |i| %>
+     <%= i %>: <%= f.radio_button :place, i %>
+    <% end %>
+  </div>
+</div>
+<div class="three-word-column hdsr-column">
+  <div class="three-word-head hdsr-head">
+    <p>
+      4) これから言う3つの言葉を言ってみてください。<br/>
+      <span>またあとで聞きますので</span><br/>
+      <span>よく覚えておいてください。</span><br/>
+      <span>1つ言えるごとに1点</span><br/>
+      <span>(以下の系列のいずれか1つ)</span><br/>
+      <span>1： a) 桜 b）猫　c）電車</span><br/>
+      <span>2： a）梅　b）犬　c）自動車</span>
+    </p>
+  </div>
+  <div class="three-word-form hdsr-form flex-form">
+    <div class="three-word-form-left form-left">
+      <p>a)</p>
+      <p>b)</p>
+      <p>c)</p>
+    </div>
+    <div class="three-word-form-right form-right">
+      <% HdsrScale::THREE_WORD_ATTRIBUTES.each do |attr_name| %>
+        <div class="<%= attr_name %>_form">
+          <% 2.times do |i| %>
+           <%= i %>: <%= f.radio_button attr_name, i %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

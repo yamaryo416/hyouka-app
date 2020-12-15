@@ -1,0 +1,50 @@
+<div class="subtraction-column hdsr-column">
+  <div class="subtraction-head hdsr-head">
+    <p>
+      5) 100から7を順番に引いてください。<br/>
+      <span>(100-7は？それからまた7を引くと？</span><br/>
+      <span>と質問する。最初の答え不正解の場合、<span><br/>
+      <span>打ち切る)</span>
+    </p>
+  </div>
+  <div class="subtraction-form hdsr-form flex-form">
+    <div class="subtraction-form-left form-left">
+      <p>93</p>
+      <p>86</p>
+    </div>
+    <div class="subtraction-form-right">
+      <% HdsrScale::SUBTRACTION_ATTRIBUTES.each do |attr_name| %>
+        <div class="<%= attr_name %>_form">
+          <% 2.times do |i| %>
+           <%= i %>: <%= f.radio_button attr_name, i %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="reverse-number-column hdsr-column">
+  <div class="reverse-number-head hdsr-head">
+    <p>
+      6) 私がこれから言う数字を逆から言ってください。<br/>
+      <span>(6・8・2、3・5・2・9)</span><br/>
+      <span>を逆に言ってもらう。3桁逆唱に失敗したら<span><br/>
+      <span>打ち切る。</span>
+    </p>
+  </div>
+  <div class="reverse-number-form reverse-number-form flex-form">
+    <div class="reverse-number-form-left form-left">
+      <p>2・8・6</p>
+      <p>9・2・5・3</p>
+    </div>
+    <div class="reverse-number-form-right">
+      <% HdsrScale::REVERSE_NUMBER_ATTRIBUTES.each do |attr_name| %>
+        <div class="<%= attr_name %>_form">
+          <% 2.times do |i| %>
+           <%= i %>: <%= f.radio_button attr_name, i %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

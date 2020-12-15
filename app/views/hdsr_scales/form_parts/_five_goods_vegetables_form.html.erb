@@ -1,0 +1,30 @@
+<div class="five-goods-column hdsr-column">
+  <div class="five-goods-head hdsr-head">
+    <p>
+      8) これか5つの品物を見せます。<br/>
+      <span>それを隠しますので、</span><br/>
+      <span>なにがあったか言ってください。<span><br/>
+      <span>(必ず相互に無関係なもの)<span>
+    </p>
+  </div>
+  <div class="five-goods-form hdsr-form">
+    <% 6.times do |i| %>
+     <%= i %>: <%= f.radio_button :five_goods, i %>
+    <% end %>
+  </div>
+</div>
+<div class="vegetables-column hdsr-column">
+  <div class="vegetables-head hdsr-head">
+    <p>
+      9) 知っている野菜の名前をできるだけ多く言ってください。<br/>
+      <span>(途中で詰まり、</span><br/>
+      <span>約10秒間待っも出ない場合には<span><br/>
+      <span>そこで打ち切る。)<span>
+    </p>
+  </div>
+  <div class="vegetables-form hdsr-form">
+    <% 6.times do |i| %>
+     <%= i %>: <%= f.radio_button :vegetables, i %>
+    <% end %>
+  </div>
+</div>

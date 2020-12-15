@@ -140,6 +140,25 @@ main{
     }
   }
 }
+.hdsr-column{
+  padding-bottom: 40px;
+  border: 1px solid black;
+  .hdsr-head{
+    padding-bottom: 10px;
+  }
+}
+.flex-form{
+  display: flex;
+  justify-content: flex-start;
+  .form-left{
+    padding-right: 20px;
+  }
+}
+.hdsr-form{
+  input{
+    margin-right: 20px;
+  }
+}
 
 .rom-score, .mmt-score, .mas-score, .tendon-reflex-score, .bathyesthesia-score{
   .direction-head{

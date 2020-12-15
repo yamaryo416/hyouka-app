@@ -1,0 +1,27 @@
+<div class="memory-word-column hdsr-column">
+  <div class="memory-word-head hdsr-head">
+    <p>
+      7) 先ほど覚えてもらった言葉をもう一度言ってみてください。<br/>
+      <span>（自発的に回答があれば各2点。</span><br/>
+      <span>もし回答がない場合以下のヒントを与えて<span><br/>
+      <span>正解であれば1点<span><br/>
+      <span>a）植物　b）動物　c）乗り物</span>
+    </p>
+  </div>
+  <div class="memory-word-form hdsr-form flex-form">
+    <div class="memory-word-form-left form-left">
+      <p>a)</p>
+      <p>b)</p>
+      <p>c)</p>
+    </div>
+    <div class="memory-word-form-right form-right">
+      <% HdsrScale::MEMORY_WORD_ATTRIBUTES.each do |attr_name| %>
+        <div class="<%= attr_name %>_form">
+          <% 3.times do |i| %>
+           <%= i %>: <%= f.radio_button attr_name, i %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

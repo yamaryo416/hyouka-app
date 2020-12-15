@@ -1,4 +1,35 @@
 class HdsrScale < ApplicationRecord
+  include Scope
+
+  TODAY_ATTRIBUTES = [
+    :year,
+    :month,
+    :day,
+    :day_of_the_week,
+  ].map(&:freeze).freeze
+
+  THREE_WORD_ATTRIBUTES = [
+    :first_three_word,
+    :second_three_word,
+    :third_three_word,
+  ].map(&:freeze).freeze
+
+  SUBTRACTION_ATTRIBUTES = [
+    :first_subtraction,
+    :second_subtraction,
+  ].map(&:freeze).freeze
+
+  REVERSE_NUMBER_ATTRIBUTES = [
+    :revese_three_number,
+    :revese_four_number,
+  ].map(&:freeze).freeze
+
+  MEMORY_WORD_ATTRIBUTES = [
+    :memory_first_word,
+    :memory_second_word,
+    :memory_third_word,
+  ].map(&:freeze).freeze
+
   belongs_to :patient
   with_options inclusion: 0..1, allow_nil: true do
     validates :age

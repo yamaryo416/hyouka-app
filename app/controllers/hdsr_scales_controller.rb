@@ -1,8 +1,11 @@
 class HdsrScalesController < ApplicationController
-  before_action :set_hdsr_scale, only: [:edit, :update, :destroy]
+  before_action :set_hdsr_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hdsr_scales = @patient.hdsr_scales.order(created_at: :desc)
+    @hdsr_scales = @patient.hdsr_scales.recent
+  end
+
+  def show
   end
 
   def new
@@ -11,24 +14,18 @@ class HdsrScalesController < ApplicationController
 
   def create
     @hdsr_scale = @patient.hdsr_scales.build(hdsr_scale_params)
-    if @hdsr_scale.save
-      flash[:success] = "HDS-Rを登録しました。"
-      redirect_to patient_hdsr_scales_path(@patient)
-    else
-      render :new
-    end
+    @hdsr_scale.save
+    flash[:success] = "HDS-Rを登録しました。"
+    redirect_to patient_hdsr_scales_path(@patient)
   end
 
   def edit
   end
 
   def update
-    if @hdsr_scale.update(hdsr_scale_params)
-      flash[:success] = "HDS-Rを編集しました。"
-      redirect_to patient_hdsr_scales_path(@patient)
-    else
-      render :new
-    end
+    @hdsr_scale.update(hdsr_scale_params)
+    flash[:success] = "HDS-Rを編集しました。"
+    redirect_to patient_hdsr_scales_path(@patient)
   end
 
   def destroy
