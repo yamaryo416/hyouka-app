@@ -18,5 +18,5 @@ class Patient < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :last_name, presence: true, length: { maximum: 10 }
 
-  enum sex: { undefined: 0, man: 1, woman: 2 }
+  enum sex: { undefined: nil, man: 1, woman: 2 }
 end

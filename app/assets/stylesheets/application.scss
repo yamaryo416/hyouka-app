@@ -32,6 +32,27 @@ main{
 }
 
 //patient
+.new-patient{
+  text-align: center;
+  select{
+    height: 30px;
+  }
+  .form_group{
+    display: flex;
+    justify-content: center;
+    span{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  .fist-name-form, .last-name-form{
+    width: 100px;
+  }
+  .age-form, .weight-form, .height-form{
+    width: 70px;
+  }
+
+}
 .patient-details{
   align-items: center;
   padding: 20px;
@@ -266,6 +287,6 @@ th{
 }
 
 //error
-.error_explanation{
+.error-explanation{
   margin-bottom: 30px;
 }

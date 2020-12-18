@@ -22,7 +22,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li><%= link_to "患者一覧", patients_path, class: "dropdown-item" %></li>
-                  <li><%= link_to "患者作成", new_patient_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "患者登録", new_patient_path, class: "dropdown-item" %></li>
                   <% if current_therapist.has_role?(:admin) %>
                     <li><%= link_to "ユーザー作成", signup_path, class: "dropdown-item" %></li>
                   <% end %>

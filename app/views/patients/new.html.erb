@@ -1,30 +1,33 @@
-<h1>患者登録</h1>
-<% if @patient.errors.any? %>
-  <ul>
-    <% @patient.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with(model: @patient, local: true) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :sex %><br />
-  <%= f.select :sex, Patient.sexes.keys.map { |k| [I18n.t("enums.patient.sex.#{k}"), k] } %>
-
-  <%= f.label :age %>
-  <%= f.number_field :age %>
-
-  <%= f.label :weight %>
-  <%= f.number_field :weight, step: '0.1' %>
-
-  <%= f.label :height %>
-  <%= f.number_field :height, step: '0.1' %>
-
-  <%= f.submit "患者登録" %>
-<% end %>
+<% provide(:title, "患者登録") %>
+<div class="main-contents new-patient">
+  <%= render "shared/error_messages", model: @patient %>
+  <%= form_with(model: @patient, local: true) do |f| %>
+    <div class="form_group">
+      <%= f.label :first_name %><span>:</span>
+      <%= f.text_field :first_name, class: "fist-name-form" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :last_name %><span>:</span>
+      <%= f.text_field :last_name, class: "last-name-form" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :sex %><span>:</span>
+      <%= f.select :sex, Patient.sexes.keys.map { |k| [I18n.t("enums.patient.sex.#{k}"), k] } %>
+    </div>
+    <div class="form_group">
+      <%= f.label :age %><span>:</span>
+      <%= f.number_field :age, class: "age-form" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :weight %><span>:</span>
+      <%= f.number_field :weight, step: '0.1', class: "weight-form" %>
+    </div>
+    <div class="form_group">
+      <%= f.label :height %><span>:</span>
+      <%= f.number_field :height, step: '0.1', class: "height-form" %>
+    </div>
+    <div class="form-action">
+      <%= f.submit "患者登録", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
