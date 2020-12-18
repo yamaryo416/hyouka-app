@@ -1,25 +1,46 @@
-<h1>FACT</h1>
-<%= link_to "患者ページに戻る", patient_path(@patient) %>
-<%= link_to "新規作成", new_patient_fact_scale_path(@patient) %>
-
-<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
-  <tr>
-    <th bgcolor="#EE0000"><font color="#FFFFFF">日付</font></th>
-    <th bgcolor="#EE0000" width="500"><font color="#FFFFFF">総得点</font></th>
-  </tr>
-  <% @fact_scales.each_with_index do |fact_scale, i| %>
-    <tr class="fact_score">
-      <td class="fact<%= i %>_created_at" bgcolor="#99CC00" align="right" nowrap><%= fact_scale.created_at.strftime('%Y/%m/%d') %></td>
-      <td class="fact<%= i %>_total_score" bgcolor="#FFFFFF" valign="top" width="500"><%= fact_scale.total_score %></td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "詳細", patient_fact_scale_path(@patient, fact_scale), class: "fact#{i}_show_link show_link" %>
-      </td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "編集する", edit_patient_fact_scale_path(@patient, fact_scale), class: "fact#{i}_edit_link edit_link" %>
-      </td>
-      <td bgcolor="#FFFFFF" valign="top" width="200">
-        <%= link_to "削除する", patient_fact_scale_path(@patient, fact_scale),class: "fact#{i}_delete_link delete_link", method: :delete, data: { confirm: "factを削除します。よろしいですか?" } %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= provide(:title, "FACT一覧") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "FACT"  %>
+<div class="link_section d-flex justify-content-between">
+  <div class="left_link">
+    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+  </div>
+  <div class="right_link">
+    <%= link_to "新規作成", new_patient_fact_scale_path(@patient), class: "btn btn-primary" %>
+  </div>
+</div>
+<div class="main-contents">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">作成日時</th>
+        <th scope="col">得点</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @fact_scales.each_with_index do |fact_scale, i| %>
+        <tr class="fact_score">
+          <td class="fact<%= i %>-created-at"><%= fact_scale.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="fact<%= i %>-total-score"><%= fact_scale.total_score %>点</td>
+          <td class="fact<%= i %>-undefined-count">
+            <% if fact_scale.undefined_count > 0 %>
+              <p class="undefined-columns-count">*<%= fact_scale.undefined_count %>項目が未入力です。</p>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細", patient_fact_scale_path(@patient, fact_scale), class: "fact#{i}_show_link show_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_patient_fact_scale_path(@patient, fact_scale), class: "fact#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+          </td>
+          <td>
+            <%= link_to "削除", patient_fact_scale_path(@patient, fact_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

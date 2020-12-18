@@ -148,6 +148,10 @@
         <div class="col-sm-6">
           <%= link_to "FACT", patient_fact_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
+        <p class="fact-total-score total-score col-sm-3">合計　<%= patient.fact_scales.last.total_score %>点</p>
+        <% if patient.fact_scales.last.undefined_count > 0 %>
+          <p class="undefined-columns-count col-sm-3">*<%= patient.fact_scales.last.undefined_count %>項目が未入力です。</p>
+        <% end %>
       </div>
     <% end %>
     <% if patient.hdsr_scales.present? %>

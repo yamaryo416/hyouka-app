@@ -1,4 +1,5 @@
 class FactScale < ApplicationRecord
+  include Scope
   belongs_to :patient
   enum sitting_with_upper_limb_support: {
     undefined: nil,

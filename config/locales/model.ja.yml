@@ -1424,7 +1424,7 @@ ja:
       forward_dynamic_sitting:
         undefined: 未選択
         impossible: 不能:0点
-        possible: 可能:1点
+        possible: 可能:2点
       lateral_dynamic_sitting:
         undefined: 未選択
         impossible: 不能:0点

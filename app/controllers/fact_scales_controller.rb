@@ -2,7 +2,7 @@ class FactScalesController < ApplicationController
   before_action :set_fact_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fact_scales = @patient.fact_scales.order(created_at: :desc)
+    @fact_scales = @patient.fact_scales.recent
   end
 
   def show

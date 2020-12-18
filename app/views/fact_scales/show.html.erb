@@ -1,8 +1,34 @@
-<%= link_to "患者ページに戻る", patient_path(@patient) %>
-<% @fact_scale.each_score.keys.each do |attr_name| %>
-  <dt class="<%= attr_name %>"><%= FactScale.human_attribute_name(attr_name) %></dt>
-  <dd class="<%= attr_name %>_score"><%= @fact_scale.send("#{attr_name}_i18n") %></dd>
-<% end %>
-<p class="fact-total-score"><%= @fact_scale.total_score %>点</p>
-<%= link_to "FACTを編集する", edit_patient_fact_scale_path(@patient, @fact_scale) %>
-<%= link_to "FACTを削除する", patient_fact_scales_path(@patient, @fact_scale), method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
+<% provide(:title, "fact") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "fact" %>
+<div class="link_section d-flex justify-content-between">
+  <div class="left_link">
+    <%= link_to "FACT一覧に戻る", patient_fact_scales_path(@patient), class: "btn btn-info" %>
+  </div>
+  <div class="right_link">
+    <%= link_to "FACTを編集する", edit_patient_fact_scale_path(@patient, @fact_scale), class: "custom-btn btn-radius-solid" %>
+    <%= link_to "FACTを削除する", patient_fact_scale_path(@patient, @fact_scale),class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
+  </div>
+</div>
+<div class="main-contents fact-section">
+  <p class="fact-total-score show-total-score">得点　<%= @fact_scale.total_score %>点</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">項目</th>
+        <th scope="col">評価結果</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @fact_scale.scale_attributes.each_with_index do |attr_name, i| %>
+        <tr>
+          <td class="<%= attr_name %>">
+            <span><%= i +1 %>)</span>
+            <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+          </td>
+          <td class="<%= attr_name %>_score"><%= @fact_scale.send("#{attr_name}_i18n") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render "fact_scales/modal/explain_modal" %>
+</div>
