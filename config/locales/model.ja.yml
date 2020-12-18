@@ -245,7 +245,7 @@ ja:
         lateral_step: 修正ステップ-側方
         standing: 静止立位(開眼)
         standing_with_eyes_close: 静止立位(閉眼)
-        standing_on_the_slope: 斜面代(閉眼)
+        standing_on_the_slope: 斜面台(閉眼)
         change_walking_speed: 歩行速度の変化
         walking_with_rotating_the_head: 頭を水平回転させながらの歩行
         pibot_turn: 歩行時ピポットターン

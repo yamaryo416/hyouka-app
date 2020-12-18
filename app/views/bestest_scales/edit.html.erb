@@ -1,77 +1,10 @@
-<h1>Mini-BESTest</h1>
-<%= link_to "Mini-BESTest一覧に戻る", patient_bestest_scales_path(@patient) %>
-<%= form_with(url: patient_bestest_scale_path(id: @bestest_scale), scope: :bestest_scale, local: true, method: :patch) do |f| %>
-  <div class="d-flex justify-content-center">
-    <h3>予測的姿勢制御</h3>
-    <div class="shoulder_bestest_head">
-      <dd style="height:24px;"></dd>
-      <dd>屈曲</dd>
-      <dd>伸展</dd>
-      <dd>外転</dd>
-      <dd>水平内転</dd>
-      <dd>水平外転</dd>
-      <dd>内旋</dd>
-      <dd>外旋</dd>
-    </div>
-    <div class="right_shoulder_bestest_form" style="width:80px;">
-      <% APA_ATTRIBUTES.each do |attr_name| %>
-        <%= f.select attr_name, BestestScale.human_select_options(attr_name) %>
-      <% end %>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <h3>反応的姿勢制御</h3>
-    <div class="shoulder_bestest_head">
-      <dd style="height:24px;"></dd>
-      <dd>屈曲</dd>
-      <dd>伸展</dd>
-      <dd>外転</dd>
-      <dd>水平内転</dd>
-      <dd>水平外転</dd>
-      <dd>内旋</dd>
-      <dd>外旋</dd>
-    </div>
-    <div class="right_shoulder_bestest_form" style="width:80px;">
-      <% CPA_ATTRIBUTES.each do |attr_name| %>
-        <%= f.select attr_name, BestestScale.human_select_options(attr_name) %>
-      <% end %>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <h3>感覚機能</h3>
-    <div class="shoulder_bestest_head">
-      <dd style="height:24px;"></dd>
-      <dd>屈曲</dd>
-      <dd>伸展</dd>
-      <dd>外転</dd>
-      <dd>水平内転</dd>
-      <dd>水平外転</dd>
-      <dd>内旋</dd>
-      <dd>外旋</dd>
-    </div>
-    <div class="right_shoulder_bestest_form" style="width:80px;">
-      <% SENSORY_FUNCTION_ATTRIBUTES.each do |attr_name| %>
-        <%= f.select attr_name, BestestScale.human_select_options(attr_name) %>
-      <% end %>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center">
-    <h3>動的歩行</h3>
-    <div class="shoulder_bestest_head">
-      <dd style="height:24px;"></dd>
-      <dd>屈曲</dd>
-      <dd>伸展</dd>
-      <dd>外転</dd>
-      <dd>水平内転</dd>
-      <dd>水平外転</dd>
-      <dd>内旋</dd>
-      <dd>外旋</dd>
-    </div>
-    <div class="right_shoulder_bestest_form" style="width:80px;">
-      <% DYNAMIC_WALKING_ATTRIBUTES.each do |attr_name| %>
-        <%= f.select attr_name, BestestScale.human_select_options(attr_name) %>
-      <% end %>
-    </div>
-  </div>
-  <%= f.submit %>
-<% end %>
+<% provide(:title, "Mini-BESTest編集") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "Mini-BESTest" %>
+<%= link_to "Mini-BESTest一覧に戻る", patient_bestest_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents new-bestest new-section">
+  <%= form_with(url: patient_bestest_scale_path(id: @bestest_scale), scope: :bestest_scale, local: true, method: :patch) do |f| %>
+    <%= render "form", f: f %>
+    <%= f.submit %>
+    <%= render "bestest_scales/modal/explain_modal" %>
+  <% end %>
+</div>

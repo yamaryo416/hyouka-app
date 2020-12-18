@@ -59,7 +59,7 @@ main{
     border-bottom: 1px solid gray;
     .defined-scale{
       display: inline-block;
-      width: 100px;
+      width: 160px;
       font-size: 20px;
     }
   }
@@ -74,10 +74,14 @@ main{
 .undefined-scale-item{
   text-align: center;
   margin-top: 15px;
+  .undefined-scale{
+    display: inline-block;
+    width: 160px;
+  }
 }
 
 // sias
-.new-sias{
+.new-section{
   h3{
     font-weight: bold;
     padding-top: 20px;
@@ -91,6 +95,14 @@ main{
 //mmt
 
 //form
+.new-section, .edit-section{
+  h3{
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+  }
+}
 .form_group + .form_group{
   margin-top: 30px;
 }
@@ -232,10 +244,17 @@ th{
   font-size: 30px;
   padding-bottom: 10px;
 }
+.show-subtotal-score{
+  font-size: 20px;
+  padding-bottom: 5px;
+}
 //modal
 .modal-body{
   span{
     display:inline-block;
+  }
+  .bestest-teachig{
+    padding-bottom: 20px;
   }
   .brs-modal-subtitle{
     margin-top: 20px;
@@ -245,6 +264,7 @@ th{
     margin-left: 30px;
   }
 }
+
 //error
 .error_explanation{
   margin-bottom: 30px;

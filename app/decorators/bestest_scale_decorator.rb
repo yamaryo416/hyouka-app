@@ -5,7 +5,7 @@ module BestestScaleDecorator
 
   def apa_score
     apa_score = 0
-    APA_ATTRIBUTES.each do |attr_name|
+    BestestScale::APA_ATTRIBUTES.each do |attr_name|
       if send(attr_name).present?
         score = send("#{attr_name}_before_type_cast")
         apa_score += score
@@ -16,7 +16,7 @@ module BestestScaleDecorator
 
   def cpa_score
     cpa_score = 0
-    CPA_ATTRIBUTES.each do |attr_name|
+    BestestScale::CPA_ATTRIBUTES.each do |attr_name|
       if send(attr_name).present?
         score = send("#{attr_name}_before_type_cast")
         cpa_score += score
@@ -27,7 +27,7 @@ module BestestScaleDecorator
 
   def sensory_function_score
     sensory_function_score = 0
-    SENSORY_FUNCTION_ATTRIBUTES.each do |attr_name|
+    BestestScale::SENSORY_FUNCTION_ATTRIBUTES.each do |attr_name|
       if send(attr_name).present?
         score = send("#{attr_name}_before_type_cast")
         sensory_function_score += score
@@ -38,7 +38,7 @@ module BestestScaleDecorator
 
   def dynamic_walking_score
     dynamic_walking_score = 0
-    DYNAMIC_WALKING_ATTRIBUTES.each do |attr_name|
+    BestestScale::DYNAMIC_WALKING_ATTRIBUTES.each do |attr_name|
       if send(attr_name).present?
         score = send("#{attr_name}_before_type_cast")
         dynamic_walking_score += score

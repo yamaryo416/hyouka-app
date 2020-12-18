@@ -1,0 +1,32 @@
+<h3>予測的姿勢制御</h3>
+<% BestestScale::APA_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="scale_column row">
+    <span><%= i + 1 %>)</span>
+    <%= link_to BestestScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+    <%= f.select attr_name, BestestScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>
+<h3>反応的姿勢制御</h3>
+<% BestestScale::CPA_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="scale_column row">
+    <span><%= i + 4 %>)</span>
+    <%= link_to BestestScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 4}" } %>
+    <%= f.select attr_name, BestestScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>
+<h3>感覚機能</h3>
+<% BestestScale::SENSORY_FUNCTION_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="scale_column row">
+    <span><%= i + 7 %>)</span>
+    <%= link_to BestestScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 7}" } %>
+    <%= f.select attr_name, BestestScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>
+<h3>動的歩行</h3>
+<% BestestScale::DYNAMIC_WALKING_ATTRIBUTES.each_with_index do |attr_name, i| %>
+  <div class="scale_column row">
+    <span><%= i + 10 %>)</span>
+    <%= link_to BestestScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 10}" } %>
+    <%= f.select attr_name, BestestScale.human_select_options(attr_name), class: "col-sm-2" %>
+  </div>
+<% end %>

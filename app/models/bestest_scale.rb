@@ -1,4 +1,32 @@
 class BestestScale < ApplicationRecord
+  include Scope
+
+  APA_ATTRIBUTES = [
+    "from_sitting_to_standing",
+    "standing_on_tiptoes",
+    "standing_on_one_leg",
+  ].map(&:freeze).freeze
+
+  CPA_ATTRIBUTES = [
+    "forward_step",
+    "back_step",
+    "lateral_step",
+  ].map(&:freeze).freeze
+
+  SENSORY_FUNCTION_ATTRIBUTES = [
+    "standing",
+    "standing_with_eyes_close",
+    "standing_on_the_slope",
+  ].map(&:freeze).freeze
+
+  DYNAMIC_WALKING_ATTRIBUTES = [
+    "change_walking_speed",
+    "walking_with_rotating_the_head",
+    "pibot_turn",
+    "straddling_obstacles",
+    "tug",
+  ].map(&:freeze).freeze
+
   belongs_to :patient
   enum from_sitting_to_standing: {
     undefined: nil,

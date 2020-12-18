@@ -2,67 +2,67 @@
   <h3>評価項目</h3>
   <div class="undefined-scale-items row">
     <% if patient.sias_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "SIAS", new_patient_sias_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.rom_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "ROM", new_patient_rom_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.mmt_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "MMT", new_patient_mmt_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.nrs_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "NRS", new_patient_nrs_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.mas_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "MAS", new_patient_mas_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.tendon_reflex_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "腱反射", new_patient_tendon_reflex_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.tactile_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "触覚検査", new_patient_tactile_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.bathyesthesia_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "深部感覚検査", new_patient_bathyesthesia_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.hdsr_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "HDS-R", new_patient_hdsr_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.fact_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "FACT", new_patient_fact_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.brs_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "BRS", new_patient_brs_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.fbs_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "FBS", new_patient_fbs_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>
     <% if patient.bestest_scales.blank? %>
-      <div class="undefined-scale-item col-sm-3">
+      <div class="undefined-scale-item col-sm-4">
         <%= link_to "Mini-BESTest", new_patient_bestest_scale_path(patient), class: "undefined-scale btn btn-secondary", local: true %>
       </div>
     <% end %>

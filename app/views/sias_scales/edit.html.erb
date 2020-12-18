@@ -1,7 +1,7 @@
 <% provide(:title, "SIAS編集") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "SIAS" %>
 <%= link_to "SIAS一覧に戻る", patient_sias_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-sias">
+<div class="main-contents edit-sias edit-section">
   <%= form_with(url: patient_sias_scale_path(id: @sias_scale), scope: :sias_scale, local: true, method: :patch) do |f| %>
     <h3>運動機能</h3>
     <%= render "sias_scales/form_parts/motor_function_form", f: f %>

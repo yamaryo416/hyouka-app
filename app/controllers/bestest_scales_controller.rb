@@ -2,7 +2,7 @@ class BestestScalesController < ApplicationController
   before_action :set_bestest_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bestest_scales = @patient.bestest_scales.order(created_at: :desc)
+    @bestest_scales = @patient.bestest_scales.recent
   end
 
   def show
@@ -14,24 +14,18 @@ class BestestScalesController < ApplicationController
 
   def create
     @bestest_scale = @patient.bestest_scales.build(bestest_scale_params)
-    if @bestest_scale.save
-      flash[:success] = "Mini-BESTestを登録しました。"
-      redirect_to patient_bestest_scales_path(@patient)
-    else
-      render :new
-    end
+    @bestest_scale.save
+    flash[:success] = "Mini-BESTestを登録しました。"
+    redirect_to patient_bestest_scales_path(@patient)
   end
 
   def edit
   end
 
   def update
-    if @bestest_scale.update(bestest_scale_params)
-      flash[:success] = "Mini-BESTestを編集しました。"
-      redirect_to patient_bestest_scales_path(@patient)
-    else
-      render :new
-    end
+    @bestest_scale.update(bestest_scale_params)
+    flash[:success] = "Mini-BESTestを編集しました。"
+    redirect_to patient_bestest_scales_path(@patient)
   end
 
   def destroy
