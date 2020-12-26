@@ -11,12 +11,12 @@
       </div>
       <div class="right_elbow_forearm_mmt_form mmt-form">
         <dd class="direction-head">右</dd>
-        <% mmt_scale.right_elbow_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.right_elbow_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>
         <% end %>
-        <% mmt_scale.right_forearm_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.right_forearm_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>
@@ -24,12 +24,12 @@
       </div>
       <div class="left_elbow_forearm_mmt_form mmt-form">
         <dd class="direction-head">左</dd>
-        <% mmt_scale.left_elbow_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.left_elbow_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>
         <% end %>
-        <% mmt_scale.left_forearm_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.left_forearm_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>

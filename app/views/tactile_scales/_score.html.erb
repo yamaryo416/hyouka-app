@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center">
+  <div class="tactile-head part-head">
+    <dd class="left-top"></dd>
+    <dd>上腕</dd>
+    <dd>前腕</dd>
+    <dd>手</dd>
+    <dd>大腿</dd>
+    <dd>下腿</dd>
+    <dd>後足部</dd>
+    <dd>前足部</dd>
+  </div>
+  <div class="right_tactile_score tactile-score">
+    <dd class="direction-head">右</dd>
+    <% tactile_scale.right_scale_attributes.each  do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= tactile_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+  <div class="left_tactile_form tactile-score">
+    <dd class="direction-head">左</dd>
+    <% tactile_scale.left_scale_attributes.each  do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= tactile_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+</div>

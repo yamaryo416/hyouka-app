@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :therapist do
-    sequence(:name) { |n| "example#{n}" }
+    first_name { "example" }
+    last_name { "example" }
     sequence(:unique_id) { [*"0".."9"].sample(8).join }
     password { "password" }
     password_confirmation { "password" }

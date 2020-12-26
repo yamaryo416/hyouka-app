@@ -1,48 +1,8 @@
 <%= provide(:title, "MAS一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "MAS"  %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+<div class="main-contents patient-page index-mas">
+  <div class="container">
+    <%= index_scale_link_section("mas_scales", @patient) %>
+    <%= render "index_mas_scales_table", mas_scales: @mas_scales, patient: @patient %>
   </div>
-  <div class="right_link">
-    <%= link_to "新規作成", new_patient_mas_scale_path(@patient), class: "btn btn-primary" %>
-  </div>
-</div>
-<div class="main-contents">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">作成日時</th>
-        <th scope="col">筋緊張亢進</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @mas_scales.each_with_index do |mas_scale, i| %>
-        <tr class="mas_score">
-          <td class="mas<%= i %>-created-at"><%= mas_scale.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="mas<%= i %>-hypertonia-part">
-            <% if mas_scale.hypertonia_part %>
-              <% mas_scale.hypertonia_part.each do |part| %>
-                <%= MasScale.human_attribute_name(part[0]) %>
-              <% end %>
-            <% else %>
-              なし
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "詳細", patient_mas_scale_path(@patient, mas_scale), class: "mas#{i}_show_link show_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "編集", edit_patient_mas_scale_path(@patient, mas_scale), class: "mas#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "削除", patient_mas_scale_path(@patient, mas_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "masを削除します。よろしいですか?" } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

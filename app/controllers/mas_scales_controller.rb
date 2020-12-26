@@ -2,14 +2,15 @@ class MasScalesController < ApplicationController
   before_action :set_mas_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mas_scales = @patient.mas_scales.recent
+    @mas_scales = MasScaleDecorator.
+      decorate_collection(@patient.mas_scales.recent)
   end
 
   def show
   end
 
   def new
-    @mas_scale = MasScale.new
+    @mas_scale = MasScale.new.decorate
   end
 
   def create
@@ -48,6 +49,6 @@ class MasScalesController < ApplicationController
   end
 
   def set_mas_scale
-    @mas_scale = @patient.mas_scales.find(params[:id])
+    @mas_scale = @patient.mas_scales.find(params[:id]).decorate
   end
 end

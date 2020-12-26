@@ -2,7 +2,8 @@ ja:
   activerecord:
     attributes:
       therapist:
-        name: 名前
+        first_name: 性
+        last_name: 名
         unique_id: ユーザーID
         current_password: 現在のパスワード
         password: パスワード

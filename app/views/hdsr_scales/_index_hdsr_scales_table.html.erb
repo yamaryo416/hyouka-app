@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">作成日時</th>
+      <th scope="col">得点</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% hdsr_scales.each_with_index do |hdsr_scale, i| %>
+      <tr class="hdsr_score">
+        <td class="hdsr<%= i %>-created-at"><%= hdsr_scale.date_of_creation %></td>
+        <td class="hdsr<%= i %>-total-score"><%= hdsr_scale.total_score %>点</td>
+        <td class="hdsr<%= i %>-undefined-count">
+          <% if hdsr_scale.undefined_count > 0 %>
+            <p class="undefined-columns-count">*<%= hdsr_scale.undefined_count %>項目が未入力です。</p>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_patient_hdsr_scale_path(patient, hdsr_scale), class: "hdsr#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "削除", patient_hdsr_scale_path(patient, hdsr_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "HDS-Rを削除します。よろしいですか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

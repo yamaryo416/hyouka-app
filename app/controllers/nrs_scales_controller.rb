@@ -2,7 +2,8 @@ class NrsScalesController < ApplicationController
   before_action :set_nrs_scale, only: [:edit, :update, :destroy]
 
   def index
-    @nrs_scales = @patient.nrs_scales.recent
+    @nrs_scales = NrsScaleDecorator.
+      decorate_collection(@patient.nrs_scales.recent)
   end
 
   def new
@@ -46,6 +47,6 @@ class NrsScalesController < ApplicationController
   end
 
   def set_nrs_scale
-    @nrs_scale = @patient.nrs_scales.find(params[:id])
+    @nrs_scale = @patient.nrs_scales.find(params[:id]).decorate
   end
 end

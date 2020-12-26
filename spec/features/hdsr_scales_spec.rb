@@ -42,6 +42,7 @@ RSpec.feature "hdsrScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "HDS-R"
     click_on "HDS-R"
     expect(page).to have_current_path new_patient_hdsr_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "HDS-R作成"
     find("input[name='hdsr_scale[age]'][value='0']").set(true)
     find("input[name='hdsr_scale[year]'][value='0']").set(true)
     find("input[name='hdsr_scale[month]'][value='0']").set(true)
@@ -58,6 +59,7 @@ RSpec.feature "hdsrScales", type: :feature do
 
   scenario "index patient hdsr" do
     visit patient_hdsr_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "HDS-R一覧"
     expect(page).to have_selector ".hdsr0-total-score", text: "18点"
     expect(page).to have_selector ".hdsr0-undefined-count",
                                   text: "12項目が未入力です。"
@@ -72,6 +74,7 @@ RSpec.feature "hdsrScales", type: :feature do
     expect(page).to have_current_path edit_patient_hdsr_scale_path(
       second_patient, second_patient_hdsr
     )
+    expect(page).to have_selector ".page-title", text: "HDS-R編集"
     find("input[name='hdsr_scale[age]'][value='0']").set(true)
     find("input[name='hdsr_scale[year]'][value='0']").set(true)
     find("input[name='hdsr_scale[month]'][value='0']").set(true)
@@ -94,5 +97,11 @@ RSpec.feature "hdsrScales", type: :feature do
     expect(page).not_to have_selector ".hdsr0-total-score", text: "3点"
     expect(page).not_to have_selector ".hdsr0-undefined-count",
                                       text: "15項目が未入力です。"
+  end
+
+  scenario "show patient page part of hdsr" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".hdsr-total-score", text: "合計　3点"
+    expect(page).to have_selector ".hdsr-undefined-columns-count", text: "*15項目が未入力です。"
   end
 end

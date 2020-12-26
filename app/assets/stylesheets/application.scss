@@ -1,38 +1,66 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'reset';
 
+//default
+
 // header
-.navbar{
-  background-color: lightsteelblue;
-}
-header .container{
-  position: relative;
+header {
+  .navbar{
+    background-color: rgb(30, 120, 190);
+    color: white;
+    height: 57px;
+    .navbar-brand{
+      color: white;
+    }
+    .nav-link{
+      color: white;
+    }
+    .container{
+    display: block;
+      ul{
+        float: right;
+      }
+    }
+  }
 }
 .page-title{
   position:absolute;
+  top:0;
+  left:0;
   width:100%;
   text-align:center;
-  line-height:55px;
+  line-height:57px;
   font-size:1.5em;
   font-weight:bold;
+  color: #darkblue;
 }
 
 // main
-main{
-  margin-top: 72px;
-}
 .main-contents{
-  padding-top: 24px;
+  padding-top: 12px;
   padding-bottom: 80px;
 }
+.flash-message-content{
+  margin-top: 102px;
+}
 
+//footer
+footer{
+  border-top: 3px dotted rgba(30, 120, 190, 0.5);
+  padding-top: 20px;
+  padding-bottom: 30px;
+  color: rgba(0, 0, 0, 0.5)
+}
 // therapist
-.new_therapist{
+.new-therapist, .edit-therapist{
   text-align: center;
 }
 
 //patient
-.new-patient{
+.new-patient-link{
+  margin-bottom: 20px;
+}
+.new-patient, .edit-patient{
   text-align: center;
   select{
     height: 30px;
@@ -53,41 +81,57 @@ main{
   }
 
 }
+.patient-page{
+  margin-top: 30px;
+  h3{
+    font-size: 20px;
+  }
+  .show-patient-content{
+    padding:10px 20px;
+    margin-top: 15px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(30, 120, 190);
+    background-color: white;
+  }
+}
 .patient-details{
   align-items: center;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.sex-and-age, .height-and-weight, .edit-and-delete-link{
-  padding-left: 60px;
-  p{
-    margin-bottom:5px;
+  margin-bottom: 40px;
+  .name-content{
+    line-height: 60px;
+    vertical-align: middle;
+  }
+  .sex-and-age-content, .height-and-weight-content{
+    padding-left: 60px;
+    p{
+      margin-bottom:5px;
+    }
   }
 }
 .evaluation-finding-section{
-  padding:20px;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 .defined-scale-section{
-  padding:20px;
-  margin-top: 40px;
-  .defined-scale-items{
-    padding-top: 20px;
-  }
   .defined-scale-item{
     margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
     align-items: flex-end;
     border-bottom: 1px solid gray;
+    .define-scale-content{
+      padding-left: 0px;
+    }
     .defined-scale{
       display: inline-block;
       width: 160px;
-      font-size: 20px;
+      font-size: 15px;
     }
   }
 }
 .undefined-scale-section{
-  padding: 20px;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 .undefined-scale-items{
   padding-top: 20px;
@@ -100,20 +144,28 @@ main{
     width: 160px;
   }
 }
+.delete-link-section{
+  margin-top: 20px;
+}
 
 // sias
-.new-section{
-  h3{
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-  }
-}
 
 //rom
 
 //mmt
+
+//bathyesthesia
+
+//hdsr
+.hdsr-submit-form{
+  margin-top: 20px;
+}
+.new-bathyesthesia, .edit-bathyesthesia, .show-bathyesthesia{
+  h3{
+    margin-top: 20px;
+    text-align: center;
+  }
+}
 
 //form
 .new-section, .edit-section{
@@ -193,7 +245,7 @@ main{
   }
 }
 
-.rom-score, .mmt-score, .mas-score, .tendon-reflex-score, .bathyesthesia-score{
+.rom-score, .mmt-score, .mas-score, .tendon-reflex-score, .bathyesthesia-score, .tactile-score{
   .direction-head{
     font-size: 20px;
     font-weight: 500;
@@ -214,8 +266,28 @@ main{
 }
 
 //component
+.breadcrumb-nav{
+  top: 57px;
+  position:fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: rgb(211, 211, 211);
+}
 .breadcrumb{
-  background-color: white;
+  background-color: rgb(211, 211, 211);
+  border-radius: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+.btn-primary{
+  background-color: rgb(30, 120, 190);
+  border-color: rgb(30, 120, 190);
+}
+.btn-secondary{
+  background-color: rgb(211, 211, 211);
+  border-color: rgb(211, 211, 211);
+  color: black;
 }
 .custom-btn{
   font-weight: 500;
@@ -251,6 +323,9 @@ a.btn-radius-solid:hover {
   background: -webkit-linear-gradient(bottom, #fdfbfb 0%, #ebedee 100%);
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
+.signup-btn, .login-btn, .new-patient-btn, .edit-patient-btn{
+  margin-top: 20px;
+}
 th{
   font-size: 20px;
 }
@@ -268,6 +343,12 @@ th{
 .show-subtotal-score{
   font-size: 20px;
   padding-bottom: 5px;
+}
+.link-section{
+  margin-bottom: 20px;
+}
+.submit-form{
+  text-align: center;
 }
 //modal
 .modal-body{

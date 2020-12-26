@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module BestestScaleDecorator
-  include ScaleDecorator
+class BestestScaleDecorator < ScaleDecorator
+  delegate_all
 
   def apa_score
     apa_score = 0
@@ -45,18 +45,5 @@ module BestestScaleDecorator
       end
     end
     dynamic_walking_score
-  end
-
-  def total_score
-    total_score = 0
-    attributes.each do |attr_name, value|
-      if EXCLUDE_COLUMNS.include?(attr_name) || value.nil?
-        next
-      else
-        score = send("#{attr_name}_before_type_cast")
-        total_score += score
-      end
-    end
-    total_score
   end
 end

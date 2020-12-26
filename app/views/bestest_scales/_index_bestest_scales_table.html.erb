@@ -1,0 +1,37 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">作成日時</th>
+      <th scope="col">得点</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bestest_scales.each_with_index do |bestest_scale, i| %>
+      <tr class="bestest_score">
+        <td class="bestest<%= i %>-created-at"><%= bestest_scale.date_of_creation %></td>
+        <td class="bestest<%= i %>-total-score">
+          <%= link_to "#{bestest_scale.total_score}点", "#", data: {toggle: "modal", target: "#bestest-overview" } %>
+          <%= render "bestest_scales/modal/overview", bestest_scale: bestest_scale, i: i %>
+        </td>
+        <td class="bestest<%= i %>-undefined-count">
+          <% if bestest_scale.undefined_count > 0 %>
+            <p class="undefined-columns-count">*<%= bestest_scale.undefined_count %>項目が未入力です。</p>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "詳細", patient_bestest_scale_path(patient, bestest_scale), class: "bestest#{i}_show_link show_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_patient_bestest_scale_path(patient, bestest_scale), class: "bestest#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "削除", patient_bestest_scale_path(patient, bestest_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "Mini-BESTestを削除します。よろしいですか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

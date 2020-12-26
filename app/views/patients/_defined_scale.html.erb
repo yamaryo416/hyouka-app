@@ -1,73 +1,73 @@
-<div class="defined-scale-section border border-info">
+<div class="defined-scale-section show-patient-content">
   <h3>実施した評価</h3>
   <div class="defined-scale-items">
     <% if patient.sias_scales.present? %>
-      <div class="defined-sias-scale defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-sias-scale defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "SIAS", patient_sias_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="sias-total-score total-score col-sm-3">合計　<%= patient.sias_scales.last.total_score %>点</p>
-        <% if patient.sias_scales.last.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-3">*<%= patient.sias_scales.last.undefined_count %>項目が未入力です。</p>
+        <p class="sias-total-score total-score col-sm-3">合計　<%= patient.sias_scales.last.decorate.total_score %>点</p>
+        <% if patient.sias_scales.last.decorate.undefined_count > 0 %>
+          <p class="sias-undefined-columns-count undefined-columns-count col-sm-3">*<%= patient.sias_scales.last.decorate.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>
     <% if patient.rom_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="rom-limit-count col-sm-3">
-          <% if patient.rom_scales.last.limit_part.empty? %>
+        <p class="rom-limit col-sm-3">
+          <% if patient.rom_scales.last.decorate.limit_part.empty? %>
             可動域制限: なし
           <% else %>
-            <%= link_to "可動域制限: #{patient.rom_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#rom-limit-part" } %>
+            <%= link_to "可動域制限: #{patient.rom_scales.last.decorate.limit_part.size}箇所", "#", class: "rom-limit-part-count", data: {toggle: "modal", target: "#rom-limit-part" } %>
             <%= render "modal/rom_limit_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.mmt_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "MMT", patient_mmt_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="mmt-weak-count col-sm-4">
-          <% if patient.mmt_scales.last.weak_part.empty? %>
+        <p class="mmt-weak col-sm-4">
+          <% if patient.mmt_scales.last.decorate.weak_part.empty? %>
             筋力低下: なし
           <% else %>
-            <%= link_to "筋力低下: #{patient.mmt_scales.last.weak_part.size}箇所", "#", data: {toggle: "modal", target: "#mmt-weak-part" } %>
+            <%= link_to "筋力低下: #{patient.mmt_scales.last.decorate.weak_part.size}箇所", "#", class: "mmt-weak-part-count", data: {toggle: "modal", target: "#mmt-weak-part" } %>
             <%= render "modal/mmt_weak_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.nrs_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "NRS", patient_nrs_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
         <div class="col-sm-3">
-          <p>
-            <%= patient.nrs_scales.last.status_i18n %>
-            <%= patient.nrs_scales.last.rating %>
+          <p class="nrs-status">
+            <%= patient.nrs_scales.last.decorate.status_i18n %>
+            <%= patient.nrs_scales.last.decorate.rating %>
           </p>
         </div>
         <div class="col-sm-3">
-          <p>
-            <%= patient.nrs_scales.last.supplement %>
+          <p class="nrs-supplement">
+            <%= patient.nrs_scales.last.decorate.supplement %>
           </p>
         </div>
       </div>
     <% end %>
     <% if patient.brs_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "BRS", patient_brs_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
         <div class="col-sm-3">
-          <% patient.brs_scales.last.scale_attributes.each do |attr_name| %>
-            <p>
+          <% patient.brs_scales.last.decorate.scale_attributes.each do |attr_name| %>
+            <p class="brs-<%= attr_name %>">
               <%= BrsScale.human_attribute_name(attr_name) %>:
               <%= patient.brs_scales.last.send("#{attr_name}_i18n") %>
             </p>
@@ -76,114 +76,114 @@
       </div>
     <% end %>
     <% if patient.mas_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "MAS", patient_mas_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="mas-hypertonia-count col-sm-3">
-          <% if patient.mas_scales.last.hypertonia_part.empty? %>
+        <p class="mas-hypertonia col-sm-3">
+          <% if patient.mas_scales.last.decorate.hypertonia_part.empty? %>
             筋緊張亢進:なし
           <% else %>
-            <%= link_to "筋緊張亢進: #{patient.mas_scales.last.hypertonia_part.size}箇所", "#", data: {toggle: "modal", target: "#mas-hypertonia-part" } %>
+            <%= link_to "筋緊張亢進: #{patient.mas_scales.last.decorate.hypertonia_part.size}箇所", "#", class:"mas-hypertonia-part-count", data: {toggle: "modal", target: "#mas-hypertonia-part" } %>
             <%= render "modal/mas_hypertonia_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.tendon_reflex_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
-          <%= link_to "腱反射", patient_tendon_reflex_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
+          <%= link_to "深部腱反射", patient_tendon_reflex_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="tendon-reflex-hyperreflexia-count col-sm-3">
-          <% if patient.tendon_reflex_scales.last.hyperreflexia_part.empty? %>
+        <p class="tendon-reflex-hyperreflexia-and-hyporeflexia col-sm-3">
+          <% if patient.tendon_reflex_scales.last.decorate.hyperreflexia_part.empty? %>
             腱反射亢進:なし
           <% else %>
-            <%= link_to "腱反射亢進: #{patient.tendon_reflex_scales.last.hyperreflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyperreflexia-part" } %>
+            <%= link_to "腱反射亢進: #{patient.tendon_reflex_scales.last.decorate.hyperreflexia_part.size}箇所", "#", class: "tendon-reflex-hyperreflexia-part-count", data: {toggle: "modal", target: "#tendon-reflex-hyperreflexia-part" } %>
             <%= render "modal/tendon_reflex_hyperreflexia_modal", patient: patient %>
           <% end %>
         </p>
         <p class="tendon-reflex-hyporeflexia-count col-sm-3">
-          <% if patient.tendon_reflex_scales.last.hyporeflexia_part.empty? %>
+          <% if patient.tendon_reflex_scales.last.decorate.hyporeflexia_part.empty? %>
             腱反射低下:なし
           <% else %>
-            <%= link_to "腱反射低下: #{patient.tendon_reflex_scales.last.hyporeflexia_part.size}箇所", "#", data: {toggle: "modal", target: "#tendon-reflex-hyporeflexia-part" } %>
+            <%= link_to "腱反射低下: #{patient.tendon_reflex_scales.last.decorate.hyporeflexia_part.size}箇所", "#", class: "tendon-reflex-hyporeflexia-part-count", data: {toggle: "modal", target: "#tendon-reflex-hyporeflexia-part" } %>
             <%= render "modal/tendon_reflex_hyporeflexia_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.tactile_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "触覚検査", patient_tactile_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="tactile-limit-part-count col-sm-3">
-          <% if patient.tactile_scales.last.limit_part.empty? %>
+        <p class="tactile-limit col-sm-3">
+          <% if patient.tactile_scales.last.decorate.limit_part.empty? %>
             機能低下: なし
           <% else %>
-            <%= link_to "機能低下: #{patient.tactile_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#tactile-limit-part" } %>
+            <%= link_to "機能低下: #{patient.tactile_scales.last.decorate.limit_part.size}箇所", "#",class: "tactile-limit-part-count", data: {toggle: "modal", target: "#tactile-limit-part" } %>
             <%= render "modal/tactile_limit_part_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.bathyesthesia_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="tactile-limit-part-count col-sm-3">
-          <% if patient.bathyesthesia_scales.last.limit_part.empty? %>
+        <p class="bathyesthesia-limit col-sm-3">
+          <% if patient.bathyesthesia_scales.last.decorate.limit_part.empty? %>
             機能低下: なし
           <% else %>
-            <%= link_to "機能低下: #{patient.bathyesthesia_scales.last.limit_part.size}箇所", "#", data: {toggle: "modal", target: "#bathyesthesia-limit-part" } %>
+            <%= link_to "機能低下: #{patient.bathyesthesia_scales.last.decorate.limit_part.size}箇所", "#", class:"bathyesthesia-limit-part-count", data: {toggle: "modal", target: "#bathyesthesia-limit-part" } %>
             <%= render "modal/bathyesthesia_limit_part_modal", patient: patient %>
           <% end %>
         </p>
       </div>
     <% end %>
     <% if patient.fact_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "FACT", patient_fact_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="fact-total-score total-score col-sm-3">合計　<%= patient.fact_scales.last.total_score %>点</p>
-        <% if patient.fact_scales.last.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-3">*<%= patient.fact_scales.last.undefined_count %>項目が未入力です。</p>
+        <p class="fact-total-score total-score col-sm-3">合計　<%= patient.fact_scales.last.decorate.total_score %>点</p>
+        <% if patient.fact_scales.last.decorate.undefined_count > 0 %>
+          <p class="fact-undefined-columns-count undefined-columns-count col-sm-3">*<%= patient.fact_scales.last.decorate.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>
     <% if patient.hdsr_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "HDS-R", patient_hdsr_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="hdsr-total-score total-score col-sm-3">合計　<%= patient.hdsr_scales.last.total_score %>点</p>
-        <% if patient.hdsr_scales.last.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-4">*<%= patient.hdsr_scales.last.undefined_count %>項目が未入力です。</p>
+        <p class="hdsr-total-score total-score col-sm-3">合計　<%= patient.hdsr_scales.last.decorate.total_score %>点</p>
+        <% if patient.hdsr_scales.last.decorate.undefined_count > 0 %>
+          <p class="hdsr-undefined-columns-count undefined-columns-count col-sm-4">*<%= patient.hdsr_scales.last.decorate.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>
     <% if patient.fbs_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "FBS", patient_fbs_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="fbs-total-score total-score col-sm-3">合計　<%= patient.fbs_scales.last.total_score %>点</p>
-        <% if patient.fbs_scales.last.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-3">*<%= patient.fbs_scales.last.undefined_count %>項目が未入力です。</p>
+        <p class="fbs-total-score total-score col-sm-3">合計　<%= patient.fbs_scales.last.decorate.total_score %>点</p>
+        <% if patient.fbs_scales.last.decorate.undefined_count > 0 %>
+          <p class="fbs-undefined-columns-count undefined-columns-count col-sm-3">*<%= patient.fbs_scales.last.decorate.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>
     <% if patient.bestest_scales.present? %>
-      <div class="defined-scale-item row col-sm-12">
-        <div class="col-sm-6">
+      <div class="defined-scale-item row">
+        <div class="col-sm-4 define-scale-content">
           <%= link_to "Mini-BESTest", patient_bestest_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="bestest-total-score total-score col-sm-3">合計　<%= patient.bestest_scales.last.total_score %>点</p>
-        <% if patient.bestest_scales.last.undefined_count > 0 %>
-          <p class="undefined-columns-count col-sm-3">*<%= patient.bestest_scales.last.undefined_count %>項目が未入力です。</p>
+        <p class="bestest-total-score total-score col-sm-3">合計　<%= patient.bestest_scales.last.decorate.total_score %>点</p>
+        <% if patient.bestest_scales.last.decorate.undefined_count > 0 %>
+          <p class="bestest-undefined-columns-count undefined-columns-count col-sm-3">*<%= patient.bestest_scales.last.decorate.undefined_count %>項目が未入力です。</p>
         <% end %>
       </div>
     <% end %>

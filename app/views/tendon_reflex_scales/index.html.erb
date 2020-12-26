@@ -1,54 +1,8 @@
-<%= provide(:title, "腱反射一覧") %>
-<%= render "shared/breadcrumb", patient: @patient, scale: "腱反射"  %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+<%= provide(:title, "深部腱反射一覧") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "深部腱反射"  %>
+<div class="main-contents patient-page index-tendon-reflex">
+  <div class="container">
+    <%= index_scale_link_section("tendon_reflex_scales", @patient) %>
+    <%= render "index_tendon_reflex_scales_table", tendon_reflex_scales: @tendon_reflex_scales, patient: @patient %>
   </div>
-  <div class="right_link">
-    <%= link_to "新規作成", new_patient_tendon_reflex_scale_path(@patient), class: "btn btn-primary" %>
-  </div>
-</div>
-<div class="main-contents">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">作成日時</th>
-        <th scope="col">反射亢進</th>
-        <th scope="col">反射低下</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tendon_reflex_scales.each_with_index do |tendon_reflex_scale, i| %>
-        <tr class="tendon_reflex_score">
-          <td class="tendon_reflex<%= i %>-created-at"><%= tendon_reflex_scale.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="tendon_reflex<%= i %>-hyperreflexia-part">
-            <% if tendon_reflex_scale.hyperreflexia_part.empty? %>
-              なし
-            <% else %>
-              <%= tendon_reflex_scale.hyperreflexia_part.size %>箇所
-            <% end %>
-          </td>
-          <td class="tendon_reflex<%= i %>-hyporeflexia-part">
-            <% if tendon_reflex_scale.hyporeflexia_part.empty? %>
-              なし
-            <% else %>
-              <%= tendon_reflex_scale.hyporeflexia_part.size %>箇所
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "詳細", patient_tendon_reflex_scale_path(@patient, tendon_reflex_scale), class: "tendon_reflex#{i}_show_link show_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "編集", edit_patient_tendon_reflex_scale_path(@patient, tendon_reflex_scale), class: "tendon_reflex#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "削除", patient_tendon_reflex_scale_path(@patient, tendon_reflex_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "tendon_reflexを削除します。よろしいですか?" } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

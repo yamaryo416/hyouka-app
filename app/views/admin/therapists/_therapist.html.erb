@@ -1,0 +1,5 @@
+<tr class="therapist-box">
+  <td><%= therapist.unique_id %></td>
+  <td><%= link_to therapist.decorate.full_name, admin_therapist_path(therapist), class: "therapist-name" %></td>
+  <td><%= therapist.decorate.date_of_creation %></td>
+</tr>

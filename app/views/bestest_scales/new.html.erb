@@ -1,10 +1,12 @@
 <% provide(:title, "Mini-BESTest作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "Mini-BESTest" %>
-<%= link_to "Mini-BESTest一覧に戻る", patient_bestest_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-bestest new-section">
-  <%= form_with(url: patient_bestest_scales_path, scope: :bestest_scale, local: true) do |f| %>
-    <%= render "form", f: f %>
-    <%= f.submit %>
-    <%= render "bestest_scales/modal/explain_modal" %>
-  <% end %>
+<div class="main-contents patient-page new-bestest new-section">
+  <div class="container">
+    <%= form_scale_link_section("Mini-BESTest", "bestest_scales", @patient) %>
+    <%= form_with(url: patient_bestest_scales_path, scope: :bestest_scale, local: true) do |f| %>
+      <%= render "form", f: f %>
+      <%= f.submit %>
+      <%= render "bestest_scales/modal/explain_modal" %>
+    <% end %>
+  </div>
 </div>

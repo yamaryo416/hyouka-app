@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-module TendonReflexScaleDecorator
-  include ScaleDecorator
+class TendonReflexScaleDecorator < ScaleDecorator
+  delegate_all
 
   def hyperreflexia_part
     hyperreflexia_part = []
     scale_score.each do |scale|
       next if scale[1].nil?
       value = send("#{scale[0]}_before_type_cast")
-      if value <= 1
+      if value >= 3
         hyperreflexia_part << scale
       end
     end
@@ -20,7 +20,7 @@ module TendonReflexScaleDecorator
     scale_score.each do |scale|
       next if scale[1].nil?
       value = send("#{scale[0]}_before_type_cast")
-      if value >= 1
+      if value <= 1
         hyporeflexia_part << scale
       end
     end

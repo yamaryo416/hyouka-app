@@ -8,8 +8,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <% patient.tendon_reflex_scales.last.hyporeflexia_part.each do |part| %>
+        <div class="tendon-reflex-hyporeflexia-part modal-body">
+          <% patient.tendon_reflex_scales.last.decorate.hyporeflexia_part.each do |part| %>
             <%= TendonReflexScale.human_attribute_name(part[0]) %>
           <% end %>
         </div>

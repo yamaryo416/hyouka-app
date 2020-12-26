@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="tendon_reflex_head part-head">
+    <dd>下顎</dd>
+    <dd>腹筋</dd>
+  </div>
+  <div class="tendon-reflex-form">
+    <div>
+      <%= f.select :jaw, TendonReflexScale.human_select_options("jaw") %>
+    </div>
+    <div>
+      <%= f.select :abdominal, TendonReflexScale.human_select_options("abdominal") %>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="tendon_reflex_head part-head">
+    <dd class="left-top"></dd>
+    <dd>胸筋</dd>
+    <dd>上腕二頭筋</dd>
+    <dd>上腕三頭筋</dd>
+    <dd>腕橈骨筋</dd>
+    <dd>回内筋</dd>
+    <dd>膝蓋腱</dd>
+    <dd>アキレス腱</dd>
+  </div>
+  <div class="tendon-reflex-form">
+    <dd class="direction-head">右</dd>
+    <% tendon_reflex_scale.right_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="tendon-reflex-form">
+    <dd class="direction-head">左</dd>
+    <% tendon_reflex_scale.left_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+</div>

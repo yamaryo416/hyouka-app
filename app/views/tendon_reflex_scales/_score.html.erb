@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center">
+  <div class="tendon_reflex_head part-head">
+    <dd>下顎</dd>
+    <dd>腹筋</dd>
+  </div>
+  <div class="tendon-reflex-score">
+    <dd class="jaw_score"><%= tendon_reflex_scale.jaw_i18n %></dd>
+    <dd class="abdominal_score"><%= tendon_reflex_scale.abdominal_i18n %></dd>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="tendon_reflex_head part-head">
+    <dd class="left-top"></dd>
+    <dd>胸筋</dd>
+    <dd>上腕二頭筋</dd>
+    <dd>上腕三頭筋</dd>
+    <dd>腕橈骨筋</dd>
+    <dd>回内筋</dd>
+    <dd>膝蓋腱</dd>
+    <dd>アキレス腱</dd>
+  </div>
+  <div class="right_tendon_reflex_form tendon-reflex-score">
+    <dd class="direction-head">右</dd>
+    <% tendon_reflex_scale.right_scale_attributes.each  do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= tendon_reflex_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+  <div class="left_tendon_reflex_form tendon-reflex-score">
+    <dd class="direction-head">左</dd>
+    <% tendon_reflex_scale.left_scale_attributes.each  do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= tendon_reflex_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+</div>

@@ -1,56 +1,13 @@
 <% provide(:title, "深部感覚検査編集") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "深部感覚検査" %>
-<%= link_to "深部感覚検査一覧に戻る", patient_bathyesthesia_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-bathyesthesia">
-  <%= form_with(url: patient_bathyesthesia_scale_path(id: @bathyesthesia_scale), scope: :bathyesthesia_scale, local: true, method: :patch) do |f| %>
-    <h3>位置覚</h3>
-    <div class="d-flex justify-content-center">
-      <div class="bathyesthesia_head part-head">
-        <dd class="left-top"></dd>
-        <dd>上肢</dd>
-        <dd>下肢</dd>
+<div class="main-contents patient-page edit-bathyesthesia edit-section">
+  <div class="container">
+    <%= form_scale_link_section("振武感覚検査", "bathyesthesia_scales", @patient) %>
+    <%= form_with(url: patient_bathyesthesia_scale_path(id: @bathyesthesia_scale), scope: :bathyesthesia_scale, local: true, method: :patch) do |f| %>
+      <%= render "form", f: f, bathyesthesia_scale: @bathyesthesia_scale %>
+      <div class="submit-form">
+        <%= f.submit %>
       </div>
-      <div class="right_bathyesthesia_form bathyesthesia-form">
-        <dd class="direction-head">右</dd>
-        <% @bathyesthesia_scale.right_position_sense_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-      <div class="left_bathyesthesia_form bathyesthesia-form">
-        <dd class="direction-head">左</dd>
-        <% @bathyesthesia_scale.left_position_sense_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <h3>運動覚</h3>
-    <div class="d-flex justify-content-center">
-      <div class="bathyesthesia_head part-head">
-        <dd class="left-top"></dd>
-        <dd>手指</dd>
-        <dd>足趾</dd>
-      </div>
-      <div class="right_bathyesthesia_form bathyesthesia-form">
-        <dd class="direction-head">右</dd>
-        <% @bathyesthesia_scale.right_motor_sense_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-      <div class="left_bathyesthesia_form bathyesthesia-form">
-        <dd class="direction-head">左</dd>
-        <% @bathyesthesia_scale.left_motor_sense_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <%= f.submit %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -36,7 +36,7 @@ gem 'kaminari'
 gem 'faker'
 gem 'rails-i18n'
 gem 'enum_help'
-gem 'active_decorator'
+gem 'draper'
 gem "kaminari-bootstrap"
 
 group :development, :test do

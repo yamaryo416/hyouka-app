@@ -68,6 +68,6 @@ class PatientsController < ApplicationController
   end
 
   def set_patient
-    @patient = Patient.find(params[:id])
+    @patient = Patient.find(params[:id]).decorate
   end
 end

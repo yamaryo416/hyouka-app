@@ -1,50 +1,13 @@
-<% provide(:title, "腱反射編集") %>
-<%= render "shared/breadcrumb", patient: @patient, scale: "腱反射" %>
-<%= link_to "腱反射一覧に戻る", patient_tendon_reflex_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents edit-tendon-reflex">
-  <%= form_with(url: patient_tendon_reflex_scale_path(id: @tendon_reflex_scale), scope: :tendon_reflex_scale, local: true, method: :patch) do |f| %>
-    <div class="d-flex justify-content-center">
-      <div class="tendon_reflex_head part-head">
-        <dd>下顎</dd>
-        <dd>腹筋</dd>
+<% provide(:title, "深部腱反射編集") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "深部腱反射" %>
+<div class="main-contents patient-page edit-tendon-reflex edit-section">
+  <div class="container">
+    <%= form_scale_link_section("深部腱反射", "tendon_reflex_scales", @patient) %>
+    <%= form_with(url: patient_tendon_reflex_scale_path(id: @tendon_reflex_scale), scope: :tendon_reflex_scale, local: true, method: :patch) do |f| %>
+      <%= render "form", f: f, tendon_reflex_scale: @tendon_reflex_scale %>
+      <div class="submit-form">
+        <%= f.submit %>
       </div>
-      <div class="tendon-reflex-form">
-        <div>
-          <%= f.select :jaw, TendonReflexScale.human_select_options("jaw") %>
-        </div>
-        <div>
-          <%= f.select :abdominal, TendonReflexScale.human_select_options("abdominal") %>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <div class="tendon_reflex_head part-head">
-        <dd class="left-top"></dd>
-        <dd>胸筋</dd>
-        <dd>上腕二頭筋</dd>
-        <dd>上腕三頭筋</dd>
-        <dd>腕橈骨筋</dd>
-        <dd>回内筋</dd>
-        <dd>膝蓋腱</dd>
-        <dd>アキレス腱</dd>
-      </div>
-      <div class="tendon-reflex-form">
-        <dd class="direction-head">右</dd>
-        <% @tendon_reflex_scale.right_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-      <div class="tendon-reflex-form">
-        <dd class="direction-head">左</dd>
-        <% @tendon_reflex_scale.left_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, TendonReflexScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <%= f.submit %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

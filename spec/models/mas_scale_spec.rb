@@ -7,10 +7,14 @@ RSpec.describe MasScale, type: :model do
   end
 
   it "is valid with all columns" do
-    mas_scale = build(:mas_scale, elbow_joint: 1,
-                                  wrist_joint: 1,
-                                  knee_joint: 1,
-                                  ankle_joint: 1)
+    mas_scale = build(:mas_scale, right_elbow_joint: 1,
+                                  left_elbow_joint: 1,
+                                  right_wrist_joint: 1,
+                                  left_wrist_joint: 1,
+                                  right_knee_joint: 1,
+                                  left_knee_joint: 1,
+                                  right_ankle_joint: 1,
+                                  left_ankle_joint: 1)
     expect(mas_scale).to be_valid
   end
 

@@ -41,6 +41,7 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "SIAS"
     click_on "SIAS"
     expect(page).to have_current_path new_patient_sias_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "SIAS作成"
     select "2:肩肘の共同運動があるが手部が口に届かない",
            from: "sias_scale[shoulder_motor_function]"
     select "1C:分離運動が一部可能",
@@ -69,6 +70,7 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).to have_current_path patient_sias_scale_path(
       second_patient, second_patient_sias
     )
+    expect(page).to have_selector ".page-title", text: "SIAS"
     expect(page).to have_selector ".shoulder_motor_function_score",
                                   text: "0:全く動かない"
     expect(page).to have_selector ".finger_motor_function_score",
@@ -82,6 +84,7 @@ RSpec.feature "SiasScales", type: :feature do
 
   scenario "index patient sias" do
     visit patient_sias_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "SIAS一覧"
     expect(page).to have_selector ".sias0-total-score", text: "9点"
     expect(page).to have_selector ".sias0-undefined-count",
                                   text: "18項目が未入力です。"
@@ -96,6 +99,7 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).to have_current_path edit_patient_sias_scale_path(
       second_patient, second_patient_sias
     )
+    expect(page).to have_selector ".page-title", text: "SIAS編集"
     select "5:健側と変わらず、正常",
            from: "sias_scale[shoulder_motor_function]"
     select "3.課題可能。全指の分離運動が十分な屈曲伸展を伴って可能",
@@ -126,5 +130,11 @@ RSpec.feature "SiasScales", type: :feature do
     expect(page).not_to have_selector ".sias0-total-score", text: "3"
     expect(page).not_to have_selector ".sias0-undefined-count",
                                       text: "19項目が未入力です。"
+  end
+
+  scenario "show patient page part of sias" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".sias-total-score", text: "合計　3点"
+    expect(page).to have_selector ".sias-undefined-columns-count", text: "*19項目が未入力です。"
   end
 end

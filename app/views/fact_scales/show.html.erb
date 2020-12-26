@@ -1,34 +1,10 @@
-<% provide(:title, "fact") %>
-<%= render "shared/breadcrumb", patient: @patient, scale: "fact" %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "FACT一覧に戻る", patient_fact_scales_path(@patient), class: "btn btn-info" %>
+<% provide(:title, "FACT") %>
+<%= render "shared/breadcrumb", patient: @patient, scale: "FACT" %>
+<div class="main-contents patient-page show-fact">
+  <div class="container">
+    <%= show_scale_link_section("FACT", "fact_scales", @patient, @fact_scale) %>
+    <p class="fact-total-score show-total-score">得点　<%= @fact_scale.total_score %>点</p>
+    <%= render "show_fact_scale_table", fact_scale: @fact_scale %>
+    <%= render "fact_scales/modal/explain_modal" %>
   </div>
-  <div class="right_link">
-    <%= link_to "FACTを編集する", edit_patient_fact_scale_path(@patient, @fact_scale), class: "custom-btn btn-radius-solid" %>
-    <%= link_to "FACTを削除する", patient_fact_scale_path(@patient, @fact_scale),class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
-  </div>
-</div>
-<div class="main-contents fact-section">
-  <p class="fact-total-score show-total-score">得点　<%= @fact_scale.total_score %>点</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">項目</th>
-        <th scope="col">評価結果</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @fact_scale.scale_attributes.each_with_index do |attr_name, i| %>
-        <tr>
-          <td class="<%= attr_name %>">
-            <span><%= i +1 %>)</span>
-            <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-          </td>
-          <td class="<%= attr_name %>_score"><%= @fact_scale.send("#{attr_name}_i18n") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= render "fact_scales/modal/explain_modal" %>
 </div>

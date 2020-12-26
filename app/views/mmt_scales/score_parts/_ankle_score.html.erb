@@ -11,13 +11,13 @@
       </div>
       <div class="right_ankle_mmt_score mmt-score">
         <dd class="direction-head">右</dd>
-        <% mmt_scale.right_ankle_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.right_ankle_scale_attributes.each  do |attr_name| %>
           <dd class="<%= attr_name %>_score"><%= mmt_scale.send("#{attr_name}_i18n") %></dd>
         <% end %>
       </div>
       <div class="left_ankle_mmt_score mmt-score">
         <dd class="direction-head">左</dd>
-        <% mmt_scale.left_ankle_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.left_ankle_scale_attributes.each  do |attr_name| %>
           <dd class="<%= attr_name %>_score"><%= mmt_scale.send("#{attr_name}_i18n") %></dd>
         <% end %>
       </div>

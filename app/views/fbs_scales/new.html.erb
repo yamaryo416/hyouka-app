@@ -1,15 +1,17 @@
 <% provide(:title, "FBS作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "FBS" %>
-<%= link_to "FBS一覧に戻る", patient_fbs_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-fbs">
-  <%= form_with(url: patient_fbs_scales_path, scope: :fbs_scale, local: true) do |f| %>
-    <% @fbs_scale.scale_attributes.each_with_index do |attr_name, i| %>
-      <div class="scale_column fbs_column row">
-        <span><%= i + 1 %>)</span>
-        <%= f.label attr_name, class: "col-sm-3" %>
-        <%= f.select attr_name, FbsScale.human_select_options(attr_name), class: "col-sm-8" %>
-      </div>
+<div class="main-contents patient-page new-fbs new-section">
+  <div class="container">
+    <%= form_scale_link_section("FBS", "fbs_scales", @patient) %>
+    <%= form_with(url: patient_fbs_scales_path, scope: :fbs_scale, local: true) do |f| %>
+      <% @fbs_scale.scale_attributes.each_with_index do |attr_name, i| %>
+        <div class="scale_column fbs_column row">
+          <span><%= i + 1 %>)</span>
+          <%= f.label attr_name, class: "col-sm-3" %>
+          <%= f.select attr_name, FbsScale.human_select_options(attr_name), class: "col-sm-8" %>
+        </div>
+      <% end %>
+      <%= f.submit %>
     <% end %>
-    <%= f.submit %>
-  <% end %>
+  </div>
 </div>

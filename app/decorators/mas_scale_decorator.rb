@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module MasScaleDecorator
-  include ScaleDecorator
+class MasScaleDecorator < ScaleDecorator
+  delegate_all
 
   def hypertonia_part
     hypertonia_part = []

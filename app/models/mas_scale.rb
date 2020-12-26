@@ -1,7 +1,7 @@
 class MasScale < ApplicationRecord
   include Scope
-  belongs_to :patient
 
+  belongs_to :patient
   enum right_elbow_joint: {
     undefined: nil,
     no_enhancement: 1,

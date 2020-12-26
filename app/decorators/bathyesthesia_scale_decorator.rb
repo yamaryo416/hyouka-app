@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module BathyesthesiaScaleDecorator
-  include ScaleDecorator
+class BathyesthesiaScaleDecorator < ScaleDecorator
+  delegate_all
 
   def limit_part
     limit_part = []
@@ -16,26 +16,26 @@ module BathyesthesiaScaleDecorator
   end
 
   DIRECTION.each do |d|
-    define_method "#{d}_position_sense_scale_score" do
-      position_sense_scale_score = {}
-      send("#{d}_scale_score").each do |attr_name, value|
+    define_method "#{d}_position_sense_scale_attributes" do
+      position_sense_scale_attributes = []
+      send("#{d}_scale_attributes").each do |attr_name|
         if attr_name.include?("limb")
-          position_sense_scale_score.store(attr_name, value)
+          position_sense_scale_attributes << attr_name
         end
       end
-      position_sense_scale_score
+      position_sense_scale_attributes
     end
   end
 
   DIRECTION.each do |d|
-    define_method "#{d}_motor_sense_scale_score" do
-      motor_sense_scale_score = {}
-      send("#{d}_scale_score").each do |attr_name, value|
+    define_method "#{d}_motor_sense_scale_attributes" do
+      motor_sense_scale_attributes = []
+      send("#{d}_scale_attributes").each do |attr_name|
         if !attr_name.include?("limb")
-          motor_sense_scale_score.store(attr_name, value)
+          motor_sense_scale_attributes << attr_name
         end
       end
-      motor_sense_scale_score
+      motor_sense_scale_attributes
     end
   end
 end

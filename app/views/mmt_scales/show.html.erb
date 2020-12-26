@@ -1,33 +1,21 @@
 <% provide(:title, "MMT") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "MMT" %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "MMT一覧に戻る", patient_mmt_scales_path(@patient), class: "btn btn-info" %>
-  </div>
-  <div class="right_link">
-    <%= link_to "MMTを編集する", edit_patient_mmt_scale_path(@patient, @mmt_scale), class: "custom-btn btn-radius-solid" %>
-    <%= link_to "MMTを削除する", patient_mmt_scale_path(@patient, @mmt_scale),class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "mmtを削除します。よろしいですか?" } %>
-  </div>
-</div>
-<div class="main-contents mmt-section">
-  <div class="mmt-overview overview">
-    <h3>筋力低下</h3>
-    <p class="weak-part-detail">
-      <% if @mmt_scale.weak_part.empty? %>
-        なし
-      <% else %>
-        <% @mmt_scale.weak_part.each do |part| %>
-          <%= MmtScale.human_attribute_name(part[0]) %>
+<div class="main-contents patient-page show-mmt">
+  <div class="container">
+    <%= show_scale_link_section("MMT", "mmt_scales", @patient, @mmt_scale) %>
+    <div class="mmt-overview overview">
+      <h3>筋力低下</h3>
+      <p class="weak-part-detail">
+        <% if @mmt_scale.weak_part.empty? %>
+          なし
+        <% else %>
+          <% @mmt_scale.weak_part.each do |part| %>
+            <%= MmtScale.human_attribute_name(part[0]) %>
+          <% end %>
         <% end %>
-      <% end %>
-    </p>
+      </p>
+    </div>
+    <%= render "mmt_scales/score_parts/collaps_btns", mmt_scale: @mmt_scale %>
+    <%= render "score", mmt_scale: @mmt_scale %>
   </div>
-  <%= render "mmt_scales/score_parts/collaps_btns", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/neck_trunk_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/shoulder_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/elbow_forearm_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/wrist_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/hip_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/knee_score", mmt_scale: @mmt_scale %>
-  <%= render "mmt_scales/score_parts/ankle_score", mmt_scale: @mmt_scale %>
 </div>

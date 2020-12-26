@@ -2,14 +2,15 @@ class TactileScalesController < ApplicationController
   before_action :set_tactile_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tactile_scales = @patient.tactile_scales.recent
+    @tactile_scales = TactileScaleDecorator.
+      decorate_collection(@patient.tactile_scales.recent)
   end
 
   def show
   end
 
   def new
-    @tactile_scale = TactileScale.new
+    @tactile_scale = TactileScale.new.decorate
   end
 
   def create
@@ -54,6 +55,6 @@ class TactileScalesController < ApplicationController
   end
 
   def set_tactile_scale
-    @tactile_scale = @patient.tactile_scales.find(params[:id])
+    @tactile_scale = @patient.tactile_scales.find(params[:id]).decorate
   end
 end

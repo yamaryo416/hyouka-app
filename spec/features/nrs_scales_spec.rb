@@ -40,6 +40,7 @@ RSpec.feature "NrsScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "NRS"
     click_on "NRS"
     expect(page).to have_current_path new_patient_nrs_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "NRS作成"
     fill_in "NRS", with: 5
     select "荷重時", from: "nrs_scale[status]"
     fill_in "補足", with: "焼けるような痛み"
@@ -56,6 +57,7 @@ RSpec.feature "NrsScales", type: :feature do
 
   scenario "index patient nrs" do
     visit patient_nrs_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "NRS一覧"
     expect(page).to have_selector ".nrs0-rating", text: "4"
     expect(page).to have_selector ".nrs0-status", text: "体動時"
     expect(page).to have_selector ".nrs0-supplement", text: "鈍い痛み"
@@ -70,6 +72,7 @@ RSpec.feature "NrsScales", type: :feature do
     expect(page).to have_current_path edit_patient_nrs_scale_path(
       second_patient, second_patient_nrs
     )
+    expect(page).to have_selector ".page-title", text: "NRS編集"
     fill_in "NRS", with: "9"
     select "体動時", from: "nrs_scale[status]"
     fill_in "補足", with: "焼ける痛み"
@@ -92,5 +95,11 @@ RSpec.feature "NrsScales", type: :feature do
     expect(page).not_to have_selector ".nrs0-rating", text: "1"
     expect(page).not_to have_selector ".nrs0-status", text: "安静時"
     expect(page).not_to have_selector ".nrs0-supplement", text: "痺れる痛み"
+  end
+
+  scenario "show patient page part of nrs" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".nrs-status", text: "安静時 1"
+    expect(page).to have_selector ".nrs-supplement", text: "痺れる痛み"
   end
 end

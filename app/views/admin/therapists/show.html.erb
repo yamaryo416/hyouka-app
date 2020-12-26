@@ -1,0 +1,29 @@
+<% provide(:title, @therapist.full_name) %>
+<div class="main-contents therapist-page therapist-show-page">
+  <div class="container">
+    <div class="link-section d-flex justify-content-between">
+      <div class="left_link">
+        <%= link_to "ユーザー一覧に戻る", admin_therapists_path, class: "custom-btn btn-radius-solid" %>
+      </div>
+      <div class="right_link">
+        <% if !@therapist.has_role?(:admin) %>
+          <%= link_to "ユーザーを削除する", admin_therapist_path(@therapist), method: :delete, class: "custom-btn btn-radius-solid", data: { confirm: "ユーザーを削除します。よろしいですか?" } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="main-contents">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <td class="therapist-id"><%= @therapist.unique_id %></td>
+          </tr>
+          <tr>
+            <th>ユーザー名</th>
+            <td class="therapist-name"><%= @therapist.full_name %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

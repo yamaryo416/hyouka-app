@@ -41,6 +41,7 @@ RSpec.feature "TactileScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "触覚検査"
     click_on "触覚検査"
     expect(page).to have_current_path new_patient_tactile_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "触覚検査作成"
     select "脱失", from: "tactile_scale[left_forearm]"
     select "鈍麻", from: "tactile_scale[left_thigh]"
     select "脱失", from: "tactile_scale[right_rearfoot]"
@@ -61,6 +62,7 @@ RSpec.feature "TactileScales", type: :feature do
     click_on "触覚検査"
     expect(page).to have_current_path patient_tactile_scales_path second_patient
     click_on "詳細"
+    expect(page).to have_selector ".page-title", text: "触覚検査"
     expect(page).to have_current_path patient_tactile_scale_path(
       second_patient, second_patient_tactile
     )
@@ -76,6 +78,7 @@ RSpec.feature "TactileScales", type: :feature do
 
   scenario "index patient tactile" do
     visit patient_tactile_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "触覚検査一覧"
     expect(page).to have_selector ".tactile0-limit-part",
                                   text: "8箇所"
     expect(page).to have_selector ".tactile6-limit-part",
@@ -88,6 +91,7 @@ RSpec.feature "TactileScales", type: :feature do
     expect(page).to have_current_path edit_patient_tactile_scale_path(
       second_patient, second_patient_tactile
     )
+    expect(page).to have_selector ".page-title", text: "触覚検査編集"
     select "正常", from: "tactile_scale[right_upper_arm]"
     select "脱失", from: "tactile_scale[left_upper_arm]"
     select "脱失", from: "tactile_scale[right_forearm]"
@@ -109,5 +113,13 @@ RSpec.feature "TactileScales", type: :feature do
     expect(page).to have_current_path patient_tactile_scales_path second_patient
     expect(page).not_to have_selector ".tactile0-limit-part",
                                       text: "3箇所"
+  end
+
+  scenario "show patient page part of tactile" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".tactile-limit-part-count",
+                                  text: "機能低下: 3箇所"
+    expect(page).to have_selector ".tactile-limit-part",
+                                  text: "右上腕 左上腕 右前腕"
   end
 end

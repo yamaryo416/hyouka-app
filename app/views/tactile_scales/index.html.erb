@@ -1,46 +1,8 @@
 <%= provide(:title, "触覚検査一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "触覚検査"  %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "患者ページに戻る", patient_path(@patient), class: "btn btn-info" %>
+<div class="main-contents patient-page index-tactile">
+  <div class="container">
+    <%= index_scale_link_section("tactile_scales", @patient) %>
+    <%= render "index_tactile_scales_table", tactile_scales: @tactile_scales, patient: @patient %>
   </div>
-  <div class="right_link">
-    <%= link_to "新規作成", new_patient_tactile_scale_path(@patient), class: "btn btn-primary" %>
-  </div>
-</div>
-<div class="main-contents">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">作成日時</th>
-        <th scope="col">機能低下</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tactile_scales.each_with_index do |tactile_scale, i| %>
-        <tr class="tactile_score">
-          <td class="tactile<%= i %>-created-at"><%= tactile_scale.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="tactile<%= i %>-limit-part">
-            <% if tactile_scale.limit_part.empty? %>
-              なし
-            <% else %>
-              <%= tactile_scale.limit_part.size %>箇所
-            <% end %>
-          </td>
-          <td>
-            <%= link_to "詳細", patient_tactile_scale_path(@patient, tactile_scale), class: "tactile#{i}_show_link show_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "編集", edit_patient_tactile_scale_path(@patient, tactile_scale), class: "tactile#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
-          </td>
-          <td>
-            <%= link_to "削除", patient_tactile_scale_path(@patient, tactile_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "触覚検査を削除します。よろしいですか?" } %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>

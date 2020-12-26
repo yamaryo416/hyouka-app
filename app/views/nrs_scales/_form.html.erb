@@ -1,0 +1,14 @@
+<div class="nrs-form">
+  <div class="nrs-column row">
+    <%= f.label :rating %>
+    <%= f.number_field :rating, step: "1", in: 0..10 %>
+  </div>
+  <div class="nrs-column row">
+    <%= f.label :status %>
+    <%= f.select :status, NrsScale.statuses.keys.map { |k| [I18n.t("enums.nrs_scale.status.#{k}"), k] }%>
+  </div>
+  <div class="nrs-column row">
+    <%= f.label :supplement %>
+    <%= f.text_field :supplement %>
+  </div>
+</div>

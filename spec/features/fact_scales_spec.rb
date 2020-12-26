@@ -38,6 +38,7 @@ RSpec.feature "FactScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "FACT"
     click_on "FACT"
     expect(page).to have_current_path new_patient_fact_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "FACT作成"
     select "可能:1点", from: "fact_scale[sitting_with_upper_limb_support]"
     select "可能:1点", from: "fact_scale[sitting_with_no_support]"
     select "可能:1点", from: "fact_scale[lower_lateral_dynamic_sitting]"
@@ -63,6 +64,7 @@ RSpec.feature "FactScales", type: :feature do
     expect(page).to have_current_path patient_fact_scale_path(
       second_patient, second_patient_fact
     )
+    expect(page).to have_selector ".page-title", text: "FACT"
     expect(page).to have_selector ".fact-total-score", text: "3点"
     expect(page).to have_selector ".sitting_with_upper_limb_support_score",
                                   text: "可能:1点"
@@ -74,6 +76,7 @@ RSpec.feature "FactScales", type: :feature do
 
   scenario "index patient fact" do
     visit patient_fact_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "FACT一覧"
     expect(page).to have_selector ".fact0-total-score", text: "11点"
     expect(page).to have_selector ".fact0-undefined-count",
                                   text: "6項目が未入力です。"
@@ -88,6 +91,7 @@ RSpec.feature "FactScales", type: :feature do
     expect(page).to have_current_path edit_patient_fact_scale_path(
       second_patient, second_patient_fact
     )
+    expect(page).to have_selector ".page-title", text: "FACT編集"
     select "不能:0点", from: "fact_scale[sitting_with_upper_limb_support]"
     select "不能:0点", from: "fact_scale[sitting_with_no_support]"
     select "不能:0点", from: "fact_scale[lower_lateral_dynamic_sitting]"
@@ -114,5 +118,11 @@ RSpec.feature "FactScales", type: :feature do
     expect(page).not_to have_selector ".fact0-total-score", text: "3点"
     expect(page).not_to have_selector ".fact0-undefined-count",
                                       text: "7項目が未入力です。"
+  end
+
+  scenario "show patient page part of fact" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".fact-total-score", text: "合計　3点"
+    expect(page).to have_selector ".fact-undefined-columns-count", text: "*7項目が未入力です。"
   end
 end

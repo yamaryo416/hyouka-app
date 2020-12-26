@@ -2,14 +2,15 @@ class MmtScalesController < ApplicationController
   before_action :set_mmt_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mmt_scales = @patient.mmt_scales.recent
+    @mmt_scales = MmtScaleDecorator.
+      decorate_collection(@patient.mmt_scales.recent)
   end
 
   def show
   end
 
   def new
-    @mmt_scale = MmtScale.new
+    @mmt_scale = MmtScale.new.decorate
   end
 
   def create
@@ -100,6 +101,6 @@ class MmtScalesController < ApplicationController
   end
 
   def set_mmt_scale
-    @mmt_scale = @patient.mmt_scales.find(params[:id])
+    @mmt_scale = @patient.mmt_scales.find(params[:id]).decorate
   end
 end

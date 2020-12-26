@@ -2,7 +2,8 @@ class SiasScalesController < ApplicationController
   before_action :set_sias_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sias_scales = @patient.sias_scales.recent
+    @sias_scales = SiasScaleDecorator.
+      decorate_collection(@patient.sias_scales.recent)
   end
 
   def show
@@ -62,6 +63,6 @@ class SiasScalesController < ApplicationController
   end
 
   def set_sias_scale
-    @sias_scale = @patient.sias_scales.find(params[:id])
+    @sias_scale = @patient.sias_scales.find(params[:id]).decorate
   end
 end

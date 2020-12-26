@@ -2,14 +2,15 @@ class BrsScalesController < ApplicationController
   before_action :set_brs_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @brs_scales = @patient.brs_scales.recent
+    @brs_scales = BrsScaleDecorator.
+      decorate_collection(@patient.brs_scales.recent)
   end
 
   def show
   end
 
   def new
-    @brs_scale = BrsScale.new
+    @brs_scale = BrsScale.new.decorate
   end
 
   def create
@@ -43,6 +44,6 @@ class BrsScalesController < ApplicationController
   end
 
   def set_brs_scale
-    @brs_scale = @patient.brs_scales.find(params[:id])
+    @brs_scale = @patient.brs_scales.find(params[:id]).decorate
   end
 end

@@ -2,14 +2,15 @@ class BathyesthesiaScalesController < ApplicationController
   before_action :set_bathyesthesia_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bathyesthesia_scales = @patient.bathyesthesia_scales.recent
+    @bathyesthesia_scales = BathyesthesiaScaleDecorator.
+      decorate_collection(@patient.bathyesthesia_scales.recent)
   end
 
   def show
   end
 
   def new
-    @bathyesthesia_scale = BathyesthesiaScale.new
+    @bathyesthesia_scale = BathyesthesiaScale.new.decorate
   end
 
   def create
@@ -48,6 +49,6 @@ class BathyesthesiaScalesController < ApplicationController
   end
 
   def set_bathyesthesia_scale
-    @bathyesthesia_scale = @patient.bathyesthesia_scales.find(params[:id])
+    @bathyesthesia_scale = @patient.bathyesthesia_scales.find(params[:id]).decorate
   end
 end

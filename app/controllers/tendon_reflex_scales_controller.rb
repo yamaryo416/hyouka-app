@@ -2,14 +2,15 @@ class TendonReflexScalesController < ApplicationController
   before_action :set_tendon_reflex_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tendon_reflex_scales = @patient.tendon_reflex_scales.recent
+    @tendon_reflex_scales = TendonReflexScaleDecorator.
+      decorate_collection(@patient.tendon_reflex_scales.recent)
   end
 
   def show
   end
 
   def new
-    @tendon_reflex_scale = TendonReflexScale.new
+    @tendon_reflex_scale = TendonReflexScale.new.decorate
   end
 
   def create
@@ -58,6 +59,7 @@ class TendonReflexScalesController < ApplicationController
   end
 
   def set_tendon_reflex_scale
-    @tendon_reflex_scale = @patient.tendon_reflex_scales.find(params[:id])
+    @tendon_reflex_scale = @patient.tendon_reflex_scales.find(params[:id]).
+      decorate
   end
 end

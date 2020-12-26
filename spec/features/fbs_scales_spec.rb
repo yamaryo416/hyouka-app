@@ -40,6 +40,7 @@ RSpec.feature "FbsScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "FBS"
     click_on "FBS"
     expect(page).to have_current_path new_patient_fbs_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "FBS作成"
     select "1:一人で座れるが、しゃがみこみを制御できない",
            from: "fbs_scale[sit_down]"
     select "4:ほとんど手を用いずに安全に移乗が可能である",
@@ -68,6 +69,7 @@ RSpec.feature "FbsScales", type: :feature do
     expect(page).to have_current_path patient_fbs_scale_path(
       second_patient, second_patient_fbs
     )
+    expect(page).to have_selector ".page-title", text: "FBS"
     expect(page).to have_selector ".stand_up_score",
                                   text: "2:数回の施行後、手を使用して立ち上がりが可能である"
     expect(page).to have_selector ".standing_score",
@@ -81,6 +83,7 @@ RSpec.feature "FbsScales", type: :feature do
 
   scenario "index patient fbs" do
     visit patient_fbs_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "FBS一覧"
     expect(page).to have_selector ".fbs0-total-score", text: "11点"
     expect(page).to have_selector ".fbs0-undefined-count",
                                   text: "10項目が未入力です。"
@@ -95,6 +98,7 @@ RSpec.feature "FbsScales", type: :feature do
     expect(page).to have_current_path edit_patient_fbs_scale_path(
       second_patient, second_patient_fbs
     )
+    expect(page).to have_selector ".page-title", text: "FBS編集"
     select "4:立ち上がりが可能である",
            from: "fbs_scale[stand_up]"
     select "4:安全に2分間の立位保持が可能である",
@@ -128,5 +132,11 @@ RSpec.feature "FbsScales", type: :feature do
     expect(page).not_to have_selector ".fbs0-total-score", text: "6点"
     expect(page).not_to have_selector ".fbs0-undefined-count",
                                       text: "11項目が未入力です。"
+  end
+
+  scenario "show patient page part of fbs" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".fbs-total-score", text: "合計　6点"
+    expect(page).to have_selector ".fbs-undefined-columns-count", text: "*11項目が未入力です。"
   end
 end

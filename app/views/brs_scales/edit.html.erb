@@ -1,15 +1,17 @@
-<% provide(:title, "BRS作成") %>
+<% provide(:title, "BRS編集") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "BRS" %>
-<%= link_to "BRS一覧に戻る", patient_brs_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-brs">
-  <%= form_with(url: patient_brs_scale_path(id: @brs_scale), scope: :brs_scale, local: true, method: :patch) do |f| %>
-    <% @brs_scale.scale_attributes.each_with_index do |attr_name, i| %>
-      <div class="scale_column row">
-        <%= link_to BrsScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-        <%= f.select attr_name, BrsScale.human_select_options(attr_name), class: "col-sm-2" %>
-      </div>
+<div class="main-contents patient-page edit-brs edit-section">
+  <div class="container">
+    <%= form_scale_link_section("BRS", "brs_scales", @patient) %>
+    <%= form_with(url: patient_brs_scale_path(id: @brs_scale), scope: :brs_scale, local: true, method: :patch) do |f| %>
+      <% @brs_scale.scale_attributes.each_with_index do |attr_name, i| %>
+        <div class="scale_column row">
+          <%= link_to BrsScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+          <%= f.select attr_name, BrsScale.human_select_options(attr_name), class: "col-sm-2" %>
+        </div>
+      <% end %>
+      <%= render "brs_scales/modal/explain_modal" %>
+      <%= f.submit %>
     <% end %>
-    <%= render "brs_scales/modal/explain_modal" %>
-    <%= f.submit %>
-  <% end %>
+  </div>
 </div>

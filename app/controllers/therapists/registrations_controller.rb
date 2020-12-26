@@ -4,6 +4,7 @@ class Therapists::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:cancel]
   before_action :creatable?, only: [:new, :create]
   before_action :configure_sign_up_params, only: [:create]
+  before_action :not_admin?, only: [:edit, :update]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -43,25 +44,19 @@ class Therapists::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:unique_id, :name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:unique_id, :first_name, :last_name])
   end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:password, :password_confirmation])
+  end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    admin_therapists_path
+  end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-  def current_therapist_is_admin?
-    therapist_signed_in? && current_therapist.has_role?(:admin)
+  def after_update_path_for(resource)
+    patients_path
   end
 
   def sign_up(resource_name, resource)
@@ -74,5 +69,9 @@ class Therapists::RegistrationsController < Devise::RegistrationsController
     if !current_therapist_is_admin?
       redirect_to root_path
     end
+  end
+
+  def not_admin?
+    redirect_to patients_path if current_therapist_is_admin?
   end
 end

@@ -2,7 +2,8 @@ class HdsrScalesController < ApplicationController
   before_action :set_hdsr_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hdsr_scales = @patient.hdsr_scales.recent
+    @hdsr_scales = HdsrScaleDecorator.
+      decorate_collection(@patient.hdsr_scales.recent)
   end
 
   def show
@@ -58,6 +59,6 @@ class HdsrScalesController < ApplicationController
   end
 
   def set_hdsr_scale
-    @hdsr_scale = @patient.hdsr_scales.find(params[:id])
+    @hdsr_scale = @patient.hdsr_scales.find(params[:id]).decorate
   end
 end

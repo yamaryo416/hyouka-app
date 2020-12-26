@@ -1,7 +1,7 @@
 class MmtScale < ApplicationRecord
   include Scope
-  belongs_to :patient
 
+  belongs_to :patient
   enum neck_flexion: {
     undefined: nil,
     zero: 0,

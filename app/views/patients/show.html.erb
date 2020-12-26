@@ -1,22 +1,18 @@
 <% provide(:title, "患者ページ") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: false %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "患者一覧に戻る", patients_path, class: "btn btn-info" %>
-  </div>
-  <div class="right_link">
-    <%= link_to "基本情報を編集する", edit_patient_path, class: "custom-btn btn-radius-solid" %>
-    <%= link_to "患者情報を削除する", @patient, method: :delete, class: "custom-btn btn-radius-solid", data: { confirm: "患者情報を削除します。よろしいですか?" } %>
-  </div>
-</div>
-<div class="main-contents">
-  <%= render "patients/patient_detail", patient: @patient %>
-  <div class="evaluation-finding-section border border-info">
-      <h3>評価初見</h3>
-      <div class="evaluation-finding-items">
+<div class="main-contents patient-page show-patient">
+  <div class="container">
+    <%= render "patients/patient_detail", patient: @patient %>
+    <div class="evaluation-finding-section show-patient-content">
+        <h3>評価初見</h3>
+        <div class="evaluation-finding-items">
 
-      </div>
+        </div>
+    </div>
+    <%= render "patients/defined_scale", patient: @patient %>
+    <%= render "patients/undefined_scale", patient: @patient %>
+    <div class="delete-link-section d-flex flex-row-reverse">
+      <%= link_to "患者情報を削除する", patient_path(@patient), class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "患者情報を削除します。よろしいですか?" }  %>
+    </div>
   </div>
-  <%= render "patients/defined_scale", patient: @patient %>
-  <%= render "patients/undefined_scale", patient: @patient %>
 </div>

@@ -1,36 +1,13 @@
-<% provide(:title, "触覚検査作成") %>
+<% provide(:title, "触覚検査編集") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "触覚検査" %>
-<%= link_to "触覚検査一覧に戻る", patient_tactile_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-tactile">
-  <%= form_with(url: patient_tactile_scale_path(id: @tactile_scale), scope: :tactile_scale, local: true, method: :patch) do |f| %>
-    <div class="d-flex justify-content-center">
-      <div class="tactile_head part-head">
-        <dd class="left-top"></dd>
-        <dd>上腕</dd>
-        <dd>前腕</dd>
-        <dd>手</dd>
-        <dd>大腿</dd>
-        <dd>下腿</dd>
-        <dd>後足部</dd>
-        <dd>前足部</dd>
+<div class="main-contents patient-page edit-tactile edit-section">
+  <div class="container">
+    <%= form_scale_link_section("触覚検査", "tactile_scales", @patient) %>
+    <%= form_with(url: patient_tactile_scale_path(id: @tactile_scale), scope: :tactile_scale, local: true, method: :patch) do |f| %>
+      <%= render "form", f: f, tactile_scale: @tactile_scale %>
+      <div class="submit-form">
+        <%= f.submit %>
       </div>
-      <div class="right_tactile_form tactile-form">
-        <dd class="direction-head">右</dd>
-        <% @tactile_scale.right_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-      <div class="left_tactile_form tactile-form">
-        <dd class="direction-head">左</dd>
-        <% @tactile_scale.left_scale_score.keys.each  do |attr_name| %>
-          <div>
-            <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <%= f.submit %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

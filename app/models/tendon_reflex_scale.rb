@@ -1,5 +1,6 @@
 class TendonReflexScale < ApplicationRecord
   include Scope
+
   belongs_to :patient
   enum jaw: {
     undefined: nil,

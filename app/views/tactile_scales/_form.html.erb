@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+  <div class="tactile_head part-head">
+    <dd class="left-top"></dd>
+    <dd>上腕</dd>
+    <dd>前腕</dd>
+    <dd>手</dd>
+    <dd>大腿</dd>
+    <dd>下腿</dd>
+    <dd>後足部</dd>
+    <dd>前足部</dd>
+  </div>
+  <div class="right_tactile_form tactile-form">
+    <dd class="direction-head">右</dd>
+    <% tactile_scale.right_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="left_tactile_form tactile-form">
+    <dd class="direction-head">左</dd>
+    <% tactile_scale.left_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, TactileScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+</div>

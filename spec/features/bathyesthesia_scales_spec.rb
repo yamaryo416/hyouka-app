@@ -42,6 +42,7 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
     expect(page).to have_current_path new_patient_bathyesthesia_scale_path(
       first_patient
     )
+    expect(page).to have_selector ".page-title", text: "深部感覚検査作成"
     select "鈍麻", from: "bathyesthesia_scale[left_lower_limb]"
     select "鈍麻", from: "bathyesthesia_scale[right_finger]"
     select "鈍麻", from: "bathyesthesia_scale[left_toe]"
@@ -70,6 +71,7 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
     expect(page).to have_current_path patient_bathyesthesia_scale_path(
       second_patient, second_patient_bathyesthesia
     )
+    expect(page).to have_selector ".page-title", text: "深部感覚検査"
     expect(page).to have_selector ".right_upper_limb_score", text: "鈍麻"
     expect(page).to have_selector ".left_upper_limb_score", text: "鈍麻"
     expect(page).to have_selector ".right_lower_limb_score", text: "鈍麻"
@@ -80,6 +82,7 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
 
   scenario "index patient bathyesthesia" do
     visit patient_bathyesthesia_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "深部感覚検査一覧"
     expect(page).to have_selector ".bathyesthesia0-limit-part-count",
                                   text: "5箇所"
     expect(page).to have_selector ".bathyesthesia6-limit-part-count",
@@ -92,6 +95,7 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
     expect(page).to have_current_path edit_patient_bathyesthesia_scale_path(
       second_patient, second_patient_bathyesthesia
     )
+    expect(page).to have_selector ".page-title", text: "深部感覚検査編集"
     select "正常", from: "bathyesthesia_scale[right_upper_limb]"
     select "正常", from: "bathyesthesia_scale[left_upper_limb]"
     click_on "保存する"
@@ -114,5 +118,11 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
     end
     expect(page).not_to have_selector ".bathyesthesia0-limit-part-count",
                                       text: "3箇所"
+  end
+
+  scenario "show patient page part of bathyesthesia" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".bathyesthesia-limit-part-count", text: "機能低下: 3箇所"
+    expect(page).to have_selector ".bathyesthesia-limit-part", text: "右上肢 左上肢 右下肢"
   end
 end

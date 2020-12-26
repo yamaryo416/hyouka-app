@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module BrsScaleDecorator
-  include ScaleDecorator
+class BrsScaleDecorator < ScaleDecorator
+  delegate_all
 end

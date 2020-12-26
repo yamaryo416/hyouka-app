@@ -1,32 +1,9 @@
 <% provide(:title, "BRS") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "BRS" %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "BRS一覧に戻る", patient_brs_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents patient-page show-brs">
+  <div class="container">
+    <%= show_scale_link_section("BRS", "brs_scales", @patient, @brs_scale) %>
+    <%= render "show_brs_scale_table", brs_scale: @brs_scale %>
+    <%= render "brs_scales/modal/explain_modal" %>
   </div>
-  <div class="right_link">
-    <%= link_to "BRSを編集する", edit_patient_brs_scale_path(@patient, @brs_scale), class: "custom-btn btn-radius-solid" %>
-    <%= link_to "BRSを削除する", patient_brs_scale_path(@patient, @brs_scale),class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "BRSを削除します。よろしいですか?" } %>
-  </div>
-</div>
-<div class="main-contents brs-section">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">項目</th>
-        <th scope="col">評価結果</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @brs_scale.scale_attributes.each_with_index do |attr_name, i| %>
-        <tr>
-          <td class="<%= attr_name %>">
-            <%= link_to BrsScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-          </td>
-          <td class="<%= attr_name %>_score"><%= @brs_scale.send("#{attr_name}_i18n") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= render "brs_scales/modal/explain_modal" %>
 </div>

@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">項目</th>
+      <th scope="col">評価結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% brs_scale.scale_attributes.each_with_index do |attr_name, i| %>
+      <tr>
+        <td class="<%= attr_name %>">
+          <%= link_to BrsScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+        </td>
+        <td class="<%= attr_name %>_score"><%= brs_scale.send("#{attr_name}_i18n") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

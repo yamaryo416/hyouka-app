@@ -1,9 +1,13 @@
 <% provide(:title, "HDS-R作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "HDS-R" %>
-<%= link_to "HDS-R一覧に戻る", patient_hdsr_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-hdsr">
-  <%= form_with(url: patient_hdsr_scales_path, scope: :hdsr_scale, local: true) do |f| %>
-    <%= render "form", f: f %>
-    <%= f.submit %>
-  <% end %>
+<div class="main-contents patient-page new-hdsr new-section">
+  <div class="container">
+    <%= form_scale_link_section("HDS-R", "hdsr_scales", @patient) %>
+    <%= form_with(url: patient_hdsr_scales_path, scope: :hdsr_scale, local: true) do |f| %>
+      <%= render "form", f: f %>
+      <div class="submit-form hdsr-submit-form">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
 </div>

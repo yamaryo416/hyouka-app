@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Therapist, type: :model do
-  it "is valid with uniqueid, name, and password" do
+  it "is valid with uniqueid, firstname, lastname and password" do
     therapist = build(:therapist)
     expect(therapist).to be_valid
   end
@@ -53,11 +53,39 @@ RSpec.describe Therapist, type: :model do
     end
   end
 
-  context "invalid when name" do
+  context "invalid when first_name" do
     it "is nil" do
-      therapist = build(:therapist, name: nil)
+      therapist = build(:therapist, first_name: nil)
       therapist.valid?
-      expect(therapist.errors[:name]).to include("を入力してください")
+      expect(therapist.errors[:first_name]).to include("を入力してください")
+    end
+    it "is blank" do
+      therapist = build(:therapist, first_name: "")
+      therapist.valid?
+      expect(therapist.errors[:first_name]).to include("を入力してください")
+    end
+    it "is too long" do
+      therapist = build(:therapist, first_name: "a" * 11)
+      therapist.valid?
+      expect(therapist.errors[:first_name]).to include("は10文字以内で入力してください")
+    end
+  end
+
+  context "invalid when last_name" do
+    it "is nil" do
+      therapist = build(:therapist, last_name: nil)
+      therapist.valid?
+      expect(therapist.errors[:last_name]).to include("を入力してください")
+    end
+    it "is blank" do
+      therapist = build(:therapist, last_name: "")
+      therapist.valid?
+      expect(therapist.errors[:last_name]).to include("を入力してください")
+    end
+    it "is too long" do
+      therapist = build(:therapist, last_name: "a" * 11)
+      therapist.valid?
+      expect(therapist.errors[:last_name]).to include("は10文字以内で入力してください")
     end
   end
 end

@@ -1,16 +1,18 @@
 <% provide(:title, "FACT作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "FACT" %>
-<%= link_to "FACT一覧に戻る", patient_fact_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-fact new-section">
-  <%= form_with(url: patient_fact_scales_path, scope: :fact_scale, local: true) do |f| %>
-    <% @fact_scale.scale_attributes.each_with_index do |attr_name, i| %>
-      <div class="scale_column row">
-        <span><%= i + 1 %>)</span>
-        <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-sm-4", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-        <%= f.select attr_name, FactScale.human_select_options(attr_name) %>
-      </div>
+<div class="main-contents patient-page new-fact new-section">
+  <div class="container">
+    <%= form_scale_link_section("FACT", "fact_scales", @patient) %>
+    <%= form_with(url: patient_fact_scales_path, scope: :fact_scale, local: true) do |f| %>
+      <% @fact_scale.scale_attributes.each_with_index do |attr_name, i| %>
+        <div class="scale_column row">
+          <span><%= i + 1 %>)</span>
+          <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-sm-4", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+          <%= f.select attr_name, FactScale.human_select_options(attr_name) %>
+        </div>
+      <% end %>
+      <%= render "fact_scales/modal/explain_modal" %>
+      <%= f.submit %>
     <% end %>
-    <%= render "fact_scales/modal/explain_modal" %>
-    <%= f.submit %>
-  <% end %>
+  </div>
 </div>

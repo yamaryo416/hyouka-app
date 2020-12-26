@@ -4,8 +4,8 @@ FactoryBot.define do
     last_name { "example" }
     age { nil }
     sex { nil }
-    weight { nil }
     height { nil }
+    weight { nil }
     association :therapist
   end
 end

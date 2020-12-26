@@ -1,31 +1,39 @@
-<% provide(:title, "ユーザー登録") %>
-<%= render "devise/shared/error_messages", resource: resource %>
-<div class="main-contents">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="form_group">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<% provide(:title, "ユーザー作成") %>
+<div class="main-contents therapist-page new-therapist">
+  <div class="container">
+    <%= render "shared/error_messages", model: @therapist %>
+    <div class="link-section d-flex flex-row">
+      <%= link_to "戻る", :back, class: "custom-btn btn-radius-solid"  %>
     </div>
-    <div class="form_group">
-      <%= f.label :unique_id %><br />
-      <%= f.text_field :unique_id, autofocus: true, autocomplete: "unique_id" %>
-    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form_group">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="form_group">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="form_group">
+        <%= f.label :unique_id %><br />
+        <%= f.text_field :unique_id, autofocus: true, autocomplete: "unique_id" %>
+      </div>
 
-    <div class="form_group">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %>文字以上)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+      <div class="form_group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-    <div class="form_group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+      <div class="form_group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
 
-    <div class="form-action">
-      <%= f.submit "ユーザー登録", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+      <div class="form-action">
+        <%= f.submit "ユーザー登録", class: "btn btn-primary signup-btn" %>
+      </div>
+    <% end %>
 </div>

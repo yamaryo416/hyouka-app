@@ -1,5 +1,6 @@
 class BrsScale < ApplicationRecord
   include Scope
+
   belongs_to :patient
   enum upper_limb: {
     undefined: nil,

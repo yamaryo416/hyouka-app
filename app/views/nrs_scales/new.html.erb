@@ -1,34 +1,12 @@
 <% provide(:title, "NRS作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "NRS" %>
-<%= link_to "NRS一覧に戻る", patient_nrs_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-nrs">
-  <% if @nrs_scale.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger">
-        <%= @nrs_scale.errors.count %>個のエラーがあります。
-      </div>
-      <ul>
-      <%@nrs_scale.errors.full_messages.each do |msg| %>
-        <li>・<%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form_with(url: patient_nrs_scales_path, scope: :nrs_scale, local: true) do |f| %>
-    <div class="nrs-form">
-      <div class="nrs-column row">
-        <%= f.label :rating %>
-        <%= f.number_field :rating, step: "1", in: 0..10 %>
-      </div>
-      <div class="nrs-column row">
-        <%= f.label :status %>
-        <%= f.select :status, NrsScale.statuses.keys.map { |k| [I18n.t("enums.nrs_scale.status.#{k}"), k] }%>
-      </div>
-      <div class="nrs-column row">
-        <%= f.label :supplement %>
-        <%= f.text_field :supplement %>
-      </div>
-    </div>
-    <%= f.submit %>
-  <% end %>
+<div class="main-contents patient-page new-nrs new-section">
+  <div class="container">
+    <%= render "shared/error_messages", model: @nrs_scale %>
+    <%= form_scale_link_section("NRS", "nrs_scales", @patient) %>
+    <%= form_with(url: patient_nrs_scales_path, scope: :nrs_scale, local: true) do |f| %>
+      <%= render "form", f: f %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>

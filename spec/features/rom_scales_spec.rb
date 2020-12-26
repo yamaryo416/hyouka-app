@@ -40,7 +40,7 @@ RSpec.feature "RomScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "ROM"
     click_on "ROM"
     expect(page).to have_current_path new_patient_rom_scale_path(first_patient)
-    click_button "肩関節"
+    expect(page).to have_selector ".page-title", text: "ROM作成"
     fill_in "right_shoulder_flexion_form", with: 90
     fill_in "left_shoulder_flexion_form", with: 45
     fill_in "right_shoulder_extension_form", with: 20
@@ -65,6 +65,7 @@ RSpec.feature "RomScales", type: :feature do
     expect(page).to have_current_path patient_rom_scale_path(
       second_patient, second_patient_rom
     )
+    expect(page).to have_selector ".page-title", text: "ROM"
     expect(page).to have_selector ".limit-part-detail",
                                   text: "右肩関節屈曲 左肩関節屈曲 右肩関節伸展 右前腕回外 右手関節背屈"
     expect(page).to have_selector ".right_shoulder_flexion_score", text: "90°"
@@ -79,6 +80,7 @@ RSpec.feature "RomScales", type: :feature do
 
   scenario "index patient rom" do
     visit patient_rom_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "ROM一覧"
     expect(page).to have_selector ".rom0-limit-part-count",
                                   text: "5箇所に可動域制限があります。"
     expect(page).to have_selector ".rom6-limit-part-count",
@@ -91,9 +93,7 @@ RSpec.feature "RomScales", type: :feature do
     expect(page).to have_current_path edit_patient_rom_scale_path(
       second_patient, second_patient_rom
     )
-    click_button "肘関節・前腕"
-    click_button "手関節"
-    click_button "股関節"
+    expect(page).to have_selector ".page-title", text: "ROM編集"
     fill_in "right_elbow_flexion_form", with: 0
     fill_in "right_wrist_flexion_form", with: 0
     fill_in "right_hip_flexion_form", with: 0
@@ -102,9 +102,6 @@ RSpec.feature "RomScales", type: :feature do
     expect(page).to have_selector ".rom0-limit-part-count",
                                   text: "8箇所に可動域制限があります。"
     click_on "詳細"
-    click_button "肘関節・前腕"
-    click_button "手関節"
-    click_button "股関節"
     expect(page).to have_selector ".right_elbow_flexion_score", text: "0°"
     expect(page).to have_selector ".right_wrist_flexion_score", text: "0°"
     expect(page).to have_selector ".right_hip_flexion_score", text: "0°"
@@ -119,5 +116,12 @@ RSpec.feature "RomScales", type: :feature do
     end
     expect(page).not_to have_selector ".rom0-limit-part-count",
                                       text: "5箇所に可動域制限があります。"
+  end
+
+  scenario "show patient page part of rom" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".rom-limit-part-count", text: "可動域制限: 5箇所"
+    expect(page).to have_selector ".rom-limit-part",
+                                  text: "右肩関節屈曲 左肩関節屈曲 右肩関節伸展 右前腕回外 右手関節背屈"
   end
 end

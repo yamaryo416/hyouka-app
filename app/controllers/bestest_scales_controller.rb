@@ -2,7 +2,8 @@ class BestestScalesController < ApplicationController
   before_action :set_bestest_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bestest_scales = @patient.bestest_scales.recent
+    @bestest_scales = BestestScaleDecorator.
+      decorate_collection(@patient.bestest_scales.recent)
   end
 
   def show
@@ -54,6 +55,6 @@ class BestestScalesController < ApplicationController
   end
 
   def set_bestest_scale
-    @bestest_scale = @patient.bestest_scales.find(params[:id])
+    @bestest_scale = @patient.bestest_scales.find(params[:id]).decorate
   end
 end

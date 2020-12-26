@@ -1,15 +1,12 @@
-<% provide(:title, "ROM作成") %>
+<% provide(:title, "ROM編集") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "ROM" %>
-<%= link_to "ROM一覧に戻る", patient_rom_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-sias">
-  <%= form_with(url: patient_rom_scale_path(id: @rom_scale), scope: :rom_scale, local: true, method: :patch) do |f| %>
-    <%= render "rom_scales/form_parts/collaps_btns", { f: f, rom_scale: @rom_scale } %>
-    <%= f.submit %>
-    <%= render "rom_scales/form_parts/shoulder_form", { f: f, rom_scale: @rom_scale } %>
-    <%= render "rom_scales/form_parts/elbow_forearm_form", { f: f, rom_scale: @rom_scale } %>
-    <%= render "rom_scales/form_parts/wrist_form", { f: f, rom_scale: @rom_scale } %>
-    <%= render "rom_scales/form_parts/hip_form", { f: f, rom_scale: @rom_scale } %>
-    <%= render "rom_scales/form_parts/knee_form", { f: f, rom_scale: @rom_scale } %>
-    <%= render "rom_scales/form_parts/ankle_form", { f: f, rom_scale: @rom_scale } %>
-  <% end %>
+<div class="main-contents patient-page edit-sias edit-section">
+  <div class="container">
+    <%= form_scale_link_section("ROM", "rom_scales", @patient) %>
+    <%= form_with(url: patient_rom_scale_path(id: @rom_scale), scope: :rom_scale, local: true, method: :patch) do |f| %>
+      <%= render "rom_scales/form_parts/collaps_btns", { f: f, rom_scale: @rom_scale } %>
+      <%= f.submit %>
+      <%= render "form", f: f, rom_scale: @rom_scale %>
+    <% end %>
+  </div>
 </div>

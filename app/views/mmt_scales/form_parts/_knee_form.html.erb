@@ -9,7 +9,7 @@
       </div>
       <div class="right_knee_mmt_form mmt-form">
         <dd class="direction-head">右</dd>
-        <% mmt_scale.right_knee_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.right_knee_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>
@@ -17,7 +17,7 @@
       </div>
       <div class="left_knee_mmt_form mmt-form">
         <dd class="direction-head">左</dd>
-        <% mmt_scale.left_knee_scale_score.keys.each  do |attr_name| %>
+        <% mmt_scale.left_knee_scale_attributes.each  do |attr_name| %>
           <div>
             <%= f.select attr_name, MmtScale.human_select_options(attr_name) %>
           </div>

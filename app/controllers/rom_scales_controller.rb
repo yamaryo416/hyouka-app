@@ -2,14 +2,15 @@ class RomScalesController < ApplicationController
   before_action :set_rom_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rom_scales = @patient.rom_scales.recent
+    @rom_scales = RomScaleDecorator.
+      decorate_collection(@patient.rom_scales.recent)
   end
 
   def show
   end
 
   def new
-    @rom_scale = RomScale.new
+    @rom_scale = RomScale.new.decorate
   end
 
   def create
@@ -106,6 +107,6 @@ class RomScalesController < ApplicationController
   end
 
   def set_rom_scale
-    @rom_scale = @patient.rom_scales.find(params[:id])
+    @rom_scale = @patient.rom_scales.find(params[:id]).decorate
   end
 end

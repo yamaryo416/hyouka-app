@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module FactScaleDecorator
-  include ScaleDecorator
+class FactScaleDecorator < ScaleDecorator
+  delegate_all
 end

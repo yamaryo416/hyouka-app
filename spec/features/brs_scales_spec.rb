@@ -37,6 +37,7 @@ RSpec.feature "BrsScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "BRS"
     click_on "BRS"
     expect(page).to have_current_path new_patient_brs_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "BRS作成"
     select "ステージI",
            from: "brs_scale[upper_limb]"
     select "ステージⅢ",
@@ -68,6 +69,7 @@ RSpec.feature "BrsScales", type: :feature do
     expect(page).to have_current_path patient_brs_scale_path(
       second_patient, second_patient_brs
     )
+    expect(page).to have_selector ".page-title", text: "BRS"
     expect(page).to have_selector ".upper_limb_score",
                                   text: "ステージⅣ"
     expect(page).to have_selector ".finger_score",
@@ -81,6 +83,7 @@ RSpec.feature "BrsScales", type: :feature do
 
   scenario "index patient brs" do
     visit patient_brs_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "BRS一覧"
     expect(page).to have_selector ".brs0-upper-limb-score",
                                   text: "ステージⅢ"
     expect(page).to have_selector ".brs0-finger-score",
@@ -101,6 +104,7 @@ RSpec.feature "BrsScales", type: :feature do
     expect(page).to have_current_path edit_patient_brs_scale_path(
       second_patient, second_patient_brs
     )
+    expect(page).to have_selector ".page-title", text: "BRS編集"
     select "ステージI",
            from: "brs_scale[upper_limb]"
     select "ステージⅡ",
@@ -135,5 +139,12 @@ RSpec.feature "BrsScales", type: :feature do
                                       text: "ステージⅤ"
     expect(page).not_to have_selector ".brs0-lower-limb-score",
                                       text: "ステージⅥ"
+  end
+
+  scenario "show patient page part of brs" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".brs-upper_limb", text: "上肢: ステージⅣ"
+    expect(page).to have_selector ".brs-finger", text: "手指: ステージⅤ"
+    expect(page).to have_selector ".brs-lower_limb", text: "下肢: ステージⅥ"
   end
 end

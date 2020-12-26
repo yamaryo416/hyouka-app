@@ -1,0 +1,48 @@
+<h3>位置覚</h3>
+<div class="d-flex justify-content-center">
+  <div class="bathyesthesia_head part-head">
+    <dd class="left-top"></dd>
+    <dd>上肢</dd>
+    <dd>下肢</dd>
+  </div>
+  <div class="right_bathyesthesia_form bathyesthesia-form">
+    <dd class="direction-head">右</dd>
+    <% @bathyesthesia_scale.right_position_sense_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="left_bathyesthesia_form bathyesthesia-form">
+    <dd class="direction-head">左</dd>
+    <% @bathyesthesia_scale.left_position_sense_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<h3>運動覚</h3>
+<div class="d-flex justify-content-center">
+  <div class="bathyesthesia_head part-head">
+    <dd class="left-top"></dd>
+    <dd>手指</dd>
+    <dd>足趾</dd>
+  </div>
+  <div class="right_bathyesthesia_form bathyesthesia-form">
+    <dd class="direction-head">右</dd>
+    <% @bathyesthesia_scale.right_motor_sense_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="left_bathyesthesia_form bathyesthesia-form">
+    <dd class="direction-head">左</dd>
+    <% @bathyesthesia_scale.left_motor_sense_scale_attributes.each  do |attr_name| %>
+      <div>
+        <%= f.select attr_name, BathyesthesiaScale.human_select_options(attr_name) %>
+      </div>
+    <% end %>
+  </div>
+</div>

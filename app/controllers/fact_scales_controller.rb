@@ -2,14 +2,15 @@ class FactScalesController < ApplicationController
   before_action :set_fact_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fact_scales = @patient.fact_scales.recent
+    @fact_scales = FactScaleDecorator.
+      decorate_collection(@patient.fact_scales.recent)
   end
 
   def show
   end
 
   def new
-    @fact_scale = FactScale.new
+    @fact_scale = FactScale.new.decorate
   end
 
   def create
@@ -56,6 +57,6 @@ class FactScalesController < ApplicationController
   end
 
   def set_fact_scale
-    @fact_scale = @patient.fact_scales.find(params[:id])
+    @fact_scale = @patient.fact_scales.find(params[:id]).decorate
   end
 end

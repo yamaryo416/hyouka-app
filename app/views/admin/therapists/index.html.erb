@@ -1,0 +1,21 @@
+<% provide(:title, "ユーザー一覧") %>
+<div class="main-contents therapist-index-page">
+  <div class="container">
+    <div class="new-patient-link">
+      <%= link_to "ユーザー作成", signup_path, class: "btn btn-primary" %>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ユーザーID</th>
+          <th>ユーザー名</th>
+          <th>登録日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @therapists %>
+      </tbody>
+    </table>
+    <%= paginate @therapists %>
+  </div>
+</div>

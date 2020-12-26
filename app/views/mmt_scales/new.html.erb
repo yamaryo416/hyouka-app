@@ -1,16 +1,12 @@
 <% provide(:title, "MMT作成") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "MMT" %>
-<%= link_to "MMT一覧に戻る", patient_mmt_scales_path(@patient), class: "btn btn-info" %>
-<div class="main-contents new-mmt">
-  <%= form_with(url: patient_mmt_scales_path, scope: :mmt_scale, local: true) do |f| %>
-    <%= render "mmt_scales/form_parts/collaps_btns", { f: f, mmt_scale: @mmt_scale } %>
-    <%= f.submit %>
-    <%= render "mmt_scales/form_parts/neck_trunk_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/shoulder_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/elbow_forearm_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/wrist_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/hip_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/knee_form", { f: f, mmt_scale: @mmt_scale } %>
-    <%= render "mmt_scales/form_parts/ankle_form", { f: f, mmt_scale: @mmt_scale } %>
-  <% end %>
+<div class="main-contents patient-page new-mmt new-section">
+  <div class="container">
+    <%= form_scale_link_section("MMT", "mmt_scales", @patient) %>
+    <%= form_with(url: patient_mmt_scales_path, scope: :mmt_scale, local: true) do |f| %>
+      <%= render "mmt_scales/form_parts/collaps_btns", { f: f, mmt_scale: @mmt_scale } %>
+      <%= f.submit %>
+      <%= render "form", f: f, mmt_scale: @mmt_scale %>
+    <% end %>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <% provide(:title, "ログイン") %>
-<div class="main-contents">
+<div class="main-contents new-therapist">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form_group">
       <%= f.label :unique_id %><br />
@@ -10,7 +10,7 @@
       <%= f.password_field :password, autocomplete: "current-password", class: "form_control" %>
     </div>
     <div class="form-action">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+      <%= f.submit "ログイン", class: "btn btn-primary login-btn" %>
     </div>
   <% end %>
 </div>

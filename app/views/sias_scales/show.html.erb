@@ -1,34 +1,10 @@
 <% provide(:title, "SIAS") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "SIAS" %>
-<div class="link_section d-flex justify-content-between">
-  <div class="left_link">
-    <%= link_to "SIAS一覧に戻る", patient_sias_scales_path(@patient), class: "btn btn-info" %>
+<div class="main-contents patient-page show-sias">
+  <div class="container">
+    <%= show_scale_link_section("SIAS", "sias_scales", @patient, @sias_scale) %>
+    <p class="sias-total-score show-total-score">得点　<%= @sias_scale.total_score %>点</p>
+    <%= render "show_sias_scale_table", sias_scale: @sias_scale %>
+    <%= render "sias_scales/modal/explain_modal" %>
   </div>
-  <div class="right_link">
-    <%= link_to "SIASを編集する", edit_patient_sias_scale_path(@patient, @sias_scale), class: "custom-btn btn-radius-solid" %>
-    <%= link_to "SIASを削除する", patient_sias_scale_path(@patient, @sias_scale),class: "custom-btn btn-radius-solid", method: :delete, data: { confirm: "SIASを削除します。よろしいですか?" } %>
-  </div>
-</div>
-<div class="main-contents sias-section">
-  <p class="sias-total-score show-total-score">得点　<%= @sias_scale.total_score %>点</p>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">項目</th>
-        <th scope="col">評価結果</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @sias_scale.scale_attributes.each_with_index do |attr_name, i| %>
-        <tr>
-          <td class="<%= attr_name %>">
-            <span><%= i +1 %>)</span>
-            <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-          </td>
-          <td class="<%= attr_name %>_score"><%= @sias_scale.send("#{attr_name}_i18n") %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= render "sias_scales/modal/explain_modal" %>
 </div>

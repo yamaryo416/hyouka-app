@@ -41,6 +41,7 @@ RSpec.feature "BestestScales", type: :feature do
     expect(page).not_to have_selector ".defined-scale", text: "Mini-BESTest"
     click_on "Mini-BESTest"
     expect(page).to have_current_path new_patient_bestest_scale_path(first_patient)
+    expect(page).to have_selector ".page-title", text: "Mini-BESTest作成"
     select "0)重度", from: "bestest_scale[from_sitting_to_standing]"
     select "1)中等度", from: "bestest_scale[standing_on_tiptoes]"
     select "2)正常", from: "bestest_scale[standing_on_one_leg]"
@@ -62,6 +63,7 @@ RSpec.feature "BestestScales", type: :feature do
     expect(page).not_to have_selector ".undefined-scale", text: "Mini-BESTest"
     click_on "Mini-BESTest"
     expect(page).to have_current_path patient_bestest_scales_path second_patient
+    expect(page).to have_selector ".page-title", text: "Mini-BESTest"
     click_on "詳細"
     expect(page).to have_current_path patient_bestest_scale_path(
       second_patient, second_patient_bestest
@@ -78,6 +80,7 @@ RSpec.feature "BestestScales", type: :feature do
 
   scenario "index patient bestest" do
     visit patient_bestest_scales_path third_patient
+    expect(page).to have_selector ".page-title", text: "Mini-BESTest一覧"
     expect(page).to have_selector ".bestest0-total-score", text: "10点"
     expect(page).to have_selector ".bestest0-dynamic-walking-score", text: "10点"
     expect(page).to have_selector ".bestest0-undefined-count",
@@ -95,6 +98,7 @@ RSpec.feature "BestestScales", type: :feature do
     expect(page).to have_current_path edit_patient_bestest_scale_path(
       second_patient, second_patient_bestest
     )
+    expect(page).to have_selector ".page-title", text: "Mini-BESTest編集"
     select "2)正常", from: "bestest_scale[from_sitting_to_standing]"
     select "2)正常", from: "bestest_scale[standing_on_tiptoes]"
     select "2)正常", from: "bestest_scale[standing_on_one_leg]"
@@ -119,5 +123,12 @@ RSpec.feature "BestestScales", type: :feature do
     expect(page).not_to have_selector ".bestest0-total-score", text: "4点"
     expect(page).not_to have_selector ".bestest0-apa-score", text: "4点"
     expect(page).not_to have_selector ".bestest0-cpa-score", text: "4点"
+  end
+
+  scenario "show patient page part of bestest" do
+    visit patient_path second_patient
+    expect(page).to have_selector ".bestest-total-score", text: "合計　4点"
+    expect(page).to have_selector ".bestest-undefined-columns-count",
+                                  text: "*10項目が未入力です"
   end
 end

@@ -28,11 +28,6 @@ RSpec.describe "Patients", type: :request do
       it "show patients page" do
         expect(response).to render_template :index
       end
-
-      it "show correct page content" do
-        expect(response.body).to include admin_patient.unique_id
-        expect(response.body).to include therapist_patient.unique_id
-      end
     end
 
     context "login as correct therapist" do
@@ -43,11 +38,6 @@ RSpec.describe "Patients", type: :request do
 
       it "show patients page" do
         expect(response).to render_template :index
-      end
-
-      it "show correct page content" do
-        expect(response.body).to include therapist_patient.unique_id
-        expect(response.body).not_to include admin_patient.unique_id
       end
     end
 
@@ -69,19 +59,9 @@ RSpec.describe "Patients", type: :request do
         expect(response).to render_template :show
       end
 
-      it "show correct page content in own patient page" do
-        get patient_path admin_patient
-        expect(response.body).to include admin_patient.unique_id
-      end
-
       it "show therapist patient page" do
         get patient_path therapist_patient
         expect(response).to render_template :show
-      end
-
-      it "show correct page content in therapist patient page" do
-        get patient_path therapist_patient
-        expect(response.body).to include therapist_patient.unique_id
       end
     end
 
@@ -93,11 +73,6 @@ RSpec.describe "Patients", type: :request do
       it "show own patient page" do
         get patient_path therapist_patient
         expect(response).to render_template :show
-      end
-
-      it "show correct page content in own patient page" do
-        get patient_path therapist_patient
-        expect(response.body).to include therapist_patient.unique_id
       end
 
       it "redirect to root url when not own patient page" do
@@ -133,7 +108,10 @@ RSpec.describe "Patients", type: :request do
 
   describe "#create" do
     let!(:patient_params) { attributes_for(:patient) }
-    let!(:invalid_patient_params) { attributes_for(:patient, unique_id: "") }
+    let!(:invalid_patient_params) do
+      attributes_for(:patient, first_name: "",
+                               last_name: "")
+    end
 
     context "login" do
       before do
@@ -192,19 +170,9 @@ RSpec.describe "Patients", type: :request do
         expect(response).to render_template :edit
       end
 
-      it "show correct page content in own patient page" do
-        get edit_patient_path admin_patient
-        expect(response.body).to include admin_patient.unique_id
-      end
-
       it "show edit page in other patient page" do
         get edit_patient_path therapist_patient
         expect(response).to render_template :edit
-      end
-
-      it "show correct page content in other patient page" do
-        get edit_patient_path therapist_patient
-        expect(response.body).to include therapist_patient.unique_id
       end
     end
 
@@ -216,11 +184,6 @@ RSpec.describe "Patients", type: :request do
       it "show edit page in own patient page" do
         get edit_patient_path therapist_patient
         expect(response).to render_template :edit
-      end
-
-      it "show correct page content in own patient page" do
-        get edit_patient_path therapist_patient
-        expect(response.body).to include therapist_patient.unique_id
       end
 
       it "redirect to root url when not own patient page get" do

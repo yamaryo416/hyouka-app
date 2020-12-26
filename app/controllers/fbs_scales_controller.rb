@@ -2,14 +2,15 @@ class FbsScalesController < ApplicationController
   before_action :set_fbs_scale, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fbs_scales = @patient.fbs_scales.recent
+    @fbs_scales = FbsScaleDecorator.
+      decorate_collection(@patient.fbs_scales.recent)
   end
 
   def show
   end
 
   def new
-    @fbs_scale = FbsScale.new
+    @fbs_scale = FbsScale.new.decorate
   end
 
   def create
@@ -54,6 +55,6 @@ class FbsScalesController < ApplicationController
   end
 
   def set_fbs_scale
-    @fbs_scale = @patient.fbs_scales.find(params[:id])
+    @fbs_scale = @patient.fbs_scales.find(params[:id]).decorate
   end
 end

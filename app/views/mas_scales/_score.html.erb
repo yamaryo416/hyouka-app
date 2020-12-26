@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center">
+  <div class="shoulder_mas_head part-head">
+    <dd class="left-top"></dd>
+    <dd>肘関節</dd>
+    <dd>手関節</dd>
+    <dd>膝関節</dd>
+    <dd>足関節</dd>
+  </div>
+  <div class="right_shoulder_mas_score mas-score" >
+    <dd class="direction-head">右</dd>
+    <% mas_scale.right_scale_attributes.each do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= mas_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+  <div class="left_shoulder_mas_score mas-score">
+    <dd class="direction-head">左</dd>
+    <% mas_scale.left_scale_attributes.each do |attr_name| %>
+      <dd class="<%= attr_name %>_score"><%= @mas_scale.send("#{attr_name}_i18n") %></dd>
+    <% end %>
+  </div>
+</div>

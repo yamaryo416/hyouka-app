@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module NrsScaleDecorator
-  include ScaleDecorator
+class NrsScaleDecorator < ScaleDecorator
+  delegate_all
 end

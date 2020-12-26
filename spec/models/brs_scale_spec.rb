@@ -7,9 +7,9 @@ RSpec.describe BrsScale, type: :model do
   end
 
   it "is valid with all columns" do
-    brs_scale = build(:brs_scale, upper_limbs: 1,
+    brs_scale = build(:brs_scale, upper_limb: 1,
                                   finger: 3,
-                                  lower_limbs: 5)
+                                  lower_limb: 5)
     expect(brs_scale).to be_valid
   end
 

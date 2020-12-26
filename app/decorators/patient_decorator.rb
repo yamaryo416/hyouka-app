@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module PatientDecorator
+class PatientDecorator < ApplicationDecorator
+  delegate_all
+
   def full_name
     "#{first_name} #{last_name}"
   end

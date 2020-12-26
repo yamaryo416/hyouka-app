@@ -1,0 +1,34 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">作成日時</th>
+      <th scope="col">得点</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% fact_scales.each_with_index do |fact_scale, i| %>
+      <tr class="fact_score">
+        <td class="fact<%= i %>-created-at"><%= fact_scale.date_of_creation %></td>
+        <td class="fact<%= i %>-total-score"><%= fact_scale.total_score %>点</td>
+        <td class="fact<%= i %>-undefined-count">
+          <% if fact_scale.undefined_count > 0 %>
+            <p class="undefined-columns-count">*<%= fact_scale.undefined_count %>項目が未入力です。</p>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "詳細", patient_fact_scale_path(patient, fact_scale), class: "fact#{i}_show_link show_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_patient_fact_scale_path(patient, fact_scale), class: "fact#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "削除", patient_fact_scale_path(patient, fact_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

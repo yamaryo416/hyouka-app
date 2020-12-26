@@ -1,5 +1,6 @@
 class Patient < ApplicationRecord
   include Scope
+
   belongs_to :therapist
   has_many :sias_scales, dependent: :destroy
   has_many :rom_scales, dependent: :destroy

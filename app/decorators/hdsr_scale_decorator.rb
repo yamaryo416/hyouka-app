@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module HdsrScaleDecorator
-  include ScaleDecorator
+class HdsrScaleDecorator < ScaleDecorator
+  delegate_all
 
   def total_score
     total_score = 0

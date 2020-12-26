@@ -221,8 +221,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
     t.string "last_name", default: "", null: false
     t.integer "age"
     t.integer "sex"
-    t.float "weight"
     t.float "height"
+    t.float "weight"
     t.bigint "therapist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -387,7 +387,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_093318) do
 
   create_table "therapists", force: :cascade do |t|
     t.string "unique_id", default: "", null: false
-    t.string "name", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

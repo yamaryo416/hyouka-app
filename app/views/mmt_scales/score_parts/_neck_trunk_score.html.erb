@@ -9,7 +9,7 @@
         <dd>体幹伸展</dd>
       </div>
       <div class="neck_trunk_mmt_score mmt-score">
-        <% mmt_scale.neck_trunk_scale_score.keys.each do |attr_name| %>
+        <% mmt_scale.neck_trunk_scale_attributes.each do |attr_name| %>
           <dd class="<%= attr_name %>_score"><%= mmt_scale.send("#{attr_name}_i18n") %></dd>
         <% end %>
       </div>

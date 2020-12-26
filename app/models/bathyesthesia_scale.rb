@@ -1,7 +1,7 @@
 class BathyesthesiaScale < ApplicationRecord
   include Scope
-  belongs_to :patient
 
+  belongs_to :patient
   enum right_upper_limb: {
     undefined: nil,
     impaired: 1,

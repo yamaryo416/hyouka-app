@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module TactileScaleDecorator
-  include ScaleDecorator
+class TactileScaleDecorator < ScaleDecorator
+  delegate_all
 
   def limit_part
     limit_part = []

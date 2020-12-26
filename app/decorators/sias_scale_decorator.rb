@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module SiasScaleDecorator
-  include ScaleDecorator
+class SiasScaleDecorator < ScaleDecorator
+  delegate_all
 
   def total_score
     total_score = 0

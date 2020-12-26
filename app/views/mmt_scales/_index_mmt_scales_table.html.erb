@@ -1,0 +1,34 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">作成日時</th>
+      <th scope="col">概要</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% mmt_scales.each_with_index do |mmt_scale, i| %>
+      <tr class="mmt_score">
+        <td class="mmt<%= i %>-created-at"><%= mmt_scale.date_of_creation %></td>
+        <td class="mmt<%= i %>-weak-part-count">
+          <% if mmt_scale.weak_part.empty? %>
+            筋力低下はありません。
+          <% else %>
+            <%= mmt_scale.weak_part.size %>箇所に筋力低下があります。
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "詳細", patient_mmt_scale_path(patient, mmt_scale), class: "mmt#{i}_show_link show_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "編集", edit_patient_mmt_scale_path(patient, mmt_scale), class: "mmt#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
+        </td>
+        <td>
+          <%= link_to "削除", patient_mmt_scale_path(patient, mmt_scale),class: "mmt#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "MMTを削除します。よろしいですか?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

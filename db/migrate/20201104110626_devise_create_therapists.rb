@@ -5,7 +5,8 @@ class DeviseCreateTherapists < ActiveRecord::Migration[6.0]
     create_table :therapists do |t|
       ## Database authenticatable
       t.string :unique_id, null: false, default: ""
-      t.string :name, null: false, default: ""
+      t.string :first_name, null: false, default: ""
+      t.string :last_name, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

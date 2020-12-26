@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module FbsScaleDecorator
-  include ScaleDecorator
+class FbsScaleDecorator < ScaleDecorator
+  delegate_all
 end
