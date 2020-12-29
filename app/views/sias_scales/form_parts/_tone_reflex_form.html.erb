@@ -1,7 +1,7 @@
 <% SiasScale::TONE_REFLEX_ATTRIBUTES.each_with_index do |attr_name, i| %>
   <div class="scale_column row">
     <span><%= i + 6 %>)</span>
-    <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-sm-3", data: {toggle: "modal", target: "#scale#{i + 7}" } %>
-    <%= f.select attr_name, SiasScale.human_select_options(attr_name), class: "col-sm-2" %>
+    <%= link_to SiasScale.human_attribute_name(attr_name), "#", class: "col-10 col-md-2", data: {toggle: "modal", target: "#scale#{i + 7}" } %>
+    <%= f.select attr_name, SiasScale.human_select_options(attr_name), class: "col-12 col-md-10" %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <%= provide(:title, "SIAS一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "SIAS"  %>
-<div class="main-contents patient-page index-sias">
+<div class="main-contents patient-page index-sias index-scale">
   <div class="container">
     <%= index_scale_link_section("sias_scales", @patient) %>
     <%= render "index_sias_scales_table", sias_scales: @sias_scales, patient: @patient %>

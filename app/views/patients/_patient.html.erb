@@ -1,5 +1,5 @@
 <tr class="patient-box">
-  <td><%= patient.id %></td>
+  <td class="d-none d-md-block"><%= patient.id %></td>
   <td><%= link_to patient.decorate.full_name, patient %></td>
   <td><%= patient.sex_i18n %></td>
   <td>
@@ -7,5 +7,5 @@
       <%= patient.age %>歳
     <% end %>
   </td>
-  <td><%= patient.decorate.date_of_creation %></td>
+  <td class="d-none d-md-block"><%= patient.decorate.date_of_creation %></td>
 </tr>

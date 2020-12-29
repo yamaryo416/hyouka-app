@@ -1,31 +1,31 @@
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">作成日時</th>
-      <th scope="col">得点</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+    <tr class="row">
+      <th scope="col" class="col-4 col-md-3">作成日時</th>
+      <th scope="col" class="col-2 col-md-3">得点</th>
+      <th scope="col" class="col-6 col-md-3"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
     </tr>
   </thead>
   <tbody>
     <% fact_scales.each_with_index do |fact_scale, i| %>
-      <tr class="fact_score">
-        <td class="fact<%= i %>-created-at"><%= fact_scale.date_of_creation %></td>
-        <td class="fact<%= i %>-total-score"><%= fact_scale.total_score %>点</td>
-        <td class="fact<%= i %>-undefined-count">
+      <tr class="fact-score score-table row">
+        <td class="fact<%= i %>-created-at col-4 col-md-3"><%= fact_scale.date_of_creation %></td>
+        <td class="fact<%= i %>-total-score col-2 col-md-3"><%= fact_scale.total_score %>点</td>
+        <td class="fact<%= i %>-undefined-count col-6 col-md-3">
           <% if fact_scale.undefined_count > 0 %>
             <p class="undefined-columns-count">*<%= fact_scale.undefined_count %>項目が未入力です。</p>
           <% end %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "詳細", patient_fact_scale_path(patient, fact_scale), class: "fact#{i}_show_link show_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "編集", edit_patient_fact_scale_path(patient, fact_scale), class: "fact#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "削除", patient_fact_scale_path(patient, fact_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "FACTを削除します。よろしいですか?" } %>
         </td>
       </tr>

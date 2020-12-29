@@ -1,6 +1,6 @@
 <%= provide(:title, "HDS-R一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "HDS-R"  %>
-<div class="main-contents patient-page index-sias">
+<div class="main-contents patient-page index-hdsr index-scale">
   <div class="container">
     <%= index_scale_link_section("hdsr_scales", @patient) %>
     <%= render "index_hdsr_scales_table", hdsr_scales: @hdsr_scales, patient: @patient %>

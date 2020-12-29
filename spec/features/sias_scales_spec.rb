@@ -77,9 +77,9 @@ RSpec.feature "SiasScales", type: :feature do
                                   text: "1B:集団伸展が可能"
     expect(page).to have_selector ".hip_motor_function_score",
                                   text: "2:股関節の屈曲運動あり、足部は床より離れるが十分ではない"
-    expect(page).to have_link "SIAS一覧に戻る"
-    expect(page).to have_link "SIASを編集する"
-    expect(page).to have_link "SIASを削除する"
+    expect(page).to have_link "SIAS一覧"
+    expect(page).to have_link "SIASを編集"
+    expect(page).to have_link "SIASを削除"
   end
 
   scenario "index patient sias" do

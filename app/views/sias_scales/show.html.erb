@@ -1,6 +1,6 @@
 <% provide(:title, "SIAS") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "SIAS" %>
-<div class="main-contents patient-page show-sias">
+<div class="main-contents patient-page show-sias show-scale">
   <div class="container">
     <%= show_scale_link_section("SIAS", "sias_scales", @patient, @sias_scale) %>
     <p class="sias-total-score show-total-score">得点　<%= @sias_scale.total_score %>点</p>

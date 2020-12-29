@@ -1,17 +1,17 @@
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">項目</th>
-      <th scope="col">評価結果</th>
+    <tr class="row">
+      <th scope="col" class="col-4">項目</th>
+      <th scope="col" class="col-8">評価結果</th>
     </tr>
   </thead>
   <tbody>
     <% fbs_scale.scale_attributes.each_with_index do |attr_name, i| %>
-      <tr>
-        <td class="<%= attr_name %>">
+      <tr class="fbs-score scale-score row">
+        <td class="<%= attr_name %> col-4">
           <span><%= i +1 %>)</span>
           <%= FbsScale.human_attribute_name(attr_name) %></td>
-        <td class="<%= attr_name %>_score"><%= fbs_scale.send("#{attr_name}_i18n") %></td>
+        <td class="<%= attr_name %>_score col-8"><%= fbs_scale.send("#{attr_name}_i18n") %></td>
       </tr>
     <% end %>
   </tbody>

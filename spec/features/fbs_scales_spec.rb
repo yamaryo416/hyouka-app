@@ -76,9 +76,9 @@ RSpec.feature "FbsScales", type: :feature do
                                   text: "1:数回の施行にて30秒間の立位保持が可能である"
     expect(page).to have_selector ".sitting_score",
                                   text: "3:監視下での2分間の座位保持が可能である"
-    expect(page).to have_link "FBS一覧に戻る"
-    expect(page).to have_link "FBSを編集する"
-    expect(page).to have_link "FBSを削除する"
+    expect(page).to have_link "FBS一覧"
+    expect(page).to have_link "FBSを編集"
+    expect(page).to have_link "FBSを削除"
   end
 
   scenario "index patient fbs" do

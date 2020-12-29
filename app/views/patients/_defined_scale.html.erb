@@ -17,7 +17,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "ROM", patient_rom_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="rom-limit col-sm-3">
+        <p class="rom-limit score-part col-sm-3">
           <% if patient.rom_scales.last.decorate.limit_part.empty? %>
             可動域制限: なし
           <% else %>
@@ -32,7 +32,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "MMT", patient_mmt_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="mmt-weak col-sm-4">
+        <p class="mmt-weak score-part col-sm-4">
           <% if patient.mmt_scales.last.decorate.weak_part.empty? %>
             筋力低下: なし
           <% else %>
@@ -48,13 +48,13 @@
           <%= link_to "NRS", patient_nrs_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
         <div class="col-sm-3">
-          <p class="nrs-status">
+          <p class="nrs-status score-part">
             <%= patient.nrs_scales.last.decorate.status_i18n %>
             <%= patient.nrs_scales.last.decorate.rating %>
           </p>
         </div>
         <div class="col-sm-3">
-          <p class="nrs-supplement">
+          <p class="nrs-supplement score-part">
             <%= patient.nrs_scales.last.decorate.supplement %>
           </p>
         </div>
@@ -67,7 +67,7 @@
         </div>
         <div class="col-sm-3">
           <% patient.brs_scales.last.decorate.scale_attributes.each do |attr_name| %>
-            <p class="brs-<%= attr_name %>">
+            <p class="brs-<%= attr_name %> score-part">
               <%= BrsScale.human_attribute_name(attr_name) %>:
               <%= patient.brs_scales.last.send("#{attr_name}_i18n") %>
             </p>
@@ -80,7 +80,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "MAS", patient_mas_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="mas-hypertonia col-sm-3">
+        <p class="mas-hypertonia score-part col-sm-3">
           <% if patient.mas_scales.last.decorate.hypertonia_part.empty? %>
             筋緊張亢進:なし
           <% else %>
@@ -95,7 +95,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "深部腱反射", patient_tendon_reflex_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="tendon-reflex-hyperreflexia-and-hyporeflexia col-sm-3">
+        <p class="tendon-reflex-hyperreflexia-and-hyporeflexia score-part col-sm-3">
           <% if patient.tendon_reflex_scales.last.decorate.hyperreflexia_part.empty? %>
             腱反射亢進:なし
           <% else %>
@@ -103,7 +103,7 @@
             <%= render "modal/tendon_reflex_hyperreflexia_modal", patient: patient %>
           <% end %>
         </p>
-        <p class="tendon-reflex-hyporeflexia-count col-sm-3">
+        <p class="tendon-reflex-hyporeflexia-count score-part col-sm-3">
           <% if patient.tendon_reflex_scales.last.decorate.hyporeflexia_part.empty? %>
             腱反射低下:なし
           <% else %>
@@ -118,7 +118,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "触覚検査", patient_tactile_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="tactile-limit col-sm-3">
+        <p class="tactile-limit score-part col-sm-3">
           <% if patient.tactile_scales.last.decorate.limit_part.empty? %>
             機能低下: なし
           <% else %>
@@ -133,7 +133,7 @@
         <div class="col-sm-4 define-scale-content">
           <%= link_to "深部感覚検査", patient_bathyesthesia_scales_path(patient), class: "defined-scale btn btn-primary", local: true %>
         </div>
-        <p class="bathyesthesia-limit col-sm-3">
+        <p class="bathyesthesia-limit score-part col-sm-3">
           <% if patient.bathyesthesia_scales.last.decorate.limit_part.empty? %>
             機能低下: なし
           <% else %>

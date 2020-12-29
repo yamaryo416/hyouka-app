@@ -73,9 +73,9 @@ RSpec.feature "RomScales", type: :feature do
     expect(page).to have_selector ".right_shoulder_extension_score", text: "0°"
     expect(page).to have_selector ".right_forearm_supination_score", text: "20°"
     expect(page).to have_selector ".right_wrist_extension_score", text: "10°"
-    expect(page).to have_link "ROM一覧に戻る"
-    expect(page).to have_link "ROMを編集する"
-    expect(page).to have_link "ROMを削除する"
+    expect(page).to have_link "ROM一覧"
+    expect(page).to have_link "ROMを編集"
+    expect(page).to have_link "ROMを削除"
   end
 
   scenario "index patient rom" do

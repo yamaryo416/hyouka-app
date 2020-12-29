@@ -26,28 +26,28 @@ RSpec.describe "BathyesthesiaScaleDecorator", type: :decorator do
   it "show right position sense scale attributes" do
     expect(subject.right_position_sense_scale_attributes).to eq [
       "right_upper_limb",
-      "right_lower_limb"
+      "right_lower_limb",
     ]
   end
 
   it "show left position sense scale attributes" do
     expect(subject.left_position_sense_scale_attributes).to eq [
       "left_upper_limb",
-      "left_lower_limb"
+      "left_lower_limb",
     ]
   end
 
   it "show right motor sense scale attributes" do
     expect(subject.right_motor_sense_scale_attributes).to eq [
       "right_finger",
-      "right_toe"
+      "right_toe",
     ]
   end
 
   it "show left motor sense scale attributes" do
     expect(subject.left_motor_sense_scale_attributes).to eq [
       "left_finger",
-      "left_toe"
+      "left_toe",
     ]
   end
 end

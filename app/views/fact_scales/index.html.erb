@@ -1,6 +1,6 @@
 <%= provide(:title, "FACT一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "FACT"  %>
-<div class="main-contents patient-page index-fact">
+<div class="main-contents patient-page index-fact index-scale">
   <div class="container">
     <%= index_scale_link_section("fact_scales", @patient) %>
     <%= render "index_fact_scales_table", fact_scales: @fact_scales, patient: @patient %>

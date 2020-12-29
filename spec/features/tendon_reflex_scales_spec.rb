@@ -73,9 +73,9 @@ RSpec.feature "TendonReflexScales", type: :feature do
     expect(page).to have_selector ".jaw_score", text: "(-)"
     expect(page).to have_selector ".abdominal_score", text: "(++)"
     expect(page).to have_selector ".right_pectoral_score", text: "(++++)"
-    expect(page).to have_link "腱反射一覧に戻る"
-    expect(page).to have_link "腱反射を編集する"
-    expect(page).to have_link "腱反射を削除する"
+    expect(page).to have_link "腱反射一覧"
+    expect(page).to have_link "腱反射を編集"
+    expect(page).to have_link "腱反射を削除"
   end
 
   scenario "index patient tendon_reflex" do

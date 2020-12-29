@@ -1,8 +1,8 @@
 <header>
   <nav class="navbar navbar-expand-lg fixed-top">
     <h1 class="page-title"><%= yield(:title) %></h1>
-    <div class="container">
-      <% if therapist_signed_in? %>
+    <% if therapist_signed_in? %>
+      <div class="container">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,7 +21,7 @@
             </ul>
           </li>
         </ul>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </nav>
 </header>

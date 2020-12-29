@@ -72,9 +72,9 @@ RSpec.feature "MasScales", type: :feature do
                                   text: "1+"
     expect(page).to have_selector ".right_knee_joint_score",
                                   text: "3"
-    expect(page).to have_link "MAS一覧に戻る"
-    expect(page).to have_link "MASを編集する"
-    expect(page).to have_link "MASを削除する"
+    expect(page).to have_link "MAS一覧"
+    expect(page).to have_link "MASを編集"
+    expect(page).to have_link "MASを削除"
   end
 
   scenario "index patient mas" do

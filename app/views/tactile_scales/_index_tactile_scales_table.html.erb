@@ -1,31 +1,31 @@
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">作成日時</th>
-      <th scope="col">機能低下</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+    <tr class="row">
+      <th scope="col" class="col-4 col-md-4">作成日時</th>
+      <th scope="col" class="col-8 col-md-5">機能低下</th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
     </tr>
   </thead>
   <tbody>
     <% tactile_scales.each_with_index do |tactile_scale, i| %>
-      <tr class="tactile_score">
-        <td class="tactile<%= i %>-created-at"><%= tactile_scale.date_of_creation %></td>
-        <td class="tactile<%= i %>-limit-part">
+      <tr class="tactile-score score-table row">
+        <td class="tactile<%= i %>-created-at col-4 col-md-4"><%= tactile_scale.date_of_creation %></td>
+        <td class="tactile<%= i %>-limit-part col-8 col-md-5">
           <% if tactile_scale.limit_part.empty? %>
             なし
           <% else %>
             <%= tactile_scale.limit_part.size %>箇所
           <% end %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "詳細", patient_tactile_scale_path(patient, tactile_scale), class: "tactile#{i}_show_link show_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "編集", edit_patient_tactile_scale_path(patient, tactile_scale), class: "tactile#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "削除", patient_tactile_scale_path(patient, tactile_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "触覚検査を削除します。よろしいですか?" } %>
         </td>
       </tr>

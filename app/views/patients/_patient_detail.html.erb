@@ -1,6 +1,6 @@
 <div class="patient-details d-flex justify-content-between show-patient-content">
-  <div class="d-flex justify-content-start">
-    <h3 class="name-content">氏名:　<strong class="name"><%= patient.full_name %></strong>　様</h3>
+  <div class="row">
+    <h3 class="name-content col-auto flex-md-fill">氏名:　<strong class="name"><%= patient.full_name %></strong>　様</h3>
     <div class="sex-and-age-content">
       <p>性別:　<strong class="sex"><%= patient.sex_i18n %></strong></p>
       <p>年齢:　<strong class="age"><%= patient.age %></strong>　歳</p>
@@ -10,7 +10,8 @@
       <p>体重:　<strong class="weight"><%= patient.weight %></strong>　kg</p>
     </div>
   </div>
-  <div class="edit_link">
-    <%= link_to "基本情報を編集する", edit_patient_path, class: "custom-btn btn-radius-solid" %>
+  <div class="edit-link">
+    <%= link_to "基本情報を編集する", edit_patient_path, class: "custom-btn btn-radius-solid d-none d-md-block" %>
+    <%= link_to "編集", edit_patient_path, class: "custom-btn btn-radius-solid d-block d-md-none" %>
   </div>
 </div>

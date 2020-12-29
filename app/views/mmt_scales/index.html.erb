@@ -1,6 +1,6 @@
 <%= provide(:title, "MMT一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "MMT"  %>
-<div class="main-contents patient-page index-mmt">
+<div class="main-contents patient-page index-mmt index-scale">
   <div class="container">
     <%= index_scale_link_section("mmt_scales", @patient) %>
     <%= render "index_mmt_scales_table", patient: @patient, mmt_scales: @mmt_scales %>

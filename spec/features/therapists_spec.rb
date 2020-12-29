@@ -92,18 +92,6 @@ RSpec.feature "Therapists", type: :feature do
     expect(page).not_to have_link "ユーザーを削除する"
   end
 
-  scenario "show therapist page" do
-    sign_in admin
-    visit admin_therapists_path
-    click_on "佐藤 花"
-    expect(page).to have_current_path admin_therapist_path therapist
-    expect(page).to have_selector ".page-title", text: "佐藤 花"
-    expect(page).to have_selector ".therapist-id", text: "87654321"
-    expect(page).to have_selector ".therapist-name", text: "佐藤 花"
-    expect(page).to have_link "ユーザー一覧に戻る"
-    expect(page).to have_link "ユーザーを削除する"
-  end
-
   scenario "edit therapist password" do
     sign_in therapist
     visit patients_path

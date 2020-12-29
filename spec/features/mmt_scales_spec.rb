@@ -73,9 +73,9 @@ RSpec.feature "MmtScales", type: :feature do
     expect(page).to have_selector ".right_shoulder_flexion_score", text: "0"
     expect(page).to have_selector ".right_hip_adduction_score", text: "1"
     expect(page).to have_selector ".left_ankle_extension_score", text: "2-"
-    expect(page).to have_link "MMT一覧に戻る"
-    expect(page).to have_link "MMTを編集する"
-    expect(page).to have_link "MMTを削除する"
+    expect(page).to have_link "MMT一覧"
+    expect(page).to have_link "MMTを編集"
+    expect(page).to have_link "MMTを削除"
   end
 
   scenario "index patient mmt" do

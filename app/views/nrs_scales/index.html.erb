@@ -1,6 +1,6 @@
 <%= provide(:title, "NRS一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "NRS"  %>
-<div class="main-contents patient-page index-nrs">
+<div class="main-contents patient-page index-nrs index-scale">
   <div class="container">
     <%= index_scale_link_section("nrs_scales", @patient) %>
     <%= render "index_nrs_scales_table", nrs_scales: @nrs_scales, patient: @patient %>

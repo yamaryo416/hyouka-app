@@ -1,34 +1,34 @@
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">作成日時</th>
-      <th scope="col">得点</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+    <tr class="row">
+      <th scope="col" class="col-4 col-md-4">作成日時</th>
+      <th scope="col" class="col-2 col-md-1">得点</th>
+      <th scope="col" class="col-6 col-md-4"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
     </tr>
   </thead>
   <tbody>
     <% bestest_scales.each_with_index do |bestest_scale, i| %>
-      <tr class="bestest_score">
-        <td class="bestest<%= i %>-created-at"><%= bestest_scale.date_of_creation %></td>
-        <td class="bestest<%= i %>-total-score">
+      <tr class="bestest-score score-table row">
+        <td class="bestest<%= i %>-created-at col-4 col-md-4"><%= bestest_scale.date_of_creation %></td>
+        <td class="bestest<%= i %>-total-score col-2 col-md-1">
           <%= link_to "#{bestest_scale.total_score}点", "#", data: {toggle: "modal", target: "#bestest-overview" } %>
           <%= render "bestest_scales/modal/overview", bestest_scale: bestest_scale, i: i %>
         </td>
-        <td class="bestest<%= i %>-undefined-count">
+        <td class="bestest<%= i %>-undefined-count col-6 col-md-4">
           <% if bestest_scale.undefined_count > 0 %>
             <p class="undefined-columns-count">*<%= bestest_scale.undefined_count %>項目が未入力です。</p>
           <% end %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "詳細", patient_bestest_scale_path(patient, bestest_scale), class: "bestest#{i}_show_link show_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "編集", edit_patient_bestest_scale_path(patient, bestest_scale), class: "bestest#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-4 col-md-1">
           <%= link_to "削除", patient_bestest_scale_path(patient, bestest_scale),class: "hdsr#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "Mini-BESTestを削除します。よろしいですか?" } %>
         </td>
       </tr>

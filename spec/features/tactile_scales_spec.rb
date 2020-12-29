@@ -71,9 +71,9 @@ RSpec.feature "TactileScales", type: :feature do
     expect(page).to have_selector ".right_upper_arm_score", text: "脱失"
     expect(page).to have_selector ".left_upper_arm_score", text: "鈍麻"
     expect(page).to have_selector ".right_forearm_score", text: "鈍麻"
-    expect(page).to have_link "触覚検査一覧に戻る"
-    expect(page).to have_link "触覚検査を編集する"
-    expect(page).to have_link "触覚検査を削除する"
+    expect(page).to have_link "触覚検査一覧"
+    expect(page).to have_link "触覚検査を編集"
+    expect(page).to have_link "触覚検査を削除"
   end
 
   scenario "index patient tactile" do

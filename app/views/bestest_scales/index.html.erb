@@ -1,6 +1,6 @@
 <%= provide(:title, "Mini-BESTest一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "Mini-BESTest"  %>
-<div class="main-contents patient-page index-bestest">
+<div class="main-contents patient-page index-bestest index-scale">
   <div class="container">
     <%= index_scale_link_section("bestest_scales", @patient) %>
     <%= render "index_bestest_scales_table", bestest_scales: @bestest_scales, patient: @patient %>

@@ -7,8 +7,8 @@
       <% @fact_scale.scale_attributes.each_with_index do |attr_name, i| %>
         <div class="scale_column row">
           <span><%= i + 1 %>)</span>
-          <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-sm-4", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
-          <%= f.select attr_name, FactScale.human_select_options(attr_name) %>
+          <%= link_to FactScale.human_attribute_name(attr_name), "#", class: "col-10 col-md-6", data: {toggle: "modal", target: "#scale#{i + 1}" } %>
+          <%= f.select attr_name, FactScale.human_select_options(attr_name), class: "col-12 col-md-6" %>
         </div>
       <% end %>
       <%= render "fact_scales/modal/explain_modal" %>

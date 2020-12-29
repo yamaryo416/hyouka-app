@@ -1,6 +1,6 @@
 <% provide(:title, "Mini-BESTest") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "Mini-BESTest" %>
-<div class="main-contents patient-page show-sias">
+<div class="main-contents patient-page show-bestest show-scale">
   <div class="container">
     <%= show_scale_link_section("Mini-BESTest", "bestest_scales", @patient, @bestest_scale) %>
     <p class="bestest-total-score show-total-score">得点　<%= @bestest_scale.total_score %>点</p>

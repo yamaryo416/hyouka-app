@@ -59,9 +59,9 @@ module ApplicationHelper
   end
 
   def index_scale_link(title, path, patient)
-    content_tag(:a, class: "custom-btn btn-radius-solid",
+    content_tag(:a, class: "index-link custom-btn btn-radius-solid",
                     href: "/patients/#{patient.id}/#{path}") do
-      concat "#{title}一覧に戻る"
+      concat "#{title}一覧"
     end
   end
 
@@ -73,17 +73,17 @@ module ApplicationHelper
   end
 
   def edit_scale_link(title, path, patient, scale)
-    content_tag(:a, class: "custom-btn btn-radius-solid",
+    content_tag(:a, class: "edit-link custom-btn btn-radius-solid",
                     href: "/patients/#{patient.id}/#{path}/#{scale.id}/edit") do
-      concat "#{title}を編集する"
+      concat "#{title}を編集"
     end
   end
 
   def delete_scale_link(title, path, patient, scale)
-    content_tag(:a, class: "custom-btn btn-radius-solid",
+    content_tag(:a, class: "delete-link custom-btn btn-radius-solid",
                     href: "/patients/#{patient.id}/#{path}/#{scale.id}",
                     data: { method: :delete, confirm: "#{title}を削除します。よろしいですか?" }) do
-      concat "#{title}を削除する"
+      concat "#{title}を削除"
     end
   end
 end

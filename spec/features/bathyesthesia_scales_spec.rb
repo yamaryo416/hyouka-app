@@ -75,9 +75,9 @@ RSpec.feature "BathyesthesiaScales", type: :feature do
     expect(page).to have_selector ".right_upper_limb_score", text: "鈍麻"
     expect(page).to have_selector ".left_upper_limb_score", text: "鈍麻"
     expect(page).to have_selector ".right_lower_limb_score", text: "鈍麻"
-    expect(page).to have_link "深部感覚検査一覧に戻る"
-    expect(page).to have_link "深部感覚検査を編集する"
-    expect(page).to have_link "深部感覚検査を削除する"
+    expect(page).to have_link "深部感覚検査一覧"
+    expect(page).to have_link "深部感覚検査を編集"
+    expect(page).to have_link "深部感覚検査を削除"
   end
 
   scenario "index patient bathyesthesia" do

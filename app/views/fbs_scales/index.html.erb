@@ -1,6 +1,6 @@
 <%= provide(:title, "FBS一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "FBS"  %>
-<div class="main-contents patient-page index-fbs">
+<div class="main-contents patient-page index-fbs index-scale">
   <div class="container">
     <%= index_scale_link_section("fbs_scales", @patient) %>
     <%= render "index_fbs_scales_table", fbs_scales: @fbs_scales, patient: @patient %>

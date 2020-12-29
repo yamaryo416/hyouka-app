@@ -1,6 +1,6 @@
 <%= provide(:title, "MAS一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "MAS"  %>
-<div class="main-contents patient-page index-mas">
+<div class="main-contents patient-page index-mas index-scale">
   <div class="container">
     <%= index_scale_link_section("mas_scales", @patient) %>
     <%= render "index_mas_scales_table", mas_scales: @mas_scales, patient: @patient %>

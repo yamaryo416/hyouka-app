@@ -76,9 +76,9 @@ RSpec.feature "BrsScales", type: :feature do
                                   text: "ステージⅤ"
     expect(page).to have_selector ".lower_limb_score",
                                   text: "ステージⅥ"
-    expect(page).to have_link "BRS一覧に戻る"
-    expect(page).to have_link "BRSを編集する"
-    expect(page).to have_link "BRSを削除する"
+    expect(page).to have_link "BRS一覧"
+    expect(page).to have_link "BRSを編集"
+    expect(page).to have_link "BRSを削除"
   end
 
   scenario "index patient brs" do

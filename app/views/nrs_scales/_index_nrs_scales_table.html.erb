@@ -1,25 +1,25 @@
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">作成日時</th>
-      <th scope="col">NRS</th>
-      <th scope="col">状態</th>
-      <th scope="col">補足</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+    <tr class="row">
+      <th scope="col" class="col-4 col-md-4">作成日時</th>
+      <th scope="col" class="col-2 col-md-1">NRS</th>
+      <th scope="col" class="col-3 col-md-2">状態</th>
+      <th scope="col" class="col-3 col-md-3">補足</th>
+      <th scope="col" class="sm-none col-md-1"></th>
+      <th scope="col" class="sm-none col-md-1"></th>
     </tr>
   </thead>
   <tbody>
     <% nrs_scales.each_with_index do |nrs_scale, i| %>
-      <tr class="nrs_score">
-        <td class="nrs<%= i %>-created-at"><%= nrs_scale.date_of_creation %></td>
-        <td class="nrs<%= i %>-rating"><%= nrs_scale.rating %></td>
-        <td class="nrs<%= i %>-status"><%= nrs_scale.status_i18n %></td>
-        <td class="nrs<%= i %>-supplement"><%= nrs_scale.supplement %></td>
-        <td>
+      <tr class="nrs-score score-table row">
+        <td class="nrs<%= i %>-created-at col-4 col-md-4"><%= nrs_scale.date_of_creation %></td>
+        <td class="nrs<%= i %>-rating col-2 col-md-1"><%= nrs_scale.rating %></td>
+        <td class="nrs<%= i %>-status col-3 col-md-2"><%= nrs_scale.status_i18n %></td>
+        <td class="nrs<%= i %>-supplement col-3 col-md-3"><%= nrs_scale.supplement %></td>
+        <td class="col-6 col-md-1">
           <%= link_to "編集", edit_patient_nrs_scale_path(patient, nrs_scale), class: "nrs#{i}_edit_link edit_link custom-btn btn-radius-solid" %>
         </td>
-        <td>
+        <td class="col-6 col-md-1">
           <%= link_to "削除", patient_nrs_scale_path(patient, nrs_scale),class: "nrs#{i}_delete_link delete_link custom-btn btn-radius-solid", method: :delete, data: { confirm: "NRSを削除します。よろしいですか?" } %>
         </td>
       </tr>

@@ -1,25 +1,25 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'reset';
-
-//default
-
+//body
+@media screen and (max-width: 768px) {
+  body{
+    font-size: 15px;
+  }
+}
 // header
 header {
   .navbar{
     background-color: rgb(30, 120, 190);
     color: white;
     height: 57px;
-    .navbar-brand{
-      color: white;
+    .container{
+      display: block;
+    }
+    .navbar-nav{
+      float: right;
     }
     .nav-link{
-      color: white;
-    }
-    .container{
-    display: block;
-      ul{
-        float: right;
-      }
+        color: white;
     }
   }
 }
@@ -33,6 +33,24 @@ header {
   font-size:1.5em;
   font-weight:bold;
   color: #darkblue;
+}
+
+@media screen and (max-width: 768px) {
+  .page-title{
+    font-size: 15px;
+    word-wrap: break-word;
+    height: 57px;
+  }
+  .navbar-nav{
+    width: 80px;
+    margin-right: 10px;
+  }
+  .nav-link{
+    font-size: 10px;
+  }
+  .dropdown-menu{
+    font-size: 10px;
+  }
 }
 
 // main
@@ -50,6 +68,16 @@ footer{
   padding-top: 20px;
   padding-bottom: 30px;
   color: rgba(0, 0, 0, 0.5)
+}
+@media screen and (max-width: 768px) {
+  footer{
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  h5{
+    font-size: 15px;
+  }
 }
 // therapist
 .new-therapist, .edit-therapist{
@@ -102,12 +130,15 @@ footer{
   .name-content{
     line-height: 60px;
     vertical-align: middle;
+    padding-right: 30px;
   }
   .sex-and-age-content, .height-and-weight-content{
-    padding-left: 60px;
     p{
       margin-bottom:5px;
     }
+  }
+  .sex-and-age-content{
+    padding-right: 30px;
   }
 }
 .evaluation-finding-section{
@@ -148,13 +179,75 @@ footer{
   margin-top: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .patient-details{
+    .sex-and-age-content{
+      padding-left: 15px;
+    }
+    .edit-link{
+      width: 100px;
+    }
+  }
+  .define-scale-content{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .total-score, .score-part, .undefined-columns-count{
+    text-align: center;
+  }
+}
+
 // sias
 
 //rom
+.new-rom-collapse, .show-rom-collapse, .new-mmt-collapse, .show-mmt-collapse{
+  margin-bottom: 20px;
+  button{
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .new-rom-collapse, .show-rom-collapse, .new-mmt-collapse, .show-mmt-collapse{
+    button{
+      margin: 10px;
+    }
+  }
+}
 
 //mmt
 
+//brs
+@media screen and (max-width: 768px) {
+  .index-brs{
+    th{
+      font-size: 13px;
+    }
+  }
+  .brs-score{
+    td{
+      font-size: 10px;
+    }
+  }
+}
+
 //bathyesthesia
+
+//tendon-reflex
+
+//tactile
+
+//bathyesthesia
+
+//bestest
+@media screen and (max-width: 768px) {
+  .show-bestest{
+    .index-link{
+      width: 130px;
+      margin-right: 50px;
+    }
+  }
+}
 
 //hdsr
 .hdsr-submit-form{
@@ -167,7 +260,16 @@ footer{
   }
 }
 
-//form
+//fact
+@media screen and (max-width: 768px) {
+  .index-fact{
+    th{
+      font-size: 13px;
+    }
+  }
+}
+
+//form-part
 .new-section, .edit-section{
   h3{
     font-weight: bold;
@@ -191,7 +293,6 @@ footer{
     margin-bottom: 20px;
   }
 }
-
 .rom-form, .mmt-form, .mas-form, .tendon-reflex-form, .tactile-form, .bathyesthesia-form{
   .direction-head{
     font-size: 20px;
@@ -244,7 +345,18 @@ footer{
     margin-right: 20px;
   }
 }
+@media screen and (max-width: 768px) {
+  .part-head{
+    dd{
+      font-size: 12px;
+      font-weight: 500;
+      height: 31px;
+      margin-bottom: 20px;
+    }
+  }
+}
 
+//score-part
 .rom-score, .mmt-score, .mas-score, .tendon-reflex-score, .bathyesthesia-score, .tactile-score{
   .direction-head{
     font-size: 20px;
@@ -265,7 +377,53 @@ footer{
   }
 }
 
-//component
+//index-scale-page
+@media screen and (max-width: 768px) {
+  .index-scale{
+    th{
+      font-size: 13px;
+    }
+    .score-table{
+      margin-bottom: 40px;
+    }
+  }
+}
+
+//show-scale-page
+@media screen and (max-width: 768px){
+  .show-tactile, .show-tendon-reflex, .show-bathyesthesia, .show-bestest{
+    a{
+      font-size: 10px;
+    }
+  }
+  .scale_column{
+    span{
+      margin-left: 15px;
+    }
+    select{
+      width: 80%;
+    }
+  }
+  .show-scale{
+    .show-total-score{
+      font-size: 18px;
+    }
+    .show-subtotal-score{
+      font-size: 15px;
+    }
+    .scale-score{
+      font-size: 10px;
+      td{
+        padding-left: 10px;
+        a{
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+//breadcrumb
 .breadcrumb-nav{
   top: 57px;
   position:fixed;
@@ -280,6 +438,21 @@ footer{
   padding-bottom: 5px;
   margin-bottom: 0;
 }
+@media screen and (max-width: 768px) {
+.breadcrumb{
+    font-size: 12px;
+  }
+}
+
+//component
+
+//scale-index-section
+@media screen and (max-width: 768px){
+  .sm-none{
+    display: none;
+  }
+}
+
 .btn-primary{
   background-color: rgb(30, 120, 190);
   border-color: rgb(30, 120, 190);

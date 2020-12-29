@@ -1,6 +1,6 @@
 <%= provide(:title, "ROM一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "ROM"  %>
-<div class="main-contents patient-page rom-index">
+<div class="main-contents patient-page index-rom index-scale">
   <div class="container">
     <%= index_scale_link_section("rom_scales", @patient) %>
     <%= render "index_rom_scales_table", rom_scales: @rom_scales, patient: @patient %>

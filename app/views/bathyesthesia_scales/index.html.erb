@@ -1,6 +1,6 @@
 <%= provide(:title, "深部感覚検査一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "深部感覚検査"  %>
-<div class="main-contents patient-page index-bathyesthesia">
+<div class="main-contents patient-page index-bathyesthesia index-scale">
   <div class="container">
     <%= index_scale_link_section("bathyesthesia_scales", @patient) %>
     <%= render "index_bathyesthesia_scales_table", bathyesthesia_scales: @bathyesthesia_scales, patient: @patient %>

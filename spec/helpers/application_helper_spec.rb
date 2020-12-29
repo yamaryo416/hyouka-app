@@ -15,10 +15,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     expect(index_scale_link_section("sias_scales", patient)).to eq(
       "<div class=\"link-section d-flex justify-content-between\">"\
       "<div class=\"left_link\">"\
-      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}\">患者ページに戻る</a>"\
+      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}\">"\
+      "患者ページに戻る"\
+      "</a>"\
       "</div>"\
       "<div class=\"right_link\">"\
-      "<a class=\"btn btn-primary\" href=\"/patients/#{patient.id}/sias_scales/new\">新規作成</a>"\
+      "<a class=\"btn btn-primary\" href=\"/patients/#{patient.id}/sias_scales/new\">"\
+      "新規作成</a>"\
       "</div>"\
       "</div>"
     )
@@ -28,20 +31,32 @@ RSpec.describe ApplicationHelper, type: :helper do
     expect(show_scale_link_section("SIAS", "sias_scales", patient, sias)).to eq(
       "<div class=\"link-section d-flex justify-content-between\">"\
       "<div class=\"left_link\">"\
-      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}/sias_scales\">SIAS一覧に戻る</a>"\
+      "<a class=\"index-link custom-btn btn-radius-solid\" "\
+      "href=\"/patients/#{patient.id}/sias_scales\">"\
+      "SIAS一覧"\
+      "</a>"\
       "</div>"\
       "<div class=\"right_link\">"\
-      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}/sias_scales/#{sias.id}/edit\">SIASを編集する</a>"\
-      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}/sias_scales/#{sias.id}\" data-method=\"delete\" data-confirm=\"SIASを削除します。よろしいですか?\">SIASを削除する</a>"\
+      "<a class=\"edit-link custom-btn btn-radius-solid\" "\
+      "href=\"/patients/#{patient.id}/sias_scales/#{sias.id}/edit\">"\
+      "SIASを編集"\
+      "</a>"\
+      "<a class=\"delete-link custom-btn btn-radius-solid\" "\
+      "href=\"/patients/#{patient.id}/sias_scales/#{sias.id}\" "\
+      "data-method=\"delete\" data-confirm=\"SIASを削除します。よろしいですか?\">"\
+      "SIASを削除</a>"\
       "</div>"\
       "</div>"
     )
   end
 
-  it "provide show scale link section" do
+  it "provide form scale link section" do
     expect(form_scale_link_section("SIAS", "sias_scales", patient)).to eq(
       "<div class=\"link-section\">"\
-      "<a class=\"custom-btn btn-radius-solid\" href=\"/patients/#{patient.id}/sias_scales\">SIAS一覧に戻る</a>"\
+      "<a class=\"index-link custom-btn btn-radius-solid\" "\
+      "href=\"/patients/#{patient.id}/sias_scales\">"\
+      "SIAS一覧"\
+      "</a>"\
       "</div>"
     )
   end

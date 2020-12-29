@@ -1,16 +1,18 @@
 <% provide(:title, "ログイン") %>
-<div class="main-contents new-therapist">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form_group">
-      <%= f.label :unique_id %><br />
-      <%= f.text_field :unique_id, autofocus: true, autocomplete: "unique_id", class: "form_control" %>
-    </div>
-    <div class="form_group">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class: "form_control" %>
-    </div>
-    <div class="form-action">
-      <%= f.submit "ログイン", class: "btn btn-primary login-btn" %>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="main-contents new-therapist">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form_group col-xs-12">
+        <%= f.label :unique_id %><br />
+        <%= f.text_field :unique_id, autofocus: true, autocomplete: "unique_id", class: "form_control" %>
+      </div>
+      <div class="form_group col-xs-12">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form_control" %>
+      </div>
+      <div class="form-action col-xs-12">
+        <%= f.submit "ログイン", class: "btn btn-primary login-btn" %>
+      </div>
+    <% end %>
+  </div>
 </div>

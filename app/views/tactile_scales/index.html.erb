@@ -1,6 +1,6 @@
 <%= provide(:title, "触覚検査一覧") %>
 <%= render "shared/breadcrumb", patient: @patient, scale: "触覚検査"  %>
-<div class="main-contents patient-page index-tactile">
+<div class="main-contents patient-page index-tactile index-scale">
   <div class="container">
     <%= index_scale_link_section("tactile_scales", @patient) %>
     <%= render "index_tactile_scales_table", tactile_scales: @tactile_scales, patient: @patient %>
