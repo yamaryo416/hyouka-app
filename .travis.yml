@@ -18,7 +18,7 @@ deploy:
   script:
     docker build -t registry.heroku.com/$HEROKU_APP_NAME/web -f Dockerfile.prod .;
     docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku run --app $HEROKU_APP_NAME rails db:migrate:reset db:seed;
+    heroku run --app $HEROKU_APP_NAME RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate:reset db:seed;
   on:
     branch: master
   skip_cleanup: true
