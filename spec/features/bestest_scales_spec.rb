@@ -114,15 +114,11 @@ RSpec.feature "BestestScales", type: :feature do
   scenario "destory patient bestest", js: true do
     visit patient_bestest_scales_path second_patient
     expect(page).to have_selector ".bestest0-total-score", text: "4点"
-    expect(page).to have_selector ".bestest0-apa-score", text: "2点"
-    expect(page).to have_selector ".bestest0-cpa-score", text: "2点"
     page.accept_confirm do
       click_on "削除"
     end
     expect(page).to have_current_path patient_bestest_scales_path second_patient
     expect(page).not_to have_selector ".bestest0-total-score", text: "4点"
-    expect(page).not_to have_selector ".bestest0-apa-score", text: "4点"
-    expect(page).not_to have_selector ".bestest0-cpa-score", text: "4点"
   end
 
   scenario "show patient page part of bestest" do
